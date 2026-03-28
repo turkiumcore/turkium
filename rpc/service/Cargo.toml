@@ -1,0 +1,40 @@
+[package]
+name = "Turkium-rpc-service"
+description = "Turkium RPC service"
+rust-version.workspace = true
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+include.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+Turkium-addresses.workspace = true
+Turkium-consensus-core.workspace = true
+Turkium-consensus-notify.workspace = true
+Turkium-consensusmanager.workspace = true
+Turkium-core.workspace = true
+Turkium-hashes.workspace = true
+Turkium-index-core.workspace = true
+Turkium-math.workspace = true
+Turkium-mining.workspace = true
+Turkium-notify.workspace = true
+Turkium-p2p-flows.workspace = true
+Turkium-p2p-lib.workspace = true
+Turkium-p2p-mining.workspace = true
+Turkium-perf-monitor.workspace = true
+Turkium-rpc-core.workspace = true
+Turkium-txscript.workspace = true
+Turkium-utils.workspace = true
+Turkium-utils-tower.workspace = true
+Turkium-utxoindex.workspace = true
+
+async-trait.workspace = true
+log.workspace = true
+tokio.workspace = true
+triggered.workspace = true
+workflow-rpc.workspace = true
+
+[lints]
+workspace = true

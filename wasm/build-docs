@@ -1,0 +1,28 @@
+#!/bin/bash
+set -e
+
+./build-web $@
+
+if [ "$1" == "--keygen" ]; then
+    echo "building keygen"
+    typedoc --name "Turkium WASM32 SDK - Key Generation" --sourceLinkExternal --readme ./README.md --options ./build/docs/ --out ./docs/turkium-keygen ./build/docs/turkium-keygen.ts
+elif [ "$1" == "--rpc" ]; then
+    echo "building rpc"
+    typedoc --name "Turkium WASM32 SDK - RPC" --sourceLinkExternal --readme ./README.md --options ./build/docs/ --out ./docs/turkium-rpc ./build/docs/turkium-rpc.ts
+elif [ "$1" == "--core" ]; then
+    echo "building core"
+    typedoc --name "Turkium WASM32 SDK - Core" --sourceLinkExternal --readme ./README.md --options ./build/docs/ --out ./docs/turkium-core ./build/docs/turkium-core.ts
+elif [ "$1" == "--sdk" ]; then
+    echo "building full"
+    typedoc --name "Turkium WASM32 SDK" --sourceLinkExternal --readme ./README.md --options ./build/docs/ --out ./docs/turkium ./build/docs/turkium.ts
+else
+    echo "building keygen"
+    typedoc --name "Turkium WASM32 SDK - Key Generation" --sourceLinkExternal --readme ./README.md --options ./build/docs/ --out ./docs/turkium-keygen ./build/docs/turkium-keygen.ts
+    echo "building rpc"
+    typedoc --name "Turkium WASM32 SDK - RPC" --sourceLinkExternal --readme ./README.md --options ./build/docs/ --out ./docs/turkium-rpc ./build/docs/turkium-rpc.ts
+    echo "building core"
+    typedoc --name "Turkium WASM32 SDK - Core" --sourceLinkExternal --readme ./README.md --options ./build/docs/ --out ./docs/turkium-core ./build/docs/turkium-core.ts
+    echo "building full"
+    typedoc --name "Turkium WASM32 SDK" --sourceLinkExternal --readme ./README.md --options ./build/docs/ --out ./docs/turkium ./build/docs/turkium.ts
+
+fi

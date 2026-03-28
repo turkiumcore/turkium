@@ -1,0 +1,41 @@
+[package]
+name = "Turkium-index-processor"
+description = "Turkium index processor"
+rust-version.workspace = true
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+include.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+Turkium-consensus-core.workspace = true
+Turkium-consensus-notify.workspace = true
+Turkium-consensusmanager.workspace = true
+Turkium-core.workspace = true
+Turkium-database.workspace = true
+Turkium-hashes.workspace = true
+Turkium-index-core.workspace = true
+Turkium-notify.workspace = true
+Turkium-utils.workspace = true
+Turkium-utxoindex.workspace = true
+
+async-channel.workspace = true
+async-trait.workspace = true
+derive_more.workspace = true
+futures.workspace = true
+log.workspace = true
+paste.workspace = true
+thiserror.workspace = true
+tokio = { workspace = true, features = [ "rt-multi-thread", "macros", "signal" ]}
+triggered.workspace = true
+
+[dev-dependencies]
+Turkium-consensus.workspace = true
+parking_lot.workspace = true
+tokio = { workspace = true, features = ["rt", "macros"] }
+rand = {workspace = true,  features = [ "small_rng" ]}
+
+[lints]
+workspace = true

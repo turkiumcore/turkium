@@ -1,0 +1,41 @@
+[[resolver]]
+enable = false
+address = "http://127.0.0.1:8888"
+
+[[group]]
+template = "https://*.Turkium.stream"
+nodes = ["eric","maxim","sean","troy"]
+
+[[group]]
+template = "https://*.Turkium.red"
+nodes = ["john", "mike", "paul", "alex"]
+
+[[group]]
+template = "https://*.Turkium.green"
+nodes = ["jake", "mark", "adam", "liam"]
+
+[[group]]
+template = "https://*.Turkium.blue"
+nodes = ["noah", "ryan", "jack", "luke"]
+
+# [[group]]
+# enable = true
+# template = "https://*.Turkium-ng.org"
+# nodes = ["cole", "ivan", "oscar", "zane"]
+
+# [[group]]
+# enable = true
+# template = "https://*.Turkium-ng.io"
+# nodes = ["gary", "hugo", "finn", "evan"]
+
+# [[group]]
+# enable = true
+# template = "https://*.Turkium-ng.net"
+# nodes = ["neil", "dave", "kyle", "toby"]
+
+# ---
+
+# [[group]]
+# enable = false
+# template = "https://*."
+# nodes = ["rudy", "todd", "clay", "walt"]

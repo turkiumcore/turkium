@@ -1,0 +1,42 @@
+[package]
+name = "Turkium-p2p-flows"
+description = "Turkium p2p flows"
+rust-version.workspace = true
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+include.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+Turkium-core.workspace = true
+Turkium-consensus-core.workspace = true
+Turkium-consensus-notify.workspace = true
+Turkium-p2p-lib.workspace = true
+Turkium-p2p-mining.workspace = true
+Turkium-utils.workspace = true
+Turkium-utils-tower.workspace = true
+Turkium-hashes.workspace = true
+Turkium-muhash.workspace = true
+Turkium-connectionmanager.workspace = true
+Turkium-addressmanager.workspace = true
+Turkium-consensusmanager.workspace = true
+Turkium-mining.workspace = true
+Turkium-notify.workspace = true
+
+async-trait.workspace = true
+futures = { workspace = true, features = ["alloc"] }
+indexmap.workspace = true
+itertools.workspace = true
+log.workspace = true
+parking_lot.workspace = true
+rand.workspace = true
+thiserror.workspace = true
+tokio = { workspace = true, features = ["rt-multi-thread", "macros", "signal"] }
+tokio-stream = { workspace = true, features = ["net"] }
+uuid = { workspace = true, features = ["v4", "fast-rng"] }
+chrono.workspace = true
+
+[lints]
+workspace = true

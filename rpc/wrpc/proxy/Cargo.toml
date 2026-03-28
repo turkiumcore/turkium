@@ -1,0 +1,31 @@
+[package]
+name = "Turkium-wrpc-proxy"
+description = "Turkium wRPC to gRPC proxy"
+rust-version.workspace = true
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+include.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+async-trait.workspace = true
+clap.workspace = true
+Turkium-consensus-core.workspace = true
+Turkium-grpc-client.workspace = true
+Turkium-rpc-core.workspace = true
+Turkium-rpc-macros.workspace = true
+Turkium-wrpc-server.workspace = true
+num_cpus.workspace = true
+thiserror.workspace = true
+tokio.workspace = true
+workflow-core.workspace = true
+workflow-log.workspace = true
+workflow-rpc.workspace = true
+
+[package.metadata.emanate.build]
+folder = "setup"
+
+[lints]
+workspace = true

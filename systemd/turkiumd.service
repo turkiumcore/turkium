@@ -1,0 +1,46 @@
+[Unit]
+Description=Turkium Blockchain Node
+Documentation=https://github.com/Turkium/Turkium
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=turkium
+Group=turkium
+WorkingDirectory=/opt/turkium
+
+# Start the blockchain node
+ExecStart=/opt/turkium/turkiumd \
+    --enable-unsynced-mining \
+    --listen=0.0.0.0:16110 \
+    --rpc-listen=0.0.0.0:16210 \
+    --grpc-listen=0.0.0.0:5200
+
+# Restart policy
+Restart=always
+RestartSec=10
+StartLimitInterval=600
+StartLimitBurst=5
+
+# Resource limits
+LimitNOFILE=65536
+LimitNPROC=65536
+
+# Security
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/opt/turkium/data
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=turkiumd
+
+# Environment
+Environment="RUST_LOG=info"
+
+[Install]
+WantedBy=multi-user.target

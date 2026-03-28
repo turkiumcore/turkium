@@ -1,0 +1,12 @@
+<html>
+    <head>
+        <script type="module">
+            import * as Turkium from './Turkium-rpc/Turkium-rpc.js';
+            (async () => {
+                await Turkium.default('./Turkium-rpc/Turkium-rpc_bg.wasm');
+                console.log(Turkium.version());
+            })();
+        </script>
+    </head>
+    <body></body>
+</html>

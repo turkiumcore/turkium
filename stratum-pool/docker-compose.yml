@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  pool:
+    build: .
+    ports:
+      - "3333:3333"
+    environment:
+      RUST_LOG: info
+    volumes:
+      - ./pool.db:/app/pool.db
+      - ./config.toml:/app/config.toml
+    command: ./turkium-stratum-pool --config /app/config.toml --database /app/pool.db
+    restart: unless-stopped

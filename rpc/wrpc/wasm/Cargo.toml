@@ -1,0 +1,46 @@
+[package]
+name = "Turkium-wrpc-wasm"
+description = "Turkium wRPC WASM client"
+rust-version.workspace = true
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+include.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[features]
+wasm32-sdk = ["Turkium-wrpc-client/wasm32-sdk"]
+default = []
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[dependencies]
+ahash.workspace = true
+async-std.workspace = true
+cfg-if.workspace = true
+Turkium-addresses.workspace = true
+Turkium-consensus-core.workspace = true
+Turkium-consensus-client.workspace = true
+Turkium-consensus-wasm.workspace = true
+Turkium-notify.workspace = true
+Turkium-wrpc-client.workspace = true
+Turkium-rpc-core.workspace = true
+Turkium-rpc-macros.workspace = true
+Turkium-wasm-core.workspace = true
+serde_json.workspace = true
+serde-wasm-bindgen.workspace = true
+serde.workspace = true
+workflow-log.workspace = true
+workflow-rpc.workspace = true
+workflow-wasm.workspace = true
+wasm-bindgen.workspace = true
+js-sys.workspace = true
+wasm-bindgen-futures.workspace = true
+workflow-core.workspace = true
+futures.workspace = true
+ring = { version = "0.17", features = ["wasm32_unknown_unknown_js"] }
+
+[lints]
+workspace = true

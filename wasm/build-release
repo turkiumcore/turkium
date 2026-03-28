@@ -1,0 +1,89 @@
+#!/bin/bash
+# This script builds the Rusty Turkium WASM32 SDK release.
+
+# make the script fail for any failed command
+set -e
+
+# Workaround for Rust 1.87.0
+# https://github.com/rust-lang/rust/issues/141048
+export RUSTFLAGS=-Ctarget-cpu=mvp
+
+rm -rf release/*
+rm -rf web/*
+rm -rf nodejs/*
+rm -rf docs/*
+rm -rf examples/nodejs/typescript/lib
+
+mkdir -p release/turkium-wasm32-sdk/web
+mkdir -p release/turkium-wasm32-sdk/nodejs
+mkdir -p release/turkium-wasm32-sdk/docs
+
+# pushd .
+# cd ../rpc/wrpc/wasm
+# wasm-pack build --target web --out-name turkium-rpc --out-dir web/turkium-rpc --features wasm32-sdk $@
+# popd
+
+wasm-pack build --weak-refs --target web --out-name turkium --out-dir web/turkium-keygen --features wasm32-keygen $@
+wasm-pack build --weak-refs --dev --target web --out-name turkium --out-dir web/turkium-keygen-dev --features wasm32-keygen $@
+
+wasm-pack build --weak-refs --target web --out-name turkium --out-dir web/turkium-rpc --features wasm32-rpc $@
+wasm-pack build --weak-refs --dev --target web --out-name turkium --out-dir web/turkium-rpc-dev --features wasm32-rpc $@
+
+wasm-pack build --weak-refs --target web --out-name turkium --out-dir web/turkium-core --features wasm32-core $@
+wasm-pack build --weak-refs --dev --target web --out-name turkium --out-dir web/turkium-core-dev --features wasm32-core $@
+
+wasm-pack build --weak-refs --target web --out-name turkium --out-dir web/turkium --features wasm32-sdk $@
+wasm-pack build --weak-refs --dev --target web --out-name turkium --out-dir web/turkium-dev --features wasm32-sdk $@
+
+wasm-pack build --weak-refs --target nodejs --out-name turkium --out-dir nodejs/turkium --features wasm32-sdk $@
+wasm-pack build --weak-refs --dev --target nodejs --out-name turkium --out-dir nodejs/turkium-dev --features wasm32-sdk $@
+
+# wasm-pack build --target web --dev --out-name turkium --out-dir build/docs/turkium --features wasm32-sdk $@
+typedoc --name "Turkium WASM32 SDK - Key Generation" --sourceLinkExternal --readme ./README.md --options ./build/docs/ --out docs/turkium-keygen ./build/docs/turkium-keygen.ts
+typedoc --name "Turkium WASM32 SDK - RPC" --sourceLinkExternal --readme ./README.md --options ./build/docs/ --out docs/turkium-rpc ./build/docs/turkium-rpc.ts
+typedoc --name "Turkium WASM32 SDK - Core" --sourceLinkExternal --readme ./README.md --options ./build/docs/ --out docs/turkium-core ./build/docs/turkium-core.ts
+typedoc --name "Turkium WASM32 SDK" --sourceLinkExternal --readme ./README.md --options ./build/docs/ --out docs/turkium ./build/docs/turkium.ts
+
+# cp -r ../rpc/wrpc/wasm/web/turkium-rpc release/turkium-wasm32-sdk/web/turkium-rpc
+cp -r web/turkium-keygen release/turkium-wasm32-sdk/web/turkium-keygen
+cp -r web/turkium-keygen-dev release/turkium-wasm32-sdk/web/turkium-keygen-dev
+
+cp -r web/turkium-rpc release/turkium-wasm32-sdk/web/turkium-rpc
+cp -r web/turkium-rpc-dev release/turkium-wasm32-sdk/web/turkium-rpc-dev
+
+cp -r web/turkium-core release/turkium-wasm32-sdk/web/turkium-core
+cp -r web/turkium-core-dev release/turkium-wasm32-sdk/web/turkium-core-dev
+
+cp -r web/turkium release/turkium-wasm32-sdk/web/turkium
+cp -r web/turkium-dev release/turkium-wasm32-sdk/web/turkium-dev
+
+cp -r nodejs/turkium release/turkium-wasm32-sdk/nodejs/turkium
+cp -r nodejs/turkium-dev release/turkium-wasm32-sdk/nodejs/turkium-dev
+
+cp -r docs/turkium-keygen release/turkium-wasm32-sdk/docs/turkium-keygen
+cp -r docs/turkium-rpc release/turkium-wasm32-sdk/docs/turkium-rpc
+cp -r docs/turkium-core release/turkium-wasm32-sdk/docs/turkium-core
+cp -r docs/turkium release/turkium-wasm32-sdk/docs/turkium
+
+mkdir -p release/turkium-wasm32-sdk/examples/data
+cp -r examples/data/.gitignore release/turkium-wasm32-sdk/examples/data/.gitignore
+cp -r examples/nodejs release/turkium-wasm32-sdk/examples/
+cp -r examples/web release/turkium-wasm32-sdk/examples/
+cp -r examples/init.js release/turkium-wasm32-sdk/examples/
+cp -r examples/jsconfig.json release/turkium-wasm32-sdk/examples/
+cp -r examples/package.json release/turkium-wasm32-sdk/examples/
+
+pushd .
+cd release/turkium-wasm32-sdk/examples
+npm install
+popd
+
+# tsc release/turkium-wasm32-sdk/examples/nodejs/typescript/
+
+cp index.html release/turkium-wasm32-sdk/index.html
+cp README.md release/turkium-wasm32-sdk/README.md
+cp CHANGELOG.md release/turkium-wasm32-sdk/CHANGELOG.md
+cp LICENSE release/turkium-wasm32-sdk/LICENSE
+
+node build/package-sizes.js
+cp package-sizes.js release/turkium-wasm32-sdk/package-sizes.js

@@ -1,0 +1,51 @@
+[package]
+name = "Turkium-notify"
+description = "Turkium notification subsystem"
+rust-version.workspace = true
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+include.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+async-channel.workspace = true
+async-trait.workspace = true
+borsh.workspace = true
+derive_more.workspace = true
+futures-util.workspace = true
+futures.workspace = true
+indexmap.workspace = true
+itertools.workspace = true
+Turkium-addresses.workspace = true
+Turkium-consensus-core.workspace = true
+Turkium-core.workspace = true
+Turkium-hashes.workspace = true
+Turkium-txscript-errors.workspace = true
+Turkium-txscript.workspace = true
+Turkium-utils.workspace = true
+log.workspace = true
+parking_lot.workspace = true
+paste.workspace = true
+rand.workspace = true
+serde.workspace = true
+thiserror.workspace = true
+triggered.workspace = true
+workflow-core.workspace = true
+workflow-log.workspace = true
+workflow-serializer.workspace = true
+
+[dev-dependencies]
+criterion.workspace = true
+Turkium-alloc.workspace = true
+Turkium-math.workspace = true
+tokio = { workspace = true, features = ["rt", "macros"] }
+workflow-perf-monitor.workspace = true
+
+[[bench]]
+name = "bench"
+harness = false
+
+[lints]
+workspace = true

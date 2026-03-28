@@ -1,0 +1,44 @@
+[package]
+name = "Turkium-mining"
+description = "Turkium mining"
+rust-version.workspace = true
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+include.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+Turkium-addresses.workspace = true
+Turkium-consensus-core.workspace = true
+Turkium-consensusmanager.workspace = true
+Turkium-core.workspace = true
+Turkium-hashes.workspace = true
+Turkium-mining-errors.workspace = true
+Turkium-muhash.workspace = true
+Turkium-txscript.workspace = true
+Turkium-utils.workspace = true
+
+futures-util.workspace = true
+itertools.workspace = true
+log.workspace = true
+parking_lot.workspace = true
+rand.workspace = true
+serde.workspace = true
+smallvec.workspace = true
+sweep-bptree = "0.4.1"
+thiserror.workspace = true
+tokio = { workspace = true, features = ["rt-multi-thread", "macros", "signal"] }
+
+[dev-dependencies]
+Turkium-txscript.workspace = true
+criterion.workspace = true
+secp256k1.workspace = true
+
+[[bench]]
+name = "bench"
+harness = false
+
+[lints]
+workspace = true

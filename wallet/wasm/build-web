@@ -1,0 +1,1 @@
+wasm-pack build --target web --out-name turkium-wallet --out-dir web/turkium-wallet $@

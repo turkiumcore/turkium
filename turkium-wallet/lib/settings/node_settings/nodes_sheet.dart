@@ -1,0 +1,74 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../app_providers.dart';
+import '../../app_router.dart';
+import '../../l10n/l10n.dart';
+import '../../widgets/buttons.dart';
+import '../../widgets/gradient_widgets.dart';
+import '../../widgets/sheet_util.dart';
+import '../../widgets/sheet_widget.dart';
+import 'node_add_sheet.dart';
+import 'node_item.dart';
+import 'node_types.dart';
+
+class NodesSheet extends ConsumerWidget {
+  const NodesSheet({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final theme = ref.watch(themeProvider);
+    final l10n = l10nOf(context);
+
+    final items = ref.watch(turkiumNodeOptionsProvider);
+
+    void addNode() {
+      Sheets.showAppHeightNineSheet(
+        context: context,
+        theme: theme,
+        widget: const NodeAddSheet(),
+      );
+    }
+
+    return SheetWidget(
+      title: l10n.nodesSheetTitle,
+      mainWidget: Stack(
+        children: [
+          ListView.builder(
+            shrinkWrap: true,
+            padding: EdgeInsets.symmetric(vertical: 10),
+            itemCount: items.length + 1,
+            itemBuilder: (BuildContext context, int index) {
+              if (index == items.length) {
+                return Divider(height: 2, color: theme.text15);
+              }
+              final config = ActiveNodeConfig(config: items[index]);
+              return ProviderScope(
+                overrides: [
+                  turkiumNodeConfigItemProvider.overrideWithValue(config),
+                ],
+                child: const NodeItem(),
+              );
+            },
+          ),
+          const ListTopGradient(),
+          const ListBottomGradient(),
+        ],
+      ),
+      bottomWidget: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 28),
+        child: Column(children: [
+          PrimaryButton(
+            title: l10n.addNode,
+            onPressed: addNode,
+          ),
+          const SizedBox(height: 16),
+          PrimaryOutlineButton(
+            title: l10n.close,
+            onPressed: () => appRouter.pop(context),
+          ),
+        ]),
+      ),
+    );
+  }
+}

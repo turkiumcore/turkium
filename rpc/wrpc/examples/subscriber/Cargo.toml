@@ -1,0 +1,25 @@
+[package]
+name = "Turkium-wrpc-example-subscriber"
+description = "Turkium wRPC subscription example"
+publish = false
+rust-version.workspace = true
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+include.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+futures.workspace = true
+Turkium-consensus-core.workspace = true
+Turkium-rpc-core.workspace = true
+Turkium-wrpc-client.workspace = true
+Turkium-notify.workspace = true
+tokio.workspace = true
+workflow-core.workspace = true
+workflow-log.workspace = true
+ctrlc.workspace = true
+
+[lints]
+workspace = true

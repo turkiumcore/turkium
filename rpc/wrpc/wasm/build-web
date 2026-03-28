@@ -1,0 +1,3 @@
+#!/bin/bash
+
+wasm-pack build --target web --out-name turkium-rpc --out-dir web/turkium-rpc --features wasm32-sdk
