@@ -1,4 +1,4 @@
-use Turkium_rpc_core::RpcError;
+use turkium_rpc_core::RpcError;
 use thiserror::Error;
 
 #[derive(Error, Debug)]

@@ -1,4 +1,4 @@
-use Turkium_hashes::*;
+use turkium_hashes::*;
 use criterion::{Criterion, black_box, criterion_group, criterion_main};
 use rand::{Rng, RngCore, thread_rng};
 use sha3::digest::{ExtendableOutput, Update, XofReader};

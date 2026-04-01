@@ -1,12 +1,12 @@
 use std::sync::Arc;
 
-use Turkium_consensus_core::{BlockHasher, BlockLevel, header::Header};
-use Turkium_database::prelude::{BatchDbWriter, CachedDbAccess};
-use Turkium_database::prelude::{CachePolicy, DB};
-use Turkium_database::prelude::{StoreError, StoreResult};
-use Turkium_database::registry::DatabaseStorePrefixes;
-use Turkium_hashes::Hash;
-use Turkium_utils::mem_size::MemSizeEstimator;
+use turkium_consensus_core::{BlockHasher, BlockLevel, header::Header};
+use turkium_database::prelude::{BatchDbWriter, CachedDbAccess};
+use turkium_database::prelude::{CachePolicy, DB};
+use turkium_database::prelude::{StoreError, StoreResult};
+use turkium_database::registry::DatabaseStorePrefixes;
+use turkium_hashes::Hash;
+use turkium_utils::mem_size::MemSizeEstimator;
 use rocksdb::WriteBatch;
 use serde::{Deserialize, Serialize};
 
@@ -52,7 +52,7 @@ struct Header2 {
     pub bits: u32,
     pub nonce: u64,
     pub daa_score: u64,
-    pub blue_work: Turkium_consensus_core::BlueWorkType,
+    pub blue_work: turkium_consensus_core::BlueWorkType,
     pub blue_score: u64,
     pub pruning_point: Hash,
 }

@@ -1,16 +1,16 @@
-use Turkium_consensus_core::coinbase::MinerData;
-use Turkium_consensus_core::mining_rules::MiningRules;
-use Turkium_consensus_core::tx::ScriptPublicKey;
-use Turkium_consensus_core::{
+use turkium_consensus_core::coinbase::MinerData;
+use turkium_consensus_core::mining_rules::MiningRules;
+use turkium_consensus_core::tx::ScriptPublicKey;
+use turkium_consensus_core::{
     api::ConsensusApi, block::MutableBlock, blockstatus::BlockStatus, header::Header, merkle::calc_hash_merkle_root,
     subnets::SUBNETWORK_ID_COINBASE, tx::Transaction,
 };
-use Turkium_consensus_notify::{notification::Notification, root::ConsensusNotificationRoot};
-use Turkium_consensusmanager::{ConsensusFactory, ConsensusInstance, DynConsensusCtl};
-use Turkium_core::{core::Core, service::Service};
-use Turkium_database::utils::DbLifetime;
-use Turkium_hashes::Hash;
-use Turkium_notify::subscription::context::SubscriptionContext;
+use turkium_consensus_notify::{notification::Notification, root::ConsensusNotificationRoot};
+use turkium_consensusmanager::{ConsensusFactory, ConsensusInstance, DynConsensusCtl};
+use turkium_core::{core::Core, service::Service};
+use turkium_database::utils::DbLifetime;
+use turkium_hashes::Hash;
+use turkium_notify::subscription::context::SubscriptionContext;
 use async_channel::Sender;
 use parking_lot::RwLock;
 
@@ -32,8 +32,8 @@ use crate::{
     pipeline::{ProcessingCounters, body_processor::BlockBodyProcessor, virtual_processor::VirtualStateProcessor},
     test_helpers::header_from_precomputed_hash,
 };
-use Turkium_database::create_temp_db;
-use Turkium_database::prelude::ConnBuilder;
+use turkium_database::create_temp_db;
+use turkium_database::prelude::ConnBuilder;
 use std::future::Future;
 use std::{sync::Arc, thread::JoinHandle};
 
@@ -145,7 +145,7 @@ impl TestConsensus {
     /// # Panics
     ///
     /// Panics if block builder validation rules are violated.
-    /// See `Turkium_consensus_core::errors::block::RuleError` for the complete list of possible validation rules.
+    /// See `turkium_consensus_core::errors::block::RuleError` for the complete list of possible validation rules.
     pub fn add_utxo_valid_block_with_parents(
         &self,
         hash: Hash,
@@ -170,7 +170,7 @@ impl TestConsensus {
     /// # Panics
     ///
     /// Panics if block builder validation rules are violated.
-    /// See `Turkium_consensus_core::errors::block::RuleError` for the complete list of possible validation rules.
+    /// See `turkium_consensus_core::errors::block::RuleError` for the complete list of possible validation rules.
     pub fn build_utxo_valid_block_with_parents(
         &self,
         hash: Hash,

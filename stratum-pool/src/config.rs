@@ -68,7 +68,7 @@ impl Default for Config {
                 pool_fee: 0.01, // 1%
             },
             blockchain: BlockchainConfig {
-                grpc_address: "grpc://188.132.197.20:5200".to_string(),
+                grpc_address: "grpc://127.0.0.1:5200".to_string(),
                 template_update_interval: 10,
             },
             database: DatabaseConfig {

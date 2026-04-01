@@ -1,6 +1,6 @@
 [package]
-name = "Turkium-p2p-mining"
-description = "Turkium p2p mining"
+name = "turkium-p2p-mining"
+description = "turkium p2p mining"
 rust-version.workspace = true
 version.workspace = true
 edition.workspace = true
@@ -10,15 +10,15 @@ license.workspace = true
 repository.workspace = true
 
 [dependencies]
-Turkium-core.workspace = true
-Turkium-consensus-core.workspace = true
-Turkium-consensusmanager.workspace = true
-Turkium-mining-errors.workspace = true
-Turkium-hashes.workspace = true
-Turkium-math.workspace = true
-Turkium-p2p-lib.workspace = true
-Turkium-utils.workspace = true
-Turkium-utils-tower.workspace = true
+turkium-core.workspace = true
+turkium-consensus-core.workspace = true
+turkium-consensusmanager.workspace = true
+turkium-mining-errors.workspace = true
+turkium-hashes.workspace = true
+turkium-math.workspace = true
+turkium-p2p-lib.workspace = true
+turkium-utils.workspace = true
+turkium-utils-tower.workspace = true
 log.workspace = true
 tokio.workspace = true
 

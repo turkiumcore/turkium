@@ -4,8 +4,8 @@
 
 use crate::derivation::AddressDerivationMeta;
 use crate::imports::*;
-use Turkium_addresses::Address;
-use Turkium_wallet_macros::declare_typescript_wasm_interface as declare;
+use turkium_addresses::Address;
+use turkium_wallet_macros::declare_typescript_wasm_interface as declare;
 use borsh::{BorshDeserialize, BorshSerialize};
 use convert_case::{Case, Casing};
 use serde::{Deserialize, Serialize};

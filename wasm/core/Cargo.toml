@@ -1,6 +1,6 @@
 [package]
-name = "Turkium-wasm-core"
-description = "Turkium core WASM32 types"
+name = "turkium-wasm-core"
+description = "turkium core WASM32 types"
 version.workspace = true
 edition.workspace = true
 authors.workspace = true

@@ -18,12 +18,12 @@ pub mod runtime_sig_op_counter;
 use crate::caches::Cache;
 use crate::data_stack::{DataStack, Stack};
 use crate::opcodes::{OpCodeImplementation, deserialize_next_opcode};
-use Turkium_consensus_core::hashing::sighash::{
+use turkium_consensus_core::hashing::sighash::{
     SigHashReusedValues, SigHashReusedValuesUnsync, calc_ecdsa_signature_hash, calc_schnorr_signature_hash,
 };
-use Turkium_consensus_core::hashing::sighash_type::SigHashType;
-use Turkium_consensus_core::tx::{ScriptPublicKey, TransactionInput, UtxoEntry, VerifiableTransaction};
-use Turkium_txscript_errors::TxScriptError;
+use turkium_consensus_core::hashing::sighash_type::SigHashType;
+use turkium_consensus_core::tx::{ScriptPublicKey, TransactionInput, UtxoEntry, VerifiableTransaction};
+use turkium_txscript_errors::TxScriptError;
 use itertools::Itertools;
 use log::trace;
 use opcodes::codes::OpReturn;
@@ -302,7 +302,7 @@ impl<'a, T: VerifiableTransaction, Reused: SigHashReusedValues> TxScriptEngine<'
     }
 
     fn execute_opcode(&mut self, opcode: DynOpcodeImplementation<T, Reused>) -> Result<(), TxScriptError> {
-        // Different from Turkiumd: Illegal and disabled opcode are checked on execute instead
+        // Different from turkiumd: Illegal and disabled opcode are checked on execute instead
         // Note that this includes OP_RESERVED which counts as a push operation.
         if !opcode.is_push_opcode() {
             self.num_ops += 1;
@@ -627,9 +627,9 @@ mod tests {
 
     use super::*;
     use crate::script_builder::{ScriptBuilder, ScriptBuilderResult};
-    use Turkium_consensus_core::hashing::sighash::SigHashReusedValuesUnsync;
-    use Turkium_consensus_core::hashing::sighash_type::SIG_HASH_ALL;
-    use Turkium_consensus_core::tx::{
+    use turkium_consensus_core::hashing::sighash::SigHashReusedValuesUnsync;
+    use turkium_consensus_core::hashing::sighash_type::SIG_HASH_ALL;
+    use turkium_consensus_core::tx::{
         MutableTransaction, PopulatedTransaction, ScriptPublicKey, Transaction, TransactionId, TransactionOutpoint, TransactionOutput,
     };
     use smallvec::SmallVec;
@@ -1283,9 +1283,9 @@ mod bitcoind_tests {
 
     use super::*;
     use crate::script_builder::ScriptBuilderError;
-    use Turkium_consensus_core::constants::MAX_TX_IN_SEQUENCE_NUM;
-    use Turkium_consensus_core::hashing::sighash::SigHashReusedValuesUnsync;
-    use Turkium_consensus_core::tx::{
+    use turkium_consensus_core::constants::MAX_TX_IN_SEQUENCE_NUM;
+    use turkium_consensus_core::hashing::sighash::SigHashReusedValuesUnsync;
+    use turkium_consensus_core::tx::{
         PopulatedTransaction, ScriptPublicKey, Transaction, TransactionId, TransactionOutpoint, TransactionOutput,
     };
 

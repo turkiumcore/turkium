@@ -1,6 +1,6 @@
 use std::{cmp, collections::HashSet, sync::Arc};
 
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     acceptance_data::{AcceptanceData, MergesetBlockAcceptanceData},
     tx::{SignableTransaction, Transaction, TransactionId, TransactionIndexType, TransactionOutpoint, UtxoEntry},
     utxo::{
@@ -8,8 +8,8 @@ use Turkium_consensus_core::{
         utxo_inquirer::{UtxoInquirerError, UtxoInquirerFindTxsFromAcceptanceDataError, UtxoInquirerResult},
     },
 };
-use Turkium_core::trace;
-use Turkium_hashes::Hash;
+use turkium_core::trace;
+use turkium_hashes::Hash;
 
 use crate::model::{
     services::reachability::ReachabilityService,

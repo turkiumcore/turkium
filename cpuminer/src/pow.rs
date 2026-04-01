@@ -5,7 +5,7 @@ use crate::{
         heavy_hash::Matrix,
     },
     proto::{RpcBlock, RpcBlockHeader},
-    target::{self, Uint256},
+    target::Uint256,
     Error,
 };
 
@@ -16,21 +16,20 @@ mod xoshiro;
 
 #[derive(Clone)]
 pub struct State {
-    pub _id: usize,
-    matrix: Matrix,
     pub nonce: u64,
     target: Uint256,
     block: RpcBlock,
-    // PRE_POW_HASH || TIME || 32 zero byte padding; without NONCE
     hasher: PowHasher,
+    matrix: Matrix,
 }
 
 impl State {
+    #[allow(dead_code)]
     #[inline]
-    pub fn new(id: usize, block: RpcBlock) -> Result<Self, Error> {
+    pub fn new(block: RpcBlock) -> Result<Self, Error> {
         let header = &block.header.as_ref().ok_or("Header is missing")?;
 
-        let target = target::u256_from_compact_target(header.bits);
+        let target = Uint256::from_compact_target_bits(header.bits);
         let mut hasher = HeaderHasher::new();
         serialize_header(&mut hasher, header, true);
         let pre_pow_hash = hasher.finalize();
@@ -38,7 +37,7 @@ impl State {
         let hasher = PowHasher::new(pre_pow_hash, header.timestamp as u64);
         let matrix = Matrix::generate(pre_pow_hash);
 
-        Ok(Self { _id: id, matrix, nonce: 0, target, block, hasher })
+        Ok(Self { nonce: 0, target, block, hasher, matrix })
     }
 
     #[inline(always)]

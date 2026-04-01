@@ -6,7 +6,7 @@ pub mod result;
 pub use data::{Metric, MetricGroup, MetricsData, MetricsSnapshot};
 
 use crate::result::Result;
-use Turkium_rpc_core::api::rpc::RpcApi;
+use turkium_rpc_core::api::rpc::RpcApi;
 use futures::{FutureExt, StreamExt, pin_mut, select};
 use std::{
     future::Future,

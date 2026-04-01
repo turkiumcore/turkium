@@ -2,11 +2,11 @@
 //! [`RpcError`] enum used by RPC primitives.
 //!
 
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     errors::header::CompressedParentsError, subnets::SubnetworkConversionError, tx::TransactionId,
     utxo::utxo_inquirer::UtxoInquirerError,
 };
-use Turkium_utils::networking::IpAddress;
+use turkium_utils::networking::IpAddress;
 use std::{net::AddrParseError, num::TryFromIntError};
 use thiserror::Error;
 use workflow_core::channel::ChannelError;
@@ -91,25 +91,25 @@ pub enum RpcError {
     SubmitBlockError(SubmitBlockRejectReason),
 
     #[error(transparent)]
-    AddressError(#[from] Turkium_addresses::AddressError),
+    AddressError(#[from] turkium_addresses::AddressError),
 
     #[error(transparent)]
-    NetworkTypeError(#[from] Turkium_consensus_core::network::NetworkTypeError),
+    NetworkTypeError(#[from] turkium_consensus_core::network::NetworkTypeError),
 
     #[error(transparent)]
-    NetworkIdError(#[from] Turkium_consensus_core::network::NetworkIdError),
+    NetworkIdError(#[from] turkium_consensus_core::network::NetworkIdError),
 
     #[error(transparent)]
-    NotificationError(#[from] Turkium_notify::error::Error),
+    NotificationError(#[from] turkium_notify::error::Error),
 
     #[error(transparent)]
-    MiningManagerError(#[from] Turkium_mining_errors::manager::MiningManagerError),
+    MiningManagerError(#[from] turkium_mining_errors::manager::MiningManagerError),
 
     #[error(transparent)]
-    ConsensusError(#[from] Turkium_consensus_core::errors::consensus::ConsensusError),
+    ConsensusError(#[from] turkium_consensus_core::errors::consensus::ConsensusError),
 
     #[error(transparent)]
-    ScriptClassError(#[from] Turkium_txscript::script_class::Error),
+    ScriptClassError(#[from] turkium_txscript::script_class::Error),
 
     #[error(transparent)]
     NodeIdError(#[from] uuid::Error),
@@ -136,7 +136,7 @@ pub enum RpcError {
     SerdeWasmBindgen(String),
 
     #[error(transparent)]
-    ConsensusClient(#[from] Turkium_consensus_client::error::Error),
+    ConsensusClient(#[from] turkium_consensus_client::error::Error),
 
     #[error("utxo return address could not be found -> {0}")]
     UtxoReturnAddressNotFound(UtxoInquirerError),

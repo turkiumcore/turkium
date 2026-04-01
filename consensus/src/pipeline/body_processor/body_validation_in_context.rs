@@ -10,9 +10,9 @@ use crate::{
         window::WindowManager,
     },
 };
-use Turkium_consensus_core::block::Block;
-use Turkium_database::prelude::StoreResultExt;
-use Turkium_hashes::Hash;
+use turkium_consensus_core::block::Block;
+use turkium_database::prelude::StoreResultExt;
+use turkium_hashes::Hash;
 use once_cell::unsync::Lazy;
 use std::sync::Arc;
 
@@ -91,15 +91,15 @@ mod tests {
         model::stores::ghostdag::GhostdagStoreReader,
         processes::{transaction_validator::errors::TxRuleError, window::WindowManager},
     };
-    use Turkium_consensus_core::{
+    use turkium_consensus_core::{
         api::ConsensusApi,
         config::params::MAINNET_PARAMS,
         merkle::calc_hash_merkle_root,
         subnets::SUBNETWORK_ID_NATIVE,
         tx::{Transaction, TransactionInput, TransactionOutpoint},
     };
-    use Turkium_core::assert_match;
-    use Turkium_hashes::Hash;
+    use turkium_core::assert_match;
+    use turkium_hashes::Hash;
 
     #[tokio::test]
     async fn validate_body_in_context_test() {

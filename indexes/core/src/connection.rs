@@ -1,3 +1,3 @@
 use crate::notification::Notification;
 
-pub type IndexChannelConnection = Turkium_notify::connection::ChannelConnection<Notification>;
+pub type IndexChannelConnection = turkium_notify::connection::ChannelConnection<Notification>;

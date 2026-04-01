@@ -1,5 +1,5 @@
 use crate::imports::*;
-use Turkium_metrics_core::{Metrics as MetricsProcessor, MetricsSinkFn};
+use turkium_metrics_core::{Metrics as MetricsProcessor, MetricsSinkFn};
 use workflow_core::runtime::is_nw;
 
 #[derive(Describe, Debug, Clone, Serialize, Deserialize, Hash, Eq, PartialEq, Ord, PartialOrd)]

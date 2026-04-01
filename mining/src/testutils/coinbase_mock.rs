@@ -1,4 +1,4 @@
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     coinbase::{CoinbaseData, CoinbaseTransactionTemplate, MinerData},
     constants::{SOMPI_PER_TURKIUM, TX_VERSION},
     subnets::SUBNETWORK_ID_COINBASE,

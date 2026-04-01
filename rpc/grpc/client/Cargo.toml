@@ -1,6 +1,6 @@
 [package]
-name = "Turkium-grpc-client"
-description = "Turkium gRPC client"
+name = "turkium-grpc-client"
+description = "turkium gRPC client"
 rust-version.workspace = true
 version.workspace = true
 edition.workspace = true
@@ -10,12 +10,12 @@ license.workspace = true
 repository.workspace = true
 
 [dependencies]
-Turkium-core.workspace = true
-Turkium-grpc-core.workspace = true
-Turkium-notify.workspace = true
-Turkium-rpc-core.workspace = true
-Turkium-utils.workspace = true
-Turkium-utils-tower.workspace = true
+turkium-core.workspace = true
+turkium-grpc-core.workspace = true
+turkium-notify.workspace = true
+turkium-rpc-core.workspace = true
+turkium-utils.workspace = true
+turkium-utils-tower.workspace = true
 
 async-channel.workspace = true
 async-stream.workspace = true

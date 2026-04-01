@@ -1,5 +1,5 @@
 use crate::converter::{consensus::ConsensusConverter, index::IndexConverter};
-use Turkium_notify::collector::CollectorFrom;
+use turkium_notify::collector::CollectorFrom;
 
 pub(crate) type CollectorFromConsensus = CollectorFrom<ConsensusConverter>;
 

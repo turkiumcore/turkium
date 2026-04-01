@@ -1,4 +1,4 @@
-pub mod Turkiumd;
+pub mod turkiumd;
 pub mod acceptance_data;
 pub mod address;
 pub mod block;

@@ -7,14 +7,14 @@ use crate::{
     },
     processes::ghostdag::ordering::SortableBlock,
 };
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     BlockHashSet, BlueWorkType, HashMapCustomHasher,
     blockhash::{BlockHashExtensions, ORIGIN},
     config::genesis::GenesisBlock,
     errors::{block::RuleError, difficulty::DifficultyResult},
 };
-use Turkium_hashes::Hash;
-use Turkium_math::Uint256;
+use turkium_hashes::Hash;
+use turkium_math::Uint256;
 use once_cell::unsync::Lazy;
 use std::{
     cmp::Reverse,
@@ -64,7 +64,7 @@ enum SampledBlock {
     NonDaa(Hash),
 }
 
-/// A sampled window manager implementing [KIP-0004](https://github.com/Turkiumnet/kips/blob/master/kip-0004.md)
+/// A sampled window manager implementing [KIP-0004](https://github.com/turkiumnet/kips/blob/master/kip-0004.md)
 #[derive(Clone)]
 pub struct SampledWindowManager<
     T: GhostdagStoreReader,

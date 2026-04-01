@@ -3,14 +3,14 @@ use self::{
     error::{Error, Result},
     resolver::{DynResolver, id::IdResolver, queue::QueueResolver},
 };
-use Turkium_core::{debug, error, trace};
-use Turkium_grpc_core::{
+use turkium_core::{debug, error, trace};
+use turkium_grpc_core::{
     RPC_MAX_MESSAGE_SIZE,
     channel::NotificationChannel,
     ops::TurkiumdPayloadOps,
     protowire::{GetInfoRequestMessage, TurkiumdRequest, TurkiumdResponse, rpc_client::RpcClient, turkiumd_request},
 };
-use Turkium_notify::{
+use turkium_notify::{
     collector::{Collector, CollectorFrom},
     error::{Error as NotifyError, Result as NotifyResult},
     events::{EVENT_TYPE_ARRAY, EventArray, EventType},
@@ -23,7 +23,7 @@ use Turkium_notify::{
         context::SubscriptionContext,
     },
 };
-use Turkium_rpc_core::{
+use turkium_rpc_core::{
     Notification,
     api::rpc::RpcApi,
     error::RpcError,
@@ -31,8 +31,8 @@ use Turkium_rpc_core::{
     model::message::*,
     notify::{collector::RpcCoreConverter, connection::ChannelConnection, mode::NotificationMode},
 };
-use Turkium_utils::{channel::Channel, triggers::DuplexTrigger};
-use Turkium_utils_tower::{
+use turkium_utils::{channel::Channel, triggers::DuplexTrigger};
+use turkium_utils_tower::{
     counters::TowerConnectionCounters,
     middleware::{BodyExt, CountBytesBody, MapRequestBodyLayer, MapResponseBodyLayer, ServiceBuilder},
 };
@@ -234,7 +234,7 @@ impl GrpcClient {
 impl RpcApi for GrpcClient {
     // this example illustrates the body of the function created by the route!() macro
     // async fn submit_block_call(&self, request: SubmitBlockRequest) -> RpcResult<SubmitBlockResponse> {
-    //     self.inner.call(TurkiumdPayloadOps::SubmitBlock, request).await?.as_ref().try_into()
+    //     self.inner.call(turkiumdPayloadOps::SubmitBlock, request).await?.as_ref().try_into()
     // }
 
     route!(ping_call, Ping);
@@ -375,7 +375,7 @@ struct ServerFeatures {
 ///
 /// Data flow:
 /// ```
-/// //   TurkiumdRequest -> request_send -> stream -> TurkiumdResponse
+/// //   turkiumdRequest -> request_send -> stream -> turkiumdResponse
 /// ```
 ///
 /// Execution flow:

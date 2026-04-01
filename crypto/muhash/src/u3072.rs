@@ -1,5 +1,5 @@
 use crate::ELEMENT_BYTE_SIZE;
-use Turkium_math::Uint3072;
+use turkium_math::Uint3072;
 use serde::{Deserialize, Serialize};
 use std::ops::{DivAssign, MulAssign};
 

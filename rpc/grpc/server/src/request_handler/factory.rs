@@ -11,11 +11,11 @@ use crate::{
     connection_handler::ServerContext,
     error::GrpcServerError,
 };
-use Turkium_grpc_core::protowire::{turkiumd_request::Payload, *};
-use Turkium_grpc_core::{ops::TurkiumdPayloadOps, protowire::NotifyFinalityConflictResponseMessage};
-use Turkium_notify::{scope::FinalityConflictResolvedScope, subscriber::SubscriptionManager};
-use Turkium_rpc_core::{SubmitBlockRejectReason, SubmitBlockReport, SubmitBlockResponse};
-use Turkium_rpc_macros::build_grpc_server_interface;
+use turkium_grpc_core::protowire::{turkiumd_request::Payload, *};
+use turkium_grpc_core::{ops::TurkiumdPayloadOps, protowire::NotifyFinalityConflictResponseMessage};
+use turkium_notify::{scope::FinalityConflictResolvedScope, subscriber::SubscriptionManager};
+use turkium_rpc_core::{SubmitBlockRejectReason, SubmitBlockReport, SubmitBlockResponse};
+use turkium_rpc_macros::build_grpc_server_interface;
 
 pub struct Factory {}
 
@@ -102,7 +102,7 @@ impl Factory {
             Box::pin(async move {
                 let mut response: TurkiumdResponse = match request.payload {
                     Some(Payload::NotifyFinalityConflictRequest(ref request)) => {
-                        match Turkium_rpc_core::NotifyFinalityConflictRequest::try_from(request) {
+                        match turkium_rpc_core::NotifyFinalityConflictRequest::try_from(request) {
                             Ok(request) => {
                                 let listener_id = connection.get_or_register_listener_id()?;
                                 let command = request.command;

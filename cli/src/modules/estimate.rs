@@ -1,5 +1,5 @@
 use crate::imports::*;
-use Turkium_wallet_core::tx::PaymentDestination;
+use turkium_wallet_core::tx::PaymentDestination;
 
 #[derive(Default, Handler)]
 #[help("Estimate the fees for a transaction of a given amount")]
@@ -16,10 +16,10 @@ impl Estimate {
             return Ok(());
         }
 
-        let amount_sompi = try_parse_required_nonzero_Turkium_as_sompi_u64(argv.first())?;
+        let amount_sompi = try_parse_required_nonzero_turkium_as_sompi_u64(argv.first())?;
         // TODO fee_rate
         let fee_rate = None;
-        let priority_fee_sompi = try_parse_optional_Turkium_as_sompi_i64(argv.get(1))?.unwrap_or(0);
+        let priority_fee_sompi = try_parse_optional_turkium_as_sompi_i64(argv.get(1))?.unwrap_or(0);
         let abortable = Abortable::default();
 
         // just use any address for an estimate (change address)

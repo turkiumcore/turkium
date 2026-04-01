@@ -5,16 +5,16 @@ use std::{
     sync::Arc,
 };
 
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     BlockHashMap, BlockHashSet, BlockLevel, HashMapCustomHasher, KType,
     blockhash::{BlockHashes, ORIGIN},
     header::Header,
     pruning::PruningPointProof,
 };
-use Turkium_core::{debug, trace};
-use Turkium_database::prelude::*;
-use Turkium_hashes::Hash;
-use Turkium_utils::binary_heap::TopK;
+use turkium_core::{debug, trace};
+use turkium_database::prelude::*;
+use turkium_hashes::Hash;
+use turkium_utils::binary_heap::TopK;
 use itertools::Itertools;
 use parking_lot::RwLock;
 
@@ -184,7 +184,7 @@ impl PruningProofManager {
         let mut cache: BlockHashMap<Arc<Header>> = BlockHashMap::with_capacity(4 * self.pruning_proof_m as usize);
         let mut get_header = |hash| cache.entry(hash).or_insert_with_key(|&hash| self.headers_store.get_header(hash).unwrap()).clone();
 
-        let (_db_lifetime, temp_db) = Turkium_database::create_temp_db!(ConnBuilder::default().with_files_limit(10));
+        let (_db_lifetime, temp_db) = turkium_database::create_temp_db!(ConnBuilder::default().with_files_limit(10));
         let cache_policy = CachePolicy::Count(2 * self.pruning_proof_m as usize);
 
         (0..=self.max_block_level)
@@ -256,7 +256,7 @@ impl PruningProofManager {
     /// Computes level-proof contexts for all levels, processing levels from high to low to satisfy
     /// MLS inter-level constraints, and aggregates the results into a pruning-proof descriptor.
     fn calc_new_proof(&self, pp: Hash, prev_descriptor: Option<&PruningProofDescriptor>) -> PruningProofDescriptor {
-        let (_db_lifetime, temp_db) = Turkium_database::create_temp_db!(ConnBuilder::default().with_files_limit(10));
+        let (_db_lifetime, temp_db) = turkium_database::create_temp_db!(ConnBuilder::default().with_files_limit(10));
         let pp_header = self.headers_store.get_header_with_block_level(pp).unwrap();
 
         let mut level_proof_ctxs: Vec<Option<LevelProofContext>> = vec![None; (self.max_block_level + 1).into()];

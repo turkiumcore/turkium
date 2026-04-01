@@ -1,5 +1,5 @@
 use crate::mempool::{Mempool, errors::RuleResult, model::pool::Pool};
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     api::{
         ConsensusApi,
         args::{TransactionValidationArgs, TransactionValidationBatchArgs},
@@ -7,7 +7,7 @@ use Turkium_consensus_core::{
     constants::UNACCEPTED_DAA_SCORE,
     tx::{MutableTransaction, UtxoEntry},
 };
-use Turkium_mining_errors::mempool::RuleError;
+use turkium_mining_errors::mempool::RuleError;
 
 impl Mempool {
     pub(crate) fn populate_mempool_entries(&self, transaction: &mut MutableTransaction) {

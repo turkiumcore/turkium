@@ -1,6 +1,6 @@
 use std::net::AddrParseError;
 
-use Turkium_wallet_core::error::Error as WalletError;
+use turkium_wallet_core::error::Error as WalletError;
 use downcast::DowncastError;
 use workflow_core::channel::ChannelError;
 use workflow_terminal::error::Error as TerminalError;
@@ -28,10 +28,10 @@ pub enum Error {
     ChannelError(String),
 
     #[error(transparent)]
-    WrpcError(#[from] Turkium_wrpc_client::error::Error),
+    WrpcError(#[from] turkium_wrpc_client::error::Error),
 
     #[error(transparent)]
-    RpcError(#[from] Turkium_rpc_core::RpcError),
+    RpcError(#[from] turkium_rpc_core::RpcError),
 
     #[error(transparent)]
     SerdeJsonError(#[from] serde_json::Error),
@@ -97,7 +97,7 @@ pub enum Error {
     NoKeys,
 
     #[error(transparent)]
-    AddressError(#[from] Turkium_addresses::AddressError),
+    AddressError(#[from] turkium_addresses::AddressError),
 
     #[error("{0}")]
     DowncastError(String),
@@ -109,28 +109,28 @@ pub enum Error {
     NodeJs(#[from] workflow_node::error::Error),
 
     #[error(transparent)]
-    Daemon(#[from] Turkium_daemon::error::Error),
+    Daemon(#[from] turkium_daemon::error::Error),
 
     #[error(transparent)]
     Dom(#[from] workflow_dom::error::Error),
 
     #[error(transparent)]
-    NetworkId(#[from] Turkium_consensus_core::network::NetworkIdError),
+    NetworkId(#[from] turkium_consensus_core::network::NetworkIdError),
 
     #[error(transparent)]
-    Bip32(#[from] Turkium_bip32::Error),
+    Bip32(#[from] turkium_bip32::Error),
 
     #[error("private key {0} already exists")]
     PrivateKeyAlreadyExists(String),
 
     #[error(transparent)]
-    MetricsError(Turkium_metrics_core::error::Error),
+    MetricsError(turkium_metrics_core::error::Error),
 
     #[error(transparent)]
-    TurkiumWalletKeys(#[from] Turkium_wallet_keys::error::Error),
+    TurkiumWalletKeys(#[from] turkium_wallet_keys::error::Error),
 
     #[error(transparent)]
-    PskbLockScriptSigError(#[from] Turkium_wallet_pskt::error::Error),
+    PskbLockScriptSigError(#[from] turkium_wallet_pskt::error::Error),
 
     #[error("To hex serialization error")]
     PskbSerializeToHexError,

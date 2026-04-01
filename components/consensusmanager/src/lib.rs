@@ -1,6 +1,6 @@
 #![allow(non_snake_case)]
-use Turkium_consensus_core::api::{ConsensusApi, DynConsensus};
-use Turkium_core::{core::Core, debug, service::Service};
+use turkium_consensus_core::api::{ConsensusApi, DynConsensus};
+use turkium_core::{core::Core, debug, service::Service};
 use itertools::Itertools;
 use parking_lot::RwLock;
 use std::{collections::VecDeque, ops::Deref, sync::Arc, thread::JoinHandle};

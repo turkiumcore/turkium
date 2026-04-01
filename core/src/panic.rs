@@ -1,4 +1,4 @@
-use Turkium_core::error;
+use turkium_core::error;
 use std::{panic, process, thread};
 
 /// Configures the panic hook to exit the program on every panic

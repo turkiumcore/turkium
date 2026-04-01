@@ -3,12 +3,12 @@
 use super::collector::{CollectorFromConsensus, CollectorFromIndex};
 use crate::converter::feerate_estimate::{FeeEstimateConverter, FeeEstimateVerboseConverter};
 use crate::converter::{consensus::ConsensusConverter, index::IndexConverter, protocol::ProtocolConverter};
-use Turkium_consensus_core::api::counters::ProcessingCounters;
-use Turkium_consensus_core::daa_score_timestamp::DaaScoreTimestamp;
-use Turkium_consensus_core::errors::block::RuleError;
-use Turkium_consensus_core::tx::{TransactionQueryResult, TransactionType};
-use Turkium_consensus_core::utxo::utxo_inquirer::UtxoInquirerError;
-use Turkium_consensus_core::{
+use turkium_consensus_core::api::counters::ProcessingCounters;
+use turkium_consensus_core::daa_score_timestamp::DaaScoreTimestamp;
+use turkium_consensus_core::errors::block::RuleError;
+use turkium_consensus_core::tx::{TransactionQueryResult, TransactionType};
+use turkium_consensus_core::utxo::utxo_inquirer::UtxoInquirerError;
+use turkium_consensus_core::{
     block::Block,
     coinbase::MinerData,
     config::Config,
@@ -16,14 +16,14 @@ use Turkium_consensus_core::{
     network::NetworkType,
     tx::{COINBASE_TRANSACTION_INDEX, Transaction},
 };
-use Turkium_consensus_notify::{
+use turkium_consensus_notify::{
     notifier::ConsensusNotifier,
     {connection::ConsensusChannelConnection, notification::Notification as ConsensusNotification},
 };
-use Turkium_consensusmanager::ConsensusManager;
-use Turkium_core::time::unix_now;
-use Turkium_core::{
-    Turkiumd_env::version,
+use turkium_consensusmanager::ConsensusManager;
+use turkium_core::time::unix_now;
+use turkium_core::{
+    turkiumd_env::version,
     core::Core,
     debug,
     signals::Shutdown,
@@ -31,18 +31,18 @@ use Turkium_core::{
     task::tick::TickService,
     trace, warn,
 };
-use Turkium_index_core::indexed_utxos::BalanceByScriptPublicKey;
-use Turkium_index_core::{
+use turkium_index_core::indexed_utxos::BalanceByScriptPublicKey;
+use turkium_index_core::{
     connection::IndexChannelConnection, indexed_utxos::UtxoSetByScriptPublicKey, notification::Notification as IndexNotification,
     notifier::IndexNotifier,
 };
-use Turkium_mining::feerate::FeeEstimateVerbose;
-use Turkium_mining::model::tx_query::TransactionQuery;
-use Turkium_mining::{manager::MiningManagerProxy, mempool::tx::Orphan};
-use Turkium_notify::listener::ListenerLifespan;
-use Turkium_notify::subscription::context::SubscriptionContext;
-use Turkium_notify::subscription::{MutationPolicies, UtxosChangedMutationPolicy};
-use Turkium_notify::{
+use turkium_mining::feerate::FeeEstimateVerbose;
+use turkium_mining::model::tx_query::TransactionQuery;
+use turkium_mining::{manager::MiningManagerProxy, mempool::tx::Orphan};
+use turkium_notify::listener::ListenerLifespan;
+use turkium_notify::subscription::context::SubscriptionContext;
+use turkium_notify::subscription::{MutationPolicies, UtxosChangedMutationPolicy};
+use turkium_notify::{
     collector::DynCollector,
     connection::ChannelType,
     events::{EVENT_TYPE_ARRAY, EventSwitches, EventType},
@@ -51,11 +51,11 @@ use Turkium_notify::{
     scope::Scope,
     subscriber::{Subscriber, SubscriptionManager},
 };
-use Turkium_p2p_flows::flow_context::FlowContext;
-use Turkium_p2p_lib::common::ProtocolError;
-use Turkium_p2p_mining::rule_engine::MiningRuleEngine;
-use Turkium_perf_monitor::{Monitor as PerfMonitor, counters::CountersSnapshot};
-use Turkium_rpc_core::{
+use turkium_p2p_flows::flow_context::FlowContext;
+use turkium_p2p_lib::common::ProtocolError;
+use turkium_p2p_mining::rule_engine::MiningRuleEngine;
+use turkium_perf_monitor::{Monitor as PerfMonitor, counters::CountersSnapshot};
+use turkium_rpc_core::{
     Notification, RpcError, RpcResult,
     api::{
         connection::DynRpcConnection,
@@ -65,12 +65,12 @@ use Turkium_rpc_core::{
     model::*,
     notify::connection::ChannelConnection,
 };
-use Turkium_txscript::{extract_script_pub_key_address, pay_to_address_script};
-use Turkium_utils::expiring_cache::ExpiringCache;
-use Turkium_utils::sysinfo::SystemInfo;
-use Turkium_utils::{channel::Channel, triggers::SingleTrigger};
-use Turkium_utils_tower::counters::TowerConnectionCounters;
-use Turkium_utxoindex::api::UtxoIndexProxy;
+use turkium_txscript::{extract_script_pub_key_address, pay_to_address_script};
+use turkium_utils::expiring_cache::ExpiringCache;
+use turkium_utils::sysinfo::SystemInfo;
+use turkium_utils::{channel::Channel, triggers::SingleTrigger};
+use turkium_utils_tower::counters::TowerConnectionCounters;
+use turkium_utxoindex::api::UtxoIndexProxy;
 use async_trait::async_trait;
 use std::time::Duration;
 use std::{
@@ -82,7 +82,7 @@ use std::{
 use tokio::join;
 use workflow_rpc::server::WebSocketCounters as WrpcServerCounters;
 
-/// A service implementing the Rpc API at Turkium_rpc_core level.
+/// A service implementing the Rpc API at turkium_rpc_core level.
 ///
 /// Collects notifications from the consensus and forwards them to
 /// actual protocol-featured services. Thanks to the subscription pattern,
@@ -120,7 +120,7 @@ pub struct RpcCoreService {
     grpc_tower_counters: Arc<TowerConnectionCounters>,
     system_info: SystemInfo,
     fee_estimate_cache: ExpiringCache<RpcFeeEstimate>,
-    fee_estimate_verbose_cache: ExpiringCache<Turkium_mining::errors::MiningManagerResult<GetFeeEstimateExperimentalResponse>>,
+    fee_estimate_verbose_cache: ExpiringCache<turkium_mining::errors::MiningManagerResult<GetFeeEstimateExperimentalResponse>>,
     mining_rule_engine: Arc<MiningRuleEngine>,
 }
 
@@ -369,7 +369,7 @@ NOTE: This error usually indicates an RPC conversion error between the node and 
 
         // Make sure the pay address prefix matches the config network type
         if request.pay_address.prefix != self.config.prefix() {
-            return Err(Turkium_addresses::AddressError::InvalidPrefix(request.pay_address.prefix.to_string()))?;
+            return Err(turkium_addresses::AddressError::InvalidPrefix(request.pay_address.prefix.to_string()))?;
         }
 
         // Build block template
@@ -379,7 +379,7 @@ NOTE: This error usually indicates an RPC conversion error between the node and 
         if session.async_is_consensus_in_transitional_ibd_state().await {
             return Err(RpcError::ConsensusInTransitionalIbdState);
         }
-        let script_public_key = Turkium_txscript::pay_to_address_script(&request.pay_address);
+        let script_public_key = turkium_txscript::pay_to_address_script(&request.pay_address);
         let extra_data = version().as_bytes().iter().chain(once(&(b'/'))).chain(&request.extra_data).cloned().collect::<Vec<_>>();
         let miner_data: MinerData = MinerData::new(script_public_key, extra_data);
         let block_template = self.mining_manager.clone().get_block_template(&session, miner_data).await?;
@@ -965,7 +965,7 @@ NOTE: This error usually indicates an RPC conversion error between the node and 
 
         // In the previous golang implementation the convention for virtual was the following const.
         // In the current implementation, consensus behaves the same when it gets a None instead.
-        const LEGACY_VIRTUAL: Turkium_hashes::Hash = Turkium_hashes::Hash::from_bytes([0xff; Turkium_hashes::HASH_SIZE]);
+        const LEGACY_VIRTUAL: turkium_hashes::Hash = turkium_hashes::Hash::from_bytes([0xff; turkium_hashes::HASH_SIZE]);
         let mut start_hash = request.start_hash;
         if let Some(start) = start_hash
             && start == LEGACY_VIRTUAL

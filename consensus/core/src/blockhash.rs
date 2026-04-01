@@ -1,5 +1,5 @@
 use crate::{BlockHashSet, HashMapCustomHasher};
-use Turkium_hashes::{HASH_SIZE, Hash};
+use turkium_hashes::{HASH_SIZE, Hash};
 use std::sync::Arc;
 
 pub type BlockHashes = Arc<Vec<Hash>>;

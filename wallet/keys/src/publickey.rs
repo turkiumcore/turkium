@@ -19,7 +19,7 @@
 
 use crate::imports::*;
 
-use Turkium_consensus_core::network::NetworkType;
+use turkium_consensus_core::network::NetworkType;
 use ripemd::{Digest, Ripemd160};
 use sha2::Sha256;
 

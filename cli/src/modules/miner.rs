@@ -1,5 +1,5 @@
 use crate::imports::*;
-use Turkium_daemon::{CpuMinerConfig, locate_binaries};
+use turkium_daemon::{CpuMinerConfig, locate_binaries};
 pub use workflow_node::process::Event;
 
 #[derive(Describe, Debug, Clone, Serialize, Deserialize, Hash, Eq, PartialEq, Ord, PartialOrd)]
@@ -21,7 +21,7 @@ impl DefaultSettings for MinerSettings {
         let mut settings = vec![(Self::Server, to_value("127.0.0.1").unwrap()), (Self::Mute, to_value(true).unwrap())];
 
         let root = nw_sys::app::folder();
-        if let Ok(binaries) = locate_binaries(&root, "Turkium-cpu-miner").await
+        if let Ok(binaries) = locate_binaries(&root, "turkium-cpu-miner").await
             && let Some(path) = binaries.first()
         {
             settings.push((Self::Location, to_value(path.to_string_lossy().to_string()).unwrap()));
@@ -188,7 +188,7 @@ impl Miner {
     async fn select(self: Arc<Self>, ctx: Arc<TurkiumCli>) -> Result<()> {
         let root = nw_sys::app::folder();
 
-        let binaries = Turkium_daemon::locate_binaries(root.as_str(), "Turkium-cpu-miner").await?;
+        let binaries = turkium_daemon::locate_binaries(root.as_str(), "turkium-cpu-miner").await?;
 
         if binaries.is_empty() {
             tprintln!(ctx, "No Turkium-cpu-miner binaries found");

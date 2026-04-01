@@ -4,18 +4,18 @@
 
 use crate::imports::*;
 use crate::result::Result;
-use Turkium_consensus_core::hashing::sighash::SigHashReusedValues;
-use Turkium_consensus_core::hashing::*;
-use Turkium_consensus_core::hashing::sighash_type::{SigHashType, SIG_HASH_ALL};
-use Turkium_consensus_core::subnets::SUBNETWORK_ID_NATIVE;
-use Turkium_consensus_core::tx::{TransactionOutpoint, TransactionOutput, VerifiableTransaction};
-// use Turkium_hashes::{Hash, Hasher, HasherBase, TransactionSigningHash};
+use turkium_consensus_core::hashing::sighash::SigHashReusedValues;
+use turkium_consensus_core::hashing::*;
+use turkium_consensus_core::hashing::sighash_type::{SigHashType, SIG_HASH_ALL};
+use turkium_consensus_core::subnets::SUBNETWORK_ID_NATIVE;
+use turkium_consensus_core::tx::{TransactionOutpoint, TransactionOutput, VerifiableTransaction};
+// use turkium_hashes::{Hash, Hasher, HasherBase, TransactionSigningHash};
 use crate::transaction::{Transaction,ITransaction};
 use crate::input::{ITransactionInput, TransactionInput};
 use crate::utxo::{IUtxoEntry,UtxoEntryReference};
-use Turkium_hashes::{Hash, Hasher, HasherBase, TransactionSigningHash, TransactionSigningHashECDSA, ZERO_HASH};
-use Turkium_consensus_core::hashing::HasherExtensions;
-use Turkium_consensus_core::hashing::sighash::*;
+use turkium_hashes::{Hash, Hasher, HasherBase, TransactionSigningHash, TransactionSigningHashECDSA, ZERO_HASH};
+use turkium_consensus_core::hashing::HasherExtensions;
+use turkium_consensus_core::hashing::sighash::*;
 
 #[derive(Default)]
 #[wasm_bindgen]

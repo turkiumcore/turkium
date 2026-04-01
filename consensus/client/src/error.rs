@@ -16,7 +16,7 @@ pub enum Error {
     Wasm(#[from] workflow_wasm::error::Error),
 
     #[error(transparent)]
-    ScriptBuilder(#[from] Turkium_txscript::script_builder::ScriptBuilderError),
+    ScriptBuilder(#[from] turkium_txscript::script_builder::ScriptBuilderError),
 
     #[error("{0}")]
     ParseInt(#[from] std::num::ParseIntError),
@@ -31,19 +31,19 @@ pub enum Error {
     Secp256k1(#[from] secp256k1::Error),
 
     #[error(transparent)]
-    Sign(#[from] Turkium_consensus_core::sign::Error),
+    Sign(#[from] turkium_consensus_core::sign::Error),
 
     #[error(transparent)]
     SerdeWasmBindgen(JsErrorData),
 
     #[error(transparent)]
-    Address(#[from] Turkium_addresses::AddressError),
+    Address(#[from] turkium_addresses::AddressError),
 
     #[error(transparent)]
-    NetworkType(#[from] Turkium_consensus_core::network::NetworkTypeError),
+    NetworkType(#[from] turkium_consensus_core::network::NetworkTypeError),
 
     #[error(transparent)]
-    CompressedParents(#[from] Turkium_consensus_core::errors::header::CompressedParentsError),
+    CompressedParents(#[from] turkium_consensus_core::errors::header::CompressedParentsError),
 
     #[error("Error converting property `{0}`: {1}")]
     Convert(&'static str, String),

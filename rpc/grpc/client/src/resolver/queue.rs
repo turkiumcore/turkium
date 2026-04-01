@@ -2,8 +2,8 @@ use crate::{
     error::{Error, Result},
     resolver::{Resolver, TurkiumdResponseReceiver, TurkiumdResponseSender, matcher::Matcher},
 };
-use Turkium_core::trace;
-use Turkium_grpc_core::{
+use turkium_core::trace;
+use turkium_grpc_core::{
     ops::TurkiumdPayloadOps,
     protowire::{TurkiumdRequest, TurkiumdResponse},
 };

@@ -1,5 +1,5 @@
 // use downcast::DowncastError;
-// use Turkium_wallet_core::error::Error as WalletError;
+// use turkium_wallet_core::error::Error as WalletError;
 use workflow_core::channel::ChannelError;
 // use workflow_terminal::error::Error as TerminalError;
 

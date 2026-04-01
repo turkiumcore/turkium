@@ -4,15 +4,15 @@ use crate::{
     manager::{ManagerEvent, RegistrationRequest},
     request_handler::{factory::Factory, interface::Interface},
 };
-use Turkium_core::{debug, info, warn};
-use Turkium_grpc_core::{
+use turkium_core::{debug, info, warn};
+use turkium_grpc_core::{
     RPC_MAX_MESSAGE_SIZE,
     protowire::{
         TurkiumdRequest, TurkiumdResponse,
         rpc_server::{Rpc, RpcServer},
     },
 };
-use Turkium_notify::{
+use turkium_notify::{
     connection::ChannelType,
     events::EVENT_TYPE_ARRAY,
     listener::ListenerLifespan,
@@ -20,13 +20,13 @@ use Turkium_notify::{
     subscriber::Subscriber,
     subscription::{MutationPolicies, UtxosChangedMutationPolicy, context::SubscriptionContext},
 };
-use Turkium_rpc_core::{
+use turkium_rpc_core::{
     Notification, RpcResult,
     api::rpc::DynRpcService,
     notify::{channel::NotificationChannel, connection::ChannelConnection},
 };
-use Turkium_utils::networking::NetAddress;
-use Turkium_utils_tower::{
+use turkium_utils::networking::NetAddress;
+use turkium_utils_tower::{
     counters::TowerConnectionCounters,
     middleware::{BodyExt, CountBytesBody, MapRequestBodyLayer, MapResponseBodyLayer},
 };

@@ -1,14 +1,14 @@
 #![allow(non_snake_case)]
 //! # RPC Core
 //!
-//! This crate provides foundational primitives used in Rusty Turkium node RPC subsystem.
+//! This crate provides foundational primitives used in Rusty turkium node RPC subsystem.
 //! These include the main [`RpcApi`](api::rpc::RpcApi) trait, [`RpcApiOps`](crate::api::ops::RpcApiOps)
 //! enum used in RPC method dispatching, and various data structures used in RPC method arguments.
 //!
-//! This crate acts as a foundation for [`Turkium_grpc_client`](https://docs.rs/Turkium_grpc_client) and
-//! [`Turkium_wrpc_client`](https://docs.rs/Turkium_wrpc_client) crates, which provide gRPC and WebSocket
+//! This crate acts as a foundation for [`turkium_grpc_client`](https://docs.rs/turkium_grpc_client) and
+//! [`turkium_wrpc_client`](https://docs.rs/turkium_wrpc_client) crates, which provide gRPC and WebSocket
 //! RPC client implementations. This crate is also used by WASM bindings to provide [WASM RpcClient
-//! implementation](https://docs.rs/Turkium-wrpc-client/latest/Turkium_wrpc_client/wasm/struct.RpcClient.html)
+//! implementation](https://docs.rs/Turkium-wrpc-client/latest/turkium_wrpc_client/wasm/struct.RpcClient.html)
 //! (based on wRPC).
 //!
 

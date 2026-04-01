@@ -8,8 +8,8 @@ use crate::{
     constants::STORAGE_MASS_PARAMETER,
     network::{NetworkId, NetworkType},
 };
-use Turkium_addresses::Prefix;
-use Turkium_math::Uint256;
+use turkium_addresses::Prefix;
+use turkium_math::Uint256;
 use serde::{Deserialize, Serialize};
 use std::{
     cmp::min,
@@ -397,7 +397,7 @@ impl Params {
     }
 
     /// Returns the depth at which the anticone of a chain block is final (i.e., is a permanently closed set).
-    /// Based on the analysis at <https://github.com/Turkiumnet/docs/blob/main/Reference/prunality/Prunality.pdf>
+    /// Based on the analysis at <https://github.com/turkiumnet/docs/blob/main/Reference/prunality/Prunality.pdf>
     /// and on the decomposition of merge depth (rule R-I therein) from finality depth (φ)
     pub fn anticone_finalization_depth(&self) -> u64 {
         let anticone_finalization_depth = self.blockrate.finality_depth
@@ -529,12 +529,8 @@ pub const MAINNET_PARAMS: Params = Params {
     dns_seeders: &[
         // Primary blockchain server (direct connection)
         "188.132.197.20",
-        // Turkium Mainnet DNS Seeders (for peer discovery)
-        "mainnet-seeder-1.turkium.org",
-        "mainnet-seeder-2.turkium.org",
-        "mainnet-seeder-3.turkium.org",
-        "mainnet-seeder-4.turkium.org",
-        "127.0.0.1", // Localhost fallback for local testing
+        // Localhost fallback for local testing
+        "127.0.0.1",
     ],
     net: NetworkId::new(NetworkType::Mainnet),
     genesis: GENESIS,

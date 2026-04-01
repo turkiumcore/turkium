@@ -1,8 +1,8 @@
 use crate::imports::*;
 use crate::message::*;
-use Turkium_wallet_keys::privatekey::PrivateKey;
-use Turkium_wallet_keys::publickey::PublicKey;
-use Turkium_wasm_core::types::HexString;
+use turkium_wallet_keys::privatekey::PrivateKey;
+use turkium_wallet_keys::publickey::PublicKey;
+use turkium_wasm_core::types::HexString;
 
 #[wasm_bindgen(typescript_custom_section)]
 const TS_MESSAGE_TYPES: &'static str = r#"

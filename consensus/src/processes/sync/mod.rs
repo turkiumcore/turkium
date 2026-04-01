@@ -1,9 +1,9 @@
 use std::{cmp::min, ops::Deref, sync::Arc};
 
-use Turkium_consensus_core::errors::sync::{SyncManagerError, SyncManagerResult};
-use Turkium_database::prelude::StoreResultExt;
-use Turkium_hashes::Hash;
-use Turkium_math::uint::malachite_base::num::arithmetic::traits::CeilingLogBase2;
+use turkium_consensus_core::errors::sync::{SyncManagerError, SyncManagerResult};
+use turkium_database::prelude::StoreResultExt;
+use turkium_hashes::Hash;
+use turkium_math::uint::malachite_base::num::arithmetic::traits::CeilingLogBase2;
 use itertools::Itertools;
 use parking_lot::RwLock;
 

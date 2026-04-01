@@ -1,6 +1,6 @@
 [package]
-name = "Turkium-perf-monitor"
-description = "Turkium process performance monitoring tools"
+name = "turkium-perf-monitor"
+description = "turkium process performance monitoring tools"
 rust-version.workspace = true
 version.workspace = true
 authors.workspace = true
@@ -10,7 +10,7 @@ include.workspace = true
 repository.workspace = true
 
 [dependencies]
-Turkium-core.workspace = true
+turkium-core.workspace = true
 log.workspace = true
 portable-atomic.workspace = true
 thiserror.workspace = true

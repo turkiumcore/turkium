@@ -1,15 +1,15 @@
 //!
 //! Conversion functions for converting between
-//! the [`Turkium_consensus_client`], [`Turkium_consensus_core`]
-//! and [`Turkium_wallet_pskt`](crate) types.
+//! the [`turkium_consensus_client`], [`turkium_consensus_core`]
+//! and [`turkium_wallet_pskt`](crate) types.
 //!
 
 use crate::error::Error;
 use crate::input::{Input, InputBuilder};
 use crate::output::{Output, OutputBuilder};
 use crate::pskt::{Global, Inner};
-use Turkium_consensus_client::{Transaction, TransactionInput, TransactionInputInner, TransactionOutput, TransactionOutputInner};
-use Turkium_consensus_core::tx as cctx;
+use turkium_consensus_client::{Transaction, TransactionInput, TransactionInputInner, TransactionOutput, TransactionOutputInner};
+use turkium_consensus_core::tx as cctx;
 
 impl TryFrom<Transaction> for Inner {
     type Error = Error;

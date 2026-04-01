@@ -3,10 +3,10 @@
 //!
 
 use crate::imports::*;
-use Turkium_addresses::Address;
+use turkium_addresses::Address;
 use serde::{Deserialize, Serialize};
 
-pub use Turkium_consensus_core::tx::TransactionId;
+pub use turkium_consensus_core::tx::TransactionId;
 
 /// [`UtxoRecord`] represents an incoming transaction UTXO entry
 /// stored within [`TransactionRecord`].

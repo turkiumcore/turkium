@@ -25,7 +25,7 @@ impl Parse for RpcTable {
         let parsed = Punctuated::<Expr, Token![,]>::parse_terminated(input).unwrap();
         if parsed.len() != 7 {
             return Err(Error::new_spanned(parsed,
-                "usage: build_grpc_server_interface!(server_context, ServerContextType, ConnectionType, TurkiumdRequestType, TurkiumdResponseType, TurkiumdPayloadOps, [GetInfo, ..])".to_string()));
+                "usage: build_grpc_server_interface!(server_context, ServerContextType, ConnectionType, turkiumdRequestType, turkiumdResponseType, turkiumdPayloadOps, [GetInfo, ..])".to_string()));
         }
 
         let mut iter = parsed.iter();
@@ -96,7 +96,7 @@ impl ToTokens for RpcTable {
                                 Box::pin(async move {
                                     let mut response: #turkiumd_response_type = match request.payload {
                                         Some(Payload::#request_type(ref request)) => {
-                                            match Turkium_rpc_core::#fallback_request_type::try_from(request) {
+                                            match turkium_rpc_core::#fallback_request_type::try_from(request) {
                                                 Ok(request) => {
                                                     let listener_id = connection.get_or_register_listener_id()?;
                                                     let command = request.command;

@@ -4,9 +4,9 @@
 
 A design document intended to guide the new concurrent implementation of header and block processing.
 
-## Sequential processing flow (in go-Turkiumd)
+## Sequential processing flow (in go-turkiumd)
 
-Below we detail the current state of affairs in *go-Turkiumd* and discuss future parallelism opportunities. Processing dependencies between various stages are detailed in square brackets [***deps; type***].
+Below we detail the current state of affairs in *go-turkiumd* and discuss future parallelism opportunities. Processing dependencies between various stages are detailed in square brackets [***deps; type***].
 
 ### Header processing
 
@@ -76,7 +76,7 @@ There are two levels of possible concurrency to support: (i) process the various
 
 ### Pipeline concurrency
 
-The current code design (*go-Turkiumd*) already logically supports this since the various processing stages were already decoupled for supporting efficient IBD.
+The current code design (*go-turkiumd*) already logically supports this since the various processing stages were already decoupled for supporting efficient IBD.
 
 ### Header processing parallelism
 

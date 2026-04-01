@@ -1,39 +1,39 @@
-use Turkium_consensus_core::constants::*;
-use Turkium_consensus_core::network::NetworkType;
+use turkium_consensus_core::constants::*;
+use turkium_consensus_core::network::NetworkType;
 use separator::{Separatable, separated_float, separated_int, separated_uint_with_output};
 
 #[inline]
-pub fn sompi_to_Turkium(sompi: u64) -> f64 {
+pub fn sompi_to_turkium(sompi: u64) -> f64 {
     sompi as f64 / SOMPI_PER_TURKIUM as f64
 }
 
 #[inline]
-pub fn Turkium_to_sompi(Turkium: f64) -> u64 {
-    (Turkium * SOMPI_PER_TURKIUM as f64) as u64
+pub fn turkium_to_sompi(turkium: f64) -> u64 {
+    (turkium * SOMPI_PER_TURKIUM as f64) as u64
 }
 
 #[inline]
-pub fn sompi_to_Turkium_string(sompi: u64) -> String {
-    sompi_to_Turkium(sompi).separated_string()
+pub fn sompi_to_turkium_string(sompi: u64) -> String {
+    sompi_to_turkium(sompi).separated_string()
 }
 
 #[inline]
-pub fn sompi_to_Turkium_string_with_trailing_zeroes(sompi: u64) -> String {
-    separated_float!(format!("{:.8}", sompi_to_Turkium(sompi)))
+pub fn sompi_to_turkium_string_with_trailing_zeroes(sompi: u64) -> String {
+    separated_float!(format!("{:.8}", sompi_to_turkium(sompi)))
 }
 
-pub fn Turkium_suffix(network_type: &NetworkType) -> &'static str {
+pub fn turkium_suffix(network_type: &NetworkType) -> &'static str {
     match network_type {
-        NetworkType::Mainnet => "TURK",
-        NetworkType::Testnet => "TTURK",
-        NetworkType::Simnet => "STURK",
+        NetworkType::Mainnet => "TUR",
+        NetworkType::Testnet => "TTUR",
+        NetworkType::Simnet => "STUR",
         NetworkType::Devnet => "DTURK",
     }
 }
 
 #[inline]
-pub fn sompi_to_Turkium_string_with_suffix(sompi: u64, network_type: &NetworkType) -> String {
-    let turk = sompi_to_Turkium_string(sompi);
-    let suffix = Turkium_suffix(network_type);
+pub fn sompi_to_turkium_string_with_suffix(sompi: u64, network_type: &NetworkType) -> String {
+    let turk = sompi_to_turkium_string(sompi);
+    let suffix = turkium_suffix(network_type);
     format!("{turk} {suffix}")
 }

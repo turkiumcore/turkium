@@ -3,7 +3,7 @@
 //! since the syncee no longer uses them in the rusty-Turkium design where the full sub-DAG is sent
 //!
 
-use Turkium_p2p_lib::{
+use turkium_p2p_lib::{
     IncomingRoute, Router,
     common::ProtocolError,
     convert::header::HeaderFormat,

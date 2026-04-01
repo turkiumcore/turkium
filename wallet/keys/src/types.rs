@@ -4,6 +4,6 @@
 
 use std::sync::Arc;
 
-pub type ExtendedPublicKeySecp256k1 = Turkium_bip32::ExtendedPublicKey<secp256k1::PublicKey>;
+pub type ExtendedPublicKeySecp256k1 = turkium_bip32::ExtendedPublicKey<secp256k1::PublicKey>;
 
 pub type ExtendedPublicKeys = Arc<Vec<ExtendedPublicKeySecp256k1>>;

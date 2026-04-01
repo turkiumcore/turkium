@@ -4,8 +4,8 @@ use crate::{
     header::Header,
     tx::{Transaction, TransactionId},
 };
-use Turkium_hashes::Hash;
-use Turkium_utils::mem_size::MemSizeEstimator;
+use turkium_hashes::Hash;
+use turkium_utils::mem_size::MemSizeEstimator;
 use std::sync::Arc;
 
 /// A mutable block structure where header and transactions within can still be mutated.

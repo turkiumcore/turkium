@@ -1,9 +1,9 @@
 #![allow(non_snake_case)]
 // Example of VCCv2 endpoint
 
-use Turkium_addresses::Address;
-use Turkium_rpc_core::{RpcDataVerbosityLevel, RpcHash, RpcOptionalTransaction, api::rpc::RpcApi};
-use Turkium_wrpc_client::{
+use turkium_addresses::Address;
+use turkium_rpc_core::{RpcDataVerbosityLevel, RpcHash, RpcOptionalTransaction, api::rpc::RpcApi};
+use turkium_wrpc_client::{
     TurkiumRpcClient, WrpcEncoding,
     client::{ConnectOptions, ConnectStrategy},
     prelude::NetworkId,
@@ -17,7 +17,7 @@ use std::{collections::HashSet, process::ExitCode};
 async fn main() -> ExitCode {
     match get_vcc_v2().await {
         Ok(_) => {
-            println!("Well done! You successfully completed your first client connection to Turkium node!");
+            println!("Well done! You successfully completed your first client connection to turkium node!");
             ExitCode::SUCCESS
         }
         Err(error) => {
@@ -60,7 +60,7 @@ async fn get_vcc_v2() -> Result<()> {
         ..Default::default()
     };
 
-    // Connect to selected Turkium node
+    // Connect to selected turkium node
     client.connect(Some(options)).await?;
 
     let dag_info = client.get_block_dag_info().await?;
@@ -108,7 +108,7 @@ async fn get_vcc_v2() -> Result<()> {
 
     println!("total transactions count: {}", global_seen_tx.len());
 
-    // Disconnect client from Turkium node
+    // Disconnect client from turkium node
     client.disconnect().await?;
 
     // Return function result

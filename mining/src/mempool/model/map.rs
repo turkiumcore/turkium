@@ -1,5 +1,5 @@
 use super::tx::MempoolTransaction;
-use Turkium_consensus_core::tx::{TransactionId, TransactionOutpoint};
+use turkium_consensus_core::tx::{TransactionId, TransactionOutpoint};
 use std::collections::HashMap;
 
 /// MempoolTransactionCollection maps a transaction id to a mempool transaction

@@ -1,5 +1,5 @@
 use crate::FeerateTransactionKey;
-use Turkium_consensus_core::tx::Transaction;
+use turkium_consensus_core::tx::Transaction;
 use std::sync::Arc;
 
 /// Transaction with additional metadata needed in order to be a candidate

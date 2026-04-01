@@ -14,8 +14,8 @@ mod tests {
         model::{tx_insert::TransactionInsertion, tx_query::TransactionQuery},
         testutils::consensus_mock::ConsensusMock,
     };
-    use Turkium_addresses::{Address, Prefix, Version};
-    use Turkium_consensus_core::{
+    use turkium_addresses::{Address, Prefix, Version};
+    use turkium_consensus_core::{
         api::ConsensusApi,
         block::TemplateBuildMode,
         coinbase::MinerData,
@@ -28,13 +28,13 @@ mod tests {
             UtxoEntry, scriptvec,
         },
     };
-    use Turkium_hashes::Hash;
-    use Turkium_mining_errors::mempool::RuleResult;
-    use Turkium_txscript::{
+    use turkium_hashes::Hash;
+    use turkium_mining_errors::mempool::RuleResult;
+    use turkium_txscript::{
         pay_to_address_script, pay_to_script_hash_signature_script,
         test_helpers::{create_transaction, create_transaction_with_change, op_true_script},
     };
-    use Turkium_utils::mem_size::MemSizeEstimator;
+    use turkium_utils::mem_size::MemSizeEstimator;
     use itertools::Itertools;
     use std::{iter::once, sync::Arc};
     use tokio::sync::mpsc::{error::TryRecvError, unbounded_channel};
@@ -1345,8 +1345,8 @@ mod tests {
 
     fn generate_new_coinbase(address_prefix: Prefix, op: OpType) -> MinerData {
         match op {
-            OpType::Usual => get_miner_data(address_prefix), // TODO: use lib_Turkium_wallet.CreateKeyPair, util.NewAddressPublicKeyECDSA equivalents
-            OpType::Edcsa => get_miner_data(address_prefix), // TODO: use lib_Turkium_wallet.CreateKeyPair, util.NewAddressPublicKey equivalents
+            OpType::Usual => get_miner_data(address_prefix), // TODO: use lib_turkium_wallet.CreateKeyPair, util.NewAddressPublicKeyECDSA equivalents
+            OpType::Edcsa => get_miner_data(address_prefix), // TODO: use lib_turkium_wallet.CreateKeyPair, util.NewAddressPublicKey equivalents
             OpType::True => {
                 let (script, _) = op_true_script();
                 MinerData::new(script, vec![])

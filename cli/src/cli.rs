@@ -5,11 +5,11 @@ use crate::modules::miner::Miner;
 use crate::modules::node::Node;
 use crate::notifier::{Notification, Notifier};
 use crate::result::Result;
-use Turkium_daemon::{DaemonEvent, DaemonKind, Daemons};
-use Turkium_wallet_core::account::Account;
-use Turkium_wallet_core::rpc::DynRpcApi;
-use Turkium_wallet_core::storage::{IdT, PrvKeyDataInfo};
-use Turkium_wrpc_client::{Resolver, TurkiumRpcClient};
+use turkium_daemon::{DaemonEvent, DaemonKind, Daemons};
+use turkium_wallet_core::account::Account;
+use turkium_wallet_core::rpc::DynRpcApi;
+use turkium_wallet_core::storage::{IdT, PrvKeyDataInfo};
+use turkium_wrpc_client::{Resolver, TurkiumRpcClient};
 use workflow_core::channel::*;
 use workflow_core::time::Instant;
 use workflow_log::*;
@@ -93,9 +93,9 @@ impl TurkiumCli {
                     std::println!("halt");
                     1
                 });
-                Turkium_core::log::init_logger(None, "info");
+                turkium_core::log::init_logger(None, "info");
             } else {
-                Turkium_core::log::set_log_level(LevelFilter::Info);
+                turkium_core::log::set_log_level(LevelFilter::Info);
             }
         }
 
@@ -105,7 +105,7 @@ impl TurkiumCli {
     pub async fn try_new_arc(options: Options) -> Result<Arc<Self>> {
         let wallet = Arc::new(Wallet::try_new(Wallet::local_store()?, Some(Resolver::default()), None)?);
 
-        let Turkium_cli = Arc::new(TurkiumCli {
+        let turkium_cli = Arc::new(TurkiumCli {
             term: Arc::new(Mutex::new(None)),
             wallet,
             notifications_task_ctl: DuplexChannel::oneshot(),
@@ -121,16 +121,16 @@ impl TurkiumCli {
             sync_state: Mutex::new(None),
         });
 
-        let term = Arc::new(Terminal::try_new_with_options(Turkium_cli.clone(), options.terminal)?);
+        let term = Arc::new(Terminal::try_new_with_options(turkium_cli.clone(), options.terminal)?);
         term.init().await?;
 
         cfg_if! {
             if #[cfg(target_arch = "wasm32")] {
-                Turkium_cli.init_panic_hook();
+                turkium_cli.init_panic_hook();
             }
         }
 
-        Ok(Turkium_cli)
+        Ok(turkium_cli)
     }
 
     pub fn term(&self) -> Arc<Terminal> {
@@ -287,10 +287,10 @@ impl TurkiumCli {
                             match *msg {
                                 Events::WalletList { .. } => {},
                                 Events::WalletPing => {
-                                    // log_info!("Turkium NG - received wallet ping");
+                                    // log_info!("turkium NG - received wallet ping");
                                 },
                                 Events::Metrics { network_id : _, metrics : _ } => {
-                                    // log_info!("Turkium NG - received metrics event {metrics:?}")
+                                    // log_info!("turkium NG - received metrics event {metrics:?}")
                                 }
                                 Events::FeeRate { .. } => {},
                                 Events::Error { message } => { terrorln!(this,"{message}"); },
@@ -309,7 +309,7 @@ impl TurkiumCli {
                                     this.term().refresh_prompt();
                                 },
                                 Events::UtxoIndexNotEnabled { .. } => {
-                                    tprintln!(this, "Error: Turkium node UTXO index is not enabled...")
+                                    tprintln!(this, "Error: turkium node UTXO index is not enabled...")
                                 },
                                 Events::SyncState { sync_state } => {
 
@@ -331,16 +331,16 @@ impl TurkiumCli {
                                     ..
                                 } => {
 
-                                    tprintln!(this, "Connected to Turkium node version {server_version} at {}", url.unwrap_or("N/A".to_string()));
+                                    tprintln!(this, "Connected to turkium node version {server_version} at {}", url.unwrap_or("N/A".to_string()));
 
                                     let is_open = this.wallet.is_open();
 
                                     if !is_synced {
                                         if is_open {
-                                            terrorln!(this, "Unable to update the wallet state - Turkium node is currently syncing with the network...");
+                                            terrorln!(this, "Unable to update the wallet state - turkium node is currently syncing with the network...");
 
                                         } else {
-                                            terrorln!(this, "Turkium node is currently syncing with the network, please wait for the sync to complete...");
+                                            terrorln!(this, "turkium node is currently syncing with the network, please wait for the sync to complete...");
                                         }
                                     }
 
@@ -724,24 +724,24 @@ impl TurkiumCli {
             tprintln!(self, "{}", style("shutting down...").magenta());
 
             let miner = self.daemons().try_cpu_miner();
-            let Turkiumd = self.daemons().try_Turkiumd();
+            let turkiumd = self.daemons().try_turkiumd();
 
             if let Some(miner) = miner.as_ref() {
                 miner.mute(false).await?;
                 miner.stop().await?;
             }
 
-            if let Some(Turkiumd) = Turkiumd.as_ref() {
-                Turkiumd.mute(false).await?;
-                Turkiumd.stop().await?;
+            if let Some(turkiumd) = turkiumd.as_ref() {
+                turkiumd.mute(false).await?;
+                turkiumd.stop().await?;
             }
 
             if let Some(miner) = miner.as_ref() {
                 miner.join().await?;
             }
 
-            if let Some(Turkiumd) = Turkiumd.as_ref() {
-                Turkiumd.join().await?;
+            if let Some(turkiumd) = turkiumd.as_ref() {
+                turkiumd.join().await?;
             }
 
             self.term().exit().await;
@@ -855,7 +855,7 @@ impl Cli for TurkiumCli {
 
         if let Some(descriptor) = self.wallet.descriptor() {
             let title = descriptor.title.unwrap_or(descriptor.filename);
-            if title.to_lowercase().as_str() != "Turkium" {
+            if title.to_lowercase().as_str() != "turkium" {
                 prompt.push(title);
             }
 
@@ -973,7 +973,7 @@ where
 //     Ok(selection.unwrap())
 // }
 
-pub async fn Turkium_cli(terminal_options: TerminalOptions, banner: Option<String>) -> Result<()> {
+pub async fn turkium_cli(terminal_options: TerminalOptions, banner: Option<String>) -> Result<()> {
     TurkiumCli::init();
 
     let options = Options::new(terminal_options, None);

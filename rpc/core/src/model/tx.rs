@@ -1,9 +1,9 @@
-use Turkium_addresses::Address;
-use Turkium_consensus_core::tx::{
+use turkium_addresses::Address;
+use turkium_consensus_core::tx::{
     ScriptPublicKey, ScriptVec, TransactionId, TransactionIndexType, TransactionInput, TransactionOutpoint, TransactionOutput,
     UtxoEntry,
 };
-use Turkium_utils::{hex::ToHex, serde_bytes_fixed_ref};
+use turkium_utils::{hex::ToHex, serde_bytes_fixed_ref};
 use borsh::{BorshDeserialize, BorshSerialize};
 use serde::{Deserialize, Serialize};
 use workflow_serializer::prelude::*;
@@ -101,13 +101,13 @@ impl From<RpcTransactionOutpoint> for TransactionOutpoint {
     }
 }
 
-impl From<Turkium_consensus_client::TransactionOutpoint> for RpcTransactionOutpoint {
-    fn from(outpoint: Turkium_consensus_client::TransactionOutpoint) -> Self {
+impl From<turkium_consensus_client::TransactionOutpoint> for RpcTransactionOutpoint {
+    fn from(outpoint: turkium_consensus_client::TransactionOutpoint) -> Self {
         TransactionOutpoint::from(outpoint).into()
     }
 }
 
-impl From<RpcTransactionOutpoint> for Turkium_consensus_client::TransactionOutpoint {
+impl From<RpcTransactionOutpoint> for turkium_consensus_client::TransactionOutpoint {
     fn from(outpoint: RpcTransactionOutpoint) -> Self {
         TransactionOutpoint::from(outpoint).into()
     }
@@ -220,7 +220,7 @@ impl Deserializer for RpcTransactionInputVerboseData {
     }
 }
 
-/// Represents a Turkiumd transaction output
+/// Represents a turkiumd transaction output
 #[derive(Clone, Debug, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct RpcTransactionOutput {

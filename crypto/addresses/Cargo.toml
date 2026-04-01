@@ -1,6 +1,6 @@
 [package]
-name = "Turkium-addresses"
-description = "Turkium address"
+name = "turkium-addresses"
+description = "turkium address"
 categories = ["no-std"]
 rust-version.workspace = true
 version.workspace = true

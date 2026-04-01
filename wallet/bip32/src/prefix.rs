@@ -1,7 +1,7 @@
 //! Extended key prefixes.
 
 use crate::{Error, ExtendedKey, Result, Version};
-use Turkium_consensus_core::network::{NetworkId, NetworkType};
+use turkium_consensus_core::network::{NetworkId, NetworkType};
 use borsh::{BorshDeserialize, BorshSerialize};
 use core::{
     fmt::{self, Debug, Display},

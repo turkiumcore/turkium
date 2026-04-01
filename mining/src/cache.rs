@@ -1,5 +1,5 @@
-use Turkium_consensus_core::block::{BlockTemplate, VirtualStateApproxId};
-use Turkium_core::time::unix_now;
+use turkium_consensus_core::block::{BlockTemplate, VirtualStateApproxId};
+use turkium_core::time::unix_now;
 use parking_lot::{Mutex, MutexGuard};
 use std::sync::Arc;
 

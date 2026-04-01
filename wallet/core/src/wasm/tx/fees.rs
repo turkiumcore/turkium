@@ -1,6 +1,6 @@
 use crate::imports::*;
 use crate::tx::fees::Fees;
-use Turkium_wallet_macros::declare_typescript_wasm_interface as declare;
+use turkium_wallet_macros::declare_typescript_wasm_interface as declare;
 use workflow_wasm::convert::CastFromJs;
 
 ///

@@ -1,5 +1,5 @@
-use Turkium_addresses::{Address, Prefix, Version};
-use Turkium_consensus_core::{
+use turkium_addresses::{Address, Prefix, Version};
+use turkium_consensus_core::{
     hashing::{
         sighash::{SigHashReusedValuesUnsync, calc_schnorr_signature_hash},
         sighash_type::SIG_HASH_ALL,
@@ -9,7 +9,7 @@ use Turkium_consensus_core::{
         TransactionOutput, UtxoEntry, VerifiableTransaction,
     },
 };
-use Turkium_txscript::{
+use turkium_txscript::{
     TxScriptEngine,
     caches::Cache,
     opcodes::codes::{
@@ -19,7 +19,7 @@ use Turkium_txscript::{
     pay_to_address_script, pay_to_script_hash_script,
     script_builder::{ScriptBuilder, ScriptBuilderResult},
 };
-use Turkium_txscript_errors::TxScriptError::{EvalFalse, VerifyError};
+use turkium_txscript_errors::TxScriptError::{EvalFalse, VerifyError};
 use rand::thread_rng;
 use secp256k1::Keypair;
 
@@ -38,7 +38,7 @@ fn main() -> ScriptBuilderResult<()> {
 
 /// # Standard Threshold Scenario
 ///
-/// This scenario demonstrates the use of custom opcodes and script execution within the Turkium blockchain ecosystem.
+/// This scenario demonstrates the use of custom opcodes and script execution within the turkium blockchain ecosystem.
 /// There are two main cases:
 ///
 /// 1. **Owner case:** The script checks if the input is used by the owner and verifies the owner's signature.
@@ -503,7 +503,7 @@ fn threshold_scenario_limited_2_times() -> ScriptBuilderResult<()> {
 
 /// # Shared Secret Scenario
 ///
-/// This scenario demonstrates the use of a shared secret within the Turkium blockchain ecosystem.
+/// This scenario demonstrates the use of a shared secret within the turkium blockchain ecosystem.
 /// Instead of using a threshold value, it checks the shared secret and the signature associated with it.
 ///
 /// ## Key Features:

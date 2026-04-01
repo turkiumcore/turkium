@@ -4,12 +4,12 @@ use crate::{
     swap_rust::WatchSwap,
     Error, ShutdownHandler,
 };
-use log::{info, warn};
+use log::info;
 use rand::{thread_rng, RngCore};
 use std::{
     num::Wrapping,
     sync::{
-        atomic::{AtomicU64, AtomicUsize, Ordering},
+        atomic::{AtomicU64, Ordering},
         Arc,
     },
     time::Duration,
@@ -30,7 +30,6 @@ pub struct MinerManager {
     logger_handle: JoinHandle<()>,
     is_synced: bool,
     hashes_tried: Arc<AtomicU64>,
-    current_state_id: AtomicUsize,
 }
 
 impl Drop for MinerManager {
@@ -73,7 +72,6 @@ impl MinerManager {
             logger_handle: task::spawn(Self::log_hashrate(Arc::clone(&hashes_tried))),
             is_synced: true,
             hashes_tried,
-            current_state_id: AtomicUsize::new(0),
         }
     }
 
@@ -96,25 +94,6 @@ impl MinerManager {
                 shutdown.clone(),
             )
         })
-    }
-
-    pub fn process_block(&mut self, block: Option<RpcBlock>) -> Result<(), Error> {
-        let state = if let Some(b) = block {
-            self.is_synced = true;
-            // Relaxed ordering here means there's no promise that the counter will always go up, but the id will always be unique
-            let id = self.current_state_id.fetch_add(1, Ordering::Relaxed);
-            Some(pow::State::new(id, b)?)
-        } else {
-            if !self.is_synced {
-                return Ok(());
-            }
-            self.is_synced = false;
-            warn!("Turkiumd is not synced, skipping current template");
-            None
-        };
-
-        self.block_channel.swap(state);
-        Ok(())
     }
 
     pub fn launch_cpu_miner(
@@ -171,13 +150,11 @@ impl MinerManager {
         let mut ticker = tokio::time::interval(LOG_RATE);
         ticker.set_missed_tick_behavior(MissedTickBehavior::Delay);
         let mut last_instant = ticker.tick().await;
-        for i in 0u64.. {
+        for _i in 0u64.. {
             let now = ticker.tick().await;
             let hashes = hashes_tried.swap(0, Ordering::Relaxed);
             let rate = (hashes as f64) / (now - last_instant).as_secs_f64();
-            if hashes == 0 && i % 2 == 0 {
-                warn!("Turkiumd is still not synced");
-            } else if hashes != 0 {
+            if hashes != 0 {
                 let (rate, suffix) = Self::hash_suffix(rate);
                 info!("Current hashrate is: {:.2} {}", rate, suffix);
             }
@@ -199,6 +176,7 @@ impl MinerManager {
 }
 
 #[cfg(all(test, feature = "bench"))]
+#[allow(dead_code)]
 mod benches {
     extern crate test;
 
@@ -210,7 +188,6 @@ mod benches {
     #[bench]
     pub fn bench_mining(bh: &mut Bencher) {
         let mut state = State::new(
-            1,
             RpcBlock {
                 header: Some(RpcBlockHeader {
                     version: 1,

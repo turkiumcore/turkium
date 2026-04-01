@@ -4,13 +4,13 @@ use crate::model::{
     services::reachability::{MTReachabilityService, ReachabilityService},
     stores::{ghostdag::GhostdagStoreReader, reachability::ReachabilityStoreReader, relations::RelationsStoreReader},
 };
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     BlockHashSet, ChainPath,
     blockhash::BlockHashExtensions,
     errors::traversal::{TraversalError, TraversalResult},
 };
-use Turkium_core::trace;
-use Turkium_hashes::Hash;
+use turkium_core::trace;
+use turkium_hashes::Hash;
 use itertools::Itertools;
 
 #[derive(Clone)]

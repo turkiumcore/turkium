@@ -1,8 +1,8 @@
-# Turkium WASM SDK
+# turkium WASM SDK
 
 An integration wrapper around [`Turkium-wasm`](https://www.npmjs.com/package/Turkium-wasm) module that uses [`websocket`](https://www.npmjs.com/package/websocket) W3C adaptor for WebSocket communication.
 
-This is a Node.js module that provides bindings to the Turkium WASM SDK strictly for use in the Node.js environment. The web browser version of the SDK is available as part of official SDK releases at [https://github.com/Turkiumnet/rusty-Turkium/releases](https://github.com/Turkiumnet/rusty-Turkium/releases)
+This is a Node.js module that provides bindings to the Turkium WASM SDK strictly for use in the Node.js environment. The web browser version of the SDK is available as part of official SDK releases at [https://github.com/turkiumnet/rusty-turkium/releases](https://github.com/turkiumnet/rusty-turkium/releases)
 
 ## Usage
 
@@ -19,11 +19,11 @@ Documentation is available at [https://Turkium.aspectron.org/docs/](https://Turk
 
 ## Building from source & Examples
 
-SDK examples as well as information on building the project from source can be found at [https://github.com/Turkiumnet/rusty-Turkium/tree/master/wasm](https://github.com/Turkiumnet/rusty-Turkium/tree/master/wasm)
+SDK examples as well as information on building the project from source can be found at [https://github.com/turkiumnet/rusty-turkium/tree/master/wasm](https://github.com/turkiumnet/rusty-turkium/tree/master/wasm)
 
 ## Releases
 
-Official releases as well as releases for Web Browsers are available at [https://github.com/Turkiumnet/rusty-Turkium/releases](https://github.com/Turkiumnet/rusty-Turkium/releases).
+Official releases as well as releases for Web Browsers are available at [https://github.com/turkiumnet/rusty-turkium/releases](https://github.com/turkiumnet/rusty-turkium/releases).
 
 Nightly / developer builds are available at: [https://aspectron.org/en/projects/Turkium-wasm.html](https://aspectron.org/en/projects/Turkium-wasm.html)
 

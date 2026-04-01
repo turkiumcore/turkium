@@ -1,7 +1,7 @@
 use super::{error::Result, notification::Notification};
 use crate::{converter::Converter, notifier::DynNotify};
-use Turkium_core::{debug, trace};
-use Turkium_utils::{channel::Channel, triggers::SingleTrigger};
+use turkium_core::{debug, trace};
+use turkium_utils::{channel::Channel, triggers::SingleTrigger};
 use async_channel::{Receiver, Sender};
 use async_trait::async_trait;
 use core::fmt::Debug;

@@ -2,9 +2,9 @@
 mod error;
 mod result;
 
-use Turkium_consensus_core::network::NetworkType;
-use Turkium_rpc_core::api::ops::RpcApiOps;
-use Turkium_wrpc_server::{
+use turkium_consensus_core::network::NetworkType;
+use turkium_rpc_core::api::ops::RpcApiOps;
+use turkium_wrpc_server::{
     connection::Connection,
     router::Router,
     server::Server,
@@ -64,7 +64,7 @@ async fn main() -> Result<()> {
         NetworkType::Mainnet
     };
 
-    let Turkiumd_port = network_type.default_rpc_port();
+    let turkiumd_port = network_type.default_rpc_port();
 
     let encoding: Encoding = encoding.unwrap_or_else(|| "borsh".to_owned()).parse()?;
     let proxy_port = match encoding {
@@ -74,7 +74,7 @@ async fn main() -> Result<()> {
 
     let options = Arc::new(Options {
         listen_address: interface.unwrap_or_else(|| format!("wrpc://127.0.0.1:{proxy_port}")),
-        grpc_proxy_address: Some(grpc_proxy_address.unwrap_or_else(|| format!("grpc://127.0.0.1:{Turkiumd_port}"))),
+        grpc_proxy_address: Some(grpc_proxy_address.unwrap_or_else(|| format!("grpc://127.0.0.1:{turkiumd_port}"))),
         verbose,
         // ..Options::default()
     });

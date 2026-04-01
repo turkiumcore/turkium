@@ -1,12 +1,12 @@
 use crate::protowire;
 use crate::{from, try_from};
-use Turkium_rpc_core::RpcError;
+use turkium_rpc_core::RpcError;
 
 // ----------------------------------------------------------------------------
 // rpc_core to protowire
 // ----------------------------------------------------------------------------
 
-from!(item: &Turkium_rpc_core::RpcBalancesByAddressesEntry, protowire::RpcBalancesByAddressesEntry, {
+from!(item: &turkium_rpc_core::RpcBalancesByAddressesEntry, protowire::RpcBalancesByAddressesEntry, {
     Self { address: (&item.address).into(), balance: item.balance.unwrap_or_default(), error: None }
 });
 
@@ -14,7 +14,7 @@ from!(item: &Turkium_rpc_core::RpcBalancesByAddressesEntry, protowire::RpcBalanc
 // protowire to rpc_core
 // ----------------------------------------------------------------------------
 
-try_from!(item: &protowire::RpcBalancesByAddressesEntry, Turkium_rpc_core::RpcBalancesByAddressesEntry, {
+try_from!(item: &protowire::RpcBalancesByAddressesEntry, turkium_rpc_core::RpcBalancesByAddressesEntry, {
     let balance = if item.error.is_some() { None } else { Some(item.balance) };
     Self { address: item.address.as_str().try_into()?, balance }
 });

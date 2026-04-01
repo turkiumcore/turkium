@@ -1,13 +1,13 @@
 use crate::protowire::{self};
 use crate::{from, try_from};
-use Turkium_rpc_core::{FromRpcHex, RpcAddress, RpcError, RpcHash, RpcResult, RpcScriptClass, RpcScriptVec, ToRpcHex};
+use turkium_rpc_core::{FromRpcHex, RpcAddress, RpcError, RpcHash, RpcResult, RpcScriptClass, RpcScriptVec, ToRpcHex};
 use std::str::FromStr;
 
 // ----------------------------------------------------------------------------
 // rpc_core to protowire
 // ----------------------------------------------------------------------------
 
-from!(item: &Turkium_rpc_core::RpcTransaction, protowire::RpcTransaction, {
+from!(item: &turkium_rpc_core::RpcTransaction, protowire::RpcTransaction, {
     Self {
         version: item.version.into(),
         inputs: item.inputs.iter().map(protowire::RpcTransactionInput::from).collect(),
@@ -21,7 +21,7 @@ from!(item: &Turkium_rpc_core::RpcTransaction, protowire::RpcTransaction, {
     }
 });
 
-from!(item: &Turkium_rpc_core::RpcOptionalTransaction, protowire::RpcTransaction, {
+from!(item: &turkium_rpc_core::RpcOptionalTransaction, protowire::RpcTransaction, {
     Self {
         version: item.version.unwrap_or_default().into(),
         inputs: item.inputs.iter().map(protowire::RpcTransactionInput::from).collect(),
@@ -35,7 +35,7 @@ from!(item: &Turkium_rpc_core::RpcOptionalTransaction, protowire::RpcTransaction
     }
 });
 
-from!(item: &Turkium_rpc_core::RpcTransactionInput, protowire::RpcTransactionInput, {
+from!(item: &turkium_rpc_core::RpcTransactionInput, protowire::RpcTransactionInput, {
     Self {
         previous_outpoint: Some((&item.previous_outpoint).into()),
         signature_script: item.signature_script.to_rpc_hex(),
@@ -45,7 +45,7 @@ from!(item: &Turkium_rpc_core::RpcTransactionInput, protowire::RpcTransactionInp
     }
 });
 
-from!(item: &Turkium_rpc_core::RpcOptionalTransactionInput, protowire::RpcTransactionInput, {
+from!(item: &turkium_rpc_core::RpcOptionalTransactionInput, protowire::RpcTransactionInput, {
     Self {
         previous_outpoint: item.previous_outpoint.as_ref().map(protowire::RpcOutpoint::from),
         signature_script: item.signature_script.as_ref().map(|x| x.to_rpc_hex()).unwrap_or_default(),
@@ -55,7 +55,7 @@ from!(item: &Turkium_rpc_core::RpcOptionalTransactionInput, protowire::RpcTransa
     }
 });
 
-from!(item: &Turkium_rpc_core::RpcTransactionOutput, protowire::RpcTransactionOutput, {
+from!(item: &turkium_rpc_core::RpcTransactionOutput, protowire::RpcTransactionOutput, {
     Self {
         amount: item.value,
         script_public_key: Some((&item.script_public_key).into()),
@@ -63,7 +63,7 @@ from!(item: &Turkium_rpc_core::RpcTransactionOutput, protowire::RpcTransactionOu
     }
 });
 
-from!(item: &Turkium_rpc_core::RpcOptionalTransactionOutput, protowire::RpcTransactionOutput, {
+from!(item: &turkium_rpc_core::RpcOptionalTransactionOutput, protowire::RpcTransactionOutput, {
     Self {
         amount: item.value.unwrap_or_default(),
         script_public_key: item.script_public_key.as_ref().map(|x| x.into()),
@@ -71,15 +71,15 @@ from!(item: &Turkium_rpc_core::RpcOptionalTransactionOutput, protowire::RpcTrans
     }
 });
 
-from!(item: &Turkium_rpc_core::RpcTransactionOutpoint, protowire::RpcOutpoint, {
+from!(item: &turkium_rpc_core::RpcTransactionOutpoint, protowire::RpcOutpoint, {
     Self { transaction_id: item.transaction_id.to_string(), index: item.index }
 });
 
-from!(item: &Turkium_rpc_core::RpcOptionalTransactionOutpoint, protowire::RpcOutpoint, {
+from!(item: &turkium_rpc_core::RpcOptionalTransactionOutpoint, protowire::RpcOutpoint, {
     Self { transaction_id: item.transaction_id.as_ref().map(|x| x.to_string()).unwrap_or_default(), index: item.index.unwrap_or_default() }
 });
 
-from!(item: &Turkium_rpc_core::RpcUtxoEntry, protowire::RpcUtxoEntry, {
+from!(item: &turkium_rpc_core::RpcUtxoEntry, protowire::RpcUtxoEntry, {
     Self {
         amount: item.amount,
         script_public_key: Some((&item.script_public_key).into()),
@@ -89,7 +89,7 @@ from!(item: &Turkium_rpc_core::RpcUtxoEntry, protowire::RpcUtxoEntry, {
     }
 });
 
-from!(item: &Turkium_rpc_core::RpcOptionalUtxoEntry, protowire::RpcUtxoEntry, {
+from!(item: &turkium_rpc_core::RpcOptionalUtxoEntry, protowire::RpcUtxoEntry, {
     Self {
         amount: item.amount.unwrap_or_default(),
         script_public_key: item.script_public_key.as_ref().map(|x| x.into()),
@@ -99,25 +99,25 @@ from!(item: &Turkium_rpc_core::RpcOptionalUtxoEntry, protowire::RpcUtxoEntry, {
     }
 });
 
-from!(item: &Turkium_rpc_core::RpcOptionalUtxoEntryVerboseData, protowire::RpcUtxoEntryVerboseData, {
+from!(item: &turkium_rpc_core::RpcOptionalUtxoEntryVerboseData, protowire::RpcUtxoEntryVerboseData, {
     Self {
         script_public_key_type: item.script_public_key_type.as_ref().map(|x| x.to_string()).unwrap_or_default(),
         script_public_key_address: item.script_public_key_address.as_ref().map(|x| x.to_string()).unwrap_or_default(),
     }
 });
 
-from!(item: &Turkium_rpc_core::RpcChainBlockAcceptedTransactions, protowire::RpcChainBlockAcceptedTransactions, {
+from!(item: &turkium_rpc_core::RpcChainBlockAcceptedTransactions, protowire::RpcChainBlockAcceptedTransactions, {
     Self {
         chain_block_header: Some(protowire::RpcOptionalHeader::from(&item.chain_block_header)),
         accepted_transactions: item.accepted_transactions.iter().map(protowire::RpcOptionalTransaction::from).collect(),
     }
 });
 
-from!(item: &Turkium_rpc_core::RpcScriptPublicKey, protowire::RpcScriptPublicKey, {
+from!(item: &turkium_rpc_core::RpcScriptPublicKey, protowire::RpcScriptPublicKey, {
     Self { version: item.version().into(), script_public_key: item.script().to_rpc_hex() }
 });
 
-from!(item: &Turkium_rpc_core::RpcOptionalTransactionVerboseData, protowire::RpcTransactionVerboseData, {
+from!(item: &turkium_rpc_core::RpcOptionalTransactionVerboseData, protowire::RpcTransactionVerboseData, {
     Self {
         transaction_id: item.transaction_id.map(|v| v.to_string()).unwrap_or_default(),
         hash: item.hash.map(|v| v.to_string()).unwrap_or_default(),
@@ -127,7 +127,7 @@ from!(item: &Turkium_rpc_core::RpcOptionalTransactionVerboseData, protowire::Rpc
     }
 });
 
-from!(item: &Turkium_rpc_core::RpcTransactionVerboseData, protowire::RpcTransactionVerboseData, {
+from!(item: &turkium_rpc_core::RpcTransactionVerboseData, protowire::RpcTransactionVerboseData, {
     Self {
         transaction_id: item.transaction_id.to_string(),
         hash: item.hash.to_string(),
@@ -137,40 +137,40 @@ from!(item: &Turkium_rpc_core::RpcTransactionVerboseData, protowire::RpcTransact
     }
 });
 
-from!(item: &Turkium_rpc_core::RpcOptionalTransactionInputVerboseData, protowire::RpcTransactionInputVerboseData, {
+from!(item: &turkium_rpc_core::RpcOptionalTransactionInputVerboseData, protowire::RpcTransactionInputVerboseData, {
     Self {
         utxo_entry: item.utxo_entry.as_ref().map(|x| x.into()),
     }
 });
 
-from!(_item: &Turkium_rpc_core::RpcTransactionInputVerboseData, protowire::RpcTransactionInputVerboseData, {
+from!(_item: &turkium_rpc_core::RpcTransactionInputVerboseData, protowire::RpcTransactionInputVerboseData, {
     Self {
         utxo_entry: None,
     }
 });
 
-from!(item: &Turkium_rpc_core::RpcTransactionOutputVerboseData, protowire::RpcTransactionOutputVerboseData, {
+from!(item: &turkium_rpc_core::RpcTransactionOutputVerboseData, protowire::RpcTransactionOutputVerboseData, {
     Self {
         script_public_key_type: item.script_public_key_type.to_string(),
         script_public_key_address: (&item.script_public_key_address).into(),
     }
 });
 
-from!(item: &Turkium_rpc_core::RpcOptionalTransactionOutputVerboseData, protowire::RpcTransactionOutputVerboseData, {
+from!(item: &turkium_rpc_core::RpcOptionalTransactionOutputVerboseData, protowire::RpcTransactionOutputVerboseData, {
 Self {
     script_public_key_type: item.script_public_key_type.as_ref().map(|x| x.to_string()).unwrap_or_default(),
     script_public_key_address: item.script_public_key_address.as_ref().map(|x| x.to_string()).unwrap_or_default(),
     }
 });
 
-from!(item: &Turkium_rpc_core::RpcAcceptedTransactionIds, protowire::RpcAcceptedTransactionIds, {
+from!(item: &turkium_rpc_core::RpcAcceptedTransactionIds, protowire::RpcAcceptedTransactionIds, {
     Self {
         accepting_block_hash: item.accepting_block_hash.to_string(),
         accepted_transaction_ids: item.accepted_transaction_ids.iter().map(|x| x.to_string()).collect(),
     }
 });
 
-from!(item: &Turkium_rpc_core::RpcUtxosByAddressesEntry, protowire::RpcUtxosByAddressesEntry, {
+from!(item: &turkium_rpc_core::RpcUtxosByAddressesEntry, protowire::RpcUtxosByAddressesEntry, {
     Self {
         address: item.address.as_ref().map_or("".to_string(), |x| x.into()),
         outpoint: Some((&item.outpoint).into()),
@@ -182,67 +182,67 @@ from!(item: &Turkium_rpc_core::RpcUtxosByAddressesEntry, protowire::RpcUtxosByAd
 // protowire to rpc_core
 // ----------------------------------------------------------------------------
 
-try_from!(item: &protowire::RpcTransaction, Turkium_rpc_core::RpcTransaction, {
+try_from!(item: &protowire::RpcTransaction, turkium_rpc_core::RpcTransaction, {
     Self {
         version: item.version.try_into()?,
         inputs: item
             .inputs
             .iter()
-            .map(Turkium_rpc_core::RpcTransactionInput::try_from)
-            .collect::<RpcResult<Vec<Turkium_rpc_core::RpcTransactionInput>>>()?,
+            .map(turkium_rpc_core::RpcTransactionInput::try_from)
+            .collect::<RpcResult<Vec<turkium_rpc_core::RpcTransactionInput>>>()?,
         outputs: item
             .outputs
             .iter()
-            .map(Turkium_rpc_core::RpcTransactionOutput::try_from)
-            .collect::<RpcResult<Vec<Turkium_rpc_core::RpcTransactionOutput>>>()?,
+            .map(turkium_rpc_core::RpcTransactionOutput::try_from)
+            .collect::<RpcResult<Vec<turkium_rpc_core::RpcTransactionOutput>>>()?,
         lock_time: item.lock_time,
-        subnetwork_id: Turkium_rpc_core::RpcSubnetworkId::from_str(&item.subnetwork_id)?,
+        subnetwork_id: turkium_rpc_core::RpcSubnetworkId::from_str(&item.subnetwork_id)?,
         gas: item.gas,
         payload: Vec::from_rpc_hex(&item.payload)?,
         mass: item.mass,
-        verbose_data: item.verbose_data.as_ref().map(Turkium_rpc_core::RpcTransactionVerboseData::try_from).transpose()?,
+        verbose_data: item.verbose_data.as_ref().map(turkium_rpc_core::RpcTransactionVerboseData::try_from).transpose()?,
     }
 });
 
-try_from!(item: &protowire::RpcTransaction, Turkium_rpc_core::RpcOptionalTransaction, {
+try_from!(item: &protowire::RpcTransaction, turkium_rpc_core::RpcOptionalTransaction, {
     Self {
         version: Some(item.version.try_into()?),
         inputs: item
             .inputs
             .iter()
-            .map(Turkium_rpc_core::RpcOptionalTransactionInput::try_from)
-            .collect::<RpcResult<Vec<Turkium_rpc_core::RpcOptionalTransactionInput>>>()?,
+            .map(turkium_rpc_core::RpcOptionalTransactionInput::try_from)
+            .collect::<RpcResult<Vec<turkium_rpc_core::RpcOptionalTransactionInput>>>()?,
         outputs: item
             .outputs
             .iter()
-            .map(Turkium_rpc_core::RpcOptionalTransactionOutput::try_from)
-            .collect::<RpcResult<Vec<Turkium_rpc_core::RpcOptionalTransactionOutput>>>()?,
+            .map(turkium_rpc_core::RpcOptionalTransactionOutput::try_from)
+            .collect::<RpcResult<Vec<turkium_rpc_core::RpcOptionalTransactionOutput>>>()?,
         lock_time: Some(item.lock_time),
-        subnetwork_id: Some(Turkium_rpc_core::RpcSubnetworkId::from_str(&item
+        subnetwork_id: Some(turkium_rpc_core::RpcSubnetworkId::from_str(&item
             .subnetwork_id)?),
         gas: Some(item.gas),
         payload: Some(Vec::from_rpc_hex(&item.payload)?),
         mass: Some(item.mass),
-        verbose_data: item.verbose_data.as_ref().map(Turkium_rpc_core::RpcOptionalTransactionVerboseData::try_from).transpose()?,
+        verbose_data: item.verbose_data.as_ref().map(turkium_rpc_core::RpcOptionalTransactionVerboseData::try_from).transpose()?,
     }
 });
 
-try_from!(item: &protowire::RpcTransactionInput, Turkium_rpc_core::RpcOptionalTransactionInput, {
+try_from!(item: &protowire::RpcTransactionInput, turkium_rpc_core::RpcOptionalTransactionInput, {
     Self {
         previous_outpoint: item
             .previous_outpoint
             .as_ref()
-            .map(Turkium_rpc_core::RpcOptionalTransactionOutpoint::try_from)
+            .map(turkium_rpc_core::RpcOptionalTransactionOutpoint::try_from)
             .transpose()?,
         signature_script: Some(Vec::from_rpc_hex(&item
             .signature_script)?),
         sequence: Some(item.sequence),
         sig_op_count: Some(item.sig_op_count.try_into()?),
-        verbose_data: item.verbose_data.as_ref().map(Turkium_rpc_core::RpcOptionalTransactionInputVerboseData::try_from).transpose()?,
+        verbose_data: item.verbose_data.as_ref().map(turkium_rpc_core::RpcOptionalTransactionInputVerboseData::try_from).transpose()?,
     }
 });
 
-try_from!(item: &protowire::RpcTransactionInput, Turkium_rpc_core::RpcTransactionInput, {
+try_from!(item: &protowire::RpcTransactionInput, turkium_rpc_core::RpcTransactionInput, {
     Self {
         previous_outpoint: item
             .previous_outpoint
@@ -252,11 +252,11 @@ try_from!(item: &protowire::RpcTransactionInput, Turkium_rpc_core::RpcTransactio
         signature_script: Vec::from_rpc_hex(&item.signature_script)?,
         sequence: item.sequence,
         sig_op_count: item.sig_op_count.try_into()?,
-        verbose_data: item.verbose_data.as_ref().map(Turkium_rpc_core::RpcTransactionInputVerboseData::try_from).transpose()?,
+        verbose_data: item.verbose_data.as_ref().map(turkium_rpc_core::RpcTransactionInputVerboseData::try_from).transpose()?,
     }
 });
 
-try_from!(item: &protowire::RpcTransactionOutput, Turkium_rpc_core::RpcTransactionOutput, {
+try_from!(item: &protowire::RpcTransactionOutput, turkium_rpc_core::RpcTransactionOutput, {
     Self {
         value: item.amount,
         script_public_key: item
@@ -264,34 +264,34 @@ try_from!(item: &protowire::RpcTransactionOutput, Turkium_rpc_core::RpcTransacti
             .as_ref()
             .ok_or_else(|| RpcError::MissingRpcFieldError("RpcTransactionOutput".to_string(), "script_public_key".to_string()))?
             .try_into()?,
-        verbose_data: item.verbose_data.as_ref().map(Turkium_rpc_core::RpcTransactionOutputVerboseData::try_from).transpose()?,
+        verbose_data: item.verbose_data.as_ref().map(turkium_rpc_core::RpcTransactionOutputVerboseData::try_from).transpose()?,
     }
 });
 
-try_from!(item: &protowire::RpcTransactionOutput, Turkium_rpc_core::RpcOptionalTransactionOutput, {
+try_from!(item: &protowire::RpcTransactionOutput, turkium_rpc_core::RpcOptionalTransactionOutput, {
     Self {
         value: Some(item.amount),
         script_public_key: item
             .script_public_key
             .as_ref()
-            .map(Turkium_rpc_core::RpcScriptPublicKey::try_from)
+            .map(turkium_rpc_core::RpcScriptPublicKey::try_from)
             .transpose()?,
-        verbose_data: item.verbose_data.as_ref().map(Turkium_rpc_core::RpcOptionalTransactionOutputVerboseData::try_from).transpose()?,
+        verbose_data: item.verbose_data.as_ref().map(turkium_rpc_core::RpcOptionalTransactionOutputVerboseData::try_from).transpose()?,
     }
 });
 
-try_from!(item: &protowire::RpcOutpoint, Turkium_rpc_core::RpcOptionalTransactionOutpoint, {
+try_from!(item: &protowire::RpcOutpoint, turkium_rpc_core::RpcOptionalTransactionOutpoint, {
     Self {
         transaction_id: Some(RpcHash::from_str(&item.transaction_id)?),
         index: Some(item.index),
         }
 });
 
-try_from!(item: &protowire::RpcOutpoint, Turkium_rpc_core::RpcTransactionOutpoint, {
+try_from!(item: &protowire::RpcOutpoint, turkium_rpc_core::RpcTransactionOutpoint, {
     Self { transaction_id: RpcHash::from_str(&item.transaction_id)?, index: item.index }
 });
 
-try_from!(item: &protowire::RpcUtxoEntry, Turkium_rpc_core::RpcUtxoEntry, {
+try_from!(item: &protowire::RpcUtxoEntry, turkium_rpc_core::RpcUtxoEntry, {
     Self {
         amount: item.amount,
         script_public_key: item
@@ -304,7 +304,7 @@ try_from!(item: &protowire::RpcUtxoEntry, Turkium_rpc_core::RpcUtxoEntry, {
     }
 });
 
-try_from!(item: &protowire::RpcUtxoEntry, Turkium_rpc_core::RpcOptionalUtxoEntry, {
+try_from!(item: &protowire::RpcUtxoEntry, turkium_rpc_core::RpcOptionalUtxoEntry, {
     Self {
         amount: Some(item.amount),
         script_public_key: item
@@ -314,22 +314,22 @@ try_from!(item: &protowire::RpcUtxoEntry, Turkium_rpc_core::RpcOptionalUtxoEntry
             .transpose()?,
         block_daa_score: Some(item.block_daa_score),
         is_coinbase: Some(item.is_coinbase),
-        verbose_data: item.verbose_data.as_ref().map(Turkium_rpc_core::RpcOptionalUtxoEntryVerboseData::try_from).transpose()?,
+        verbose_data: item.verbose_data.as_ref().map(turkium_rpc_core::RpcOptionalUtxoEntryVerboseData::try_from).transpose()?,
     }
 });
 
-try_from!(item: &protowire::RpcUtxoEntryVerboseData, Turkium_rpc_core::RpcOptionalUtxoEntryVerboseData, {
+try_from!(item: &protowire::RpcUtxoEntryVerboseData, turkium_rpc_core::RpcOptionalUtxoEntryVerboseData, {
     Self {
         script_public_key_type: Some(RpcScriptClass::from_str(&item.script_public_key_type)?),
         script_public_key_address: Some(RpcAddress::try_from(item.script_public_key_address.as_ref())?),
     }
 });
 
-try_from!(item: &protowire::RpcScriptPublicKey, Turkium_rpc_core::RpcScriptPublicKey, {
+try_from!(item: &protowire::RpcScriptPublicKey, turkium_rpc_core::RpcScriptPublicKey, {
     Self::new(u16::try_from(item.version)?, RpcScriptVec::from_rpc_hex(item.script_public_key.as_str())?)
 });
 
-try_from!(item: &protowire::RpcTransactionVerboseData, Turkium_rpc_core::RpcTransactionVerboseData, {
+try_from!(item: &protowire::RpcTransactionVerboseData, turkium_rpc_core::RpcTransactionVerboseData, {
     Self {
         transaction_id: RpcHash::from_str(&item.transaction_id)?,
         hash: RpcHash::from_str(&item.hash)?,
@@ -339,7 +339,7 @@ try_from!(item: &protowire::RpcTransactionVerboseData, Turkium_rpc_core::RpcTran
     }
 });
 
-try_from!(item: &protowire::RpcTransactionVerboseData, Turkium_rpc_core::RpcOptionalTransactionVerboseData, {
+try_from!(item: &protowire::RpcTransactionVerboseData, turkium_rpc_core::RpcOptionalTransactionVerboseData, {
     Self {
         transaction_id: Some(RpcHash::from_str(item.transaction_id.as_ref())?),
         hash: Some(RpcHash::from_str(item.hash.as_ref())?),
@@ -353,48 +353,48 @@ try_from!(item: &protowire::RpcTransactionVerboseData, Turkium_rpc_core::RpcOpti
     }
 });
 
-try_from!(&protowire::RpcTransactionInputVerboseData, Turkium_rpc_core::RpcTransactionInputVerboseData);
+try_from!(&protowire::RpcTransactionInputVerboseData, turkium_rpc_core::RpcTransactionInputVerboseData);
 
-try_from!(item: &protowire::RpcTransactionInputVerboseData, Turkium_rpc_core::RpcOptionalTransactionInputVerboseData, {
+try_from!(item: &protowire::RpcTransactionInputVerboseData, turkium_rpc_core::RpcOptionalTransactionInputVerboseData, {
     Self {
-        utxo_entry: item.utxo_entry.as_ref().map(Turkium_rpc_core::RpcOptionalUtxoEntry::try_from).transpose()?,
+        utxo_entry: item.utxo_entry.as_ref().map(turkium_rpc_core::RpcOptionalUtxoEntry::try_from).transpose()?,
     }
 });
 
-try_from!(item: &protowire::RpcTransactionOutputVerboseData, Turkium_rpc_core::RpcOptionalTransactionOutputVerboseData, {
+try_from!(item: &protowire::RpcTransactionOutputVerboseData, turkium_rpc_core::RpcOptionalTransactionOutputVerboseData, {
     Self {
         script_public_key_type: Some(RpcScriptClass::from_str(item.script_public_key_type.as_ref())?),
         script_public_key_address: Some(RpcAddress::try_from(item.script_public_key_address.as_ref())?),
     }
 });
 
-try_from!(item: &protowire::RpcTransactionOutputVerboseData, Turkium_rpc_core::RpcTransactionOutputVerboseData, {
+try_from!(item: &protowire::RpcTransactionOutputVerboseData, turkium_rpc_core::RpcTransactionOutputVerboseData, {
     Self {
         script_public_key_type: item.script_public_key_type.as_str().try_into()?,
         script_public_key_address: item.script_public_key_address.as_str().try_into()?,
     }
 });
 
-try_from!(item: &protowire::RpcAcceptedTransactionIds, Turkium_rpc_core::RpcAcceptedTransactionIds, {
+try_from!(item: &protowire::RpcAcceptedTransactionIds, turkium_rpc_core::RpcAcceptedTransactionIds, {
     Self {
         accepting_block_hash: RpcHash::from_str(&item.accepting_block_hash)?,
         accepted_transaction_ids: item.accepted_transaction_ids.iter().map(|x| RpcHash::from_str(x)).collect::<Result<Vec<_>, _>>()?,
     }
 });
 
-try_from!(item: &protowire::RpcChainBlockAcceptedTransactions, Turkium_rpc_core::RpcChainBlockAcceptedTransactions, {
+try_from!(item: &protowire::RpcChainBlockAcceptedTransactions, turkium_rpc_core::RpcChainBlockAcceptedTransactions, {
     Self {
         chain_block_header: item
             .chain_block_header
             .as_ref()
-            .map(Turkium_rpc_core::RpcOptionalHeader::try_from)
+            .map(turkium_rpc_core::RpcOptionalHeader::try_from)
             .transpose()?
             .ok_or_else(|| RpcError::MissingRpcFieldError("RpcChainBlockAcceptedTransactions".to_string(), "chain_block_header".to_string()))?,
-        accepted_transactions: item.accepted_transactions.iter().map(Turkium_rpc_core::RpcOptionalTransaction::try_from).collect::<Result<_, _>>()?,
+        accepted_transactions: item.accepted_transactions.iter().map(turkium_rpc_core::RpcOptionalTransaction::try_from).collect::<Result<_, _>>()?,
     }
 });
 
-try_from!(item: &protowire::RpcUtxosByAddressesEntry, Turkium_rpc_core::RpcUtxosByAddressesEntry, {
+try_from!(item: &protowire::RpcUtxosByAddressesEntry, turkium_rpc_core::RpcUtxosByAddressesEntry, {
     let address = if item.address.is_empty() { None } else { Some(item.address.as_str().try_into()?) };
     Self {
         address,

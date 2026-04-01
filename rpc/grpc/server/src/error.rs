@@ -1,14 +1,14 @@
-use Turkium_grpc_core::ops::TurkiumdPayloadOps;
+use turkium_grpc_core::ops::TurkiumdPayloadOps;
 use thiserror::Error;
 use tokio::sync::mpsc::error::TrySendError;
 
 #[derive(Debug, Error)]
 pub enum GrpcServerError {
     #[error("RpcApi error: {0}")]
-    RpcApiError(#[from] Turkium_rpc_core::error::RpcError),
+    RpcApiError(#[from] turkium_rpc_core::error::RpcError),
 
     #[error("Notification subsystem error: {0}")]
-    NotificationError(#[from] Turkium_notify::error::Error),
+    NotificationError(#[from] turkium_notify::error::Error),
 
     #[error("Request has no valid payload")]
     InvalidRequestPayload,
@@ -29,29 +29,29 @@ pub enum GrpcServerError {
     OutgoingRouteCapacityReached(String),
 }
 
-impl From<GrpcServerError> for Turkium_rpc_core::error::RpcError {
+impl From<GrpcServerError> for turkium_rpc_core::error::RpcError {
     fn from(err: GrpcServerError) -> Self {
         match err {
             GrpcServerError::RpcApiError(err) => err,
             GrpcServerError::NotificationError(err) => err.into(),
-            _ => Turkium_rpc_core::error::RpcError::General(err.to_string()),
+            _ => turkium_rpc_core::error::RpcError::General(err.to_string()),
         }
     }
 }
 
-impl From<GrpcServerError> for Turkium_notify::error::Error {
+impl From<GrpcServerError> for turkium_notify::error::Error {
     fn from(err: GrpcServerError) -> Self {
         match err {
-            GrpcServerError::RpcApiError(err) => Turkium_notify::error::Error::General(err.to_string()),
+            GrpcServerError::RpcApiError(err) => turkium_notify::error::Error::General(err.to_string()),
             GrpcServerError::NotificationError(err) => err,
-            _ => Turkium_notify::error::Error::General(err.to_string()),
+            _ => turkium_notify::error::Error::General(err.to_string()),
         }
     }
 }
 
 impl<T> From<TrySendError<T>> for GrpcServerError {
     fn from(_: TrySendError<T>) -> Self {
-        Turkium_notify::error::Error::ChannelSendError.into()
+        turkium_notify::error::Error::ChannelSendError.into()
     }
 }
 

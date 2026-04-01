@@ -1,5 +1,5 @@
 use crate::notification::Notification;
-use Turkium_notify::{collector::CollectorFrom, converter::ConverterFrom};
+use turkium_notify::{collector::CollectorFrom, converter::ConverterFrom};
 
 pub type ConsensusConverter = ConverterFrom<Notification, Notification>;
 pub type ConsensusCollector = CollectorFrom<ConsensusConverter>;

@@ -1,9 +1,9 @@
 use crate::cli::TurkiumCli;
 use crate::imports::*;
 use crate::result::Result;
-use Turkium_bip32::{Language, Mnemonic, WordCount};
-use Turkium_wallet_core::storage::keydata::PrvKeyDataVariantKind;
-use Turkium_wallet_core::{
+use turkium_bip32::{Language, Mnemonic, WordCount};
+use turkium_wallet_core::storage::keydata::PrvKeyDataVariantKind;
+use turkium_wallet_core::{
     storage::{Hint, make_filename},
     wallet::WalletGuard,
 };

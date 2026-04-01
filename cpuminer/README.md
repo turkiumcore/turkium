@@ -1,4 +1,4 @@
-# Turkium CPU Miner (Testnets)
+# Turkium CPU Miner 
 
 ## Installation
 
@@ -21,7 +21,7 @@ Options:
   -s, --turkiumd-address <TURKIUMD_ADDRESS>
           The IP of the turkiumd instance [default: 127.0.0.1]
   -p, --port <PORT>
-          Turkiumd port [default: Mainnet = 16110, Testnet = 16210]
+          Turkiumd port [default: Mainnet = 5200, Testnet = 5202]
   -d, --debug
           Enable debug logging level
       --testnet

@@ -1,5 +1,5 @@
 use crate::imports::*;
-use Turkium_consensus_core::Hash;
+use turkium_consensus_core::Hash;
 use js_sys::Object;
 
 pub trait WalletApiObjectExtension {

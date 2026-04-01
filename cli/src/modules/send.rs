@@ -17,10 +17,10 @@ impl Send {
         }
 
         let address = Address::try_from(argv.first().unwrap().as_str())?;
-        let amount_sompi = try_parse_required_nonzero_Turkium_as_sompi_u64(argv.get(1))?;
+        let amount_sompi = try_parse_required_nonzero_turkium_as_sompi_u64(argv.get(1))?;
         // TODO fee_rate
         let fee_rate = None;
-        let priority_fee_sompi = try_parse_optional_Turkium_as_sompi_i64(argv.get(2))?.unwrap_or(0);
+        let priority_fee_sompi = try_parse_optional_turkium_as_sompi_i64(argv.get(2))?.unwrap_or(0);
         let outputs = PaymentOutputs::from((address.clone(), amount_sompi));
         let abortable = Abortable::default();
         let (wallet_secret, payment_secret) = ctx.ask_wallet_secret(Some(&account)).await?;
@@ -42,7 +42,7 @@ impl Send {
             .await?;
 
         tprintln!(ctx, "Send - {summary}");
-        tprintln!(ctx, "\nSending {} TURK to {address}, tx ids:", sompi_to_Turkium_string(amount_sompi));
+        tprintln!(ctx, "\nSending {} TURK to {address}, tx ids:", sompi_to_turkium_string(amount_sompi));
         // tprintln!(ctx, "{}\n", ids.into_iter().map(|a| a.to_string()).collect::<Vec<_>>().join("\n"));
 
         Ok(())

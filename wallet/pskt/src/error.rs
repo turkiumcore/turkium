@@ -1,6 +1,6 @@
 //! Error types for the PSKT crate.
 
-use Turkium_txscript_errors::TxScriptError;
+use turkium_txscript_errors::TxScriptError;
 
 use crate::input::InputBuilderError;
 

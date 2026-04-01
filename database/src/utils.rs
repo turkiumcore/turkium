@@ -41,11 +41,11 @@ impl Drop for DbLifetime {
     }
 }
 
-pub fn get_Turkium_tempdir() -> TempDir {
+pub fn get_turkium_tempdir() -> TempDir {
     let global_tempdir = std::env::temp_dir();
-    let Turkium_tempdir = global_tempdir.join("rusty-Turkium");
-    std::fs::create_dir_all(Turkium_tempdir.as_path()).unwrap();
-    tempfile::tempdir_in(Turkium_tempdir.as_path()).unwrap()
+    let turkium_tempdir = global_tempdir.join("rusty-Turkium");
+    std::fs::create_dir_all(turkium_tempdir.as_path()).unwrap();
+    tempfile::tempdir_in(turkium_tempdir.as_path()).unwrap()
 }
 
 /// Creates a DB within a temp directory under `<OS SPECIFIC TEMP DIR>/rusty-Turkium`
@@ -53,7 +53,7 @@ pub fn get_Turkium_tempdir() -> TempDir {
 #[macro_export]
 macro_rules! create_temp_db {
     ($conn_builder: expr) => {{
-        let db_tempdir = $crate::utils::get_Turkium_tempdir();
+        let db_tempdir = $crate::utils::get_turkium_tempdir();
         let db_path = db_tempdir.path().to_owned();
         let db = $conn_builder.with_db_path(db_path).build().unwrap();
         ($crate::utils::DbLifetime::new(db_tempdir, std::sync::Arc::downgrade(&db)), db)

@@ -14,8 +14,8 @@ use crate::v7::{
     txrelay::flow::{RelayTransactionsFlow, RequestTransactionsFlow},
 };
 use crate::{flow_context::FlowContext, flow_trait::Flow};
-use Turkium_p2p_lib::{Router, SharedIncomingRoute, TurkiumdMessagePayloadType, convert::header::HeaderFormat};
-use Turkium_utils::channel;
+use turkium_p2p_lib::{Router, SharedIncomingRoute, TurkiumdMessagePayloadType, convert::header::HeaderFormat};
+use turkium_utils::channel;
 use std::sync::Arc;
 
 pub(crate) mod address;
@@ -166,11 +166,11 @@ pub fn register(ctx: FlowContext, router: Arc<Router>) -> Vec<Box<dyn Flow>> {
     }));
 
     // The reject message is handled as a special case by the router
-    // TurkiumdMessagePayloadType::Reject,
+    // turkiumdMessagePayloadType::Reject,
 
     // We do not register the below two messages since they are deprecated also in go-Turkium
-    // TurkiumdMessagePayloadType::BlockWithTrustedData,
-    // TurkiumdMessagePayloadType::IbdBlockLocator,
+    // turkiumdMessagePayloadType::BlockWithTrustedData,
+    // turkiumdMessagePayloadType::IbdBlockLocator,
 
     flows
 }

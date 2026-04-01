@@ -1,4 +1,4 @@
-# Turkium Core [TURK, Ŧ]
+# turkium Core [TURK, Ŧ]
 
 <div align="center">
   <img src="assets/turkium.png" alt="Turkium" width="256"/>
@@ -10,11 +10,11 @@
 
 ## 🚀 About Turkium
 
-Turkium is a revolutionary cryptocurrency that emerged from the vision of creating a more inclusive and accessible digital economy. Built on a proven foundation while introducing unique innovations, Turkium combines the reliability of time-tested blockchain technology with modern enhancements.
+turkium is a revolutionary cryptocurrency that emerged from the vision of creating a more inclusive and accessible digital economy. Built on a proven foundation while introducing unique innovations, Turkium combines the reliability of time-tested blockchain technology with modern enhancements.
 
 From developers to miners, from enthusiasts to everyday users, the Turkium community spans across continents and cultures. We welcome contributors who share our vision of a fair, open, and decentralized financial future.
 
-**Turkium isn't just another cryptocurrency—it's a promise of what blockchain can achieve when guided by principle, powered by community, and driven by innovation.**
+**turkium isn't just another cryptocurrency—it's a promise of what blockchain can achieve when guided by principle, powered by community, and driven by innovation.**
 
 ---
 
@@ -243,11 +243,22 @@ Turkium uses Bech32-encoded addresses with network-specific prefixes:
 
 ## 📚 Documentation
 
-- [Installation Guide](INSTALL.md)
-- [Getting Started](doc/getting-started.md)
-- [Fee Recommendation](doc/fee-recommendation.md)
-- [FAQ](doc/FAQ.md)
-- [Contributing Guide](CONTRIBUTING.md)
+Comprehensive documentation is available in the `docs/` directory:
+
+- **[CREATE_MINING_ADDRESS_GUIDE.md](docs/CREATE_MINING_ADDRESS_GUIDE.md)** - BIP39 mnemonic generation for mining
+- **[WALLET_USAGE_GUIDE.md](docs/WALLET_USAGE_GUIDE.md)** - Wallet setup and usage
+- **[PRIVATE_KEY_MANAGEMENT.md](docs/PRIVATE_KEY_MANAGEMENT.md)** - Private key security and management
+- **[HEX_PRIVATE_KEY_VS_BIP39_SEED.md](docs/HEX_PRIVATE_KEY_VS_BIP39_SEED.md)** - Key format comparison
+- **[MAINNET_MINING_GUIDE.md](docs/MAINNET_MINING_GUIDE.md)** - Mainnet mining setup
+- **[SIMPLE_MINING_GUIDE.md](docs/SIMPLE_MINING_GUIDE.md)** - Quick mining guide
+- **[POOL_ONLY_MINING_GUIDE.md](docs/POOL_ONLY_MINING_GUIDE.md)** - Stratum pool mining
+- **[PRODUCTION_DEPLOYMENT_GUIDE.md](docs/PRODUCTION_DEPLOYMENT_GUIDE.md)** - Production setup
+- **[SYSTEMD_SETUP_GUIDE.md](docs/SYSTEMD_SETUP_GUIDE.md)** - Systemd service configuration
+- **[DNS_SEEDER_README.md](docs/DNS_SEEDER_README.md)** - DNS seeder setup
+- **[BRIDGE_EXPLANATION.md](docs/BRIDGE_EXPLANATION.md)** - ASIC bridge explanation
+- **[MUSL_TOOLCHAIN_EXPLANATION.md](docs/MUSL_TOOLCHAIN_EXPLANATION.md)** - Static binary compilation
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
 
 ---
 

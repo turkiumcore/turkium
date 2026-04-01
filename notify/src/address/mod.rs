@@ -2,8 +2,8 @@ pub mod error;
 pub mod tracker;
 
 pub mod test_helpers {
-    use Turkium_addresses::Address;
-    use Turkium_addresses::{Prefix, Version};
+    use turkium_addresses::Address;
+    use turkium_addresses::{Prefix, Version};
 
     pub const ADDRESS_PREFIX: Prefix = Prefix::Mainnet;
 

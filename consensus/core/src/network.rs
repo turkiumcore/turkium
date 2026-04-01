@@ -11,7 +11,7 @@
 
 #![allow(non_snake_case)]
 
-use Turkium_addresses::Prefix;
+use turkium_addresses::Prefix;
 use borsh::{BorshDeserialize, BorshSerialize};
 use serde::{Deserialize, Deserializer, Serialize, Serializer, de};
 use std::fmt::{Debug, Display, Formatter};

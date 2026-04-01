@@ -1,6 +1,6 @@
-use Turkium_wallet_core::account::BIP32_ACCOUNT_KIND;
-use Turkium_wallet_core::account::LEGACY_ACCOUNT_KIND;
-use Turkium_wallet_core::account::MULTISIG_ACCOUNT_KIND;
+use turkium_wallet_core::account::BIP32_ACCOUNT_KIND;
+use turkium_wallet_core::account::LEGACY_ACCOUNT_KIND;
+use turkium_wallet_core::account::MULTISIG_ACCOUNT_KIND;
 
 use crate::imports::*;
 use crate::wizards;
@@ -71,14 +71,14 @@ impl Account {
                     tprintln!(ctx, "");
                     ctx.term().help(
                         &[
-                            ("account import legacy-data", "Import KDX keydata file or Turkiumnet web wallet data on the same domain"),
+                            ("account import legacy-data", "Import KDX keydata file or turkiumnet web wallet data on the same domain"),
                             (
                                 "account import mnemonic bip32",
                                 "Import Bip32 (12 or 24 word mnemonics used by Turkiumwallet, turkpium, onekey, tangem etc.)",
                             ),
                             (
                                 "account import mnemonic legacy",
-                                "Import accounts 12 word mnemonic used by legacy applications (KDX and Turkiumnet web wallet)",
+                                "Import accounts 12 word mnemonic used by legacy applications (KDX and turkiumnet web wallet)",
                             ),
                             (
                                 "account import mnemonic multisig [additional keys]",
@@ -122,7 +122,7 @@ impl Account {
                                             tprintln!(
                                                 ctx_,
                                                 "Scan detected {} TURK at index {}; transfer txid: {}",
-                                                sompi_to_Turkium_string(balance),
+                                                sompi_to_turkium_string(balance),
                                                 processed,
                                                 txid
                                             );
@@ -131,7 +131,7 @@ impl Account {
                                                 ctx_,
                                                 "Scanned {} derivations, found {} TURK",
                                                 processed,
-                                                sompi_to_Turkium_string(balance)
+                                                sompi_to_turkium_string(balance)
                                             );
                                         } else {
                                             tprintln!(ctx_, "Please wait... scanning for account UTXOs...");
@@ -140,7 +140,7 @@ impl Account {
                                 )
                                 .await?;
                         } else if application_runtime::is_web() {
-                            return Err("'Turkiumnet' web wallet storage not found at this domain name".into());
+                            return Err("'turkiumnet' web wallet storage not found at this domain name".into());
                         } else {
                             return Err("KDX keydata file not found".into());
                         }
@@ -149,7 +149,7 @@ impl Account {
                         if argv.is_empty() {
                             tprintln!(ctx, "usage: 'account import mnemonic <bip32|legacy|multisig>'");
                             tprintln!(ctx, "please specify the mnemonic type");
-                            tprintln!(ctx, "please use 'legacy' for 12-word KDX and Turkiumnet web wallet mnemonics\r\n");
+                            tprintln!(ctx, "please use 'legacy' for 12-word KDX and turkiumnet web wallet mnemonics\r\n");
                             return Ok(());
                         }
 
@@ -254,7 +254,7 @@ impl Account {
                 (
                     "import <import-type> [<key-type> [extra keys]]",
                     "Import accounts from a private key using 24 or 12 word mnemonic or legacy data \
-                (KDX and Turkiumnet web wallet). Use 'account import' for additional help.",
+                (KDX and turkiumnet web wallet). Use 'account import' for additional help.",
                 ),
                 ("name <name>", "Name or rename the selected account (use 'remove' to remove the name"),
                 ("scan [<derivations>] or scan [<start>] [<derivations>]", "Scan extended address derivation chain (legacy accounts)"),
@@ -303,12 +303,12 @@ impl Account {
                         tprintln!(
                             ctx_,
                             "Scan detected {} TURK at index {}; transfer txid: {}",
-                            sompi_to_Turkium_string(balance),
+                            sompi_to_turkium_string(balance),
                             processed,
                             txid
                         );
                     } else {
-                        tprintln!(ctx_, "Scanned {} derivations, found {} TURK", processed, sompi_to_Turkium_string(balance));
+                        tprintln!(ctx_, "Scanned {} derivations, found {} TURK", processed, sompi_to_turkium_string(balance));
                     }
                 })),
             )

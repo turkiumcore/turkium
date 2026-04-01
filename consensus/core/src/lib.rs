@@ -2,7 +2,7 @@
 //!
 //! # Consensus Core
 //!
-//! This crate implements primitives used in the Turkium node consensus processing.
+//! This crate implements primitives used in the turkium node consensus processing.
 //!
 
 extern crate alloc;
@@ -12,7 +12,7 @@ extern crate self as consensus_core;
 use std::collections::{HashMap, HashSet};
 use std::hash::{BuildHasher, Hasher};
 
-pub use Turkium_hashes::Hash;
+pub use turkium_hashes::Hash;
 
 pub mod acceptance_data;
 pub mod api;
@@ -41,7 +41,7 @@ pub mod utxo;
 /// Integer type for accumulated PoW of blue blocks. We expect no more than
 /// 2^128 work in a single block (btc has ~2^80), and no more than 2^64
 /// overall blocks, so 2^192 is definitely a justified upper-bound.
-pub type BlueWorkType = Turkium_math::Uint192;
+pub type BlueWorkType = turkium_math::Uint192;
 
 /// The extends directly from the expectation above about having no more than
 /// 2^128 work in a single block
@@ -136,7 +136,7 @@ pub type BlockLevel = u8;
 #[cfg(test)]
 mod tests {
     use super::BlockHasher;
-    use Turkium_hashes::Hash;
+    use turkium_hashes::Hash;
     use std::hash::{Hash as _, Hasher as _};
     #[test]
     fn test_block_hasher() {

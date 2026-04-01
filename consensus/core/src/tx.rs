@@ -8,9 +8,9 @@
 
 mod script_public_key;
 
-use Turkium_utils::hex::ToHex;
-use Turkium_utils::mem_size::MemSizeEstimator;
-use Turkium_utils::{serde_bytes, serde_bytes_fixed_ref};
+use turkium_utils::hex::ToHex;
+use turkium_utils::mem_size::MemSizeEstimator;
+use turkium_utils::{serde_bytes, serde_bytes_fixed_ref};
 use borsh::{BorshDeserialize, BorshSerialize};
 pub use script_public_key::{
     SCRIPT_VECTOR_SIZE, ScriptPublicKey, ScriptPublicKeyT, ScriptPublicKeyVersion, ScriptPublicKeys, ScriptVec, scriptvec,
@@ -36,7 +36,7 @@ use crate::{
 /// COINBASE_TRANSACTION_INDEX is the index of the coinbase transaction in every block
 pub const COINBASE_TRANSACTION_INDEX: usize = 0;
 /// A 32-byte Turkium transaction identifier.
-pub type TransactionId = Turkium_hashes::Hash;
+pub type TransactionId = turkium_hashes::Hash;
 
 /// Holds details about an individual transaction output in a utxo
 /// set such as whether or not it was contained in a coinbase tx, the daa
@@ -115,7 +115,7 @@ impl std::fmt::Debug for TransactionInput {
     }
 }
 
-/// Represents a Turkiumd transaction output
+/// Represents a turkiumd transaction output
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq, BorshSerialize, BorshDeserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct TransactionOutput {
@@ -635,7 +635,7 @@ mod tests {
         let tx = test_transaction();
         let bts = bincode::serialize(&tx).unwrap();
 
-        // standard, based on https://github.com/Turkiumnet/rusty-Turkium/commit/7e947a06d2434daf4bc7064d4cd87dc1984b56fe
+        // standard, based on https://github.com/turkiumnet/rusty-Turkium/commit/7e947a06d2434daf4bc7064d4cd87dc1984b56fe
         let expected_bts = vec![
             1, 0, 2, 0, 0, 0, 0, 0, 0, 0, 22, 94, 56, 232, 179, 145, 69, 149, 217, 198, 65, 243, 184, 238, 194, 243, 70, 17, 137, 107,
             130, 26, 104, 59, 122, 78, 222, 254, 44, 0, 0, 0, 250, 255, 255, 255, 32, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8,
@@ -738,7 +738,7 @@ mod tests {
     // use wasm_bindgen_test::wasm_bindgen_test;
     // #[wasm_bindgen_test]
     // pub fn test_wasm_serde_spk_constructor() {
-    //     let str = "Turkium:qpauqsvk7yf9unexwmxsnmg547mhyga37csh0kj53q6xxgl24ydxjsgzthw5j";
+    //     let str = "turkium:qpauqsvk7yf9unexwmxsnmg547mhyga37csh0kj53q6xxgl24ydxjsgzthw5j";
     //     let a = Address::constructor(str);
     //     let value = to_value(&a).unwrap();
     //
@@ -749,7 +749,7 @@ mod tests {
     //
     // #[wasm_bindgen_test]
     // pub fn test_wasm_js_serde_spk_object() {
-    //     let expected = Address::constructor("Turkium:qpauqsvk7yf9unexwmxsnmg547mhyga37csh0kj53q6xxgl24ydxjsgzthw5j");
+    //     let expected = Address::constructor("turkium:qpauqsvk7yf9unexwmxsnmg547mhyga37csh0kj53q6xxgl24ydxjsgzthw5j");
     //
     //     use web_sys::console;
     //     console::log_4(&"address: ".into(), &expected.version().into(), &expected.prefix().into(), &expected.payload().into());
@@ -770,7 +770,7 @@ mod tests {
     // pub fn test_wasm_serde_spk_object() {
     //     use wasm_bindgen::convert::IntoWasmAbi;
     //
-    //     let expected = Address::constructor("Turkium:qpauqsvk7yf9unexwmxsnmg547mhyga37csh0kj53q6xxgl24ydxjsgzthw5j");
+    //     let expected = Address::constructor("turkium:qpauqsvk7yf9unexwmxsnmg547mhyga37csh0kj53q6xxgl24ydxjsgzthw5j");
     //     let wasm_js_value: JsValue = expected.clone().into_abi().into();
     //
     //     // use web_sys::console;

@@ -1,8 +1,8 @@
 use crate::{signals::Shutdown, task::service::AsyncServiceResult};
-use Turkium_core::core::Core;
-use Turkium_core::service::Service;
-use Turkium_core::task::service::AsyncService;
-use Turkium_core::trace;
+use turkium_core::core::Core;
+use turkium_core::service::Service;
+use turkium_core::task::service::AsyncService;
+use turkium_core::trace;
 use futures_util::future::{select_all, try_join_all};
 use std::{
     sync::{Arc, Mutex},

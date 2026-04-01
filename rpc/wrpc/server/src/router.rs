@@ -1,7 +1,7 @@
 use crate::{connection::*, server::*};
-use Turkium_notify::scope::Scope;
-use Turkium_rpc_core::{api::ops::RpcApiOps, prelude::*};
-use Turkium_rpc_macros::build_wrpc_server_interface;
+use turkium_notify::scope::Scope;
+use turkium_rpc_core::{api::ops::RpcApiOps, prelude::*};
+use turkium_rpc_macros::build_wrpc_server_interface;
 use std::sync::Arc;
 use workflow_rpc::server::prelude::*;
 use workflow_serializer::prelude::*;
@@ -9,7 +9,7 @@ use workflow_serializer::prelude::*;
 /// A wrapper that creates an [`Interface`] instance and initializes
 /// RPC methods and notifications against this interface. The interface
 /// is later given to the RpcServer.  This wrapper exists to allow
-/// a single initialization location for both the Turkiumd Server and
+/// a single initialization location for both the turkiumd Server and
 /// the GRPC Proxy.
 pub struct Router {
     pub interface: Arc<Interface<Server, Connection, RpcApiOps>>,

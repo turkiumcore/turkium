@@ -19,8 +19,8 @@ pub static LOCATIONS: &[&str] = &[
     "bin",
     "../target/release",
     "../target/debug",
-    "../../Turkium-cpu-miner/target/debug",
-    "../../Turkium-cpu-miner/target/release",
+    "../../turkium-cpu-miner/target/debug",
+    "../../turkium-cpu-miner/target/release",
     "bin/windows-x64",
     "bin/linux-ia32",
     "bin/linux-x64",
@@ -61,18 +61,18 @@ pub enum DaemonKind {
 
 #[derive(Default)]
 pub struct Daemons {
-    pub Turkiumd: Option<Arc<dyn TurkiumdCtl + Send + Sync + 'static>>,
-    // pub Turkiumd_automute : Arc<
+    pub turkiumd: Option<Arc<dyn TurkiumdCtl + Send + Sync + 'static>>,
+    // pub turkiumd_automute : Arc<
     pub cpu_miner: Option<Arc<dyn CpuMinerCtl + Send + Sync + 'static>>,
 }
 
 impl Daemons {
     pub fn new() -> Self {
-        Self { Turkiumd: None, cpu_miner: None }
+        Self { turkiumd: None, cpu_miner: None }
     }
 
-    pub fn with_Turkiumd(mut self, Turkiumd: Arc<dyn TurkiumdCtl + Send + Sync + 'static>) -> Self {
-        self.Turkiumd = Some(Turkiumd);
+    pub fn with_turkiumd(mut self, turkiumd: Arc<dyn TurkiumdCtl + Send + Sync + 'static>) -> Self {
+        self.turkiumd = Some(turkiumd);
         self
     }
 
@@ -81,12 +81,12 @@ impl Daemons {
         self
     }
 
-    pub fn Turkiumd(&self) -> Arc<dyn TurkiumdCtl + Send + Sync + 'static> {
-        self.Turkiumd.as_ref().expect("accessing Daemons::Turkiumd while Turkiumd option is None").clone()
+    pub fn turkiumd(&self) -> Arc<dyn TurkiumdCtl + Send + Sync + 'static> {
+        self.turkiumd.as_ref().expect("accessing Daemons::turkiumd while turkiumd option is None").clone()
     }
 
-    pub fn try_Turkiumd(&self) -> Option<Arc<dyn TurkiumdCtl + Send + Sync + 'static>> {
-        self.Turkiumd.clone()
+    pub fn try_turkiumd(&self) -> Option<Arc<dyn TurkiumdCtl + Send + Sync + 'static>> {
+        self.turkiumd.clone()
     }
 
     pub fn cpu_miner(&self) -> Arc<dyn CpuMinerCtl + Send + Sync + 'static> {

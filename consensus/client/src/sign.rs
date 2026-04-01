@@ -3,7 +3,7 @@
 //!
 
 use crate::transaction::Transaction;
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     hashing::{
         sighash::{SigHashReusedValuesUnsync, calc_schnorr_signature_hash},
         sighash_type::SIG_HASH_ALL,

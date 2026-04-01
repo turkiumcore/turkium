@@ -1,1 +1,1 @@
-pub type RpcSubnetworkId = Turkium_consensus_core::subnets::SubnetworkId;
+pub type RpcSubnetworkId = turkium_consensus_core::subnets::SubnetworkId;

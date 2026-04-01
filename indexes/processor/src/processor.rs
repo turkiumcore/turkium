@@ -2,18 +2,18 @@ use crate::{
     IDENT,
     errors::{IndexError, IndexResult},
 };
-use Turkium_consensus_notify::{notification as consensus_notification, notification::Notification as ConsensusNotification};
-use Turkium_core::{debug, trace};
-use Turkium_index_core::notification::{Notification, PruningPointUtxoSetOverrideNotification, UtxosChangedNotification};
-use Turkium_notify::{
+use turkium_consensus_notify::{notification as consensus_notification, notification::Notification as ConsensusNotification};
+use turkium_core::{debug, trace};
+use turkium_index_core::notification::{Notification, PruningPointUtxoSetOverrideNotification, UtxosChangedNotification};
+use turkium_notify::{
     collector::{Collector, CollectorNotificationReceiver},
     error::Result,
     events::EventType,
     notification::Notification as NotificationTrait,
     notifier::DynNotify,
 };
-use Turkium_utils::triggers::SingleTrigger;
-use Turkium_utxoindex::api::UtxoIndexProxy;
+use turkium_utils::triggers::SingleTrigger;
+use turkium_utxoindex::api::UtxoIndexProxy;
 use async_trait::async_trait;
 use std::sync::{
     Arc,
@@ -128,14 +128,14 @@ impl Collector<Notification> for Processor {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use Turkium_consensus::{config::Config, consensus::test_consensus::TestConsensus, params::DEVNET_PARAMS, test_helpers::*};
-    use Turkium_consensus_core::utxo::{utxo_collection::UtxoCollection, utxo_diff::UtxoDiff};
-    use Turkium_consensusmanager::ConsensusManager;
-    use Turkium_database::create_temp_db;
-    use Turkium_database::prelude::ConnBuilder;
-    use Turkium_database::utils::DbLifetime;
-    use Turkium_notify::notifier::test_helpers::NotifyMock;
-    use Turkium_utxoindex::UtxoIndex;
+    use turkium_consensus::{config::Config, consensus::test_consensus::TestConsensus, params::DEVNET_PARAMS, test_helpers::*};
+    use turkium_consensus_core::utxo::{utxo_collection::UtxoCollection, utxo_diff::UtxoDiff};
+    use turkium_consensusmanager::ConsensusManager;
+    use turkium_database::create_temp_db;
+    use turkium_database::prelude::ConnBuilder;
+    use turkium_database::utils::DbLifetime;
+    use turkium_notify::notifier::test_helpers::NotifyMock;
+    use turkium_utxoindex::UtxoIndex;
     use async_channel::{Receiver, Sender, unbounded};
     use rand::{SeedableRng, rngs::SmallRng};
     use std::sync::Arc;

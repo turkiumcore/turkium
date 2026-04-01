@@ -3,8 +3,8 @@
 pub use crate::client::*;
 pub use crate::resolver::Resolver;
 pub use crate::result::Result;
-pub use Turkium_consensus_core::network::{NetworkId, NetworkIdT};
-pub use Turkium_notify::{
+pub use turkium_consensus_core::network::{NetworkId, NetworkIdT};
+pub use turkium_notify::{
     error::{Error as NotifyError, Result as NotifyResult},
     events::EVENT_TYPE_ARRAY,
     listener::ListenerId,
@@ -12,7 +12,7 @@ pub use Turkium_notify::{
     scope::*,
     subscriber::{Subscriber, SubscriptionManager},
 };
-pub use Turkium_rpc_core::{
+pub use turkium_rpc_core::{
     api::ops::RpcApiOps,
     api::rpc::RpcApi,
     error::RpcResult,

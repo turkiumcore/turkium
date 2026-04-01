@@ -1,5 +1,5 @@
 use crate::indexed_utxos::{UtxoChanges, UtxoSetByScriptPublicKey};
-use Turkium_notify::{
+use turkium_notify::{
     events::EventType,
     full_featured,
     notification::Notification as NotificationTrait,

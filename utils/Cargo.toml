@@ -1,6 +1,6 @@
 [package]
-name = "Turkium-utils"
-description = "Turkium utilities"
+name = "turkium-utils"
+description = "turkium utilities"
 rust-version.workspace = true
 version.workspace = true
 edition.workspace = true

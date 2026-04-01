@@ -1,9 +1,9 @@
 use crate::imports::*;
-use Turkium_rpc_core::api::ops::RpcApiOps;
+use turkium_rpc_core::api::ops::RpcApiOps;
 use convert_case::{Case, Casing};
 
 #[derive(Default, Handler)]
-#[help("Execute RPC commands against the connected Turkium node")]
+#[help("Execute RPC commands against the connected turkium node")]
 pub struct Rpc;
 
 impl Rpc {
@@ -181,7 +181,7 @@ impl Rpc {
                 let addresses = argv.iter().map(|s| Address::try_from(s.as_str())).collect::<std::result::Result<Vec<_>, _>>()?;
                 for address in addresses {
                     let result = rpc.get_balance_by_address_call(None, GetBalanceByAddressRequest { address }).await?;
-                    self.println(&ctx, sompi_to_Turkium(result.balance));
+                    self.println(&ctx, sompi_to_turkium(result.balance));
                 }
             }
             RpcApiOps::GetBalancesByAddresses => {

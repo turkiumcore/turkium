@@ -2,7 +2,7 @@ use std::{collections::HashSet, sync::Arc};
 
 use super::BlockBodyProcessor;
 use crate::errors::{BlockProcessResult, RuleError};
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     block::Block,
     mass::{ContextualMasses, Mass, NonContextualMasses},
     merkle::calc_hash_merkle_root,
@@ -138,7 +138,7 @@ mod tests {
         errors::RuleError,
         params::MAINNET_PARAMS,
     };
-    use Turkium_consensus_core::{
+    use turkium_consensus_core::{
         api::{BlockValidationFutures, ConsensusApi},
         block::MutableBlock,
         header::Header,
@@ -146,8 +146,8 @@ mod tests {
         subnets::{SUBNETWORK_ID_COINBASE, SUBNETWORK_ID_NATIVE},
         tx::{ScriptPublicKey, Transaction, TransactionId, TransactionInput, TransactionOutpoint, TransactionOutput, scriptvec},
     };
-    use Turkium_core::assert_match;
-    use Turkium_hashes::Hash;
+    use turkium_core::assert_match;
+    use turkium_hashes::Hash;
 
     #[test]
     fn validate_body_in_isolation_test() {

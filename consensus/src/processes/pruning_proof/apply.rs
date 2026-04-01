@@ -4,7 +4,7 @@ use std::{
     sync::Arc,
 };
 
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     BlockHashMap, BlockHashSet, HashMapCustomHasher,
     blockhash::{BlockHashes, ORIGIN},
     errors::pruning::{PruningImportError, PruningImportResult},
@@ -12,10 +12,10 @@ use Turkium_consensus_core::{
     pruning::PruningPointProof,
     trusted::TrustedBlock,
 };
-use Turkium_core::{debug, trace};
-use Turkium_hashes::Hash;
-use Turkium_pow::calc_block_level;
-use Turkium_utils::{binary_heap::BinaryHeapExtensions, vec::VecExtensions};
+use turkium_core::{debug, trace};
+use turkium_hashes::Hash;
+use turkium_pow::calc_block_level;
+use turkium_utils::{binary_heap::BinaryHeapExtensions, vec::VecExtensions};
 use itertools::Itertools;
 use rocksdb::WriteBatch;
 

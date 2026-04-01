@@ -1,9 +1,9 @@
 use crate::RpcError;
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     BlueWorkType,
     header::{CompressedParents, Header},
 };
-use Turkium_hashes::Hash;
+use turkium_hashes::Hash;
 use borsh::{BorshDeserialize, BorshSerialize};
 use serde::{Deserialize, Serialize};
 use workflow_serializer::prelude::*;

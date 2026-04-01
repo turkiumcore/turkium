@@ -107,7 +107,7 @@ impl BorshDeserialize for WalletStorage {
         if magic != Self::STORAGE_MAGIC {
             return Err(IoError::new(
                 IoErrorKind::InvalidData,
-                format!("This does not seem to be a Turkium wallet data file. Unknown file signature '0x{:x}'.", magic),
+                format!("This does not seem to be a turkium wallet data file. Unknown file signature '0x{:x}'.", magic),
             ));
         }
 

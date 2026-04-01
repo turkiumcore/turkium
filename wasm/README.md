@@ -1,7 +1,7 @@
 
 ## WASM32 bindings for Rusty Turkium SDK
 
-[<img alt="github" src="https://img.shields.io/badge/github-Turkiumnet/rusty--Turkium-8da0cb?style=for-the-badge&labelColor=555555&color=8da0cb&logo=github" height="20">](https://github.com/Turkiumnet/rusty-Turkium/tree/master/wasm)
+[<img alt="github" src="https://img.shields.io/badge/github-turkiumnet/rusty--Turkium-8da0cb?style=for-the-badge&labelColor=555555&color=8da0cb&logo=github" height="20">](https://github.com/turkiumnet/rusty-turkium/tree/master/wasm)
 [<img alt="crates.io" src="https://img.shields.io/crates/v/Turkium-wasm.svg?maxAge=2592000&style=for-the-badge&color=fc8d62&logo=rust" height="20">](https://crates.io/crates/Turkium-wasm)
 [<img alt="docs.rs" src="https://img.shields.io/badge/docs.rs-Turkium--wasm-56c2a5?maxAge=2592000&style=for-the-badge&logo=docs.rs" height="20">](https://docs.rs/Turkium-wasm)
 <img alt="license" src="https://img.shields.io/crates/l/Turkium-wasm.svg?maxAge=2592000&color=6ac&style=for-the-badge&logoColor=fff" height="20">
@@ -26,7 +26,7 @@ types will not be constrained by TypeScript type definitions.
 
 The SDK is currently separated into the following top-level categories:
 
-- **RPC API** — RPC API for the Turkium node using WebSockets.
+- **RPC API** — RPC API for the turkium node using WebSockets.
 - **Wallet SDK** — Bindings for primitives related to key management and transactions.
 - **Wallet API** — API for the Rusty Turkium Wallet framework.
 
@@ -65,7 +65,7 @@ file in a web browser.
 ## Building from Source
 
 To build the WASM32 SDK from source, you need to have the Rust environment installed. To do that,
-follow instructions in the [Rusty Turkium README](https://github.com/Turkiumnet/rusty-Turkium).
+follow instructions in the [Rusty Turkium README](https://github.com/turkiumnet/rusty-turkium).
 
 Once you have Rust installed, you can build the WASM32 SDK as follows:
 
@@ -80,7 +80,7 @@ Please note that to build from source, you need to have TypeDoc installed global
 
 **IMPORTANT:** To view web examples, you need to serve them from a local web server and
 serve them from the root of the SDK folder (`Turkium-wasm32-sdk` if using a redistributable or
-`rusty-Turkium/wasm` if building from source). This is because examples use relative paths.
+`rusty-turkium/wasm` if building from source). This is because examples use relative paths.
 WASM32 currently can not be loaded using the `file://` protocol.
 
 You can use any web server of your choice. If you don't have one, you can run one as follows:
@@ -132,9 +132,9 @@ before loading the WASM32 library. The compatible WebSocket library is [WebSocke
 <html>
     <head>
         <script type="module">
-            import * as Turkium from './Turkium/Turkium-wasm.js';
+            import * as Turkium from './turkium/turkium-wasm.js';
             (async () => {
-                await Turkium.default('./Turkium/Turkium-wasm_bg.wasm');
+                await Turkium.default('./turkium/turkium-wasm_bg.wasm');
                 console.log(Turkium.version());
                 // ...
             })();

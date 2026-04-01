@@ -3,7 +3,7 @@
 //!
 
 use crate::result::Result;
-use Turkium_bip32::ExtendedPublicKey;
+use turkium_bip32::ExtendedPublicKey;
 use async_trait::async_trait;
 use std::{collections::HashMap, sync::Arc};
 

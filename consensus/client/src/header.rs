@@ -5,10 +5,10 @@
 #![allow(non_snake_case)]
 
 use crate::error::Error;
-use Turkium_consensus_core::hashing;
-use Turkium_consensus_core::header as native;
-use Turkium_hashes::Hash;
-use Turkium_utils::hex::ToHex;
+use turkium_consensus_core::hashing;
+use turkium_consensus_core::header as native;
+use turkium_hashes::Hash;
+use turkium_utils::hex::ToHex;
 use js_sys::{Array, Object};
 use serde::{Deserialize, Serialize};
 use serde_wasm_bindgen::*;

@@ -115,7 +115,7 @@ impl Debug for DbKey {
 mod tests {
     use super::*;
     use DatabaseStorePrefixes::*;
-    use Turkium_hashes::{HASH_SIZE, Hash};
+    use turkium_hashes::{HASH_SIZE, Hash};
 
     #[test]
     fn test_key_display() {

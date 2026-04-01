@@ -2,7 +2,7 @@
 /*!
 # Rusty Turkium WASM32 bindings
 
-[<img alt="github" src="https://img.shields.io/badge/github-Turkiumnet/rusty--Turkium-8da0cb?style=for-the-badge&labelColor=555555&color=8da0cb&logo=github" height="20">](https://github.com/Turkiumnet/rusty-Turkium/tree/master/wasm)
+[<img alt="github" src="https://img.shields.io/badge/github-turkiumnet/rusty--Turkium-8da0cb?style=for-the-badge&labelColor=555555&color=8da0cb&logo=github" height="20">](https://github.com/turkiumnet/rusty-Turkium/tree/master/wasm)
 [<img alt="crates.io" src="https://img.shields.io/crates/v/Turkium-wasm.svg?maxAge=2592000&style=for-the-badge&color=fc8d62&logo=rust" height="20">](https://crates.io/crates/Turkium-wasm)
 [<img alt="docs.rs" src="https://img.shields.io/badge/docs.rs-Turkium--wasm-56c2a5?maxAge=2592000&style=for-the-badge&logo=docs.rs" height="20">](https://docs.rs/Turkium-wasm)
 <img alt="license" src="https://img.shields.io/crates/l/Turkium-wasm.svg?maxAge=2592000&color=6ac&style=for-the-badge&logoColor=fff" height="20">
@@ -27,7 +27,7 @@ to the 'snake_case' convention in Rust.
 The APIs are currently separated into the following groups (this will be expanded in the future):
 
 - **Consensus Client API** — Bindings for primitives related to transactions.
-- **RPC API** — [RPC interface bindings](Turkium_wrpc_wasm::client) for the Turkium node using WebSocket (wRPC) connections.
+- **RPC API** — [RPC interface bindings](turkium_wrpc_wasm::client) for the turkium node using WebSocket (wRPC) connections.
 - **Wallet SDK** — API for async core wallet processing tasks.
 - **Wallet API** — A rust implementation of the fully-featured wallet usable in the native Rust, Browser or NodeJs and Bun environments.
 
@@ -51,13 +51,13 @@ download pre-built redistributables from releases or development builds.
 ## Examples
 
 JavaScript examples for using this framework can be found at:
-<https://github.com/Turkiumnet/rusty-Turkium/tree/master/wasm/nodejs>
+<https://github.com/turkiumnet/rusty-Turkium/tree/master/wasm/nodejs>
 
 ## WASM32 Binaries
 
 For pre-built browser-compatible WASM32 redistributables of this
 framework please see the releases section of the Rusty Turkium
-repository at <https://github.com/Turkiumnet/rusty-Turkium/releases>.
+repository at <https://github.com/turkiumnet/rusty-Turkium/releases>.
 
 ## Development Builds
 
@@ -77,7 +77,7 @@ in the NodeJS environment, you need to introduce a global W3C WebSocket
 object before loading the WASM32 library (to simulate the browser behavior).
 You can the [WebSocket](https://www.npmjs.com/package/websocket)
 module that offers W3C WebSocket compatibility and is compatible
-with Turkium RPC implementation.
+with turkium RPC implementation.
 
 You can use the following shims:
 
@@ -92,9 +92,9 @@ globalThis.WebSocket = require('websocket').w3cwebsocket;
 <html>
     <head>
         <script type="module">
-            import * as Turkium_wasm from './Turkium/Turkium-wasm.js';
+            import * as turkium_wasm from './turkium/turkium-wasm.js';
             (async () => {
-                const Turkium = await Turkium_wasm.default('./Turkium/Turkium-wasm_bg.wasm');
+                const Turkium = await turkium_wasm.default('./turkium/turkium-wasm_bg.wasm');
                 // ...
             })();
         </script>
@@ -160,76 +160,76 @@ cfg_if::cfg_if! {
 
     if #[cfg(feature = "wasm32-sdk")] {
 
-        pub use Turkium_addresses::{Address, Version as AddressVersion};
-        pub use Turkium_consensus_core::tx::{ScriptPublicKey, Transaction, TransactionInput, TransactionOutpoint, TransactionOutput};
-        pub use Turkium_pow::wasm::*;
-        pub use Turkium_txscript::wasm::*;
+        pub use turkium_addresses::{Address, Version as AddressVersion};
+        pub use turkium_consensus_core::tx::{ScriptPublicKey, Transaction, TransactionInput, TransactionOutpoint, TransactionOutput};
+        pub use turkium_pow::wasm::*;
+        pub use turkium_txscript::wasm::*;
 
         pub mod rpc {
-            //! Turkium RPC interface
+            //! turkium RPC interface
             //!
 
             pub mod messages {
-                //! Turkium RPC messages
-                pub use Turkium_rpc_core::model::message::*;
+                //! turkium RPC messages
+                pub use turkium_rpc_core::model::message::*;
             }
-            pub use Turkium_rpc_core::api::rpc::RpcApi;
-            pub use Turkium_rpc_core::wasm::message::*;
+            pub use turkium_rpc_core::api::rpc::RpcApi;
+            pub use turkium_rpc_core::wasm::message::*;
 
-            pub use Turkium_wrpc_wasm::client::*;
-            pub use Turkium_wrpc_wasm::resolver::*;
-            pub use Turkium_wrpc_wasm::notify::*;
+            pub use turkium_wrpc_wasm::client::*;
+            pub use turkium_wrpc_wasm::resolver::*;
+            pub use turkium_wrpc_wasm::notify::*;
         }
 
-        pub use Turkium_consensus_wasm::*;
-        pub use Turkium_wallet_core::wasm::*;
-        pub use Turkium_wallet_keys::prelude::*;
-        pub use Turkium_bip32::wasm::*;
+        pub use turkium_consensus_wasm::*;
+        pub use turkium_wallet_core::wasm::*;
+        pub use turkium_wallet_keys::prelude::*;
+        pub use turkium_bip32::wasm::*;
 
     } else if #[cfg(feature = "wasm32-core")] {
 
-        pub use Turkium_addresses::{Address, Version as AddressVersion};
-        pub use Turkium_consensus_core::tx::{ScriptPublicKey, Transaction, TransactionInput, TransactionOutpoint, TransactionOutput};
-        pub use Turkium_pow::wasm::*;
-        pub use Turkium_txscript::wasm::*;
+        pub use turkium_addresses::{Address, Version as AddressVersion};
+        pub use turkium_consensus_core::tx::{ScriptPublicKey, Transaction, TransactionInput, TransactionOutpoint, TransactionOutput};
+        pub use turkium_pow::wasm::*;
+        pub use turkium_txscript::wasm::*;
 
         pub mod rpc {
-            //! Turkium RPC interface
+            //! turkium RPC interface
             //!
 
             pub mod messages {
-                //! Turkium RPC messages
-                pub use Turkium_rpc_core::model::message::*;
+                //! turkium RPC messages
+                pub use turkium_rpc_core::model::message::*;
             }
-            pub use Turkium_rpc_core::api::rpc::RpcApi;
-            pub use Turkium_rpc_core::wasm::message::*;
+            pub use turkium_rpc_core::api::rpc::RpcApi;
+            pub use turkium_rpc_core::wasm::message::*;
 
-            pub use Turkium_wrpc_wasm::client::*;
-            pub use Turkium_wrpc_wasm::resolver::*;
-            pub use Turkium_wrpc_wasm::notify::*;
+            pub use turkium_wrpc_wasm::client::*;
+            pub use turkium_wrpc_wasm::resolver::*;
+            pub use turkium_wrpc_wasm::notify::*;
         }
 
-        pub use Turkium_consensus_wasm::*;
-        pub use Turkium_wallet_keys::prelude::*;
-        pub use Turkium_wallet_core::wasm::*;
-        pub use Turkium_bip32::wasm::*;
+        pub use turkium_consensus_wasm::*;
+        pub use turkium_wallet_keys::prelude::*;
+        pub use turkium_wallet_core::wasm::*;
+        pub use turkium_bip32::wasm::*;
 
     } else if #[cfg(feature = "wasm32-rpc")] {
 
-        pub use Turkium_rpc_core::api::rpc::RpcApi;
-        pub use Turkium_rpc_core::wasm::message::*;
-        pub use Turkium_rpc_core::wasm::message::IPingRequest;
-        pub use Turkium_wrpc_wasm::client::*;
-        pub use Turkium_wrpc_wasm::resolver::*;
-        pub use Turkium_wrpc_wasm::notify::*;
-        pub use Turkium_wasm_core::types::*;
+        pub use turkium_rpc_core::api::rpc::RpcApi;
+        pub use turkium_rpc_core::wasm::message::*;
+        pub use turkium_rpc_core::wasm::message::IPingRequest;
+        pub use turkium_wrpc_wasm::client::*;
+        pub use turkium_wrpc_wasm::resolver::*;
+        pub use turkium_wrpc_wasm::notify::*;
+        pub use turkium_wasm_core::types::*;
 
     } else if #[cfg(feature = "wasm32-keygen")] {
 
-        pub use Turkium_addresses::{Address, Version as AddressVersion};
-        pub use Turkium_wallet_keys::prelude::*;
-        pub use Turkium_wasm_core::types::*;
-        pub use Turkium_bip32::wasm::*;
+        pub use turkium_addresses::{Address, Version as AddressVersion};
+        pub use turkium_wallet_keys::prelude::*;
+        pub use turkium_wasm_core::types::*;
+        pub use turkium_bip32::wasm::*;
 
     }
 }

@@ -3,7 +3,7 @@
 //!
 
 use crate::model::message::*;
-use Turkium_notify::{
+use turkium_notify::{
     events::EventType,
     notification::{Notification as NotificationTrait, full_featured},
     subscription::{

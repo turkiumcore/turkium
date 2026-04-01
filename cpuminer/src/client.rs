@@ -126,7 +126,7 @@ impl TurkiumdHandler {
                 }
                 info!("Get block response: {:?}", msg);
             }
-            Payload::GetInfoResponse(info) => info!("Turkiumd version: {}", info.server_version),
+            Payload::GetInfoResponse(info) => info!("turkiumd version: {}", info.server_version),
             Payload::NotifyNewBlockTemplateResponse(res) => match res.error {
                 None => info!("Registered for new template notifications"),
                 Some(e) => error!("Failed registering for new template notifications: {:?}", e),

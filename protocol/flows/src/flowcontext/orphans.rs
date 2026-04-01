@@ -1,10 +1,10 @@
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     api::{BlockValidationFuture, BlockValidationFutures},
     block::Block,
 };
-use Turkium_consensusmanager::{BlockProcessingBatch, ConsensusProxy};
-use Turkium_core::debug;
-use Turkium_hashes::Hash;
+use turkium_consensusmanager::{BlockProcessingBatch, ConsensusProxy};
+use turkium_core::debug;
+use turkium_hashes::Hash;
 use indexmap::{IndexMap, map::Entry::Occupied};
 use rand::Rng;
 use std::{
@@ -273,13 +273,13 @@ impl OrphanBlocksPool {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use Turkium_consensus_core::{
+    use turkium_consensus_core::{
         api::{BlockValidationFutures, ConsensusApi},
         blockstatus::BlockStatus,
         errors::block::BlockProcessResult,
     };
-    use Turkium_consensusmanager::{ConsensusInstance, SessionLock};
-    use Turkium_core::assert_match;
+    use turkium_consensusmanager::{ConsensusInstance, SessionLock};
+    use turkium_core::assert_match;
     use futures::future::try_join_all;
     use parking_lot::RwLock;
     use std::sync::Arc;

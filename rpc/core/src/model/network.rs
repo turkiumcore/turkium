@@ -1,4 +1,4 @@
-use Turkium_consensus_core::network::{NetworkId, NetworkType};
+use turkium_consensus_core::network::{NetworkId, NetworkType};
 
 pub type RpcNetworkType = NetworkType;
 pub type RpcNetworkId = NetworkId;

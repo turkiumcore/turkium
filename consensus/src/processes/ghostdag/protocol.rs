@@ -1,11 +1,11 @@
 use std::sync::Arc;
 
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     BlockHashMap, BlockLevel, BlueWorkType, HashMapCustomHasher,
     blockhash::{self, BlockHashExtensions, BlockHashes},
 };
-use Turkium_hashes::Hash;
-use Turkium_utils::refs::Refs;
+use turkium_hashes::Hash;
+use turkium_utils::refs::Refs;
 
 use crate::{
     model::{

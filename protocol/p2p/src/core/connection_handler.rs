@@ -4,9 +4,9 @@ use crate::pb::{
     TurkiumdMessage, p2p_client::P2pClient as ProtoP2pClient, p2p_server::P2p as ProtoP2p, p2p_server::P2pServer as ProtoP2pServer,
 };
 use crate::{ConnectionInitializer, Router};
-use Turkium_core::{debug, info};
-use Turkium_utils::networking::NetAddress;
-use Turkium_utils_tower::{
+use turkium_core::{debug, info};
+use turkium_utils::networking::NetAddress;
+use turkium_utils_tower::{
     counters::TowerConnectionCounters,
     middleware::{BodyExt, CountBytesBody, MapRequestBodyLayer, MapResponseBodyLayer, ServiceBuilder},
 };
@@ -177,7 +177,7 @@ impl ConnectionHandler {
 
     // TODO: revisit the below constants
     fn outgoing_network_channel_size() -> usize {
-        // TODO: this number is taken from go-Turkiumd and should be re-evaluated
+        // TODO: this number is taken from go-turkiumd and should be re-evaluated
         (1 << 17) + 256
     }
 

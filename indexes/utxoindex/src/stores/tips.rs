@@ -1,11 +1,11 @@
 use std::sync::Arc;
 
-use Turkium_database::{
+use turkium_database::{
     prelude::{CachedDbItem, DB, DirectDbWriter, StoreError, StoreResult},
     registry::DatabaseStorePrefixes,
 };
 
-use Turkium_consensus_core::BlockHashSet;
+use turkium_consensus_core::BlockHashSet;
 
 /// Reader API for `UtxoIndexTipsStore`.
 pub trait UtxoIndexTipsStoreReader {

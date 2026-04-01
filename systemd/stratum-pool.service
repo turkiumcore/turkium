@@ -9,14 +9,14 @@ Requires=turkiumd.service
 Type=simple
 User=turkium
 Group=turkium
-WorkingDirectory=/opt/turkium
+WorkingDirectory=/opt/turkium/data
 
 # Start the stratum pool
 ExecStart=/opt/turkium/stratum-pool
 
 # Restart policy
 Restart=always
-RestartSec=10
+RestartSec=30
 StartLimitInterval=600
 StartLimitBurst=5
 
@@ -26,9 +26,9 @@ LimitNPROC=65536
 
 # Security
 NoNewPrivileges=true
-PrivateTmp=true
-ProtectSystem=strict
-ProtectHome=yes
+PrivateTmp=false
+ProtectSystem=no
+ProtectHome=no
 ReadWritePaths=/opt/turkium/data
 
 # Logging
@@ -38,6 +38,7 @@ SyslogIdentifier=stratum-pool
 
 # Environment
 Environment="RUST_LOG=info"
+Environment="HOME=/opt/turkium/data"
 
 [Install]
 WantedBy=multi-user.target

@@ -4,18 +4,18 @@
 
 use std::sync::Arc;
 
-pub use Turkium_rpc_core::api::ctl::RpcCtl;
-pub use Turkium_rpc_core::api::rpc::RpcApi;
-pub use Turkium_rpc_core::notify::mode::NotificationMode;
-pub use Turkium_wrpc_client::Resolver;
-pub use Turkium_wrpc_client::WrpcEncoding;
-pub use Turkium_wrpc_client::client::{ConnectOptions, ConnectStrategy};
+pub use turkium_rpc_core::api::ctl::RpcCtl;
+pub use turkium_rpc_core::api::rpc::RpcApi;
+pub use turkium_rpc_core::notify::mode::NotificationMode;
+pub use turkium_wrpc_client::Resolver;
+pub use turkium_wrpc_client::WrpcEncoding;
+pub use turkium_wrpc_client::client::{ConnectOptions, ConnectStrategy};
 
 /// Type alias for [`dyn RpcApi`](RpcApi).
 pub type DynRpcApi = dyn RpcApi;
-/// Type alias for a concrete [`Channel`](Turkium_utils::channel::Channel)
-/// used for handling RPC [`Notification`](Turkium_rpc_core::Notification) events.
-pub type NotificationChannel = Turkium_utils::channel::Channel<Turkium_rpc_core::Notification>;
+/// Type alias for a concrete [`Channel`](turkium_utils::channel::Channel)
+/// used for handling RPC [`Notification`](turkium_rpc_core::Notification) events.
+pub type NotificationChannel = turkium_utils::channel::Channel<turkium_rpc_core::Notification>;
 
 /// RPC adaptor class that holds the [`RpcApi`]
 /// and [`RpcCtl`] instances.

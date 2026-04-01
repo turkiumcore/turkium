@@ -1,19 +1,19 @@
 use crate::protowire;
 use crate::{from, try_from};
-use Turkium_rpc_core::RpcError;
+use turkium_rpc_core::RpcError;
 
 // ----------------------------------------------------------------------------
 // rpc_core to protowire
 // ----------------------------------------------------------------------------
 
-from!(item: &Turkium_rpc_core::RpcFeerateBucket, protowire::RpcFeerateBucket, {
+from!(item: &turkium_rpc_core::RpcFeerateBucket, protowire::RpcFeerateBucket, {
     Self {
         feerate: item.feerate,
         estimated_seconds: item.estimated_seconds,
     }
 });
 
-from!(item: &Turkium_rpc_core::RpcFeeEstimate, protowire::RpcFeeEstimate, {
+from!(item: &turkium_rpc_core::RpcFeeEstimate, protowire::RpcFeeEstimate, {
     Self {
         priority_bucket: Some((&item.priority_bucket).into()),
         normal_buckets: item.normal_buckets.iter().map(|b| b.into()).collect(),
@@ -21,7 +21,7 @@ from!(item: &Turkium_rpc_core::RpcFeeEstimate, protowire::RpcFeeEstimate, {
     }
 });
 
-from!(item: &Turkium_rpc_core::RpcFeeEstimateVerboseExperimentalData, protowire::RpcFeeEstimateVerboseExperimentalData, {
+from!(item: &turkium_rpc_core::RpcFeeEstimateVerboseExperimentalData, protowire::RpcFeeEstimateVerboseExperimentalData, {
     Self {
         network_mass_per_second: item.network_mass_per_second,
         mempool_ready_transactions_count: item.mempool_ready_transactions_count,
@@ -36,14 +36,14 @@ from!(item: &Turkium_rpc_core::RpcFeeEstimateVerboseExperimentalData, protowire:
 // protowire to rpc_core
 // ----------------------------------------------------------------------------
 
-try_from!(item: &protowire::RpcFeerateBucket, Turkium_rpc_core::RpcFeerateBucket, {
+try_from!(item: &protowire::RpcFeerateBucket, turkium_rpc_core::RpcFeerateBucket, {
     Self {
         feerate: item.feerate,
         estimated_seconds: item.estimated_seconds,
     }
 });
 
-try_from!(item: &protowire::RpcFeeEstimate, Turkium_rpc_core::RpcFeeEstimate, {
+try_from!(item: &protowire::RpcFeeEstimate, turkium_rpc_core::RpcFeeEstimate, {
     Self {
         priority_bucket: item.priority_bucket
             .as_ref()
@@ -54,7 +54,7 @@ try_from!(item: &protowire::RpcFeeEstimate, Turkium_rpc_core::RpcFeeEstimate, {
     }
 });
 
-try_from!(item: &protowire::RpcFeeEstimateVerboseExperimentalData, Turkium_rpc_core::RpcFeeEstimateVerboseExperimentalData, {
+try_from!(item: &protowire::RpcFeeEstimateVerboseExperimentalData, turkium_rpc_core::RpcFeeEstimateVerboseExperimentalData, {
     Self {
         network_mass_per_second: item.network_mass_per_second,
         mempool_ready_transactions_count: item.mempool_ready_transactions_count,

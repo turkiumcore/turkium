@@ -3,14 +3,14 @@ use crate::model::stores::{
     ghostdag::{GhostdagData, GhostdagStoreReader},
     headers::HeaderStoreReader,
 };
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     BlockHashSet, BlueWorkType, MAX_WORK_LEVEL,
     config::params::MAX_DIFFICULTY_TARGET_AS_F64,
     errors::difficulty::{DifficultyError, DifficultyResult},
 };
-use Turkium_core::{info, log::CRESCENDO_KEYWORD};
-use Turkium_hashes::Hash;
-use Turkium_math::{Uint256, Uint320};
+use turkium_core::{info, log::CRESCENDO_KEYWORD};
+use turkium_hashes::Hash;
+use turkium_math::{Uint256, Uint320};
 use std::{
     cmp::{Ordering, max},
     ops::Deref,
@@ -142,7 +142,7 @@ fn _difficulty_desc(target: Uint320) -> String {
     format!("{:.2} {}", rate, suffix)
 }
 
-/// A difficulty manager based on sampled block windows, implementing [KIP-0004](https://github.com/Turkiumnet/kips/blob/master/kip-0004.md)
+/// A difficulty manager based on sampled block windows, implementing [KIP-0004](https://github.com/turkiumnet/kips/blob/master/kip-0004.md)
 #[derive(Clone)]
 pub struct SampledDifficultyManager<T: HeaderStoreReader, U: GhostdagStoreReader> {
     headers_store: Arc<T>,
@@ -308,12 +308,12 @@ impl Ord for DifficultyBlock {
 
 #[cfg(test)]
 mod tests {
-    use Turkium_consensus_core::{BlockLevel, BlueWorkType, MAX_WORK_LEVEL};
-    use Turkium_math::{Uint256, Uint320};
-    use Turkium_pow::calc_level_from_pow;
+    use turkium_consensus_core::{BlockLevel, BlueWorkType, MAX_WORK_LEVEL};
+    use turkium_math::{Uint256, Uint320};
+    use turkium_pow::calc_level_from_pow;
 
     use crate::processes::difficulty::{calc_work, level_work};
-    use Turkium_utils::hex::ToHex;
+    use turkium_utils::hex::ToHex;
 
     #[test]
     fn test_target_levels() {

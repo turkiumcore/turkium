@@ -86,8 +86,8 @@ impl Inner {
 ///
 /// This client operates against [Turkium Resolver](https://github.com/aspectron/Turkium-resolver) service
 /// that provides load-balancing and failover capabilities for Turkium wRPC endpoints. The default
-/// configuration allows access to public Turkium nodes, while custom configurations can be supplied
-/// if you are running your own custom Turkium node cluster.
+/// configuration allows access to public turkium nodes, while custom configurations can be supplied
+/// if you are running your own custom turkium node cluster.
 ///
 #[derive(Debug, Clone)]
 pub struct Resolver {

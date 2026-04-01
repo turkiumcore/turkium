@@ -4,8 +4,8 @@ use crate::{
     subnets::SUBNETWORK_ID_COINBASE,
     tx::Transaction,
 };
-use Turkium_hashes::{Hash, ZERO_HASH};
-use Turkium_muhash::EMPTY_MUHASH;
+use turkium_hashes::{Hash, ZERO_HASH};
+use turkium_muhash::EMPTY_MUHASH;
 
 /// The constants uniquely representing the genesis block
 #[derive(Clone, Debug)]
@@ -228,7 +228,7 @@ mod tests {
     fn gen_testnet11_genesis() {
         let bps = TenBps::bps();
         let mut genesis = TESTNET_GENESIS;
-        let target = Turkium_math::Uint256::from_compact_target_bits(genesis.bits);
+        let target = turkium_math::Uint256::from_compact_target_bits(genesis.bits);
         let scaled_target = target * bps / 100;
         let scaled_bits = scaled_target.compact_target_bits();
         genesis.bits = scaled_bits;

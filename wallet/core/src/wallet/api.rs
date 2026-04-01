@@ -9,8 +9,8 @@ use crate::result::Result;
 use crate::storage::Binding;
 use crate::storage::interface::TransactionRangeResult;
 use crate::tx::Fees;
-use Turkium_rpc_core::RpcFeeEstimate;
-use Turkium_wallet_pskt::bundle::Bundle;
+use turkium_rpc_core::RpcFeeEstimate;
+use turkium_wallet_pskt::bundle::Bundle;
 use workflow_core::channel::Receiver;
 #[async_trait]
 impl WalletApi for super::Wallet {

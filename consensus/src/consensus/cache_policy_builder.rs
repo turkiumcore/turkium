@@ -1,5 +1,5 @@
-use Turkium_database::prelude::CachePolicy;
-use Turkium_utils::mem_size::MemMode;
+use turkium_database::prelude::CachePolicy;
+use turkium_utils::mem_size::MemMode;
 use rand::Rng;
 
 /// Adds stochastic noise to cache sizes to avoid predictable and equal sizes across all network nodes

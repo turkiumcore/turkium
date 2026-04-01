@@ -9,7 +9,7 @@
 //! the Turkium p2p network.
 //!
 //! For key generation and derivation, please see the
-//! [`Turkium_wallet_keys`] crate.
+//! [`turkium_wallet_keys`] crate.
 //!
 //! This crate included are low-level primitives
 //! such as [`UtxoProcessor`](crate::utxo::UtxoProcessor)
@@ -35,7 +35,7 @@
 //! allowed transaction mass.
 //!
 //! Key generation and derivation is available in the
-//! [`Turkium_wallet_keys`] crate.
+//! [`turkium_wallet_keys`] crate.
 //!
 //! The framework can operate
 //! within native Rust applications as well as within NodeJS, Bun
@@ -63,15 +63,15 @@
 //! the W3C WebSocket and thus supports RPC.
 //!
 //! JavaScript examples for using this framework can be found at:
-//! <https://github.com/Turkiumnet/rusty-Turkium/tree/master/wasm/nodejs>
+//! <https://github.com/turkiumnet/rusty-Turkium/tree/master/wasm/nodejs>
 //!
 //! For pre-built browser-compatible WASM32 redistributables of this
 //! framework please see the releases section of the Rusty Turkium
-//! repository at <https://github.com/Turkiumnet/rusty-Turkium/releases>.
+//! repository at <https://github.com/turkiumnet/rusty-Turkium/releases>.
 //!
 
 extern crate alloc;
-extern crate self as Turkium_wallet_core;
+extern crate self as turkium_wallet_core;
 
 pub mod account;
 pub mod api;
@@ -107,7 +107,7 @@ pub fn version() -> String {
 
 /// Returns the version of the Wallet framework combined with short git hash.
 pub fn version_with_git_hash() -> String {
-    Turkium_utils::git::with_short_hash(env!("CARGO_PKG_VERSION")).to_string()
+    turkium_utils::git::with_short_hash(env!("CARGO_PKG_VERSION")).to_string()
 }
 
 #[cfg(test)]

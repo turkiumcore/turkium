@@ -4,8 +4,8 @@
 
 use super::UtxoRecord;
 use crate::imports::*;
-use Turkium_consensus_core::tx::Transaction;
-pub use Turkium_consensus_core::tx::TransactionId;
+use turkium_consensus_core::tx::Transaction;
+pub use turkium_consensus_core::tx::TransactionId;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(tag = "type", content = "data")]

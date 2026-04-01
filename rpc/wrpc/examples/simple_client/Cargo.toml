@@ -1,6 +1,6 @@
 [package]
-name = "Turkium-wrpc-simple-client-example"
-description = "Turkium wRPC simple client example"
+name = "turkium-wrpc-simple-client-example"
+description = "turkium wRPC simple client example"
 publish = false
 rust-version.workspace = true
 version.workspace = true
@@ -12,8 +12,8 @@ repository.workspace = true
 
 [dependencies]
 futures.workspace = true
-Turkium-rpc-core.workspace = true
-Turkium-wrpc-client.workspace = true
+turkium-rpc-core.workspace = true
+turkium-wrpc-client.workspace = true
 tokio.workspace = true
 
 

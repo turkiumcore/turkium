@@ -1,5 +1,5 @@
 use crate::imports::*;
-use Turkium_daemon::TurkiumdConfig;
+use turkium_daemon::TurkiumdConfig;
 use workflow_core::task::sleep;
 use workflow_node::process;
 pub use workflow_node::process::Event;
@@ -20,7 +20,7 @@ impl DefaultSettings for TurkiumdSettings {
         let mut settings = vec![(Self::Mute, to_value(true).unwrap())];
 
         let root = nw_sys::app::folder();
-        if let Ok(binaries) = Turkium_daemon::locate_binaries(&root, "Turkiumd").await
+        if let Ok(binaries) = turkium_daemon::locate_binaries(&root, "turkiumd").await
             && let Some(path) = binaries.first()
         {
             settings.push((Self::Location, to_value(path.to_string_lossy().to_string()).unwrap()));
@@ -39,7 +39,7 @@ pub struct Node {
 impl Default for Node {
     fn default() -> Self {
         Node {
-            settings: SettingsStore::try_new("Turkiumd").expect("Failed to create node settings store"),
+            settings: SettingsStore::try_new("turkiumd").expect("Failed to create node settings store"),
             mute: Arc::new(AtomicBool::new(true)),
             is_running: Arc::new(AtomicBool::new(false)),
         }
@@ -50,14 +50,14 @@ impl Default for Node {
 impl Handler for Node {
     fn verb(&self, ctx: &Arc<dyn Context>) -> Option<&'static str> {
         if let Ok(ctx) = ctx.clone().downcast_arc::<TurkiumCli>() {
-            ctx.daemons().clone().Turkiumd.as_ref().map(|_| "node")
+            ctx.daemons().clone().turkiumd.as_ref().map(|_| "node")
         } else {
             None
         }
     }
 
     fn help(&self, _ctx: &Arc<dyn Context>) -> &'static str {
-        "Manage the local Turkium node instance"
+        "Manage the local turkium node instance"
     }
 
     async fn start(self: Arc<Self>, _ctx: &Arc<dyn Context>) -> cli::Result<()> {
@@ -96,20 +96,20 @@ impl Node {
         if argv.is_empty() {
             return self.display_help(ctx, argv).await;
         }
-        let Turkiumd = ctx.daemons().Turkiumd();
+        let turkiumd = ctx.daemons().turkiumd();
         match argv.remove(0).as_str() {
             "start" => {
                 let mute = self.mute.load(Ordering::SeqCst);
                 if mute {
-                    tprintln!(ctx, "starting Turkium node... {}", style("(logs are muted, use 'node mute' to toggle)").dim());
+                    tprintln!(ctx, "starting turkium node... {}", style("(logs are muted, use 'node mute' to toggle)").dim());
                 } else {
-                    tprintln!(ctx, "starting Turkium node... {}", style("(use 'node mute' to mute logging)").dim());
+                    tprintln!(ctx, "starting turkium node... {}", style("(use 'node mute' to mute logging)").dim());
                 }
 
                 let wrpc_client = ctx.wallet().try_wrpc_client().ok_or(Error::custom("Unable to start node with non-wRPC client"))?;
 
-                Turkiumd.configure(self.create_config(&ctx).await?).await?;
-                Turkiumd.start().await?;
+                turkiumd.configure(self.create_config(&ctx).await?).await?;
+                turkiumd.start().await?;
 
                 // temporary setup for auto-connect
                 let url = ctx.wallet().settings().get(WalletSettings::Server);
@@ -138,14 +138,14 @@ impl Node {
                 }
             }
             "stop" => {
-                Turkiumd.stop().await?;
+                turkiumd.stop().await?;
             }
             "restart" => {
-                Turkiumd.configure(self.create_config(&ctx).await?).await?;
-                Turkiumd.restart().await?;
+                turkiumd.configure(self.create_config(&ctx).await?).await?;
+                turkiumd.restart().await?;
             }
             "kill" => {
-                Turkiumd.kill().await?;
+                turkiumd.kill().await?;
             }
             "mute" | "logs" => {
                 let mute = !self.mute.load(Ordering::SeqCst);
@@ -155,11 +155,11 @@ impl Node {
                 } else {
                     tprintln!(ctx, "{}", style("node is unmuted").dim());
                 }
-                // Turkiumd.mute(mute).await?;
+                // turkiumd.mute(mute).await?;
                 self.settings.set(TurkiumdSettings::Mute, mute).await?;
             }
             "status" => {
-                let status = Turkiumd.status().await?;
+                let status = turkiumd.status().await?;
                 tprintln!(ctx, "{}", status);
             }
             "select" => {
@@ -168,8 +168,8 @@ impl Node {
                 self.select(ctx, path.is_not_empty().then_some(path)).await?;
             }
             "version" => {
-                Turkiumd.configure(self.create_config(&ctx).await?).await?;
-                let version = Turkiumd.version().await?;
+                turkiumd.configure(self.create_config(&ctx).await?).await?;
+                let version = turkiumd.version().await?;
                 tprintln!(ctx, "{}", version);
             }
             v => {
@@ -185,13 +185,13 @@ impl Node {
     async fn display_help(self: Arc<Self>, ctx: Arc<TurkiumCli>, _argv: Vec<String>) -> Result<()> {
         ctx.term().help(
             &[
-                ("select", "Select Turkiumd executable (binary) location"),
-                ("version", "Display Turkiumd executable version"),
-                ("start", "Start the local Turkium node instance"),
-                ("stop", "Stop the local Turkium node instance"),
-                ("restart", "Restart the local Turkium node instance"),
-                ("kill", "Kill the local Turkium node instance"),
-                ("status", "Get the status of the local Turkium node instance"),
+                ("select", "Select turkiumd executable (binary) location"),
+                ("version", "Display turkiumd executable version"),
+                ("start", "Start the local turkium node instance"),
+                ("stop", "Stop the local turkium node instance"),
+                ("restart", "Restart the local turkium node instance"),
+                ("kill", "Kill the local turkium node instance"),
+                ("status", "Get the status of the local turkium node instance"),
                 ("mute", "Toggle log output"),
             ],
             None,
@@ -205,13 +205,13 @@ impl Node {
 
         match path {
             None => {
-                let binaries = Turkium_daemon::locate_binaries(root.as_str(), "Turkiumd").await?;
+                let binaries = turkium_daemon::locate_binaries(root.as_str(), "turkiumd").await?;
 
                 if binaries.is_empty() {
-                    tprintln!(ctx, "No Turkiumd binaries found");
+                    tprintln!(ctx, "No turkiumd binaries found");
                 } else {
                     let binaries = binaries.iter().map(|p| p.display().to_string()).collect::<Vec<_>>();
-                    if let Some(selection) = ctx.term().select("Please select a Turkiumd binary", &binaries).await? {
+                    if let Some(selection) = ctx.term().select("Please select a turkiumd binary", &binaries).await? {
                         tprintln!(ctx, "selecting: {}", selection);
                         self.settings.set(TurkiumdSettings::Location, selection.as_str()).await?;
                     } else {
@@ -227,7 +227,7 @@ impl Node {
                     self.settings.set(TurkiumdSettings::Location, path.as_str()).await?;
                 } else {
                     twarnln!(ctx, "destination binary not found, please specify full path including the binary name");
-                    twarnln!(ctx, "example: 'node select /home/user/testnet/Turkiumd'");
+                    twarnln!(ctx, "example: 'node select /home/user/testnet/turkiumd'");
                     tprintln!(ctx, "no selection is made");
                 }
             }
@@ -245,12 +245,12 @@ impl Node {
                 term.refresh_prompt();
             }
             Event::Exit(_code) => {
-                tprintln!(ctx, "Turkiumd has exited");
+                tprintln!(ctx, "turkiumd has exited");
                 self.is_running.store(false, Ordering::SeqCst);
                 term.refresh_prompt();
             }
             Event::Error(error) => {
-                tprintln!(ctx, "{}", style(format!("Turkiumd error: {error}")).red());
+                tprintln!(ctx, "{}", style(format!("turkiumd error: {error}")).red());
                 self.is_running.store(false, Ordering::SeqCst);
                 term.refresh_prompt();
             }

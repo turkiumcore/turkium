@@ -1,24 +1,22 @@
 use crate::config::PoolConfig;
 use crate::database::Database;
 use anyhow::Result;
-use log::info;
 use std::sync::Arc;
+use tokio::sync::Mutex;
 
 pub struct ShareProcessor {
     db: Arc<Database>,
-    _blockchain: Arc<crate::blockchain::BlockchainClient>,
     config: PoolConfig,
 }
 
 impl ShareProcessor {
     pub fn new(
         db: Arc<Database>,
-        blockchain: Arc<crate::blockchain::BlockchainClient>,
+        _blockchain: Arc<Mutex<crate::blockchain::BlockchainClient>>,
         config: PoolConfig,
     ) -> Self {
         Self {
             db,
-            _blockchain: blockchain,
             config,
         }
     }

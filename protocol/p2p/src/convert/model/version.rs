@@ -1,9 +1,9 @@
-use Turkium_consensus_core::subnets::SubnetworkId;
-use Turkium_core::{
-    Turkiumd_env::{name, version},
+use turkium_consensus_core::subnets::SubnetworkId;
+use turkium_core::{
+    turkiumd_env::{name, version},
     time::unix_now,
 };
-use Turkium_utils::networking::{NetAddress, PeerId};
+use turkium_utils::networking::{NetAddress, PeerId};
 
 /// Maximum allowed length for the user agent field in a version message `VersionMessage`.
 pub const MAX_USER_AGENT_LEN: usize = 256;

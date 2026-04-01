@@ -35,7 +35,7 @@ interface IGeneratorSettingsObject {
     /** 
      * Final transaction outputs (do not supply change transaction).
      * 
-     * Typical usage: { address: "Turkium:...", amount: 1000n }
+     * Typical usage: { address: "turkium:...", amount: 1000n }
      */
     outputs: PaymentOutput | IPaymentOutput[];
     /** 
@@ -124,10 +124,10 @@ extern "C" {
 ///
 /// let generator = new Generator({
 ///     utxoEntries : [...],
-///     changeAddress : "Turkium:...",
+///     changeAddress : "turkium:...",
 ///     outputs : [
-///         { amount : TurkiumToSompi(10.0), address: "Turkium:..."},
-///         { amount : TurkiumToSompi(20.0), address: "Turkium:..."},
+///         { amount : TurkiumToSompi(10.0), address: "turkium:..."},
+///         { amount : TurkiumToSompi(20.0), address: "turkium:..."},
 ///         ...
 ///     ],
 ///     priorityFee : 1000n,

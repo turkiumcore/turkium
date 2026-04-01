@@ -143,7 +143,7 @@ impl Database {
     }
 }
 
-// Miner operations
+// Miner operations - used by server
 pub async fn get_or_create_miner(
     pool: &SqlitePool,
     address: &str,
@@ -179,6 +179,7 @@ pub async fn get_or_create_miner(
     Ok(id)
 }
 
+// Used by share processor
 pub async fn update_miner_difficulty(
     pool: &SqlitePool,
     miner_id: i64,
@@ -193,6 +194,7 @@ pub async fn update_miner_difficulty(
     Ok(())
 }
 
+// Used by share processor
 pub async fn save_share(
     pool: &SqlitePool,
     miner_id: i64,
@@ -236,34 +238,7 @@ pub async fn save_share(
     Ok(())
 }
 
-pub async fn save_block(
-    pool: &SqlitePool,
-    miner_id: i64,
-    block_hash: &str,
-    block_height: i64,
-    reward: i64,
-) -> Result<i64> {
-    let now = chrono::Utc::now().timestamp();
-
-    let block_id = sqlx::query_scalar::<_, i64>(
-        r#"
-        INSERT INTO blocks (miner_id, block_hash, block_height, reward, timestamp, created_at)
-        VALUES (?1, ?2, ?3, ?4, ?5, ?6)
-        RETURNING id
-        "#
-    )
-    .bind(miner_id)
-    .bind(block_hash)
-    .bind(block_height)
-    .bind(reward)
-    .bind(now)
-    .bind(now)
-    .execute(pool)
-    .await?;
-
-    Ok(block_id)
-}
-
+// Used by share processor
 pub async fn get_miner_stats(
     pool: &SqlitePool,
     miner_id: i64,
@@ -281,6 +256,7 @@ pub async fn get_miner_stats(
     Ok((shares, difficulty))
 }
 
+// Used by reward distributor
 pub async fn get_unpaid_rewards(
     pool: &SqlitePool,
 ) -> Result<Vec<(i64, i64, String)>> {
@@ -306,6 +282,7 @@ pub async fn get_unpaid_rewards(
     Ok(result)
 }
 
+// Used by reward distributor
 pub async fn mark_reward_paid(
     pool: &SqlitePool,
     reward_id: i64,
@@ -321,6 +298,7 @@ pub async fn mark_reward_paid(
     Ok(())
 }
 
+// Used by template updater
 pub async fn save_block_template(
     pool: &SqlitePool,
     job_id: &str,
@@ -356,30 +334,4 @@ pub async fn save_block_template(
     .await?;
 
     Ok(())
-}
-
-pub async fn get_latest_block_template(
-    pool: &SqlitePool,
-) -> Result<Option<(String, String, String, String, String, String, String, String, i64)>> {
-    let row = sqlx::query(
-        "SELECT job_id, prev_hash, coinbase1, coinbase2, merkle_branch, version, nbits, ntime, height FROM block_templates ORDER BY created_at DESC LIMIT 1"
-    )
-    .fetch_optional(pool)
-    .await?;
-
-    if let Some(row) = row {
-        Ok(Some((
-            row.get(0),
-            row.get(1),
-            row.get(2),
-            row.get(3),
-            row.get(4),
-            row.get(5),
-            row.get(6),
-            row.get(7),
-            row.get(8),
-        )))
-    } else {
-        Ok(None)
-    }
 }

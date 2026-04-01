@@ -4,16 +4,16 @@ use crate::{
     notifier::ConsensusNotifier,
     root::ConsensusNotificationRoot,
 };
-use Turkium_core::{
+use turkium_core::{
     task::service::{AsyncService, AsyncServiceError, AsyncServiceFuture},
     trace, warn,
 };
-use Turkium_notify::{
+use turkium_notify::{
     events::{EVENT_TYPE_ARRAY, EventSwitches},
     subscriber::Subscriber,
     subscription::{MutationPolicies, UtxosChangedMutationPolicy, context::SubscriptionContext},
 };
-use Turkium_utils::triggers::SingleTrigger;
+use turkium_utils::triggers::SingleTrigger;
 use async_channel::Receiver;
 use std::sync::Arc;
 

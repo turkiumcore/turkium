@@ -1,11 +1,11 @@
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     block::Block,
     header::Header,
     subnets::SubnetworkId,
     tx::{ScriptPublicKey, ScriptVec, Transaction, TransactionInput, TransactionOutpoint, TransactionOutput, UtxoEntry},
     utxo::utxo_collection::UtxoCollection,
 };
-use Turkium_hashes::{HASH_SIZE, Hash};
+use turkium_hashes::{HASH_SIZE, Hash};
 use rand::{Rng, rngs::SmallRng, seq::SliceRandom};
 
 pub fn header_from_precomputed_hash(hash: Hash, parents: Vec<Hash>) -> Header {

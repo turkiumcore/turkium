@@ -2,13 +2,13 @@
 //! Logical stream abstractions used throughout the IBD negotiation protocols
 //!
 
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     errors::consensus::ConsensusError,
     header::Header,
     tx::{TransactionOutpoint, UtxoEntry},
 };
-use Turkium_core::{debug, info};
-use Turkium_p2p_lib::{
+use turkium_core::{debug, info};
+use turkium_p2p_lib::{
     IncomingRoute, Router,
     common::{DEFAULT_TIMEOUT, ProtocolError},
     convert::{header::HeaderFormat, header::Versioned, model::trusted::TrustedDataEntry},

@@ -3,7 +3,7 @@
 //!
 
 use crate::model::*;
-use Turkium_consensus_client::*;
+use turkium_consensus_client::*;
 use std::sync::Arc;
 
 impl From<RpcUtxosByAddressesEntry> for UtxoEntry {

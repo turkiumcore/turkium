@@ -1,6 +1,6 @@
 [package]
-name = "Turkium-merkle"
-description = "Turkium merkle tree library"
+name = "turkium-merkle"
+description = "turkium merkle tree library"
 rust-version.workspace = true
 version.workspace = true
 edition.workspace = true
@@ -10,7 +10,7 @@ license.workspace = true
 repository.workspace = true
 
 [dependencies]
-Turkium-hashes.workspace = true
+turkium-hashes.workspace = true
 
 [lints]
 workspace = true

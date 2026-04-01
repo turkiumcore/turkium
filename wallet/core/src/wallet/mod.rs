@@ -1,7 +1,7 @@
 //!
-//! # Turkium wallet runtime implementation.
+//! # turkium wallet runtime implementation.
 //!
-//! This module contains a Rust implementation of the Turkium wallet that
+//! This module contains a Rust implementation of the turkium wallet that
 //! can be used in native Rust as well as WASM32 (Browser, NodeJs, Bun)
 //! environments.
 //!
@@ -26,13 +26,13 @@ use crate::storage::local::Storage;
 use crate::storage::local::interface::LocalStore;
 use crate::wallet::keydata::PrvKeyDataVariantKind;
 use crate::wallet::maps::ActiveAccountMap;
-use Turkium_bip32::{ExtendedKey, Language, Mnemonic, Prefix as KeyPrefix, WordCount};
-use Turkium_notify::{
+use turkium_bip32::{ExtendedKey, Language, Mnemonic, Prefix as KeyPrefix, WordCount};
+use turkium_notify::{
     listener::ListenerId,
     scope::{Scope, VirtualDaaScoreChangedScope},
 };
-use Turkium_wallet_keys::xpub::NetworkTaggedXpub;
-use Turkium_wrpc_client::{Resolver, TurkiumRpcClient, WrpcEncoding};
+use turkium_wallet_keys::xpub::NetworkTaggedXpub;
+use turkium_wrpc_client::{Resolver, TurkiumRpcClient, WrpcEncoding};
 use workflow_core::task::spawn;
 
 pub type WalletGuard<'l> = AsyncMutexGuard<'l, ()>;
@@ -654,7 +654,7 @@ impl Wallet {
         self.utxo_processor().network_id()
     }
 
-    pub fn address_prefix(&self) -> Result<Turkium_addresses::Prefix> {
+    pub fn address_prefix(&self) -> Result<turkium_addresses::Prefix> {
         Ok(self.network_id()?.into())
     }
 
@@ -1372,8 +1372,8 @@ impl Wallet {
         let mnemonic = decrypt_mnemonic(SingleWalletFileV1::<T>::NUM_THREADS, file.encrypted_mnemonic, import_secret.as_ref())?;
         let mnemonic = Mnemonic::new(mnemonic.trim(), Language::English)?;
         let prv_key_data = storage::PrvKeyData::try_new_from_mnemonic(mnemonic.clone(), None, self.store().encryption_kind()?)?;
-        let prefix = file.xpublic_key.split_at(Turkium_bip32::Prefix::LENGTH).0;
-        let prefix = Turkium_bip32::Prefix::try_from(prefix)?;
+        let prefix = file.xpublic_key.split_at(turkium_bip32::Prefix::LENGTH).0;
+        let prefix = turkium_bip32::Prefix::try_from(prefix)?;
 
         if prv_key_data.create_xpub(None, BIP32_ACCOUNT_KIND.into(), 0).await?.to_string(Some(prefix)) != file.xpublic_key {
             return Err(Custom("imported xpub does not equal derived one".to_owned()));
@@ -1394,8 +1394,8 @@ impl Wallet {
         let mnemonic = decrypt_mnemonic(file.num_threads, file.encrypted_mnemonic, import_secret.as_ref())?;
         let mnemonic = Mnemonic::new(mnemonic.trim(), Language::English)?;
         let prv_key_data = storage::PrvKeyData::try_new_from_mnemonic(mnemonic.clone(), None, self.store().encryption_kind()?)?;
-        let prefix = file.xpublic_key.split_at(Turkium_bip32::Prefix::LENGTH).0;
-        let prefix = Turkium_bip32::Prefix::try_from(prefix)?;
+        let prefix = file.xpublic_key.split_at(turkium_bip32::Prefix::LENGTH).0;
+        let prefix = turkium_bip32::Prefix::try_from(prefix)?;
         if prv_key_data.create_xpub(None, BIP32_ACCOUNT_KIND.into(), 0).await.unwrap().to_string(Some(prefix)) != file.xpublic_key {
             return Err(Custom("imported xpub does not equal derived one".to_owned()));
         }
@@ -1415,8 +1415,8 @@ impl Wallet {
         let Some(first_pub_key) = file.xpublic_keys.first() else {
             return Err(Error::Custom("no public keys".to_owned()));
         };
-        let prefix = first_pub_key.split_at(Turkium_bip32::Prefix::LENGTH).0;
-        let prefix = Turkium_bip32::Prefix::try_from(prefix)?;
+        let prefix = first_pub_key.split_at(turkium_bip32::Prefix::LENGTH).0;
+        let prefix = turkium_bip32::Prefix::try_from(prefix)?;
 
         let mnemonics_and_secrets: Vec<(Mnemonic, Option<Secret>)> = file
             .encrypted_mnemonics
@@ -1456,8 +1456,8 @@ impl Wallet {
         let Some(first_pub_key) = file.xpublic_keys.first() else {
             return Err(Error::Custom("no public keys".to_owned()));
         };
-        let prefix = first_pub_key.split_at(Turkium_bip32::Prefix::LENGTH).0;
-        let prefix = Turkium_bip32::Prefix::try_from(prefix)?;
+        let prefix = first_pub_key.split_at(turkium_bip32::Prefix::LENGTH).0;
+        let prefix = turkium_bip32::Prefix::try_from(prefix)?;
 
         let mnemonics_and_secrets: Vec<(Mnemonic, Option<Secret>)> = file
             .encrypted_mnemonics
@@ -1471,7 +1471,7 @@ impl Wallet {
 
         let mut all_pub_keys = file.xpublic_keys;
         all_pub_keys.sort_unstable_by(|left, right| {
-            left.split_at(Turkium_bip32::Prefix::LENGTH).1.cmp(right.split_at(Turkium_bip32::Prefix::LENGTH).1)
+            left.split_at(turkium_bip32::Prefix::LENGTH).1.cmp(right.split_at(turkium_bip32::Prefix::LENGTH).1)
         });
 
         let mut pubkeys_from_mnemonics = Vec::with_capacity(mnemonics_and_secrets.len());
@@ -1481,7 +1481,7 @@ impl Wallet {
             pubkeys_from_mnemonics.push(xpub_key);
         }
         pubkeys_from_mnemonics.sort_unstable_by(|left, right| {
-            left.split_at(Turkium_bip32::Prefix::LENGTH).1.cmp(right.split_at(Turkium_bip32::Prefix::LENGTH).1)
+            left.split_at(turkium_bip32::Prefix::LENGTH).1.cmp(right.split_at(turkium_bip32::Prefix::LENGTH).1)
         });
         all_pub_keys.retain(|v| {
             let found = pubkeys_from_mnemonics.binary_search_by_key(v, |xpub| xpub.as_str());
@@ -1663,7 +1663,7 @@ impl Wallet {
                     xpub.to_string()
                 })
             })
-            .collect::<Result<Vec<_>, Turkium_bip32::Error>>()?;
+            .collect::<Result<Vec<_>, turkium_bip32::Error>>()?;
 
         let mut generated_xpubs = Vec::with_capacity(mnemonics_secrets.len());
         let mut prv_key_data_ids = Vec::with_capacity(mnemonics_secrets.len());
@@ -1790,18 +1790,18 @@ mod test {
     // use hex_literal::hex;
 
     // use super::*;
-    // use Turkium_addresses::Address;
+    // use turkium_addresses::Address;
 
     /*
     use workflow_rpc::client::ConnectOptions;
     use std::{str::FromStr, thread::sleep, time};
     use crate::derivation::gen1;
     use crate::utxo::{UtxoContext, UtxoContextBinding, UtxoIterator};
-    use Turkium_addresses::{Prefix, Version};
-    use Turkium_bip32::{ChildNumber, ExtendedPrivateKey, SecretKey};
-    use Turkium_consensus_core::subnets::SUBNETWORK_ID_NATIVE;
-    use Turkium_consensus_wasm::{sign_transaction, SignableTransaction, Transaction, TransactionInput, TransactionOutput};
-    use Turkium_txscript::pay_to_address_script;
+    use turkium_addresses::{Prefix, Version};
+    use turkium_bip32::{ChildNumber, ExtendedPrivateKey, SecretKey};
+    use turkium_consensus_core::subnets::SUBNETWORK_ID_NATIVE;
+    use turkium_consensus_wasm::{sign_transaction, SignableTransaction, Transaction, TransactionInput, TransactionOutput};
+    use turkium_txscript::pay_to_address_script;
 
     async fn create_utxos_context_with_addresses(
         rpc: Arc<DynRpcApi>,
@@ -1877,7 +1877,7 @@ mod test {
         let mtx = SignableTransaction::new(tx, (*entries).clone().into());
 
         let derivation_path =
-            gen1::WalletDerivationManager::build_derivate_path(false, 0, None, Some(Turkium_bip32::AddressType::Receive))?;
+            gen1::WalletDerivationManager::build_derivate_path(false, 0, None, Some(turkium_bip32::AddressType::Receive))?;
 
         let xprv = "kprv5y2qurMHCsXYrNfU3GCihuwG3vMqFji7PZXajMEqyBkNh9UZUJgoHYBLTKu1eM4MvUtomcXPQ3Sw9HZ5ebbM4byoUciHo1zrPJBQfqpLorQ";
 

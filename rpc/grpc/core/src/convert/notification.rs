@@ -10,8 +10,8 @@ use crate::protowire::{
     VirtualChainChangedNotificationMessage, VirtualDaaScoreChangedNotificationMessage,
 };
 use crate::{from, try_from};
-use Turkium_notify::subscription::Command;
-use Turkium_rpc_core::{Notification, RpcError, RpcHash};
+use turkium_notify::subscription::Command;
+use turkium_rpc_core::{Notification, RpcError, RpcHash};
 use std::str::FromStr;
 use std::sync::Arc;
 
@@ -19,9 +19,9 @@ use std::sync::Arc;
 // rpc_core to protowire
 // ----------------------------------------------------------------------------
 
-from!(item: &Turkium_rpc_core::Notification, TurkiumdResponse, { Self { id: 0, payload: Some(item.into()) } });
+from!(item: &turkium_rpc_core::Notification, TurkiumdResponse, { Self { id: 0, payload: Some(item.into()) } });
 
-from!(item: &Turkium_rpc_core::Notification, Payload, {
+from!(item: &turkium_rpc_core::Notification, Payload, {
     match item {
         Notification::BlockAdded(notification) => Payload::BlockAddedNotification(notification.into()),
         Notification::NewBlockTemplate(notification) => Payload::NewBlockTemplateNotification(notification.into()),
@@ -37,11 +37,11 @@ from!(item: &Turkium_rpc_core::Notification, Payload, {
     }
 });
 
-from!(item: &Turkium_rpc_core::BlockAddedNotification, BlockAddedNotificationMessage, { Self { block: Some((&*item.block).into()) } });
+from!(item: &turkium_rpc_core::BlockAddedNotification, BlockAddedNotificationMessage, { Self { block: Some((&*item.block).into()) } });
 
-from!(&Turkium_rpc_core::NewBlockTemplateNotification, NewBlockTemplateNotificationMessage);
+from!(&turkium_rpc_core::NewBlockTemplateNotification, NewBlockTemplateNotificationMessage);
 
-from!(item: &Turkium_rpc_core::VirtualChainChangedNotification, VirtualChainChangedNotificationMessage, {
+from!(item: &turkium_rpc_core::VirtualChainChangedNotification, VirtualChainChangedNotificationMessage, {
     Self {
         removed_chain_block_hashes: item.removed_chain_block_hashes.iter().map(|x| x.to_string()).collect(),
         added_chain_block_hashes: item.added_chain_block_hashes.iter().map(|x| x.to_string()).collect(),
@@ -49,30 +49,30 @@ from!(item: &Turkium_rpc_core::VirtualChainChangedNotification, VirtualChainChan
     }
 });
 
-from!(item: &Turkium_rpc_core::FinalityConflictNotification, FinalityConflictNotificationMessage, {
+from!(item: &turkium_rpc_core::FinalityConflictNotification, FinalityConflictNotificationMessage, {
     Self { violating_block_hash: item.violating_block_hash.to_string() }
 });
 
-from!(item: &Turkium_rpc_core::FinalityConflictResolvedNotification, FinalityConflictResolvedNotificationMessage, {
+from!(item: &turkium_rpc_core::FinalityConflictResolvedNotification, FinalityConflictResolvedNotificationMessage, {
     Self { finality_block_hash: item.finality_block_hash.to_string() }
 });
 
-from!(item: &Turkium_rpc_core::UtxosChangedNotification, UtxosChangedNotificationMessage, {
+from!(item: &turkium_rpc_core::UtxosChangedNotification, UtxosChangedNotificationMessage, {
     Self {
         added: item.added.iter().map(|x| x.into()).collect::<Vec<_>>(),
         removed: item.removed.iter().map(|x| x.into()).collect::<Vec<_>>(),
     }
 });
 
-from!(item: &Turkium_rpc_core::SinkBlueScoreChangedNotification, SinkBlueScoreChangedNotificationMessage, {
+from!(item: &turkium_rpc_core::SinkBlueScoreChangedNotification, SinkBlueScoreChangedNotificationMessage, {
     Self { sink_blue_score: item.sink_blue_score }
 });
 
-from!(item: &Turkium_rpc_core::VirtualDaaScoreChangedNotification, VirtualDaaScoreChangedNotificationMessage, {
+from!(item: &turkium_rpc_core::VirtualDaaScoreChangedNotification, VirtualDaaScoreChangedNotificationMessage, {
     Self { virtual_daa_score: item.virtual_daa_score }
 });
 
-from!(&Turkium_rpc_core::PruningPointUtxoSetOverrideNotification, PruningPointUtxoSetOverrideNotificationMessage);
+from!(&turkium_rpc_core::PruningPointUtxoSetOverrideNotification, PruningPointUtxoSetOverrideNotificationMessage);
 
 from!(item: Command, RpcNotifyCommand, {
     match item {
@@ -93,14 +93,14 @@ from!(_item: &StopNotifyingPruningPointUtxoSetOverrideRequestMessage, NotifyPrun
 // protowire to rpc_core
 // ----------------------------------------------------------------------------
 
-try_from!(item: &TurkiumdResponse, Turkium_rpc_core::Notification, {
+try_from!(item: &TurkiumdResponse, turkium_rpc_core::Notification, {
     item.payload
         .as_ref()
         .ok_or_else(|| RpcError::MissingRpcFieldError("TurkiumdResponse".to_string(), "payload".to_string()))?
         .try_into()?
 });
 
-try_from!(item: &Payload, Turkium_rpc_core::Notification, {
+try_from!(item: &Payload, turkium_rpc_core::Notification, {
     match item {
         Payload::BlockAddedNotification(notification) => Notification::BlockAdded(notification.try_into()?),
         Payload::NewBlockTemplateNotification(notification) => Notification::NewBlockTemplate(notification.try_into()?),
@@ -121,7 +121,7 @@ try_from!(item: &Payload, Turkium_rpc_core::Notification, {
     }
 });
 
-try_from!(item: &BlockAddedNotificationMessage, Turkium_rpc_core::BlockAddedNotification, {
+try_from!(item: &BlockAddedNotificationMessage, turkium_rpc_core::BlockAddedNotification, {
     Self {
         block: Arc::new(
             item.block
@@ -132,9 +132,9 @@ try_from!(item: &BlockAddedNotificationMessage, Turkium_rpc_core::BlockAddedNoti
     }
 });
 
-try_from!(&NewBlockTemplateNotificationMessage, Turkium_rpc_core::NewBlockTemplateNotification);
+try_from!(&NewBlockTemplateNotificationMessage, turkium_rpc_core::NewBlockTemplateNotification);
 
-try_from!(item: &VirtualChainChangedNotificationMessage, Turkium_rpc_core::VirtualChainChangedNotification, {
+try_from!(item: &VirtualChainChangedNotificationMessage, turkium_rpc_core::VirtualChainChangedNotification, {
     Self {
         removed_chain_block_hashes: Arc::new(
             item.removed_chain_block_hashes.iter().map(|x| RpcHash::from_str(x)).collect::<Result<Vec<_>, _>>()?,
@@ -146,30 +146,30 @@ try_from!(item: &VirtualChainChangedNotificationMessage, Turkium_rpc_core::Virtu
     }
 });
 
-try_from!(item: &FinalityConflictNotificationMessage, Turkium_rpc_core::FinalityConflictNotification, {
+try_from!(item: &FinalityConflictNotificationMessage, turkium_rpc_core::FinalityConflictNotification, {
     Self { violating_block_hash: RpcHash::from_str(&item.violating_block_hash)? }
 });
 
-try_from!(item: &FinalityConflictResolvedNotificationMessage, Turkium_rpc_core::FinalityConflictResolvedNotification, {
+try_from!(item: &FinalityConflictResolvedNotificationMessage, turkium_rpc_core::FinalityConflictResolvedNotification, {
     Self { finality_block_hash: RpcHash::from_str(&item.finality_block_hash)? }
 });
 
-try_from!(item: &UtxosChangedNotificationMessage, Turkium_rpc_core::UtxosChangedNotification, {
+try_from!(item: &UtxosChangedNotificationMessage, turkium_rpc_core::UtxosChangedNotification, {
     Self {
         added: Arc::new(item.added.iter().map(|x| x.try_into()).collect::<Result<Vec<_>, _>>()?),
         removed: Arc::new(item.removed.iter().map(|x| x.try_into()).collect::<Result<Vec<_>, _>>()?),
     }
 });
 
-try_from!(item: &SinkBlueScoreChangedNotificationMessage, Turkium_rpc_core::SinkBlueScoreChangedNotification, {
+try_from!(item: &SinkBlueScoreChangedNotificationMessage, turkium_rpc_core::SinkBlueScoreChangedNotification, {
     Self { sink_blue_score: item.sink_blue_score }
 });
 
-try_from!(item: &VirtualDaaScoreChangedNotificationMessage, Turkium_rpc_core::VirtualDaaScoreChangedNotification, {
+try_from!(item: &VirtualDaaScoreChangedNotificationMessage, turkium_rpc_core::VirtualDaaScoreChangedNotification, {
     Self { virtual_daa_score: item.virtual_daa_score }
 });
 
-try_from!(&PruningPointUtxoSetOverrideNotificationMessage, Turkium_rpc_core::PruningPointUtxoSetOverrideNotification);
+try_from!(&PruningPointUtxoSetOverrideNotificationMessage, turkium_rpc_core::PruningPointUtxoSetOverrideNotification);
 
 from!(item: RpcNotifyCommand, Command, {
     match item {

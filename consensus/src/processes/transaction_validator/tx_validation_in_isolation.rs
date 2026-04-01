@@ -1,5 +1,5 @@
 use crate::constants::{MAX_SOMPI, TX_VERSION};
-use Turkium_consensus_core::tx::Transaction;
+use turkium_consensus_core::tx::Transaction;
 use std::collections::HashSet;
 
 use super::{
@@ -114,7 +114,7 @@ fn check_duplicate_transaction_inputs(tx: &Transaction) -> TxResult<()> {
 }
 
 fn check_gas(tx: &Transaction) -> TxResult<()> {
-    // This should be revised if subnetworks are activated (along with other validations that weren't copied from Turkiumd)
+    // This should be revised if subnetworks are activated (along with other validations that weren't copied from turkiumd)
     if tx.gas > 0 {
         return Err(TxRuleError::TxHasGas);
     }
@@ -163,11 +163,11 @@ fn check_transaction_subnetwork(tx: &Transaction) -> TxResult<()> {
 
 #[cfg(test)]
 mod tests {
-    use Turkium_consensus_core::{
+    use turkium_consensus_core::{
         subnets::{SUBNETWORK_ID_COINBASE, SUBNETWORK_ID_NATIVE, SubnetworkId},
         tx::{ScriptPublicKey, Transaction, TransactionId, TransactionInput, TransactionOutpoint, TransactionOutput, scriptvec},
     };
-    use Turkium_core::assert_match;
+    use turkium_core::assert_match;
 
     use crate::{
         constants::TX_VERSION,

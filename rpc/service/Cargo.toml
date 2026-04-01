@@ -1,6 +1,6 @@
 [package]
-name = "Turkium-rpc-service"
-description = "Turkium RPC service"
+name = "turkium-rpc-service"
+description = "turkium RPC service"
 rust-version.workspace = true
 version.workspace = true
 edition.workspace = true
@@ -10,25 +10,25 @@ license.workspace = true
 repository.workspace = true
 
 [dependencies]
-Turkium-addresses.workspace = true
-Turkium-consensus-core.workspace = true
-Turkium-consensus-notify.workspace = true
-Turkium-consensusmanager.workspace = true
-Turkium-core.workspace = true
-Turkium-hashes.workspace = true
-Turkium-index-core.workspace = true
-Turkium-math.workspace = true
-Turkium-mining.workspace = true
-Turkium-notify.workspace = true
-Turkium-p2p-flows.workspace = true
-Turkium-p2p-lib.workspace = true
-Turkium-p2p-mining.workspace = true
-Turkium-perf-monitor.workspace = true
-Turkium-rpc-core.workspace = true
-Turkium-txscript.workspace = true
-Turkium-utils.workspace = true
-Turkium-utils-tower.workspace = true
-Turkium-utxoindex.workspace = true
+turkium-addresses.workspace = true
+turkium-consensus-core.workspace = true
+turkium-consensus-notify.workspace = true
+turkium-consensusmanager.workspace = true
+turkium-core.workspace = true
+turkium-hashes.workspace = true
+turkium-index-core.workspace = true
+turkium-math.workspace = true
+turkium-mining.workspace = true
+turkium-notify.workspace = true
+turkium-p2p-flows.workspace = true
+turkium-p2p-lib.workspace = true
+turkium-p2p-mining.workspace = true
+turkium-perf-monitor.workspace = true
+turkium-rpc-core.workspace = true
+turkium-txscript.workspace = true
+turkium-utils.workspace = true
+turkium-utils-tower.workspace = true
+turkium-utxoindex.workspace = true
 
 async-trait.workspace = true
 log.workspace = true

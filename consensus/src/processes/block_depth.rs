@@ -1,5 +1,5 @@
-use Turkium_consensus_core::blockhash::{BlockHashExtensions, ORIGIN};
-use Turkium_hashes::Hash;
+use turkium_consensus_core::blockhash::{BlockHashExtensions, ORIGIN};
+use turkium_hashes::Hash;
 use std::sync::Arc;
 
 use crate::model::{

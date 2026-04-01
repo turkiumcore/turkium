@@ -1,8 +1,8 @@
 use std::{cmp::max, sync::Arc};
 
-use Turkium_consensus_core::api::ConsensusApi;
-use Turkium_hashes::Hash;
-use Turkium_p2p_lib::{
+use turkium_consensus_core::api::ConsensusApi;
+use turkium_hashes::Hash;
+use turkium_p2p_lib::{
     IncomingRoute, Router,
     common::ProtocolError,
     convert::header::HeaderFormat,
@@ -88,7 +88,7 @@ impl RequestHeadersFlow {
         low: Hash,
         high: Hash,
         max_blocks: usize,
-        header_format: Turkium_p2p_lib::convert::header::HeaderFormat,
+        header_format: turkium_p2p_lib::convert::header::HeaderFormat,
     ) -> Result<(Vec<pb::BlockHeader>, Hash), ProtocolError> {
         let hashes = consensus.get_hashes_between(low, high, max_blocks)?.0;
         let last = *hashes.last().expect("caller ensured that high and low are valid and different");

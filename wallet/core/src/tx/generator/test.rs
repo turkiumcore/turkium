@@ -4,12 +4,12 @@ use crate::error::Error;
 use crate::result::Result;
 use crate::tx::{Fees, MassCalculator, PaymentDestination};
 use crate::utxo::UtxoEntryReference;
-use crate::{tx::PaymentOutputs, utils::Turkium_to_sompi};
-use Turkium_addresses::Address;
-use Turkium_consensus_core::config::params::Params;
-use Turkium_consensus_core::mass::UtxoCell;
-use Turkium_consensus_core::network::{NetworkId, NetworkType};
-use Turkium_consensus_core::tx::Transaction;
+use crate::{tx::PaymentOutputs, utils::turkium_to_sompi};
+use turkium_addresses::Address;
+use turkium_consensus_core::config::params::Params;
+use turkium_consensus_core::mass::UtxoCell;
+use turkium_consensus_core::network::{NetworkId, NetworkType};
+use turkium_consensus_core::tx::Transaction;
 use rand::prelude::*;
 use std::cell::RefCell;
 use std::fmt::Debug;
@@ -36,13 +36,13 @@ impl Debug for Turkium {
 
 impl From<Turkium> for Sompi {
     fn from(value: Turkium) -> Self {
-        Sompi(Turkium_to_sompi(value.0))
+        Sompi(turkium_to_sompi(value.0))
     }
 }
 
 impl From<&Turkium> for Sompi {
     fn from(value: &Turkium) -> Self {
-        Sompi(Turkium_to_sompi(value.0))
+        Sompi(turkium_to_sompi(value.0))
     }
 }
 
@@ -421,7 +421,7 @@ where
     let mut values = head.to_vec();
     values.extend(tail);
 
-    let utxo_entries: Vec<UtxoEntryReference> = values.into_iter().map(Turkium_to_sompi).map(UtxoEntryReference::simulated).collect();
+    let utxo_entries: Vec<UtxoEntryReference> = values.into_iter().map(turkium_to_sompi).map(UtxoEntryReference::simulated).collect();
     let multiplexer = None;
     let sig_op_count = 1;
     let minimum_signatures = 1;
@@ -454,7 +454,7 @@ where
 
 pub(crate) fn change_address(network_type: NetworkType) -> Address {
     match network_type {
-        NetworkType::Mainnet => Address::try_from("Turkium:qpauqsvk7yf9unexwmxsnmg547mhyga37csh0kj53q6xxgl24ydxjsgzthw5j").unwrap(),
+        NetworkType::Mainnet => Address::try_from("turkium:qpauqsvk7yf9unexwmxsnmg547mhyga37csh0kj53q6xxgl24ydxjsgzthw5j").unwrap(),
         NetworkType::Testnet => {
             Address::try_from("Turkiumtest:qqz22l98sf8jun72rwh5rqe2tm8lhwtdxdmynrz4ypwak427qed5juktjt7ju").unwrap()
         }
@@ -464,7 +464,7 @@ pub(crate) fn change_address(network_type: NetworkType) -> Address {
 
 pub(crate) fn output_address(network_type: NetworkType) -> Address {
     match network_type {
-        NetworkType::Mainnet => Address::try_from("Turkium:qrd9efkvg3pg34sgp6ztwyv3r569qlc43wa5w8nfs302532dzj47knu04aftm").unwrap(),
+        NetworkType::Mainnet => Address::try_from("turkium:qrd9efkvg3pg34sgp6ztwyv3r569qlc43wa5w8nfs302532dzj47knu04aftm").unwrap(),
         NetworkType::Testnet => {
             Address::try_from("Turkiumtest:qqrewmx4gpuekvk8grenkvj2hp7xt0c35rxgq383f6gy223c4ud5s58ptm6er").unwrap()
         }
@@ -797,7 +797,7 @@ fn test_generator_inputs_250k_outputs_2_sweep() -> Result<()> {
 
 #[test]
 fn test_generator_fan_out_1() -> Result<()> {
-    use Turkium_consensus_core::mass::calc_storage_mass;
+    use turkium_consensus_core::mass::calc_storage_mass;
 
     let network_id = test_network_id();
     let consensus_params = Params::from(network_id);

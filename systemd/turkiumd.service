@@ -8,14 +8,13 @@ Wants=network-online.target
 Type=simple
 User=turkium
 Group=turkium
-WorkingDirectory=/opt/turkium
+WorkingDirectory=/opt/turkium/data
 
 # Start the blockchain node
 ExecStart=/opt/turkium/turkiumd \
     --enable-unsynced-mining \
-    --listen=0.0.0.0:16110 \
-    --rpc-listen=0.0.0.0:16210 \
-    --grpc-listen=0.0.0.0:5200
+    --listen=0.0.0.0:5206 \
+    --rpclisten=0.0.0.0:5200
 
 # Restart policy
 Restart=always
@@ -29,9 +28,9 @@ LimitNPROC=65536
 
 # Security
 NoNewPrivileges=true
-PrivateTmp=true
-ProtectSystem=strict
-ProtectHome=yes
+PrivateTmp=false
+ProtectSystem=no
+ProtectHome=no
 ReadWritePaths=/opt/turkium/data
 
 # Logging
@@ -41,6 +40,7 @@ SyslogIdentifier=turkiumd
 
 # Environment
 Environment="RUST_LOG=info"
+Environment="HOME=/opt/turkium/data"
 
 [Install]
 WantedBy=multi-user.target

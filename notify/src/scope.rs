@@ -1,5 +1,5 @@
 use super::events::EventType;
-use Turkium_addresses::Address;
+use turkium_addresses::Address;
 use borsh::{BorshDeserialize, BorshSerialize};
 use derive_more::Display;
 use serde::{Deserialize, Serialize};
@@ -18,7 +18,7 @@ macro_rules! scope_enum {
             impl std::convert::From<EventType> for $name {
                 fn from(value: EventType) -> Self {
                     match value {
-                        $(EventType::$variant_name => $name::$variant_name(Turkium_notify::scope::[<$variant_name Scope>]::default())),*
+                        $(EventType::$variant_name => $name::$variant_name(turkium_notify::scope::[<$variant_name Scope>]::default())),*
                     }
                 }
             }

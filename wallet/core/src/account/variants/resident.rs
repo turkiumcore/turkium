@@ -4,7 +4,7 @@
 
 use crate::account::Inner;
 use crate::imports::*;
-use Turkium_addresses::Version;
+use turkium_addresses::Version;
 use secp256k1::{PublicKey, SecretKey};
 
 pub const RESIDENT_ACCOUNT_KIND: &str = "Turkium-resident-standard";

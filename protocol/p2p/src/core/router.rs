@@ -3,8 +3,8 @@ use crate::pb::RejectMessage;
 use crate::pb::{TurkiumdMessage, turkiumd_message::Payload as TurkiumdMessagePayload};
 use crate::{Peer, make_message};
 use crate::{TurkiumdMessagePayloadType, common::ProtocolError};
-use Turkium_core::{debug, error, info, trace, warn};
-use Turkium_utils::networking::PeerId;
+use turkium_core::{debug, error, info, trace, warn};
+use turkium_utils::networking::PeerId;
 use parking_lot::{Mutex, RwLock};
 use seqlock::SeqLock;
 use std::fmt::{Debug, Display};
@@ -367,7 +367,7 @@ impl Router {
     pub fn route_to_flow(&self, msg: TurkiumdMessage) -> Result<(), ProtocolError> {
         if msg.payload.is_none() {
             debug!("P2P, Route to flow got empty payload, peer: {}", self);
-            return Err(ProtocolError::Other("received Turkiumd p2p message with empty payload"));
+            return Err(ProtocolError::Other("received turkiumd p2p message with empty payload"));
         }
         let msg_type: TurkiumdMessagePayloadType = msg.payload.as_ref().expect("payload was just verified").into();
         // Handle the special case of a reject message ending the connection
@@ -383,7 +383,8 @@ impl Router {
         };
 
         if let Some(sender) = op {
-            match sender.try_send(msg) {
+            let result: Result<(), TrySendError<TurkiumdMessage>> = sender.try_send(msg);
+            match result {
                 Ok(_) => Ok(()),
                 Err(TrySendError::Closed(_)) => Err(ProtocolError::ConnectionClosed),
                 Err(TrySendError::Full(_)) => {
@@ -403,7 +404,7 @@ impl Router {
 
     /// Enqueues a locally-originated message to be sent to the network peer
     pub async fn enqueue(&self, msg: TurkiumdMessage) -> Result<(), ProtocolError> {
-        assert!(msg.payload.is_some(), "Turkiumd P2P message should always have a value");
+        assert!(msg.payload.is_some(), "turkiumd P2P message should always have a value");
         match self.outgoing_route.try_send(msg) {
             Ok(_) => Ok(()),
             Err(TrySendError::Closed(_)) => Err(ProtocolError::ConnectionClosed),

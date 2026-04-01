@@ -1,6 +1,6 @@
 [package]
-name = "Turkium-consensus-wasm"
-description = "Turkium consensus core WASM bindings"
+name = "turkium-consensus-wasm"
+description = "turkium consensus core WASM bindings"
 rust-version.workspace = true
 version.workspace = true
 edition.workspace = true
@@ -14,12 +14,12 @@ wasm32-sdk = []
 wasm32-types = []
 
 [dependencies]
-Turkium-consensus-core.workspace = true
-Turkium-consensus-client.workspace = true
-Turkium-addresses.workspace = true
-Turkium-txscript.workspace = true
-Turkium-hashes.workspace = true
-Turkium-utils.workspace = true
+turkium-consensus-core.workspace = true
+turkium-consensus-client.workspace = true
+turkium-addresses.workspace = true
+turkium-txscript.workspace = true
+turkium-hashes.workspace = true
+turkium-utils.workspace = true
 
 cfg-if.workspace = true
 faster-hex.workspace = true

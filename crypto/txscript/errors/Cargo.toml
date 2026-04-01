@@ -1,6 +1,6 @@
 [package]
-name = "Turkium-txscript-errors"
-description = "Turkium txscript errors"
+name = "turkium-txscript-errors"
+description = "turkium txscript errors"
 rust-version.workspace = true
 version.workspace = true
 edition.workspace = true

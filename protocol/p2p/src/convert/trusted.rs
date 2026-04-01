@@ -1,4 +1,4 @@
-use Turkium_consensus_core::trusted::{TrustedGhostdagData, TrustedHeader};
+use turkium_consensus_core::trusted::{TrustedGhostdagData, TrustedHeader};
 
 use crate::convert::header::HeaderFormat;
 use crate::pb as protowire;

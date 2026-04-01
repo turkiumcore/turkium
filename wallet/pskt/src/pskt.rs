@@ -2,8 +2,8 @@
 //! Partially Signed Turkium Transaction (PSKT)
 //!
 
-use Turkium_bip32::{DerivationPath, KeyFingerprint, secp256k1};
-use Turkium_consensus_core::{Hash, hashing::sighash::SigHashReusedValuesUnsync};
+use turkium_bip32::{DerivationPath, KeyFingerprint, secp256k1};
+use turkium_consensus_core::{Hash, hashing::sighash::SigHashReusedValuesUnsync};
 use serde::{Deserialize, Serialize};
 use serde_repr::{Deserialize_repr, Serialize_repr};
 use std::{collections::BTreeMap, fmt::Display, fmt::Formatter, future::Future, marker::PhantomData, ops::Deref};
@@ -13,14 +13,14 @@ pub use crate::global::{Global, GlobalBuilder};
 pub use crate::input::{Input, InputBuilder};
 pub use crate::output::{Output, OutputBuilder};
 pub use crate::role::{Combiner, Constructor, Creator, Extractor, Finalizer, Signer, Updater};
-use Turkium_consensus_core::config::params::Params;
-use Turkium_consensus_core::mass::{MassCalculator, NonContextualMasses};
-use Turkium_consensus_core::{
+use turkium_consensus_core::config::params::Params;
+use turkium_consensus_core::mass::{MassCalculator, NonContextualMasses};
+use turkium_consensus_core::{
     hashing::sighash_type::SigHashType,
     subnets::SUBNETWORK_ID_NATIVE,
     tx::{MutableTransaction, SignableTransaction, Transaction, TransactionId, TransactionInput, TransactionOutput},
 };
-use Turkium_txscript::{TxScriptEngine, caches::Cache};
+use turkium_txscript::{TxScriptEngine, caches::Cache};
 
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "camelCase")]
@@ -55,7 +55,7 @@ impl Display for Version {
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq)]
 #[serde(rename_all = "camelCase")]
 pub struct KeySource {
-    #[serde(with = "Turkium_utils::serde_bytes_fixed")]
+    #[serde(with = "turkium_utils::serde_bytes_fixed")]
     pub key_fingerprint: KeyFingerprint,
     pub derivation_path: DerivationPath,
 }
@@ -463,7 +463,7 @@ impl PSKT<Extractor> {
 
     pub fn extract_tx(self, params: &Params) -> Result<MutableTransaction<Transaction>, ExtractError> {
         let tx = self.extract_tx_unchecked(params)?;
-        use Turkium_consensus_core::tx::VerifiableTransaction;
+        use turkium_consensus_core::tx::VerifiableTransaction;
         {
             let tx = tx.as_verifiable();
             let cache = Cache::new(10_000);
@@ -502,7 +502,7 @@ pub enum FinalizeError<E> {
 #[derive(thiserror::Error, Debug, Clone, PartialEq, Eq)]
 pub enum ExtractError {
     #[error(transparent)]
-    TxScriptError(#[from] Turkium_txscript_errors::TxScriptError),
+    TxScriptError(#[from] turkium_txscript_errors::TxScriptError),
     #[error(transparent)]
     TxNotFinalized(#[from] TxNotFinalized),
 }

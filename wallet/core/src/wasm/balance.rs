@@ -1,7 +1,7 @@
 use crate::imports::*;
 use crate::result::Result;
 use crate::utxo::balance as native;
-use Turkium_consensus_core::network::NetworkTypeT;
+use turkium_consensus_core::network::NetworkTypeT;
 
 ///
 /// Represents a {@link UtxoContext} (account) balance.

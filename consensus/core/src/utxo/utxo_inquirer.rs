@@ -1,4 +1,4 @@
-use Turkium_hashes::Hash;
+use turkium_hashes::Hash;
 use thiserror::Error;
 
 use crate::tx::{TransactionId, TransactionOutpoint};

@@ -2,7 +2,7 @@
 //! Extended private key ([`XPrv`]).
 //!
 
-use Turkium_bip32::{ChainCode, KeyFingerprint};
+use turkium_bip32::{ChainCode, KeyFingerprint};
 
 use crate::imports::*;
 
@@ -93,7 +93,7 @@ impl XPrv {
 
     #[wasm_bindgen(getter, js_name = "privateKey")]
     pub fn private_key_as_hex_string(&self) -> String {
-        use Turkium_bip32::PrivateKey;
+        use turkium_bip32::PrivateKey;
         self.inner.private_key().to_bytes().to_vec().to_hex()
     }
 

@@ -1,6 +1,6 @@
 use crate::{MAX_SCRIPT_PUBLIC_KEY_VERSION, opcodes};
-use Turkium_addresses::Version;
-use Turkium_consensus_core::tx::{ScriptPublicKey, ScriptPublicKeyVersion};
+use turkium_addresses::Version;
+use turkium_consensus_core::tx::{ScriptPublicKey, ScriptPublicKeyVersion};
 use borsh::{BorshDeserialize, BorshSerialize};
 use serde::{Deserialize, Serialize};
 use std::{
@@ -140,7 +140,7 @@ impl From<Version> for ScriptClass {
 
 #[cfg(test)]
 mod tests {
-    use Turkium_consensus_core::tx::ScriptVec;
+    use turkium_consensus_core::tx::ScriptVec;
 
     use super::*;
 

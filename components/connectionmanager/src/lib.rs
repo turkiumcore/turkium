@@ -7,10 +7,10 @@ use std::{
     time::{Duration, SystemTime},
 };
 
-use Turkium_addressmanager::{AddressManager, NetAddress};
-use Turkium_core::{debug, info, warn};
-use Turkium_p2p_lib::{ConnectionError, Peer, common::ProtocolError};
-use Turkium_utils::triggers::SingleTrigger;
+use turkium_addressmanager::{AddressManager, NetAddress};
+use turkium_core::{debug, info, warn};
+use turkium_p2p_lib::{ConnectionError, Peer, common::ProtocolError};
+use turkium_utils::triggers::SingleTrigger;
 use duration_string::DurationString;
 use futures_util::future::{join_all, try_join_all};
 use itertools::Itertools;
@@ -26,7 +26,7 @@ use tokio::{
 };
 
 pub struct ConnectionManager {
-    p2p_adaptor: Arc<Turkium_p2p_lib::Adaptor>,
+    p2p_adaptor: Arc<turkium_p2p_lib::Adaptor>,
     outbound_target: usize,
     inbound_limit: usize,
     dns_seeders: &'static [&'static str],
@@ -52,7 +52,7 @@ impl ConnectionRequest {
 
 impl ConnectionManager {
     pub fn new(
-        p2p_adaptor: Arc<Turkium_p2p_lib::Adaptor>,
+        p2p_adaptor: Arc<turkium_p2p_lib::Adaptor>,
         outbound_target: usize,
         inbound_limit: usize,
         dns_seeders: &'static [&'static str],
@@ -161,7 +161,7 @@ impl ConnectionManager {
     }
 
     async fn handle_outbound_connections(self: &Arc<Self>, peer_by_address: &HashMap<SocketAddr, Peer>) {
-        let active_outbound: HashSet<Turkium_addressmanager::NetAddress> =
+        let active_outbound: HashSet<turkium_addressmanager::NetAddress> =
             peer_by_address.values().filter(|peer| peer.is_outbound()).map(|peer| peer.net_address().into()).collect();
         if active_outbound.len() >= self.outbound_target {
             return;

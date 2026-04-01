@@ -1,0 +1,7 @@
+[package]
+name = "calculate-genesis-hash"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+turkium-consensus-core = { path = "../consensus/core" }

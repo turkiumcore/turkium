@@ -1,5 +1,5 @@
 #![allow(non_snake_case)]
-extern crate self as Turkium_cli;
+extern crate self as turkium_cli;
 
 mod cli;
 pub mod error;
@@ -13,5 +13,5 @@ pub mod result;
 pub mod utils;
 mod wizards;
 
-pub use cli::{Options, TerminalOptions, TerminalTarget, Turkium_cli, TurkiumCli};
+pub use cli::{Options, TerminalOptions, TerminalTarget, turkium_cli, TurkiumCli};
 pub use workflow_terminal::Terminal;

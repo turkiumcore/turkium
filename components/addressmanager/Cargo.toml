@@ -1,6 +1,6 @@
 [package]
-name = "Turkium-addressmanager"
-description = "Turkium address manager"
+name = "turkium-addressmanager"
+description = "turkium address manager"
 rust-version.workspace = true
 version.workspace = true
 edition.workspace = true
@@ -13,10 +13,10 @@ repository.workspace = true
 borsh.workspace = true
 igd-next.workspace = true
 itertools.workspace = true
-Turkium-consensus-core.workspace = true
-Turkium-core.workspace = true
-Turkium-database.workspace = true
-Turkium-utils.workspace = true
+turkium-consensus-core.workspace = true
+turkium-core.workspace = true
+turkium-database.workspace = true
+turkium-utils.workspace = true
 local-ip-address.workspace = true
 log.workspace = true
 parking_lot.workspace = true

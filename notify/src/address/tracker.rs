@@ -1,8 +1,8 @@
 use crate::address::error::{Error, Result};
-use Turkium_addresses::{Address, Prefix};
-use Turkium_consensus_core::tx::ScriptPublicKey;
-use Turkium_core::{debug, trace};
-use Turkium_txscript::{extract_script_pub_key_address, pay_to_address_script};
+use turkium_addresses::{Address, Prefix};
+use turkium_consensus_core::tx::ScriptPublicKey;
+use turkium_core::{debug, trace};
+use turkium_txscript::{extract_script_pub_key_address, pay_to_address_script};
 use indexmap::{IndexMap, map::Entry};
 use itertools::Itertools;
 use parking_lot::{RwLock, RwLockReadGuard, RwLockWriteGuard};
@@ -388,7 +388,7 @@ impl Inner {
 ///
 /// #### Implementation design
 ///
-/// Each [`Address`] is stored internally as a [`ScriptPubKey`](Turkium_consensus_core::tx::ScriptPublicKey).
+/// Each [`Address`] is stored internally as a [`ScriptPubKey`](turkium_consensus_core::tx::ScriptPublicKey).
 /// This prevents inter-network duplication and optimizes UTXOs filtering efficiency.
 ///
 /// But consequently the address network prefix gets lost and must be globally provided when querying for addresses by indexes.
@@ -610,11 +610,11 @@ impl<'a> TrackerReadGuard<'a> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use Turkium_math::Uint256;
+    use turkium_math::Uint256;
 
     fn create_addresses(start: usize, count: usize) -> Vec<Address> {
         (start..start + count)
-            .map(|i| Address::new(Prefix::Mainnet, Turkium_addresses::Version::PubKey, &Uint256::from_u64(i as u64).to_le_bytes()))
+            .map(|i| Address::new(Prefix::Mainnet, turkium_addresses::Version::PubKey, &Uint256::from_u64(i as u64).to_le_bytes()))
             .collect()
     }
 

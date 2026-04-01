@@ -1,19 +1,19 @@
-use Turkium_core::debug;
-use Turkium_p2p_lib::echo::EchoFlowInitializer;
-use Turkium_utils::networking::NetAddress;
+use turkium_core::debug;
+use turkium_p2p_lib::echo::EchoFlowInitializer;
+use turkium_utils::networking::NetAddress;
 use std::{str::FromStr, sync::Arc, time::Duration};
 
 #[tokio::main]
 async fn main() {
     // [-] - init logger
-    Turkium_core::log::init_logger(None, "debug");
+    turkium_core::log::init_logger(None, "debug");
     // [0] - init p2p-adaptor - server side
-    let ip_port = NetAddress::from_str("[::1]:50051").unwrap();
+    let ip_port = NetAddress::from_str("[::1]:5203").unwrap();
     let initializer = Arc::new(EchoFlowInitializer::new());
     let adaptor =
-        Turkium_p2p_lib::Adaptor::bidirectional(ip_port, Turkium_p2p_lib::Hub::new(), initializer, Default::default()).unwrap();
+        turkium_p2p_lib::Adaptor::bidirectional(ip_port, turkium_p2p_lib::Hub::new(), initializer, Default::default()).unwrap();
     // [1] - connect to a few peers
-    let ip_port = String::from("[::1]:5206");
+    let ip_port = String::from("[::1]:5204");
     for i in 0..1 {
         debug!("P2P, p2p_client::main - starting peer:{}", i);
         let _peer_key = adaptor.connect_peer_with_retries(ip_port.clone(), 16, Duration::from_secs(1)).await;

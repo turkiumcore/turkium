@@ -125,7 +125,7 @@ mod tests {
 
     #[wasm_bindgen_test]
     fn test_wasm_serde_constructor() {
-        let str = "Turkium:qpauqsvk7yf9unexwmxsnmg547mhyga37csh0kj53q6xxgl24ydxjsgzthw5j";
+        let str = "turkium:qpauqsvk7yf9unexwmxsnmg547mhyga37csh0kj53q6xxgl24ydxjsgzthw5j";
         let a = Address::constructor(str);
         let value = to_value(&a).unwrap();
 
@@ -136,7 +136,7 @@ mod tests {
 
     #[wasm_bindgen_test]
     fn test_wasm_js_serde_object() {
-        let expected = Address::constructor("Turkium:qpauqsvk7yf9unexwmxsnmg547mhyga37csh0kj53q6xxgl24ydxjsgzthw5j");
+        let expected = Address::constructor("turkium:qpauqsvk7yf9unexwmxsnmg547mhyga37csh0kj53q6xxgl24ydxjsgzthw5j");
 
         let obj = Object::new();
         obj.set("version", &JsValue::from_str("PubKey")).unwrap();
@@ -152,7 +152,7 @@ mod tests {
 
     #[wasm_bindgen_test]
     fn test_wasm_serde_object() {
-        let expected = Address::constructor("Turkium:qpauqsvk7yf9unexwmxsnmg547mhyga37csh0kj53q6xxgl24ydxjsgzthw5j");
+        let expected = Address::constructor("turkium:qpauqsvk7yf9unexwmxsnmg547mhyga37csh0kj53q6xxgl24ydxjsgzthw5j");
         let wasm_js_value: JsValue = expected.clone().into_abi().into();
 
         let actual = from_value(wasm_js_value).unwrap();

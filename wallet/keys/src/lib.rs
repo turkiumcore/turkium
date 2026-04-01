@@ -2,7 +2,7 @@
 //!
 //! # Turkium Wallet Keys
 //!
-//! This crate provides tools for creating and managing Turkium wallet keys.
+//! This crate provides tools for creating and managing turkium wallet keys.
 //! This includes extended key generation and derivation.
 //!
 

@@ -1,4 +1,4 @@
-use Turkium_consensus_core::BlueWorkType;
+use turkium_consensus_core::BlueWorkType;
 use smallvec::{SmallVec, smallvec};
 use std::str;
 

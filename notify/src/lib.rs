@@ -1,5 +1,5 @@
 #![allow(non_snake_case)]
-extern crate self as Turkium_notify;
+extern crate self as turkium_notify;
 
 pub mod address;
 pub(crate) mod broadcaster;

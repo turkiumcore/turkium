@@ -6,12 +6,12 @@
 use crate::error::RpcError as Error;
 use crate::error::RpcResult as Result;
 use crate::model::*;
-use Turkium_addresses::Address;
-use Turkium_addresses::AddressOrStringArrayT;
-use Turkium_consensus_client::UtxoEntryReference;
-use Turkium_consensus_client::{OptionalHeader, Transaction};
-use Turkium_consensus_core::tx as cctx;
-use Turkium_rpc_macros::declare_typescript_wasm_interface as declare;
+use turkium_addresses::Address;
+use turkium_addresses::AddressOrStringArrayT;
+use turkium_consensus_client::UtxoEntryReference;
+use turkium_consensus_client::{OptionalHeader, Transaction};
+use turkium_consensus_core::tx as cctx;
+use turkium_rpc_macros::declare_typescript_wasm_interface as declare;
 use js_sys::Array;
 use js_sys::Object;
 pub use serde_wasm_bindgen::from_value;

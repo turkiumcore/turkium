@@ -1,9 +1,9 @@
 use crate::result::Result;
-use Turkium_consensus_core::hashing::sighash::{SigHashReusedValuesUnsync, calc_schnorr_signature_hash};
-use Turkium_consensus_core::hashing::sighash_type::SIG_HASH_ALL;
-use Turkium_consensus_core::tx;
+use turkium_consensus_core::hashing::sighash::{SigHashReusedValuesUnsync, calc_schnorr_signature_hash};
+use turkium_consensus_core::hashing::sighash_type::SIG_HASH_ALL;
+use turkium_consensus_core::tx;
 
-pub fn script_hashes(mut mutable_tx: tx::SignableTransaction) -> Result<Vec<Turkium_hashes::Hash>> {
+pub fn script_hashes(mut mutable_tx: tx::SignableTransaction) -> Result<Vec<turkium_hashes::Hash>> {
     let mut list = vec![];
     for i in 0..mutable_tx.tx.inputs.len() {
         mutable_tx.tx.inputs[i].sig_op_count = 1;

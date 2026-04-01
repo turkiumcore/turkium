@@ -1,8 +1,8 @@
 use std::fmt::{Debug, Display, Formatter};
 use std::str::{self, FromStr};
 
-use Turkium_utils::hex::{FromHex, ToHex};
-use Turkium_utils::{serde_impl_deser_fixed_bytes_ref, serde_impl_ser_fixed_bytes_ref};
+use turkium_utils::hex::{FromHex, ToHex};
+use turkium_utils::{serde_impl_deser_fixed_bytes_ref, serde_impl_ser_fixed_bytes_ref};
 use borsh::{BorshDeserialize, BorshSerialize};
 use thiserror::Error;
 

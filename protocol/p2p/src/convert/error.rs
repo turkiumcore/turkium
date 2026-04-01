@@ -1,4 +1,4 @@
-use Turkium_consensus_core::subnets::SubnetworkConversionError;
+use turkium_consensus_core::subnets::SubnetworkConversionError;
 use thiserror::Error;
 
 #[derive(Clone, Debug, Error)]
@@ -16,7 +16,7 @@ pub enum ConversionError {
     ArrayBytesSizeError(#[from] std::array::TryFromSliceError),
 
     #[error("Bytes size mismatch error {0}")]
-    UintBytesSizeError(#[from] Turkium_math::uint::TryFromSliceError),
+    UintBytesSizeError(#[from] turkium_math::uint::TryFromSliceError),
 
     #[error("Integer parsing error: {0}")]
     IntCastingError(#[from] std::num::TryFromIntError),
@@ -31,5 +31,5 @@ pub enum ConversionError {
     SubnetParsingError(#[from] SubnetworkConversionError),
 
     #[error(transparent)]
-    CompressedParentsError(#[from] Turkium_consensus_core::errors::header::CompressedParentsError),
+    CompressedParentsError(#[from] turkium_consensus_core::errors::header::CompressedParentsError),
 }

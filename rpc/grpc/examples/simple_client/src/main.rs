@@ -1,17 +1,17 @@
 #![allow(non_snake_case)]
-// Example of simple grpc client to connect with Turkium node and collect some node and network basic data
+// Example of simple grpc client to connect with turkium node and collect some node and network basic data
 
-use Turkium_grpc_client::GrpcClient;
-use Turkium_rpc_core::RpcResult;
-use Turkium_rpc_core::notify::mode::NotificationMode;
-use Turkium_rpc_core::{GetBlockDagInfoResponse, GetServerInfoResponse, api::rpc::RpcApi};
+use turkium_grpc_client::GrpcClient;
+use turkium_rpc_core::RpcResult;
+use turkium_rpc_core::notify::mode::NotificationMode;
+use turkium_rpc_core::{GetBlockDagInfoResponse, GetServerInfoResponse, api::rpc::RpcApi};
 use std::process::ExitCode;
 
 #[tokio::main]
 async fn main() -> ExitCode {
     match check_node_status().await {
         Ok(_) => {
-            println!("Well done! You successfully completed your first client connection to Turkium node!");
+            println!("Well done! You successfully completed your first client connection to turkium node!");
             ExitCode::SUCCESS
         }
         Err(error) => {
@@ -29,7 +29,7 @@ async fn check_node_status() -> RpcResult<()> {
             .await
             .unwrap();
 
-    // Retrieve and show Turkium node information
+    // Retrieve and show turkium node information
     let GetServerInfoResponse { is_synced, server_version, network_id, has_utxo_index, .. } = client.get_server_info().await?;
 
     println!("Node version: {server_version}");
@@ -67,7 +67,7 @@ async fn check_node_status() -> RpcResult<()> {
     println!("Virtual DAA score: {virtual_daa_score}");
     println!("Sink: {sink}");
 
-    // Disconnect client from Turkium node
+    // Disconnect client from turkium node
     client.disconnect().await?;
 
     // Return function result

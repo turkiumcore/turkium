@@ -1,11 +1,11 @@
 use super::{error::ConversionError, option::TryIntoOptionEx};
 use crate::convert::header::Versioned;
 use crate::pb as protowire;
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     BlockHashMap, BlueWorkType, HashMapCustomHasher, KType,
     trusted::{ExternalGhostdagData, TrustedGhostdagData, TrustedHeader},
 };
-use Turkium_hashes::Hash;
+use turkium_hashes::Hash;
 use std::sync::Arc;
 
 // ----------------------------------------------------------------------------

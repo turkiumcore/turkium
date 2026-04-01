@@ -1,5 +1,5 @@
 /// Re-export errors
-pub use Turkium_mining_errors::mempool::*;
+pub use turkium_mining_errors::mempool::*;
 
 use crate::model::topological_index::TopologicalIndexError;
 

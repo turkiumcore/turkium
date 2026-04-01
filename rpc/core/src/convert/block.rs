@@ -3,7 +3,7 @@
 use std::sync::Arc;
 
 use crate::{RpcBlock, RpcError, RpcOptionalBlock, RpcOptionalTransaction, RpcRawBlock, RpcResult, RpcTransaction};
-use Turkium_consensus_core::block::{Block, MutableBlock};
+use turkium_consensus_core::block::{Block, MutableBlock};
 
 // ----------------------------------------------------------------------------
 // consensus_core to rpc_core
@@ -14,7 +14,7 @@ impl From<&Block> for RpcBlock {
         Self {
             header: item.header.as_ref().into(),
             transactions: item.transactions.iter().map(RpcTransaction::from).collect(),
-            // TODO: Implement a populating process inspired from Turkiumd\app\rpc\rpccontext\verbosedata.go
+            // TODO: Implement a populating process inspired from turkiumd\app\rpc\rpccontext\verbosedata.go
             verbose_data: None,
         }
     }
@@ -60,8 +60,8 @@ impl TryFrom<RpcBlock> for Block {
             transactions: Arc::new(
                 item.transactions
                     .into_iter()
-                    .map(Turkium_consensus_core::tx::Transaction::try_from)
-                    .collect::<RpcResult<Vec<Turkium_consensus_core::tx::Transaction>>>()?,
+                    .map(turkium_consensus_core::tx::Transaction::try_from)
+                    .collect::<RpcResult<Vec<turkium_consensus_core::tx::Transaction>>>()?,
             ),
         })
     }
@@ -75,8 +75,8 @@ impl TryFrom<RpcRawBlock> for Block {
             transactions: Arc::new(
                 item.transactions
                     .into_iter()
-                    .map(Turkium_consensus_core::tx::Transaction::try_from)
-                    .collect::<RpcResult<Vec<Turkium_consensus_core::tx::Transaction>>>()?,
+                    .map(turkium_consensus_core::tx::Transaction::try_from)
+                    .collect::<RpcResult<Vec<turkium_consensus_core::tx::Transaction>>>()?,
             ),
         })
     }
@@ -91,7 +91,7 @@ impl From<&Block> for RpcOptionalBlock {
         Self {
             header: Some(item.header.as_ref().into()),
             transactions: item.transactions.iter().map(RpcOptionalTransaction::from).collect(),
-            // TODO: Implement a populating process inspired from Turkiumd\app\rpc\rpccontext\verbosedata.go
+            // TODO: Implement a populating process inspired from turkiumd\app\rpc\rpccontext\verbosedata.go
             verbose_data: None,
         }
     }
@@ -121,8 +121,8 @@ impl TryFrom<RpcOptionalBlock> for Block {
             transactions: Arc::new(
                 item.transactions
                     .into_iter()
-                    .map(Turkium_consensus_core::tx::Transaction::try_from)
-                    .collect::<RpcResult<Vec<Turkium_consensus_core::tx::Transaction>>>()?,
+                    .map(turkium_consensus_core::tx::Transaction::try_from)
+                    .collect::<RpcResult<Vec<turkium_consensus_core::tx::Transaction>>>()?,
             ),
         })
     }

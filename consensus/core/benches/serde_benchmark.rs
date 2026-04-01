@@ -1,5 +1,5 @@
-use Turkium_consensus_core::subnets::SUBNETWORK_ID_COINBASE;
-use Turkium_consensus_core::tx::{
+use turkium_consensus_core::subnets::SUBNETWORK_ID_COINBASE;
+use turkium_consensus_core::tx::{
     ScriptPublicKey, Transaction, TransactionId, TransactionInput, TransactionOutpoint, TransactionOutput,
 };
 use criterion::{Criterion, black_box, criterion_group, criterion_main};

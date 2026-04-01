@@ -32,7 +32,7 @@ impl<const TR: u64> Drop for Stopwatch<TR> {
     fn drop(&mut self) {
         let elapsed = self.start.elapsed();
         if elapsed > Duration::from_millis(TR) {
-            Turkium_core::trace!("[{}] Abnormal time: {:#?}", self.name, elapsed);
+            turkium_core::trace!("[{}] Abnormal time: {:#?}", self.name, elapsed);
         }
     }
 }

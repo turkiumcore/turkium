@@ -1,11 +1,11 @@
 use crate::pskt::{Input, PSKT as Native};
 use crate::role::*;
-use Turkium_consensus_core::network::NetworkType;
-use Turkium_consensus_core::tx::TransactionId;
+use turkium_consensus_core::network::NetworkType;
+use turkium_consensus_core::tx::TransactionId;
 use wasm_bindgen::prelude::*;
 // use js_sys::Object;
 use crate::pskt::Inner;
-use Turkium_consensus_client::{Transaction, TransactionInput, TransactionInputT, TransactionOutput, TransactionOutputT};
+use turkium_consensus_client::{Transaction, TransactionInput, TransactionInputT, TransactionOutput, TransactionOutputT};
 use serde::{Deserialize, Serialize};
 use std::str::FromStr;
 use std::sync::MutexGuard;

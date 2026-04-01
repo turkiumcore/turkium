@@ -3,10 +3,10 @@ use crate::storage::WalletDescriptor;
 use crate::storage::local::interface::LocalStore;
 use crate::wallet as native;
 use crate::wasm::notify::{WalletEventTarget, WalletNotificationCallback, WalletNotificationTypeOrCallback};
-use Turkium_consensus_core::network::NetworkIdT;
-use Turkium_wallet_macros::declare_typescript_wasm_interface as declare;
-use Turkium_wasm_core::events::{Sink, get_event_targets};
-use Turkium_wrpc_wasm::{IConnectOptions, Resolver, RpcClient, RpcConfig, WrpcEncoding};
+use turkium_consensus_core::network::NetworkIdT;
+use turkium_wallet_macros::declare_typescript_wasm_interface as declare;
+use turkium_wasm_core::events::{Sink, get_event_targets};
+use turkium_wrpc_wasm::{IConnectOptions, Resolver, RpcClient, RpcConfig, WrpcEncoding};
 
 declare! {
     IWalletConfig,

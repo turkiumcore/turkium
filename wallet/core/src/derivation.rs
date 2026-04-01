@@ -2,21 +2,21 @@
 //!  Module handling bip32 address derivation (bip32+bip44 and legacy accounts)
 //!
 
-use Turkium_wallet_keys::derivation::gen0::{PubkeyDerivationManagerV0, WalletDerivationManagerV0};
-use Turkium_wallet_keys::derivation::gen1::{PubkeyDerivationManager, WalletDerivationManager};
+use turkium_wallet_keys::derivation::gen0::{PubkeyDerivationManagerV0, WalletDerivationManagerV0};
+use turkium_wallet_keys::derivation::gen1::{PubkeyDerivationManager, WalletDerivationManager};
 
-pub use Turkium_wallet_keys::derivation::traits::*;
-use Turkium_wallet_keys::publickey::{PublicKey, PublicKeyArrayT, PublicKeyT};
-pub use Turkium_wallet_keys::types::*;
+pub use turkium_wallet_keys::derivation::traits::*;
+use turkium_wallet_keys::publickey::{PublicKey, PublicKeyArrayT, PublicKeyT};
+pub use turkium_wallet_keys::types::*;
 
 use crate::account::AccountKind;
 use crate::account::create_private_keys;
 use crate::error::Error;
 use crate::imports::*;
 use crate::result::Result;
-use Turkium_bip32::{AddressType, DerivationPath, ExtendedPrivateKey, ExtendedPublicKey, Language, Mnemonic, SecretKeyExt};
-use Turkium_consensus_core::network::{NetworkType, NetworkTypeT};
-use Turkium_txscript::{
+use turkium_bip32::{AddressType, DerivationPath, ExtendedPrivateKey, ExtendedPublicKey, Language, Mnemonic, SecretKeyExt};
+use turkium_consensus_core::network::{NetworkType, NetworkTypeT};
+use turkium_txscript::{
     extract_script_pub_key_address, multisig_redeem_script, multisig_redeem_script_ecdsa, pay_to_script_hash_script,
 };
 
@@ -93,7 +93,7 @@ impl AddressManager {
         let list = self.pubkey_managers.iter().map(|m| m.current_pubkey());
 
         // let keys = join_all(list).await.into_iter().collect::<Result<Vec<_>>>()?;
-        let keys = list.into_iter().collect::<Turkium_wallet_keys::result::Result<Vec<_>>>()?;
+        let keys = list.into_iter().collect::<turkium_wallet_keys::result::Result<Vec<_>>>()?;
         let address = self.create_address(keys)?;
 
         self.update_address_to_index_map(self.index(), std::slice::from_ref(&address))?;
@@ -126,7 +126,7 @@ impl AddressManager {
 
         let list = self.pubkey_managers.iter().map(|m| m.get_range(indexes.clone()));
 
-        let manager_keys = list.into_iter().collect::<Turkium_wallet_keys::result::Result<Vec<_>>>()?;
+        let manager_keys = list.into_iter().collect::<turkium_wallet_keys::result::Result<Vec<_>>>()?;
 
         let is_multisig = manager_length > 1;
 

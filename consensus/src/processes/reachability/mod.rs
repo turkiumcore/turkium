@@ -5,7 +5,7 @@ mod reindex;
 pub mod tests;
 mod tree;
 
-use Turkium_database::prelude::StoreError;
+use turkium_database::prelude::StoreError;
 use thiserror::Error;
 
 #[derive(Error, Debug)]
@@ -23,7 +23,7 @@ pub enum ReachabilityError {
     BadQuery,
 }
 
-impl Turkium_database::prelude::StoreErrorPredicates for ReachabilityError {
+impl turkium_database::prelude::StoreErrorPredicates for ReachabilityError {
     fn is_key_not_found(&self) -> bool {
         matches!(self, ReachabilityError::StoreError(err) if err.is_key_not_found())
     }

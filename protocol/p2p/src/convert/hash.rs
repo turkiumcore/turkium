@@ -1,6 +1,6 @@
 use super::error::ConversionError;
 use crate::pb as protowire;
-use Turkium_hashes::Hash;
+use turkium_hashes::Hash;
 
 // ----------------------------------------------------------------------------
 // consensus_core to protowire

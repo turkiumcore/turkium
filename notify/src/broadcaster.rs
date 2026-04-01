@@ -7,7 +7,7 @@ use crate::{
     notification::Notification,
     subscription::{BroadcastingSingle, DynSubscription, context::SubscriptionContext},
 };
-use Turkium_core::{debug, trace};
+use turkium_core::{debug, trace};
 use async_channel::{Receiver, Sender};
 use core::fmt::Debug;
 use derive_more::Deref;
@@ -425,21 +425,21 @@ mod tests {
 
     #[tokio::test]
     async fn test_overall() {
-        Turkium_core::log::try_init_logger("trace,Turkium_notify=trace");
+        turkium_core::log::try_init_logger("trace,turkium_notify=trace");
         let mut test = Test::new("BlockAdded broadcast (OverallSubscription type)", 2, overall_test_steps(0));
         test.run().await;
     }
 
     #[tokio::test]
     async fn test_virtual_chain_changed() {
-        Turkium_core::log::try_init_logger("trace,Turkium_notify=trace");
+        turkium_core::log::try_init_logger("trace,turkium_notify=trace");
         let mut test = Test::new("VirtualChainChanged broadcast", 2, virtual_chain_changed_test_steps(0));
         test.run().await;
     }
 
     #[tokio::test]
     async fn test_utxos_changed() {
-        Turkium_core::log::try_init_logger("trace,Turkium_notify=trace");
+        turkium_core::log::try_init_logger("trace,turkium_notify=trace");
         let mut test = Test::new("UtxosChanged broadcast", 3, utxos_changed_test_steps(0));
         test.run().await;
     }

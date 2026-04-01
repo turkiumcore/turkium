@@ -1,8 +1,8 @@
 use crate::model::*;
-use Turkium_consensus_core::api::stats::BlockCount;
-use Turkium_core::debug;
-use Turkium_notify::subscription::{Command, context::SubscriptionContext, single::UtxosChangedSubscription};
-use Turkium_utils::hex::ToHex;
+use turkium_consensus_core::api::stats::BlockCount;
+use turkium_core::debug;
+use turkium_notify::subscription::{Command, context::SubscriptionContext, single::UtxosChangedSubscription};
+use turkium_utils::hex::ToHex;
 use borsh::{BorshDeserialize, BorshSerialize};
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
@@ -155,9 +155,9 @@ impl Deserializer for GetBlockTemplateRequest {
 pub struct GetBlockTemplateResponse {
     pub block: RpcRawBlock,
 
-    /// Whether Turkiumd thinks that it's synced.
-    /// Callers are discouraged (but not forbidden) from solving blocks when Turkiumd is not synced.
-    /// That is because when Turkiumd isn't in sync with the rest of the network there's a high
+    /// Whether turkiumd thinks that it's synced.
+    /// Callers are discouraged (but not forbidden) from solving blocks when turkiumd is not synced.
+    /// That is because when turkiumd isn't in sync with the rest of the network there's a high
     /// chance the block will never be accepted, thus the solving effort would have been wasted.
     pub is_synced: bool,
 }
@@ -3128,7 +3128,7 @@ impl Deserializer for FinalityConflictResolvedNotification {
 //
 // If `addresses` is empty, the notifications will start or stop for all addresses.
 //
-// This call is only available when this Turkiumd was started with `--utxoindex`
+// This call is only available when this turkiumd was started with `--utxoindex`
 //
 // See: UtxosChangedNotification
 #[derive(Clone, Debug, Serialize, Deserialize)]

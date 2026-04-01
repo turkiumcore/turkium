@@ -6,8 +6,8 @@ pub mod u3072;
 mod u3072;
 
 use crate::u3072::U3072;
-use Turkium_hashes::{Hash, Hasher, HasherBase, MuHashElementHash, MuHashFinalizeHash};
-use Turkium_math::Uint3072;
+use turkium_hashes::{Hash, Hasher, HasherBase, MuHashElementHash, MuHashFinalizeHash};
+use turkium_math::Uint3072;
 use rand_chacha::ChaCha20Rng;
 use rand_chacha::rand_core::{RngCore, SeedableRng};
 use serde::{Deserialize, Serialize};
@@ -180,7 +180,7 @@ impl Default for MuHash {
 mod tests {
     use crate::OverflowError;
     use crate::{EMPTY_MUHASH, MuHash, U3072};
-    use Turkium_hashes::Hash;
+    use turkium_hashes::Hash;
     use rand::{Rng, SeedableRng};
     use rand_chacha::ChaCha8Rng;
 

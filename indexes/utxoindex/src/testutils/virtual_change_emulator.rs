@@ -1,11 +1,11 @@
 use crate::model::{CirculatingSupply, CirculatingSupplyDiff};
-use Turkium_consensus::test_helpers::*;
-use Turkium_consensus_core::{
+use turkium_consensus::test_helpers::*;
+use turkium_consensus_core::{
     BlockHashSet, HashMapCustomHasher,
     tx::ScriptPublicKey,
     utxo::{utxo_collection::UtxoCollection, utxo_diff::UtxoDiff},
 };
-use Turkium_hashes::Hash;
+use turkium_hashes::Hash;
 #[cfg(test)]
 use rand::Rng;
 use rand::{SeedableRng, rngs::SmallRng};

@@ -1,6 +1,6 @@
 [package]
-name = "Turkium-p2p-lib"
-description = "Turkium p2p library"
+name = "turkium-p2p-lib"
+description = "turkium p2p library"
 rust-version.workspace = true
 version.workspace = true
 edition.workspace = true
@@ -21,13 +21,13 @@ name = "Turkium_p2p_server"
 path = "./src/bin/server.rs"
 
 [dependencies]
-Turkium-core.workspace = true
-Turkium-consensus-core.workspace = true
-Turkium-mining-errors.workspace = true
-Turkium-hashes.workspace = true
-Turkium-math.workspace = true
-Turkium-utils.workspace = true
-Turkium-utils-tower.workspace = true
+turkium-core.workspace = true
+turkium-consensus-core.workspace = true
+turkium-mining-errors.workspace = true
+turkium-hashes.workspace = true
+turkium-math.workspace = true
+turkium-utils.workspace = true
+turkium-utils-tower.workspace = true
 
 borsh.workspace = true
 ctrlc.workspace = true

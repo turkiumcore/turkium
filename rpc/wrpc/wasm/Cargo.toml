@@ -1,6 +1,6 @@
 [package]
-name = "Turkium-wrpc-wasm"
-description = "Turkium wRPC WASM client"
+name = "turkium-wrpc-wasm"
+description = "turkium wRPC WASM client"
 rust-version.workspace = true
 version.workspace = true
 edition.workspace = true
@@ -10,7 +10,7 @@ license.workspace = true
 repository.workspace = true
 
 [features]
-wasm32-sdk = ["Turkium-wrpc-client/wasm32-sdk"]
+wasm32-sdk = ["turkium-wrpc-client/wasm32-sdk"]
 default = []
 
 [lib]
@@ -20,15 +20,15 @@ crate-type = ["cdylib", "lib"]
 ahash.workspace = true
 async-std.workspace = true
 cfg-if.workspace = true
-Turkium-addresses.workspace = true
-Turkium-consensus-core.workspace = true
-Turkium-consensus-client.workspace = true
-Turkium-consensus-wasm.workspace = true
-Turkium-notify.workspace = true
-Turkium-wrpc-client.workspace = true
-Turkium-rpc-core.workspace = true
-Turkium-rpc-macros.workspace = true
-Turkium-wasm-core.workspace = true
+turkium-addresses.workspace = true
+turkium-consensus-core.workspace = true
+turkium-consensus-client.workspace = true
+turkium-consensus-wasm.workspace = true
+turkium-notify.workspace = true
+turkium-wrpc-client.workspace = true
+turkium-rpc-core.workspace = true
+turkium-rpc-macros.workspace = true
+turkium-wasm-core.workspace = true
 serde_json.workspace = true
 serde-wasm-bindgen.workspace = true
 serde.workspace = true

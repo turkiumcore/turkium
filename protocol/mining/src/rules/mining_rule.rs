@@ -1,4 +1,4 @@
-use Turkium_consensus_core::api::counters::ProcessingCountersSnapshot;
+use turkium_consensus_core::api::counters::ProcessingCountersSnapshot;
 
 use super::ExtraData;
 

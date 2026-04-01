@@ -4,7 +4,7 @@ use crate::{
     scope::{Scope, UtxosChangedScope, VirtualChainChangedScope},
     subscription::{Command, Compounded, Mutation, Subscription, context::SubscriptionContext},
 };
-use Turkium_addresses::{Address, Prefix};
+use turkium_addresses::{Address, Prefix};
 use itertools::Itertools;
 
 #[derive(Clone, Debug, PartialEq, Eq)]
@@ -247,7 +247,7 @@ impl Subscription for UtxosChangedSubscription {
 
 #[cfg(test)]
 mod tests {
-    use Turkium_core::trace;
+    use turkium_core::trace;
 
     use super::super::*;
     use super::*;
@@ -356,7 +356,7 @@ mod tests {
     #[test]
     #[allow(clippy::redundant_clone)]
     fn test_utxos_changed_compounding() {
-        Turkium_core::log::try_init_logger("trace,Turkium_notify=trace");
+        turkium_core::log::try_init_logger("trace,turkium_notify=trace");
         let a_stock = get_3_addresses(true);
 
         let a = |indexes: &[usize]| indexes.iter().map(|idx| (a_stock[*idx]).clone()).collect::<Vec<_>>();

@@ -1,6 +1,6 @@
 use crate::pb as protowire;
-use Turkium_consensus_core::{BlueWorkType, header::Header};
-use Turkium_hashes::Hash;
+use turkium_consensus_core::{BlueWorkType, header::Header};
+use turkium_hashes::Hash;
 
 use super::error::ConversionError;
 use super::option::TryIntoOptionEx;

@@ -6,8 +6,8 @@
 //!
 
 use crate::utils::*;
-use Turkium_consensus_core::network::{NetworkId, NetworkType};
-use Turkium_consensus_core::tx::TransactionId;
+use turkium_consensus_core::network::{NetworkId, NetworkType};
+use turkium_consensus_core::tx::TransactionId;
 use borsh::{BorshDeserialize, BorshSerialize};
 use serde::{Deserialize, Serialize};
 use std::fmt;
@@ -88,9 +88,9 @@ impl fmt::Display for GeneratorSummary {
             write!(
                 f,
                 "Amount: {}  Fees: {}  Total: {}  UTXOs: {}  {}",
-                sompi_to_Turkium_string_with_suffix(final_transaction_amount, &self.network_id),
-                sompi_to_Turkium_string_with_suffix(self.aggregate_fees, &self.network_id),
-                sompi_to_Turkium_string_with_suffix(total, &self.network_id),
+                sompi_to_turkium_string_with_suffix(final_transaction_amount, &self.network_id),
+                sompi_to_turkium_string_with_suffix(self.aggregate_fees, &self.network_id),
+                sompi_to_turkium_string_with_suffix(total, &self.network_id),
                 self.aggregated_utxos,
                 transactions
             )?;
@@ -98,7 +98,7 @@ impl fmt::Display for GeneratorSummary {
             write!(
                 f,
                 "Fees: {}  UTXOs: {}  {}",
-                sompi_to_Turkium_string_with_suffix(self.aggregate_fees, &self.network_id),
+                sompi_to_turkium_string_with_suffix(self.aggregate_fees, &self.network_id),
                 self.aggregated_utxos,
                 transactions
             )?;

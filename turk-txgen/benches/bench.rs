@@ -1,7 +1,7 @@
 use criterion::{Criterion, criterion_group, criterion_main};
 use rayon::prelude::*;
 
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     Hash,
     constants::TX_VERSION,
     subnets::SUBNETWORK_ID_NATIVE,

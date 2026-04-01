@@ -1,6 +1,7 @@
 use crate::Hash;
 use std::num::Wrapping;
 
+#[allow(dead_code)]
 pub(super) struct XoShiRo256PlusPlus {
     s0: Wrapping<u64>,
     s1: Wrapping<u64>,
@@ -10,11 +11,13 @@ pub(super) struct XoShiRo256PlusPlus {
 
 impl XoShiRo256PlusPlus {
     #[inline]
+    #[allow(dead_code)]
     pub(super) fn new(hash: Hash) -> Self {
         Self { s0: Wrapping(hash.0[0]), s1: Wrapping(hash.0[1]), s2: Wrapping(hash.0[2]), s3: Wrapping(hash.0[3]) }
     }
 
     #[inline]
+    #[allow(dead_code)]
     pub(super) fn u64(&mut self) -> u64 {
         let res = self.s0 + Wrapping((self.s0 + self.s3).0.rotate_left(23));
         let t = self.s1 << 17;

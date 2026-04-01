@@ -22,7 +22,7 @@ use crate::{
     },
     processes::{coinbase::CoinbaseManager, transaction_validator::TransactionValidator},
 };
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     KType,
     block::Block,
     blockstatus::BlockStatus::{self, StatusHeaderOnly, StatusInvalid},
@@ -30,13 +30,13 @@ use Turkium_consensus_core::{
     mass::{Mass, MassCalculator, MassOps},
     tx::Transaction,
 };
-use Turkium_consensus_notify::{
+use turkium_consensus_notify::{
     notification::{BlockAddedNotification, Notification},
     root::ConsensusNotificationRoot,
 };
-use Turkium_consensusmanager::SessionLock;
-use Turkium_hashes::Hash;
-use Turkium_notify::notifier::Notify;
+use turkium_consensusmanager::SessionLock;
+use turkium_hashes::Hash;
+use turkium_notify::notifier::Notify;
 use crossbeam_channel::{Receiver, Sender};
 use parking_lot::RwLock;
 use rayon::ThreadPool;

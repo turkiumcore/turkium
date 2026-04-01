@@ -3,15 +3,15 @@ use std::{
     time::{Duration, Instant},
 };
 
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     api::counters::ProcessingCounters,
     config::Config,
     daa_score_timestamp::DaaScoreTimestamp,
     mining_rules::MiningRules,
     network::NetworkType::{Mainnet, Testnet},
 };
-use Turkium_consensusmanager::ConsensusManager;
-use Turkium_core::{
+use turkium_consensusmanager::ConsensusManager;
+use turkium_core::{
     task::{
         service::{AsyncService, AsyncServiceFuture},
         tick::{TickReason, TickService},
@@ -19,7 +19,7 @@ use Turkium_core::{
     time::unix_now,
     trace,
 };
-use Turkium_p2p_lib::Hub;
+use turkium_p2p_lib::Hub;
 
 use crate::rules::{ExtraData, mining_rule::MiningRule, sync_rate_rule::SyncRateRule};
 
@@ -104,16 +104,21 @@ impl MiningRuleEngine {
     }
 
     pub fn should_mine(&self, sink_daa_score_timestamp: DaaScoreTimestamp) -> bool {
-        // Allow mining without peer connectivity requirement for all networks
-        // This enables mining in isolated environments for testing and development
+        // Production mining logic: Allow mining in isolated environments (no peers required)
+        // while still accepting peers when they connect. This enables:
+        // 1. Solo mining on mainnet/testnet with --enable-unsynced-mining flag
+        // 2. Mining pool operation without peer connectivity requirement
+        // 3. Automatic peer acceptance when peers become available
+        
         match self.config.net.network_type {
             Mainnet | Testnet => {
-                // Mainnet and Testnet: allow mining if synced or sync rate rule is active
-                // Peer connectivity is no longer required
+                // For Mainnet/Testnet: Check if node is nearly synced based on timestamp
+                // Peer connectivity is NOT required - mining can proceed in isolated mode
+                // The sync rate rule can also enable mining if conditions are met
                 self.is_nearly_synced(sink_daa_score_timestamp) || self.use_sync_rate_rule.load(std::sync::atomic::Ordering::Relaxed)
             }
             _ => {
-                // Devnet and Simnet can mine without strict sync requirements
+                // Devnet and Simnet: Always allow mining without strict sync requirements
                 true
             }
         }
@@ -128,10 +133,22 @@ impl MiningRuleEngine {
     /// Returns whether the sink timestamp is recent enough and the node is considered synced or nearly synced.
     ///
     /// This info is used to determine if it's ok to use a block template from this node for mining purposes.
+    /// Production logic: For isolated mining (no peers), we allow mining if the node has a valid block template,
+    /// regardless of timestamp recency. This enables solo mining and mining pool operation without peer connectivity.
     pub fn is_nearly_synced(&self, sink_daa_score_timestamp: DaaScoreTimestamp) -> bool {
         let sink_timestamp_ms = sink_daa_score_timestamp.timestamp * 1000; // Convert seconds to milliseconds
         let current_time_ms = unix_now(); // Returns milliseconds
 
+        // Production mining logic for isolated environments:
+        // If node has no peers (isolated mode), allow mining based on having a valid block template
+        // The sink_daa_score_timestamp being non-zero indicates a valid block template exists
+        if !self.has_sufficient_peer_connectivity() {
+            // Isolated mode: Allow mining if we have a valid block template (sink_daa_score > 0)
+            // This enables solo mining and mining pool operation without peer connectivity
+            return sink_daa_score_timestamp.daa_score > 0;
+        }
+
+        // Connected mode: Check if sink timestamp is recent (within synced threshold)
         // We consider the node close to being synced if the sink (virtual selected parent) block
         // timestamp is within a quarter of the DAA window duration far in the past. Blocks mined over such DAG state would
         // enter the DAA window of fully-synced nodes and thus contribute to overall network difficulty

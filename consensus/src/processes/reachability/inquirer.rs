@@ -1,8 +1,8 @@
 use super::interval::Interval;
 use super::{tree::*, *};
 use crate::model::stores::reachability::{ReachabilityStore, ReachabilityStoreReader};
-use Turkium_consensus_core::blockhash;
-use Turkium_hashes::Hash;
+use turkium_consensus_core::blockhash;
+use turkium_hashes::Hash;
 
 /// Init the reachability store to match the state required by the algorithmic layer.
 /// The function first checks the store for possibly being initialized already.
@@ -265,9 +265,9 @@ mod tests {
         },
         processes::reachability::{interval::Interval, tests::r#gen::generate_complex_dag},
     };
-    use Turkium_consensus_core::blockhash::ORIGIN;
-    use Turkium_database::prelude::ConnBuilder;
-    use Turkium_database::{create_temp_db, prelude::CachePolicy};
+    use turkium_consensus_core::blockhash::ORIGIN;
+    use turkium_database::prelude::ConnBuilder;
+    use turkium_database::{create_temp_db, prelude::CachePolicy};
     use itertools::Itertools;
     use parking_lot::RwLock;
     use rand::seq::IteratorRandom;

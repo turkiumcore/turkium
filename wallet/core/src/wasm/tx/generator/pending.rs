@@ -2,12 +2,12 @@ use crate::imports::*;
 use crate::result::Result;
 use crate::tx::generator as native;
 use crate::wasm::PrivateKeyArrayT;
-use Turkium_consensus_client::{Transaction, TransactionT};
-use Turkium_consensus_client::{numeric, string};
-use Turkium_consensus_core::hashing::wasm::SighashType;
-use Turkium_wallet_keys::privatekey::PrivateKey;
-use Turkium_wasm_core::types::{BinaryT, HexString};
-use Turkium_wrpc_wasm::RpcClient;
+use turkium_consensus_client::{Transaction, TransactionT};
+use turkium_consensus_client::{numeric, string};
+use turkium_consensus_core::hashing::wasm::SighashType;
+use turkium_wallet_keys::privatekey::PrivateKey;
+use turkium_wasm_core::types::{BinaryT, HexString};
+use turkium_wrpc_wasm::RpcClient;
 
 /// @category Wallet SDK
 #[wasm_bindgen(inspectable)]
@@ -124,7 +124,7 @@ impl PendingTransaction {
             let keys = keys
                 .iter()
                 .map(PrivateKey::try_owned_from)
-                .collect::<std::result::Result<Vec<_>, Turkium_wallet_keys::error::Error>>()?;
+                .collect::<std::result::Result<Vec<_>, turkium_wallet_keys::error::Error>>()?;
             let mut keys = keys.iter().map(|key| key.secret_bytes()).collect::<Vec<_>>();
             self.inner.try_sign_with_keys(&keys, check_fully_signed)?;
             keys.zeroize();

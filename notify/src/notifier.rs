@@ -16,7 +16,7 @@ use super::{
     subscriber::{Subscriber, SubscriptionManager},
     subscription::{Command, CompoundedSubscription, Mutation, array::ArrayBuilder},
 };
-use Turkium_core::{debug, trace};
+use turkium_core::{debug, trace};
 use async_channel::Sender;
 use async_trait::async_trait;
 use core::fmt::Debug;
@@ -986,21 +986,21 @@ mod tests {
 
     #[tokio::test]
     async fn test_overall() {
-        Turkium_core::log::try_init_logger("trace,Turkium_notify=trace");
+        turkium_core::log::try_init_logger("trace,turkium_notify=trace");
         let test = Test::new("BlockAdded broadcast (OverallSubscription type)", 2, overall_test_steps(SUBSCRIPTION_MANAGER_ID));
         test.run().await;
     }
 
     #[tokio::test]
     async fn test_virtual_chain_changed() {
-        Turkium_core::log::try_init_logger("trace,Turkium_notify=trace");
+        turkium_core::log::try_init_logger("trace,turkium_notify=trace");
         let test = Test::new("VirtualChainChanged broadcast", 2, virtual_chain_changed_test_steps(SUBSCRIPTION_MANAGER_ID));
         test.run().await;
     }
 
     #[tokio::test]
     async fn test_utxos_changed() {
-        Turkium_core::log::try_init_logger("trace,Turkium_notify=trace");
+        turkium_core::log::try_init_logger("trace,turkium_notify=trace");
         let test = Test::new("UtxosChanged broadcast", 3, utxos_changed_test_steps(SUBSCRIPTION_MANAGER_ID));
         test.run().await;
     }

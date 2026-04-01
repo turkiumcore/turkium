@@ -1,1 +1,1 @@
-pub type RpcBlueWorkType = Turkium_consensus_core::BlueWorkType;
+pub type RpcBlueWorkType = turkium_consensus_core::BlueWorkType;

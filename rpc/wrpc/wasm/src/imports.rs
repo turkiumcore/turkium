@@ -1,7 +1,7 @@
 #![allow(unused_imports)]
 
-pub use Turkium_consensus_core::network::{NetworkId, NetworkIdError, NetworkIdT};
-pub use Turkium_notify::{
+pub use turkium_consensus_core::network::{NetworkId, NetworkIdError, NetworkIdT};
+pub use turkium_notify::{
     error::{Error as NotifyError, Result as NotifyResult},
     events::EVENT_TYPE_ARRAY,
     listener::ListenerId,
@@ -9,16 +9,16 @@ pub use Turkium_notify::{
     scope::*,
     subscriber::{Subscriber, SubscriptionManager},
 };
-pub use Turkium_rpc_core::{
+pub use turkium_rpc_core::{
     api::ops::RpcApiOps,
     api::rpc::RpcApi,
     error::RpcResult,
     notify::{connection::ChannelConnection, mode::NotificationMode},
     prelude::*,
 };
-pub use Turkium_wrpc_client::client::*;
-pub use Turkium_wrpc_client::error::Error;
-pub use Turkium_wrpc_client::result::Result;
+pub use turkium_wrpc_client::client::*;
+pub use turkium_wrpc_client::error::Error;
+pub use turkium_wrpc_client::result::Result;
 pub use ahash::AHashMap;
 pub use async_std::sync::{Mutex as AsyncMutex, MutexGuard as AsyncMutexGuard};
 pub use cfg_if::cfg_if;

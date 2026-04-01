@@ -3,8 +3,8 @@
 //! on the network type or address prefix.
 //!
 
-use Turkium_addresses::{Address, Prefix};
-use Turkium_consensus_core::{
+use turkium_addresses::{Address, Prefix};
+use turkium_consensus_core::{
     config::params::{DEVNET_PARAMS, MAINNET_PARAMS, Params, SIMNET_PARAMS, TESTNET_PARAMS},
     network::NetworkType,
 };

@@ -1,8 +1,8 @@
-use Turkium_addresses::Address;
-use Turkium_consensus_core::tx::{
+use turkium_addresses::Address;
+use turkium_consensus_core::tx::{
     ScriptPublicKey, TransactionId, TransactionIndexType, TransactionInput, TransactionOutpoint, TransactionOutput, UtxoEntry,
 };
-use Turkium_utils::{hex::ToHex, serde_bytes_fixed_ref};
+use turkium_utils::{hex::ToHex, serde_bytes_fixed_ref};
 use borsh::{BorshDeserialize, BorshSerialize};
 use serde::{Deserialize, Serialize};
 use serde_nested_with::serde_nested;
@@ -172,13 +172,13 @@ impl TryFrom<RpcOptionalTransactionOutpoint> for TransactionOutpoint {
     }
 }
 
-impl From<Turkium_consensus_client::TransactionOutpoint> for RpcOptionalTransactionOutpoint {
-    fn from(outpoint: Turkium_consensus_client::TransactionOutpoint) -> Self {
+impl From<turkium_consensus_client::TransactionOutpoint> for RpcOptionalTransactionOutpoint {
+    fn from(outpoint: turkium_consensus_client::TransactionOutpoint) -> Self {
         TransactionOutpoint::from(outpoint).into()
     }
 }
 
-impl TryFrom<RpcOptionalTransactionOutpoint> for Turkium_consensus_client::TransactionOutpoint {
+impl TryFrom<RpcOptionalTransactionOutpoint> for turkium_consensus_client::TransactionOutpoint {
     type Error = RpcError;
 
     fn try_from(outpoint: RpcOptionalTransactionOutpoint) -> RpcResult<Self> {
@@ -317,7 +317,7 @@ impl Deserializer for RpcOptionalTransactionInputVerboseData {
     }
 }
 
-/// Represents a Turkiumd transaction output
+/// Represents a turkiumd transaction output
 #[derive(Clone, Debug, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct RpcOptionalTransactionOutput {

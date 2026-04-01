@@ -80,8 +80,8 @@ pub fn try_init_logger(filters: &str) {
 #[macro_export]
 macro_rules! trace {
     ($($t:tt)*) => {
-        if Turkium_core::log::workflow_log::log_level_enabled(log::Level::Trace) {
-            Turkium_core::log::workflow_log::impls::trace_impl(None, &format_args!($($t)*));
+        if turkium_core::log::workflow_log::log_level_enabled(log::Level::Trace) {
+            turkium_core::log::workflow_log::impls::trace_impl(None, &format_args!($($t)*));
         }
     };
 }
@@ -98,8 +98,8 @@ macro_rules! trace {
 #[macro_export]
 macro_rules! debug {
     ($($t:tt)*) => (
-        if Turkium_core::log::workflow_log::log_level_enabled(log::Level::Debug) {
-            Turkium_core::log::workflow_log::impls::debug_impl(None, &format_args!($($t)*));
+        if turkium_core::log::workflow_log::log_level_enabled(log::Level::Debug) {
+            turkium_core::log::workflow_log::impls::debug_impl(None, &format_args!($($t)*));
         }
     )
 }
@@ -116,8 +116,8 @@ macro_rules! debug {
 #[macro_export]
 macro_rules! info {
     ($($t:tt)*) => (
-        if Turkium_core::log::workflow_log::log_level_enabled(log::Level::Info) {
-            Turkium_core::log::workflow_log::impls::info_impl(None, &format_args!($($t)*));
+        if turkium_core::log::workflow_log::log_level_enabled(log::Level::Info) {
+            turkium_core::log::workflow_log::impls::info_impl(None, &format_args!($($t)*));
         }
     )
 }
@@ -134,8 +134,8 @@ macro_rules! info {
 #[macro_export]
 macro_rules! warn {
     ($($t:tt)*) => (
-        if Turkium_core::log::workflow_log::log_level_enabled(log::Level::Warn) {
-            Turkium_core::log::workflow_log::impls::warn_impl(None, &format_args!($($t)*));
+        if turkium_core::log::workflow_log::log_level_enabled(log::Level::Warn) {
+            turkium_core::log::workflow_log::impls::warn_impl(None, &format_args!($($t)*));
         }
     )
 }
@@ -152,8 +152,8 @@ macro_rules! warn {
 #[macro_export]
 macro_rules! error {
     ($($t:tt)*) => (
-        if Turkium_core::log::workflow_log::log_level_enabled(log::Level::Error) {
-            Turkium_core::log::workflow_log::impls::error_impl(None, &format_args!($($t)*));
+        if turkium_core::log::workflow_log::log_level_enabled(log::Level::Error) {
+            turkium_core::log::workflow_log::impls::error_impl(None, &format_args!($($t)*));
         }
     )
 }

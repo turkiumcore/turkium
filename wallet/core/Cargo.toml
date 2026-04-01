@@ -1,6 +1,6 @@
 [package]
-name = "Turkium-wallet-core"
-description = "Turkium wallet library"
+name = "turkium-wallet-core"
+description = "turkium wallet library"
 keywords = ["Turkium", "wallet"]
 rust-version.workspace = true
 version.workspace = true
@@ -13,14 +13,14 @@ repository.workspace = true
 [features]
 multi-user = []
 wasm32-keygen = [
-    # "Turkium-consensus-wasm/wasm32-types",
+    # "turkium-consensus-wasm/wasm32-types",
 ]
 wasm32-core = [
-    "Turkium-consensus-wasm/wasm32-sdk",
-    "Turkium-consensus-core/wasm32-sdk",
-    "Turkium-wrpc-client/wasm32-sdk",
-    "Turkium-wrpc-wasm/wasm32-sdk",
-    "Turkium-wasm-core/wasm32-sdk",
+    "turkium-consensus-wasm/wasm32-sdk",
+    "turkium-consensus-core/wasm32-sdk",
+    "turkium-wrpc-client/wasm32-sdk",
+    "turkium-wrpc-wasm/wasm32-sdk",
+    "turkium-wasm-core/wasm32-sdk",
 ]
 wasm32-sdk = [
     "wasm32-core"
@@ -56,25 +56,25 @@ heapless.workspace = true
 hmac.workspace = true
 itertools.workspace = true
 js-sys.workspace = true
-Turkium-addresses.workspace = true
-Turkium-bip32.workspace = true
-Turkium-consensus-client.workspace = true
-Turkium-consensus-core.workspace = true
-Turkium-consensus-wasm.workspace = true
-Turkium-core.workspace = true
-Turkium-hashes.workspace = true
-Turkium-metrics-core.workspace = true
-Turkium-notify.workspace = true
-Turkium-rpc-core.workspace = true
-Turkium-txscript-errors.workspace = true
-Turkium-txscript.workspace = true
-Turkium-utils.workspace = true
-Turkium-wallet-keys.workspace = true
-Turkium-wallet-macros.workspace = true
-Turkium-wallet-pskt.workspace = true
-Turkium-wasm-core.workspace = true
-Turkium-wrpc-client.workspace = true
-Turkium-wrpc-wasm.workspace = true
+turkium-addresses.workspace = true
+turkium-bip32.workspace = true
+turkium-consensus-client.workspace = true
+turkium-consensus-core.workspace = true
+turkium-consensus-wasm.workspace = true
+turkium-core.workspace = true
+turkium-hashes.workspace = true
+turkium-metrics-core.workspace = true
+turkium-notify.workspace = true
+turkium-rpc-core.workspace = true
+turkium-txscript-errors.workspace = true
+turkium-txscript.workspace = true
+turkium-utils.workspace = true
+turkium-wallet-keys.workspace = true
+turkium-wallet-macros.workspace = true
+turkium-wallet-pskt.workspace = true
+turkium-wasm-core.workspace = true
+turkium-wrpc-client.workspace = true
+turkium-wrpc-wasm.workspace = true
 md-5.workspace = true
 pad.workspace = true
 pbkdf2.workspace = true

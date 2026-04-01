@@ -1,4 +1,4 @@
 use crate::Notification;
 
-pub type ChannelConnection = Turkium_notify::connection::ChannelConnection<Notification>;
-pub use Turkium_notify::connection::ChannelType;
+pub type ChannelConnection = turkium_notify::connection::ChannelConnection<Notification>;
+pub use turkium_notify::connection::ChannelType;

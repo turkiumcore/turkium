@@ -1,10 +1,10 @@
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     BlockHashSet, HashMapCustomHasher,
     tx::{TransactionOutpoint, UtxoEntry},
     utxo::utxo_diff::UtxoDiff,
 };
-use Turkium_hashes::Hash;
-use Turkium_utils::hashmap::NestedHashMapExtensions;
+use turkium_hashes::Hash;
+use turkium_utils::hashmap::NestedHashMapExtensions;
 
 use crate::model::{CirculatingSupplyDiff, CompactUtxoEntry, UtxoChanges, UtxoSetByScriptPublicKey};
 

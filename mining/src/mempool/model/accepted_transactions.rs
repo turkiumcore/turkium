@@ -1,6 +1,6 @@
 use crate::mempool::config::Config;
-use Turkium_consensus_core::tx::TransactionId;
-use Turkium_core::{debug, time::unix_now};
+use turkium_consensus_core::tx::TransactionId;
+use turkium_core::{debug, time::unix_now};
 use std::{collections::HashMap, sync::Arc};
 
 pub(crate) struct AcceptedTransactions {

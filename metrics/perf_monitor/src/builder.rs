@@ -1,5 +1,5 @@
 use crate::{CountersSnapshot, Monitor};
-use Turkium_core::task::tick::TickService;
+use turkium_core::task::tick::TickService;
 use std::time::Duration;
 
 pub struct Unspecified {}

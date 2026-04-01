@@ -1,6 +1,6 @@
 [package]
-name = "Turkium-wrpc-client"
-description = "Turkium wRPC client"
+name = "turkium-wrpc-client"
+description = "turkium wRPC client"
 rust-version.workspace = true
 version.workspace = true
 edition.workspace = true
@@ -17,7 +17,7 @@ include = [
 ]
 
 [features]
-wasm32-sdk = ["Turkium-consensus-wasm/wasm32-sdk","Turkium-rpc-core/wasm32-sdk","workflow-rpc/wasm32-sdk"]
+wasm32-sdk = ["turkium-consensus-wasm/wasm32-sdk","turkium-rpc-core/wasm32-sdk","workflow-rpc/wasm32-sdk"]
 default = []
 
 [lib]
@@ -30,12 +30,12 @@ borsh.workspace = true
 cfg-if.workspace = true
 futures.workspace = true
 js-sys.workspace = true
-Turkium-addresses.workspace = true
-Turkium-consensus-core.workspace = true
-Turkium-consensus-wasm.workspace = true
-Turkium-notify.workspace = true
-Turkium-rpc-core.workspace = true
-Turkium-rpc-macros.workspace = true
+turkium-addresses.workspace = true
+turkium-consensus-core.workspace = true
+turkium-consensus-wasm.workspace = true
+turkium-notify.workspace = true
+turkium-rpc-core.workspace = true
+turkium-rpc-macros.workspace = true
 paste.workspace = true
 rand.workspace = true
 regex.workspace = true

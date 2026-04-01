@@ -8,11 +8,11 @@
 //! meant to function as an IPC (Inter-Process Communication) mechanism for Rust applications.
 //!
 //! Rust examples on using wRPC client can be found in the
-//! [examples](https://github.com/Turkiumnet/rusty-Turkium/tree/master/rpc/wrpc/examples) folder.
+//! [examples](https://github.com/turkiumnet/rusty-Turkium/tree/master/rpc/wrpc/examples) folder.
 //!
 //! WASM bindings for wRPC client can be found in the [`Turkium-wrpc-wasm`](https://docs.rs/Turkium-wrpc-wasm) crate.
 //!
-//! The main struct managing Turkium RPC client connections is the [`TurkiumRpcClient`].
+//! The main struct managing turkium RPC client connections is the [`TurkiumRpcClient`].
 //!
 
 pub mod client;

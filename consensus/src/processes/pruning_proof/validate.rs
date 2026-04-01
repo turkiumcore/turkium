@@ -3,21 +3,21 @@ use std::{
     sync::{Arc, atomic::Ordering},
 };
 
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     BlockLevel, BlueWorkType,
     blockhash::{BlockHashExtensions, BlockHashes, ORIGIN},
     errors::pruning::{ProofWeakness, PruningImportError, PruningImportResult},
     header::Header,
     pruning::{PruningPointProof, PruningProofMetadata},
 };
-use Turkium_core::info;
-use Turkium_database::{
+use turkium_core::info;
+use turkium_database::{
     prelude::{CachePolicy, ConnBuilder, StoreResultUnitExt},
     utils::DbLifetime,
 };
-use Turkium_hashes::Hash;
-use Turkium_pow::{calc_block_level, calc_block_level_check_pow};
-use Turkium_utils::vec::VecExtensions;
+use turkium_hashes::Hash;
+use turkium_pow::{calc_block_level, calc_block_level_check_pow};
+use turkium_utils::vec::VecExtensions;
 use itertools::Itertools;
 use parking_lot::RwLock;
 use rocksdb::WriteBatch;
@@ -117,7 +117,7 @@ impl ProofContext {
         // Initialize stores
         //
 
-        let (db_lifetime, db) = Turkium_database::create_temp_db!(ConnBuilder::default().with_files_limit(10));
+        let (db_lifetime, db) = turkium_database::create_temp_db!(ConnBuilder::default().with_files_limit(10));
         let cache_policy = CachePolicy::Count(2 * ppm.pruning_proof_m as usize);
         let headers_store =
             Arc::new(DbHeadersStore::new(db.clone(), CachePolicy::Count(headers_estimate), CachePolicy::Count(headers_estimate)));

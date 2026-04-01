@@ -1,10 +1,10 @@
 use super::{error::ConversionError, option::TryIntoOptionEx};
 use crate::pb as protowire;
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     subnets::SubnetworkId,
     tx::{ScriptPublicKey, Transaction, TransactionId, TransactionInput, TransactionOutpoint, TransactionOutput, UtxoEntry},
 };
-use Turkium_hashes::Hash;
+use turkium_hashes::Hash;
 
 // ----------------------------------------------------------------------------
 // consensus_core to protowire

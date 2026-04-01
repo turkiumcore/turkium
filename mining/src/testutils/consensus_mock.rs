@@ -1,5 +1,5 @@
 use super::coinbase_mock::CoinbaseManagerMock;
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     api::{
         ConsensusApi,
         args::{TransactionValidationArgs, TransactionValidationBatchArgs},
@@ -18,8 +18,8 @@ use Turkium_consensus_core::{
     tx::{MutableTransaction, Transaction, TransactionId, TransactionOutpoint, UtxoEntry},
     utxo::utxo_collection::UtxoCollection,
 };
-use Turkium_core::time::unix_now;
-use Turkium_hashes::{Hash, ZERO_HASH};
+use turkium_core::time::unix_now;
+use turkium_hashes::{Hash, ZERO_HASH};
 
 use parking_lot::RwLock;
 use std::{collections::HashMap, sync::Arc};

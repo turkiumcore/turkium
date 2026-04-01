@@ -1,6 +1,6 @@
 use crate::mempool::tx::{Priority, RbfPolicy};
-use Turkium_consensus_core::tx::{MutableTransaction, Transaction, TransactionId, TransactionOutpoint};
-use Turkium_mining_errors::mempool::RuleError;
+use turkium_consensus_core::tx::{MutableTransaction, Transaction, TransactionId, TransactionOutpoint};
+use turkium_mining_errors::mempool::RuleError;
 use std::{
     fmt::{Display, Formatter},
     sync::Arc,

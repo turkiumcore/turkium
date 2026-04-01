@@ -1,6 +1,6 @@
 use crate::error::Error;
 use crate::result::Result;
-use Turkium_rpc_core::GetMetricsResponse;
+use turkium_rpc_core::GetMetricsResponse;
 use borsh::{BorshDeserialize, BorshSerialize};
 use separator::{Separatable, separated_float, separated_int, separated_uint_with_output};
 use serde::{Deserialize, Serialize};

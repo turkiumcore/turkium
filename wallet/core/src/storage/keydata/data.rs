@@ -4,8 +4,8 @@
 
 use crate::derivation::create_xpub_from_xprv;
 use crate::imports::*;
-use Turkium_bip32::{ExtendedPrivateKey, ExtendedPublicKey, Language, Mnemonic};
-use Turkium_utils::hex::ToHex;
+use turkium_bip32::{ExtendedPrivateKey, ExtendedPublicKey, Language, Mnemonic};
+use turkium_utils::hex::ToHex;
 use secp256k1::SecretKey;
 use xxhash_rust::xxh3::xxh3_64;
 

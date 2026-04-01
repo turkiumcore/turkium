@@ -5,7 +5,7 @@ use crate::{
     NotifySinkBlueScoreChangedRequest, NotifyUtxosChangedRequest, NotifyVirtualChainChangedRequest,
     NotifyVirtualDaaScoreChangedRequest,
 };
-use Turkium_notify::scope::*;
+use turkium_notify::scope::*;
 
 macro_rules! into_scope {
     ($variant:tt) => {

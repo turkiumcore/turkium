@@ -2,8 +2,8 @@ use crate::TurkiumCli;
 use crate::error::Error;
 use crate::imports::*;
 use crate::result::Result;
-use Turkium_bip32::{Language, Mnemonic};
-use Turkium_wallet_core::account::{BIP32_ACCOUNT_KIND, LEGACY_ACCOUNT_KIND, MULTISIG_ACCOUNT_KIND};
+use turkium_bip32::{Language, Mnemonic};
+use turkium_wallet_core::account::{BIP32_ACCOUNT_KIND, LEGACY_ACCOUNT_KIND, MULTISIG_ACCOUNT_KIND};
 use std::sync::Arc;
 
 pub async fn prompt_for_mnemonic(term: &Arc<Terminal>) -> Result<Vec<String>> {

@@ -1,11 +1,11 @@
-use Turkium_addresses::{Address, Prefix};
-use Turkium_math::Uint256;
-use Turkium_notify::{address::tracker::Indexes, subscription::context::SubscriptionContext};
+use turkium_addresses::{Address, Prefix};
+use turkium_math::Uint256;
+use turkium_notify::{address::tracker::Indexes, subscription::context::SubscriptionContext};
 use criterion::{Criterion, black_box, criterion_group, criterion_main};
 
 fn create_addresses(count: usize) -> Vec<Address> {
     (0..count)
-        .map(|i| Address::new(Prefix::Mainnet, Turkium_addresses::Version::PubKey, &Uint256::from_u64(i as u64).to_le_bytes()))
+        .map(|i| Address::new(Prefix::Mainnet, turkium_addresses::Version::PubKey, &Uint256::from_u64(i as u64).to_le_bytes()))
         .collect()
 }
 

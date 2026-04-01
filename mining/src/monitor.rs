@@ -1,6 +1,6 @@
 use super::MiningCounters;
 use crate::manager::MiningManagerProxy;
-use Turkium_core::{
+use turkium_core::{
     debug, info,
     task::{
         service::{AsyncService, AsyncServiceFuture},
@@ -8,7 +8,7 @@ use Turkium_core::{
     },
     trace,
 };
-use Turkium_txscript::caches::TxScriptCacheCounters;
+use turkium_txscript::caches::TxScriptCacheCounters;
 use std::{sync::Arc, time::Duration};
 
 const MONITOR: &str = "mempool-monitor";

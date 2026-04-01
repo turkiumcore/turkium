@@ -7,8 +7,8 @@ use crate::{
     connection_handler::ServerContext,
     error::GrpcServerResult,
 };
-use Turkium_core::debug;
-use Turkium_grpc_core::{
+use turkium_core::debug;
+use turkium_grpc_core::{
     ops::TurkiumdPayloadOps,
     protowire::{TurkiumdRequest, TurkiumdResponse},
 };

@@ -1,6 +1,6 @@
 [package]
-name = "Turkium-index-core"
-description = "Turkium index core"
+name = "turkium-index-core"
+description = "turkium index core"
 rust-version.workspace = true
 version.workspace = true
 edition.workspace = true
@@ -14,10 +14,10 @@ async-channel.workspace = true
 async-trait.workspace = true
 derive_more.workspace = true
 futures.workspace = true
-Turkium-consensus-core.workspace = true
-Turkium-hashes.workspace = true
-Turkium-notify.workspace = true
-Turkium-utils.workspace = true
+turkium-consensus-core.workspace = true
+turkium-hashes.workspace = true
+turkium-notify.workspace = true
+turkium-utils.workspace = true
 log.workspace = true
 paste.workspace = true
 serde.workspace = true

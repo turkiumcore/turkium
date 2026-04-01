@@ -1,7 +1,7 @@
 use criterion::{Criterion, black_box, criterion_group, criterion_main};
 
-use Turkium_hashes::Hash;
-use Turkium_pow::{matrix::Matrix, xoshiro::XoShiRo256PlusPlus};
+use turkium_hashes::Hash;
+use turkium_pow::{matrix::Matrix, xoshiro::XoShiRo256PlusPlus};
 
 // Big enough to make the cache not very useful
 const ITERS: usize = 1024;

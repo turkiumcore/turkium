@@ -1,6 +1,6 @@
 [package]
-name = "Turkium-consensus-notify"
-description = "Turkium consensus notifier"
+name = "turkium-consensus-notify"
+description = "turkium consensus notifier"
 rust-version.workspace = true
 version.workspace = true
 edition.workspace = true
@@ -14,11 +14,11 @@ async-channel.workspace = true
 cfg-if.workspace = true
 derive_more.workspace = true
 futures.workspace = true
-Turkium-consensus-core.workspace = true
-Turkium-core.workspace = true
-Turkium-hashes.workspace = true
-Turkium-notify.workspace = true
-Turkium-utils.workspace = true
+turkium-consensus-core.workspace = true
+turkium-core.workspace = true
+turkium-hashes.workspace = true
+turkium-notify.workspace = true
+turkium-utils.workspace = true
 log.workspace = true
 paste.workspace = true
 thiserror.workspace = true

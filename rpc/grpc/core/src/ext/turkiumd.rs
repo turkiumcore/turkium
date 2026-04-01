@@ -1,4 +1,4 @@
-use Turkium_notify::{scope::Scope, subscription::Command};
+use turkium_notify::{scope::Scope, subscription::Command};
 
 use crate::protowire::{
     NotifyBlockAddedRequestMessage, NotifyFinalityConflictRequestMessage, NotifyNewBlockTemplateRequestMessage,

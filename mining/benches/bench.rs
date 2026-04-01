@@ -1,9 +1,9 @@
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     subnets::SUBNETWORK_ID_NATIVE,
     tx::{Transaction, TransactionInput, TransactionOutpoint},
 };
-use Turkium_hashes::{HasherBase, TransactionID};
-use Turkium_mining::{FeerateTransactionKey, Frontier, Policy, model::topological_index::TopologicalIndex};
+use turkium_hashes::{HasherBase, TransactionID};
+use turkium_mining::{FeerateTransactionKey, Frontier, Policy, model::topological_index::TopologicalIndex};
 use criterion::{Criterion, black_box, criterion_group, criterion_main};
 use itertools::Itertools;
 use rand::{Rng, thread_rng};

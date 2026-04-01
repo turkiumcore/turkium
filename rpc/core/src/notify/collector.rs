@@ -1,5 +1,5 @@
 use crate::Notification;
-use Turkium_notify::{collector::CollectorFrom, converter::ConverterFrom};
+use turkium_notify::{collector::CollectorFrom, converter::ConverterFrom};
 
 pub type RpcCoreConverter = ConverterFrom<Notification, Notification>;
 

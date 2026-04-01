@@ -1,4 +1,4 @@
-use Turkium_muhash::MuHash;
+use turkium_muhash::MuHash;
 use futures_util::future::BoxFuture;
 use std::sync::Arc;
 
@@ -26,7 +26,7 @@ use crate::{
         TransactionType, UtxoEntry,
     },
 };
-use Turkium_hashes::Hash;
+use turkium_hashes::Hash;
 
 pub use self::stats::{BlockCount, ConsensusStats};
 

@@ -1,22 +1,22 @@
 use crate::database::Database;
 use anyhow::Result;
-use crate::config::PoolConfig;
+use crate::config::RewardConfig;
 use log::info;
 use std::sync::Arc;
 
 pub struct RewardDistributor {
     db: Arc<Database>,
-    config: PoolConfig,
+    config: RewardConfig,
 }
 
 impl RewardDistributor {
-    pub fn new(db: Arc<Database>, config: PoolConfig) -> Self {
+    pub fn new(db: Arc<Database>, config: RewardConfig) -> Self {
         Self { db, config }
     }
 
     pub async fn run(&self) {
         let mut interval = tokio::time::interval(
-            std::time::Duration::from_secs(self.config.reward.distribution_interval)
+            std::time::Duration::from_secs(self.config.distribution_interval)
         );
 
         loop {

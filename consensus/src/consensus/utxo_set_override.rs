@@ -2,11 +2,11 @@
 mod utxo_set_override_inner {
     use std::sync::Arc;
 
-    use Turkium_consensus_core::{
+    use turkium_consensus_core::{
         api::ConsensusApi, config::Config, header::Header, muhash::MuHashExtensions, utxo::utxo_collection::UtxoCollection,
     };
-    use Turkium_hashes::Hash;
-    use Turkium_muhash::MuHash;
+    use turkium_hashes::Hash;
+    use turkium_muhash::MuHash;
     use itertools::Itertools;
 
     use crate::consensus::Consensus;

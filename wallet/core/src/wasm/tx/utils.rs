@@ -2,10 +2,10 @@ use crate::imports::*;
 use crate::result::Result;
 use crate::tx::{IPaymentOutputArray, PaymentOutputs};
 use crate::wasm::tx::generator::*;
-use Turkium_consensus_client::*;
-use Turkium_consensus_core::subnets::SUBNETWORK_ID_NATIVE;
-use Turkium_wallet_macros::declare_typescript_wasm_interface as declare;
-use Turkium_wasm_core::types::BinaryT;
+use turkium_consensus_client::*;
+use turkium_consensus_core::subnets::SUBNETWORK_ID_NATIVE;
+use turkium_wallet_macros::declare_typescript_wasm_interface as declare;
+use turkium_wasm_core::types::BinaryT;
 use workflow_core::runtime::is_web;
 
 /// Create a basic transaction without any mass limit checks.

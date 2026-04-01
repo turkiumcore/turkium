@@ -3,12 +3,12 @@ use crate::model::{
     services::reachability::ReachabilityService,
     stores::{children::ChildrenStore, relations::RelationsStore},
 };
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     BlockHashSet,
     blockhash::{BlockHashIteratorExtensions, BlockHashes, ORIGIN},
 };
-use Turkium_database::prelude::{BatchDbWriter, DbWriter, DirectWriter, StoreError};
-use Turkium_hashes::Hash;
+use turkium_database::prelude::{BatchDbWriter, DbWriter, DirectWriter, StoreError};
+use turkium_hashes::Hash;
 use itertools::Itertools;
 use rocksdb::WriteBatch;
 
@@ -152,9 +152,9 @@ impl<S: RelationsStore + ChildrenStore + ?Sized> RelationsStoreExtensions for S 
 mod tests {
     use super::*;
     use crate::model::stores::relations::{DbRelationsStore, RelationsStoreReader, StagingRelationsStore};
-    use Turkium_core::assert_match;
-    use Turkium_database::prelude::{CachePolicy, ConnBuilder};
-    use Turkium_database::{create_temp_db, prelude::MemoryWriter};
+    use turkium_core::assert_match;
+    use turkium_database::prelude::{CachePolicy, ConnBuilder};
+    use turkium_database::{create_temp_db, prelude::MemoryWriter};
     use std::sync::Arc;
 
     #[test]

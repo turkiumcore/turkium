@@ -1,8 +1,8 @@
 pub use crate::DaemonStatus;
 pub use crate::error::Error;
 pub use crate::result::Result;
-pub use Turkium_addresses::Address;
-pub use Turkium_consensus_core::network::{NetworkId, NetworkType};
+pub use turkium_addresses::Address;
+pub use turkium_consensus_core::network::{NetworkId, NetworkType};
 pub use async_trait::async_trait;
 pub use borsh::{BorshDeserialize, BorshSerialize};
 pub use downcast_rs::{DowncastSync, impl_downcast};

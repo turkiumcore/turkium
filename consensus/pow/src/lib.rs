@@ -10,9 +10,9 @@ pub mod xoshiro;
 use std::cmp::max;
 
 use crate::matrix::Matrix;
-use Turkium_consensus_core::{BlockLevel, hashing, header::Header};
-use Turkium_hashes::PowHash;
-use Turkium_math::Uint256;
+use turkium_consensus_core::{BlockLevel, hashing, header::Header};
+use turkium_hashes::PowHash;
+use turkium_math::Uint256;
 
 /// State is an intermediate data structure with pre-computed values to speed up mining.
 pub struct State {

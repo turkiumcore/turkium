@@ -1,57 +1,57 @@
 use std::{fs, path::PathBuf, process::exit, sync::Arc, time::Duration};
 
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     config::ConfigBuilder,
     constants::TRANSIENT_BYTE_TO_MASS_FACTOR,
     errors::config::{ConfigError, ConfigResult},
     mining_rules::MiningRules,
 };
-use Turkium_consensus_notify::{root::ConsensusNotificationRoot, service::NotifyService};
-use Turkium_core::{Turkiumd_env::version, task::tick::TickService};
-use Turkium_core::{core::Core, debug, info};
-use Turkium_database::{
+use turkium_consensus_notify::{root::ConsensusNotificationRoot, service::NotifyService};
+use turkium_core::{turkiumd_env::version, task::tick::TickService};
+use turkium_core::{core::Core, debug, info};
+use turkium_database::{
     prelude::{CachePolicy, DbWriter, DirectDbWriter, RocksDbPreset},
     registry::DatabaseStorePrefixes,
 };
-use Turkium_grpc_server::service::GrpcService;
-use Turkium_notify::{address::tracker::Tracker, subscription::context::SubscriptionContext};
-use Turkium_p2p_lib::Hub;
-use Turkium_p2p_mining::rule_engine::MiningRuleEngine;
-use Turkium_rpc_service::service::RpcCoreService;
-use Turkium_txscript::caches::TxScriptCacheCounters;
-use Turkium_utils::git;
-use Turkium_utils::networking::ContextualNetAddress;
-use Turkium_utils::sysinfo::SystemInfo;
-use Turkium_utils_tower::counters::TowerConnectionCounters;
+use turkium_grpc_server::service::GrpcService;
+use turkium_notify::{address::tracker::Tracker, subscription::context::SubscriptionContext};
+use turkium_p2p_lib::Hub;
+use turkium_p2p_mining::rule_engine::MiningRuleEngine;
+use turkium_rpc_service::service::RpcCoreService;
+use turkium_txscript::caches::TxScriptCacheCounters;
+use turkium_utils::git;
+use turkium_utils::networking::ContextualNetAddress;
+use turkium_utils::sysinfo::SystemInfo;
+use turkium_utils_tower::counters::TowerConnectionCounters;
 use async_channel::unbounded;
 
-use Turkium_addressmanager::AddressManager;
-use Turkium_consensus::{
+use turkium_addressmanager::AddressManager;
+use turkium_consensus::{
     consensus::factory::MultiConsensusManagementStore, model::stores::headers::DbHeadersStore, pipeline::monitor::ConsensusMonitor,
 };
-use Turkium_consensus::{
+use turkium_consensus::{
     consensus::factory::{Factory as ConsensusFactory, LATEST_DB_VERSION},
     params::{OverrideParams, Params},
     pipeline::ProcessingCounters,
 };
-use Turkium_consensusmanager::ConsensusManager;
-use Turkium_core::task::runtime::AsyncRuntime;
-use Turkium_index_processor::service::IndexService;
-use Turkium_mining::{
+use turkium_consensusmanager::ConsensusManager;
+use turkium_core::task::runtime::AsyncRuntime;
+use turkium_index_processor::service::IndexService;
+use turkium_mining::{
     MiningCounters,
     manager::{MiningManager, MiningManagerProxy},
     monitor::MiningMonitor,
 };
-use Turkium_p2p_flows::{flow_context::FlowContext, service::P2pService};
+use turkium_p2p_flows::{flow_context::FlowContext, service::P2pService};
 
-use Turkium_perf_monitor::{builder::Builder as PerfMonitorBuilder, counters::CountersSnapshot};
-use Turkium_utxoindex::{UtxoIndex, api::UtxoIndexProxy};
-use Turkium_wrpc_server::service::{Options as WrpcServerOptions, WebSocketCounters as WrpcServerCounters, WrpcEncoding, WrpcService};
+use turkium_perf_monitor::{builder::Builder as PerfMonitorBuilder, counters::CountersSnapshot};
+use turkium_utxoindex::{UtxoIndex, api::UtxoIndexProxy};
+use turkium_wrpc_server::service::{Options as WrpcServerOptions, WebSocketCounters as WrpcServerCounters, WrpcEncoding, WrpcService};
 
 /// Desired soft FD limit that needs to be configured
-/// for the Turkiumd process.
+/// for the turkiumd process.
 pub const DESIRED_DAEMON_SOFT_FD_LIMIT: u64 = 8 * 1024;
-/// Minimum acceptable soft FD limit for the Turkiumd
+/// Minimum acceptable soft FD limit for the turkiumd
 /// process. (Rusty Turkium will operate with the minimal
 /// acceptable limit of `4096`, but a setting below
 /// this value may impact the database performance).
@@ -81,9 +81,9 @@ fn get_home_dir() -> PathBuf {
 /// Get the default application directory.
 pub fn get_app_dir() -> PathBuf {
     #[cfg(target_os = "windows")]
-    return get_home_dir().join("rusty-Turkium");
+    return get_home_dir().join("turkium");
     #[cfg(not(target_os = "windows"))]
-    return get_home_dir().join(".rusty-Turkium");
+    return get_home_dir().join(".turkium");
 }
 
 pub fn validate_args(args: &Args) -> ConfigResult<()> {
@@ -118,9 +118,9 @@ pub fn validate_args(args: &Args) -> ConfigResult<()> {
 
 fn request_database_deletion_approval(approve: bool) -> bool {
     let msg =
-        "Node database is from a different Turkiumd *DB* version and needs to be fully deleted, do you confirm the delete? (y/n)";
+        "Node database is from a different turkiumd *DB* version and needs to be fully deleted, do you confirm the delete? (y/n)";
     get_user_approval_or_exit(msg, approve);
-    info!("Deleting databases from previous Turkiumd version");
+    info!("Deleting databases from previous turkiumd version");
     true // if consensus not exited, always return true
 }
 fn get_user_approval_or_exit(message: &str, approve: bool) {
@@ -155,7 +155,7 @@ pub struct Runtime {
 
 /// Get the application directory from the supplied [`Args`].
 /// This function can be used to identify the location of
-/// the application folder that contains Turkiumd logs and the database.
+/// the application folder that contains turkiumd logs and the database.
 pub fn get_app_dir_from_args(args: &Args) -> PathBuf {
     let app_dir = args
         .appdir
@@ -184,15 +184,15 @@ impl Runtime {
         // Initialize the logger
         cfg_if::cfg_if! {
             if #[cfg(feature = "semaphore-trace")] {
-                Turkium_core::log::init_logger(log_dir.as_deref(), &format!("{},{}=debug", args.log_level, Turkium_utils::sync::semaphore_module_path()));
+                turkium_core::log::init_logger(log_dir.as_deref(), &format!("{},{}=debug", args.log_level, turkium_utils::sync::semaphore_module_path()));
             } else {
-                Turkium_core::log::init_logger(log_dir.as_deref(), &args.log_level);
+                turkium_core::log::init_logger(log_dir.as_deref(), &args.log_level);
             }
         };
 
         // Configure the panic behavior
         // As we log the panic, we want to set it up after the logger
-        Turkium_core::panic::configure_panic();
+        turkium_core::panic::configure_panic();
 
         Self { log_dir: log_dir.map(|log_dir| log_dir.to_owned()) }
     }
@@ -349,7 +349,7 @@ pub fn create_core_with_runtime(runtime: &Runtime, args: &Args, fd_total_budget:
     // Reset Condition: User explicitly requested a reset
     if is_db_reset_needed && db_dir.exists() {
         let msg = "Reset DB was requested -- this means the current databases will be fully deleted,
-do you confirm? (answer y/n or pass --yes to the Turkiumd command line to confirm all interactive questions)";
+do you confirm? (answer y/n or pass --yes to the turkiumd command line to confirm all interactive questions)";
         get_user_approval_or_exit(msg, args.yes);
         info!("Deleting databases");
         fs::remove_dir_all(&db_dir).unwrap();
@@ -387,7 +387,7 @@ do you confirm? (answer y/n or pass --yes to the Turkiumd command line to confir
     }
 
     // DB used for addresses store and for multi-consensus management
-    let mut meta_db = Turkium_database::prelude::ConnBuilder::default()
+    let mut meta_db = turkium_database::prelude::ConnBuilder::default()
         .with_db_path(meta_db_dir.clone())
         .with_files_limit(META_DB_FILE_LIMIT)
         .with_preset(rocksdb_preset)
@@ -405,7 +405,7 @@ do you confirm? (answer y/n or pass --yes to the Turkiumd command line to confir
 
         match active_consensus_dir_name {
             Some(dir_name) => {
-                let consensus_db = Turkium_database::prelude::ConnBuilder::default()
+                let consensus_db = turkium_database::prelude::ConnBuilder::default()
                     .with_db_path(consensus_db_dir.clone().join(dir_name))
                     .with_files_limit(1)
                     .with_preset(rocksdb_preset)
@@ -431,7 +431,7 @@ do you confirm? (answer y/n or pass --yes to the Turkiumd command line to confir
         }
     }
 
-    // Reset Condition: Need to reset if we're upgrading from Turkiumd DB version
+    // Reset Condition: Need to reset if we're upgrading from turkiumd DB version
     // TEMP: upgrade from Alpha version or any version before this one
     'db_upgrade: while !is_db_reset_needed
         && (meta_db.get_pinned(b"multi-consensus-metadata-key").is_ok_and(|r| r.is_some())
@@ -460,7 +460,7 @@ Do you confirm? (y/n)";
                     // Apply soft upgrade logic: delete relation data from higher levels
                     // and then update DB version to 6
 
-                    let consensus_db = Turkium_database::prelude::ConnBuilder::default()
+                    let consensus_db = turkium_database::prelude::ConnBuilder::default()
                         .with_db_path(consensus_db_dir.clone().join(current_consensus_db))
                         .with_files_limit(10)
                         .with_preset(rocksdb_preset)
@@ -524,7 +524,7 @@ Do you confirm? (y/n)";
         }
 
         // Reopen the DB
-        meta_db = Turkium_database::prelude::ConnBuilder::default()
+        meta_db = turkium_database::prelude::ConnBuilder::default()
             .with_db_path(meta_db_dir)
             .with_files_limit(META_DB_FILE_LIMIT)
             .with_preset(rocksdb_preset)
@@ -593,10 +593,10 @@ Do you confirm? (y/n)";
         .with_tick_service(tick_service.clone());
     let perf_monitor = if args.perf_metrics {
         let cb = move |counters: CountersSnapshot| {
-            debug!("[{}] {}", Turkium_perf_monitor::SERVICE_NAME, counters.to_process_metrics_display());
-            debug!("[{}] {}", Turkium_perf_monitor::SERVICE_NAME, counters.to_io_metrics_display());
+            debug!("[{}] {}", turkium_perf_monitor::SERVICE_NAME, counters.to_process_metrics_display());
+            debug!("[{}] {}", turkium_perf_monitor::SERVICE_NAME, counters.to_io_metrics_display());
             #[cfg(feature = "heap")]
-            debug!("[{}] heap stats: {:?}", Turkium_perf_monitor::SERVICE_NAME, dhat::HeapStats::get());
+            debug!("[{}] heap stats: {:?}", turkium_perf_monitor::SERVICE_NAME, dhat::HeapStats::get());
         };
         Arc::new(perf_monitor_builder.with_fetch_cb(cb).build())
     } else {
@@ -608,7 +608,7 @@ Do you confirm? (y/n)";
     let notify_service = Arc::new(NotifyService::new(notification_root.clone(), notification_recv, subscription_context.clone()));
     let index_service: Option<Arc<IndexService>> = if args.utxoindex {
         // Use only a single thread for none-consensus databases
-        let utxoindex_db = Turkium_database::prelude::ConnBuilder::default()
+        let utxoindex_db = turkium_database::prelude::ConnBuilder::default()
             .with_db_path(utxoindex_db_dir)
             .with_files_limit(utxo_files_limit)
             .with_preset(rocksdb_preset)

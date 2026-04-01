@@ -3,7 +3,7 @@ use crate::{
     flow_trait::Flow,
     ibd::{HeadersChunkStream, TrustedEntryStream, negotiate::ChainNegotiationOutput},
 };
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     BlockHashSet,
     api::BlockValidationFuture,
     block::Block,
@@ -12,11 +12,11 @@ use Turkium_consensus_core::{
     trusted::TrustedBlock,
     tx::Transaction,
 };
-use Turkium_consensusmanager::{ConsensusProxy, StagingConsensus, spawn_blocking};
-use Turkium_core::{debug, info, time::unix_now, warn};
-use Turkium_hashes::Hash;
-use Turkium_muhash::MuHash;
-use Turkium_p2p_lib::{
+use turkium_consensusmanager::{ConsensusProxy, StagingConsensus, spawn_blocking};
+use turkium_core::{debug, info, time::unix_now, warn};
+use turkium_hashes::Hash;
+use turkium_muhash::MuHash;
+use turkium_p2p_lib::{
     IncomingRoute, Router,
     common::ProtocolError,
     convert::{
@@ -30,7 +30,7 @@ use Turkium_p2p_lib::{
         turkiumd_message::Payload,
     },
 };
-use Turkium_utils::channel::JobReceiver;
+use turkium_utils::channel::JobReceiver;
 use futures::future::{Either, join_all, select, try_join_all};
 use itertools::Itertools;
 use std::{
@@ -653,7 +653,7 @@ impl IbdFlow {
         staging_consensus: &ConsensusProxy,
     ) -> Result<(), ProtocolError> {
         // The purpose of this check is to prevent the potential abuse explained here:
-        // https://github.com/Turkiumnet/research/issues/3#issuecomment-895243792
+        // https://github.com/turkiumnet/research/issues/3#issuecomment-895243792
         let staging_hst = staging_consensus.async_get_header(staging_consensus.async_get_headers_selected_tip().await).await.unwrap();
         let current_hst = consensus.async_get_header(consensus.async_get_headers_selected_tip().await).await.unwrap();
         // If staging is behind current or within 10 minutes ahead of it, then something is wrong and we reject the IBD

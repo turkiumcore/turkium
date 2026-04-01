@@ -1,6 +1,6 @@
 [package]
-name = "Turkium-connectionmanager"
-description = "Turkium connection manager"
+name = "turkium-connectionmanager"
+description = "turkium connection manager"
 rust-version.workspace = true
 version.workspace = true
 edition.workspace = true
@@ -13,10 +13,10 @@ repository.workspace = true
 duration-string.workspace = true
 futures-util.workspace = true
 itertools.workspace = true
-Turkium-addressmanager.workspace = true
-Turkium-core.workspace = true
-Turkium-p2p-lib.workspace = true
-Turkium-utils.workspace = true
+turkium-addressmanager.workspace = true
+turkium-core.workspace = true
+turkium-p2p-lib.workspace = true
+turkium-utils.workspace = true
 log.workspace = true
 parking_lot.workspace = true
 rand.workspace = true

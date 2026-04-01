@@ -1,6 +1,6 @@
 [package]
-name = "Turkium-alloc"
-description = "Turkium allocator wrapper"
+name = "turkium-alloc"
+description = "turkium allocator wrapper"
 rust-version.workspace = true
 version.workspace = true
 authors.workspace = true

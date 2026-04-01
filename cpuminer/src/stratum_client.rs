@@ -1,26 +1,32 @@
 use crate::Error;
 use log::{debug, error, info, warn};
 use serde_json::{json, Value};
-use std::sync::Arc;
 use tokio::io::{AsyncBufReadExt, AsyncWriteExt, BufReader};
-use tokio::net::TcpStream;
+use tokio::net::{TcpStream, tcp::{OwnedReadHalf, OwnedWriteHalf}};
 use tokio::sync::mpsc::{self, Sender};
 
 #[derive(Debug, Clone)]
 pub struct BlockTemplate {
     pub job_id: String,
+    #[allow(dead_code)]
     pub prev_hash: String,
+    #[allow(dead_code)]
     pub coinbase1: String,
+    #[allow(dead_code)]
     pub coinbase2: String,
+    #[allow(dead_code)]
     pub merkle_branch: Vec<String>,
+    #[allow(dead_code)]
     pub version: String,
+    #[allow(dead_code)]
     pub nbits: String,
+    #[allow(dead_code)]
     pub ntime: String,
 }
 
 pub struct StratumClient {
-    stream: TcpStream,
-    reader: BufReader<TcpStream>,
+    writer: OwnedWriteHalf,
+    reader: BufReader<OwnedReadHalf>,
     miner_address: String,
     request_id: u64,
     pub template_tx: Sender<BlockTemplate>,
@@ -38,7 +44,7 @@ impl StratumClient {
         let (template_tx, template_rx) = mpsc::channel(10);
 
         let mut client = Self {
-            stream: writer_stream,
+            writer: writer_stream,
             reader,
             miner_address,
             request_id: 1,
@@ -92,9 +98,9 @@ impl StratumClient {
 
     async fn send_request(&mut self, req: &Value) -> Result<(), Error> {
         let json_str = req.to_string();
-        self.stream.write_all(json_str.as_bytes()).await?;
-        self.stream.write_all(b"\n").await?;
-        self.stream.flush().await?;
+        self.writer.write_all(json_str.as_bytes()).await?;
+        self.writer.write_all(b"\n").await?;
+        self.writer.flush().await?;
         Ok(())
     }
 
@@ -108,24 +114,6 @@ impl StratumClient {
 
         let response: Value = serde_json::from_str(&line)?;
         Ok(response)
-    }
-
-    pub async fn submit_share(
-        &mut self,
-        job_id: &str,
-        nonce: &str,
-        result: &str,
-    ) -> Result<(), Error> {
-        let req = json!({
-            "id": self.request_id,
-            "method": "mining.submit",
-            "params": [&self.miner_address, job_id, nonce, result]
-        });
-
-        self.send_request(&req).await?;
-        self.request_id += 1;
-
-        Ok(())
     }
 
     pub async fn listen_for_notifications(&mut self) -> Result<(), Error> {

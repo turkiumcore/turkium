@@ -1,0 +1,72 @@
+version: '3.8'
+
+services:
+  # Mainnet DNS Seeder
+  mainnet-seeder:
+    build: .
+    container_name: turkium-mainnet-seeder
+    ports:
+      - "53:53/udp"
+      - "53:53/tcp"
+    environment:
+      RUST_LOG: info
+    command:
+      - --hostname
+      - mainnet-seeder-1.turkium.org
+      - --network
+      - mainnet
+      - --bootstrap-peer
+      - 188.132.197.20:5206
+      - --dns-listen
+      - 0.0.0.0
+      - --dns-port
+      - "53"
+      - --min-peers
+      - "50"
+      - --max-peers
+      - "500"
+      - --crawl-interval
+      - "300"
+      - --peer-timeout
+      - "600"
+      - --log-level
+      - info
+    restart: always
+    networks:
+      - turkium
+
+  # Testnet DNS Seeder (optional)
+  testnet-seeder:
+    build: .
+    container_name: turkium-testnet-seeder
+    ports:
+      - "5353:53/udp"
+      - "5353:53/tcp"
+    environment:
+      RUST_LOG: info
+    command:
+      - --hostname
+      - testnet-seeder-1.turkium.org
+      - --network
+      - testnet
+      - --bootstrap-peer
+      - 188.132.197.20:5207
+      - --dns-listen
+      - 0.0.0.0
+      - --dns-port
+      - "53"
+      - --min-peers
+      - "30"
+      - --max-peers
+      - "300"
+      - --log-level
+      - info
+    restart: always
+    networks:
+      - turkium
+    profiles:
+      - testnet
+
+networks:
+  turkium:
+    driver: bridge

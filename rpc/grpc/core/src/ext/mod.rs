@@ -1,1 +1,1 @@
-pub mod Turkiumd;
+pub mod turkiumd;

@@ -4,9 +4,9 @@
 
 use crate::client::{RpcClient, RpcConfig};
 use crate::imports::*;
-pub use Turkium_rpc_macros::declare_typescript_wasm_interface as declare;
-use Turkium_wrpc_client::Resolver as NativeResolver;
-use Turkium_wrpc_client::node::NodeDescriptor;
+pub use turkium_rpc_macros::declare_typescript_wasm_interface as declare;
+use turkium_wrpc_client::Resolver as NativeResolver;
+use turkium_wrpc_client::node::NodeDescriptor;
 use js_sys::Array;
 use serde::ser;
 use workflow_wasm::extensions::ObjectExtension;

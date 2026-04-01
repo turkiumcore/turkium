@@ -4,8 +4,8 @@ use crate::{
     model::candidate_tx::CandidateTransaction,
 };
 
-use Turkium_consensus_core::{block::TemplateTransactionSelector, tx::Transaction};
-use Turkium_core::trace;
+use turkium_consensus_core::{block::TemplateTransactionSelector, tx::Transaction};
+use turkium_core::trace;
 use feerate_key::FeerateTransactionKey;
 use rand::{Rng, distributions::Uniform, prelude::Distribution};
 use search_tree::SearchTree;

@@ -1,14 +1,14 @@
 use crate::imports::*;
 
-use Turkium_notify::events::EVENT_TYPE_ARRAY;
-use Turkium_notify::listener::{ListenerId, ListenerLifespan};
-use Turkium_notify::notifier::{Notifier, Notify};
-use Turkium_notify::scope::Scope;
-use Turkium_notify::subscription::context::SubscriptionContext;
-use Turkium_notify::subscription::{MutationPolicies, UtxosChangedMutationPolicy};
-use Turkium_rpc_core::api::ctl::RpcCtl;
-use Turkium_rpc_core::{RpcResult, notify::connection::ChannelConnection};
-use Turkium_rpc_core::{api::connection::DynRpcConnection, api::rpc::RpcApi, *};
+use turkium_notify::events::EVENT_TYPE_ARRAY;
+use turkium_notify::listener::{ListenerId, ListenerLifespan};
+use turkium_notify::notifier::{Notifier, Notify};
+use turkium_notify::scope::Scope;
+use turkium_notify::subscription::context::SubscriptionContext;
+use turkium_notify::subscription::{MutationPolicies, UtxosChangedMutationPolicy};
+use turkium_rpc_core::api::ctl::RpcCtl;
+use turkium_rpc_core::{RpcResult, notify::connection::ChannelConnection};
+use turkium_rpc_core::{api::connection::DynRpcConnection, api::rpc::RpcApi, *};
 use async_channel::{Receiver, unbounded};
 use async_trait::async_trait;
 use std::sync::Arc;
@@ -49,7 +49,7 @@ impl RpcCoreMock {
     }
 
     #[allow(dead_code)]
-    pub fn notify_new_block_template(&self) -> Turkium_notify::error::Result<()> {
+    pub fn notify_new_block_template(&self) -> turkium_notify::error::Result<()> {
         let notification = Notification::NewBlockTemplate(NewBlockTemplateNotification {});
         self.core_notifier.notify(notification)
     }

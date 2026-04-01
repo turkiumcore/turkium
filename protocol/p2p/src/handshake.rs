@@ -3,7 +3,7 @@ use std::time::Duration;
 use crate::pb::{ReadyMessage, VerackMessage, VersionMessage, turkiumd_message::Payload};
 use crate::{IncomingRoute, Router, TurkiumdMessagePayloadType};
 use crate::{common::ProtocolError, dequeue_with_timeout, make_message};
-use Turkium_core::debug;
+use turkium_core::debug;
 
 /// Implements the Turkium peer-to-peer handshake protocol
 pub struct TurkiumdHandshake<'a> {

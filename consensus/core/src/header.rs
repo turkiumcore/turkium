@@ -1,6 +1,6 @@
 use crate::{BlueWorkType, hashing};
-use Turkium_hashes::Hash;
-use Turkium_utils::{
+use turkium_hashes::Hash;
+use turkium_utils::{
     iter::{IterExtensions, IterExtensionsRle},
     mem_size::MemSizeEstimator,
 };
@@ -232,7 +232,7 @@ impl MemSizeEstimator for Header {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use Turkium_math::Uint192;
+    use turkium_math::Uint192;
     use serde_json::Value;
 
     fn hash(val: u8) -> Hash {

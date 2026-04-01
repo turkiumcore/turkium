@@ -3,8 +3,8 @@
 //!
 
 use crate::imports::*;
-use Turkium_bip32::PrivateKey;
-use Turkium_consensus_core::{sign::sign_with_multiple_v2, tx::SignableTransaction};
+use turkium_bip32::PrivateKey;
+use turkium_consensus_core::{sign::sign_with_multiple_v2, tx::SignableTransaction};
 
 pub trait SignerT: Send + Sync + 'static {
     fn try_sign(&self, transaction: SignableTransaction, addresses: &[Address]) -> Result<SignableTransaction>;

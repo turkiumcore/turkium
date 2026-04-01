@@ -21,8 +21,8 @@ pub mod utxo_multisets;
 pub mod utxo_set;
 pub mod virtual_state;
 
-pub use Turkium_database;
-pub use Turkium_database::prelude::DB;
+pub use turkium_database;
+pub use turkium_database::prelude::DB;
 use std::fmt::Display;
 
 #[derive(PartialEq, Eq, Clone, Copy, Hash)]

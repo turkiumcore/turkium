@@ -1,5 +1,5 @@
 use crate::TxScriptError;
-use Turkium_txscript_errors::SerializationError;
+use turkium_txscript_errors::SerializationError;
 use core::fmt::Debug;
 use core::iter;
 use std::cmp::Ordering;
@@ -336,7 +336,7 @@ impl DataStack for Stack {
 mod tests {
     use super::OpcodeData;
     use crate::data_stack::SizedEncodeInt;
-    use Turkium_txscript_errors::{SerializationError, TxScriptError};
+    use turkium_txscript_errors::{SerializationError, TxScriptError};
 
     // TestScriptNumBytes
     #[test]

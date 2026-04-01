@@ -1,7 +1,7 @@
-use Turkium_addresses::Version;
-use Turkium_bip32::secp256k1::XOnlyPublicKey;
-use Turkium_wallet_core::message::SignMessageOptions;
-use Turkium_wallet_core::{
+use turkium_addresses::Version;
+use turkium_bip32::secp256k1::XOnlyPublicKey;
+use turkium_wallet_core::message::SignMessageOptions;
+use turkium_wallet_core::{
     account::{BIP32_ACCOUNT_KIND, KEYPAIR_ACCOUNT_KIND},
     message::{PersonalMessage, sign_message, verify_message},
 };
@@ -39,22 +39,22 @@ impl Message {
                     return self.display_help(ctx, argv).await;
                 }
 
-                let Turkium_address = argv[1].as_str();
+                let turkium_address = argv[1].as_str();
                 let asked_message = ctx.term().ask(false, "Message: ").await?;
                 let message = asked_message.as_str();
 
-                self.sign(ctx, Turkium_address, message).await?;
+                self.sign(ctx, turkium_address, message).await?;
             }
             "verify" => {
                 if argv.len() != 3 {
                     return self.display_help(ctx, argv).await;
                 }
-                let Turkium_address = argv[1].as_str();
+                let turkium_address = argv[1].as_str();
                 let signature = argv[2].as_str();
                 let asked_message = ctx.term().ask(false, "Message: ").await?;
                 let message = asked_message.as_str();
 
-                self.verify(ctx, Turkium_address, signature, message).await?;
+                self.verify(ctx, turkium_address, signature, message).await?;
             }
             v => {
                 tprintln!(ctx, "unknown command: '{v}'\r\n");
@@ -68,10 +68,10 @@ impl Message {
     async fn display_help(self: Arc<Self>, ctx: Arc<TurkiumCli>, _argv: Vec<String>) -> Result<()> {
         ctx.term().help(
             &[
-                ("sign <Turkium_address>", "Sign a message with the private key that matches the given address. Prompts for message."),
+                ("sign <turkium_address>", "Sign a message with the private key that matches the given address. Prompts for message."),
                 (
-                    "verify <Turkium_address> <signature>",
-                    "Verify the signature against the message and Turkium_address. Prompts for message.",
+                    "verify <turkium_address> <signature>",
+                    "Verify the signature against the message and turkium_address. Prompts for message.",
                 ),
             ],
             None,
@@ -80,14 +80,14 @@ impl Message {
         Ok(())
     }
 
-    async fn sign(self: Arc<Self>, ctx: Arc<TurkiumCli>, Turkium_address: &str, message: &str) -> Result<()> {
-        let Turkium_address = Address::try_from(Turkium_address)?;
-        if Turkium_address.version != Version::PubKey {
+    async fn sign(self: Arc<Self>, ctx: Arc<TurkiumCli>, turkium_address: &str, message: &str) -> Result<()> {
+        let turkium_address = Address::try_from(turkium_address)?;
+        if turkium_address.version != Version::PubKey {
             return Err(Error::custom("Address not supported for message signing. Only supports PubKey addresses"));
         }
 
         let pm = PersonalMessage(message);
-        let privkey = self.get_address_private_key(&ctx, Turkium_address).await?;
+        let privkey = self.get_address_private_key(&ctx, turkium_address).await?;
         let sign_options = SignMessageOptions { no_aux_rand: false };
 
         let sig_result = sign_message(&pm, &privkey, &sign_options);
@@ -102,13 +102,13 @@ impl Message {
         }
     }
 
-    async fn verify(self: Arc<Self>, ctx: Arc<TurkiumCli>, Turkium_address: &str, signature: &str, message: &str) -> Result<()> {
-        let Turkium_address = Address::try_from(Turkium_address)?;
-        if Turkium_address.version != Version::PubKey {
+    async fn verify(self: Arc<Self>, ctx: Arc<TurkiumCli>, turkium_address: &str, signature: &str, message: &str) -> Result<()> {
+        let turkium_address = Address::try_from(turkium_address)?;
+        if turkium_address.version != Version::PubKey {
             return Err(Error::custom("Address not supported for message signing. Only supports PubKey addresses"));
         }
 
-        let pubkey = XOnlyPublicKey::from_slice(&Turkium_address.payload[0..32]).unwrap();
+        let pubkey = XOnlyPublicKey::from_slice(&turkium_address.payload[0..32]).unwrap();
 
         let mut signature_hex = [0u8; 64];
         faster_hex::hex_decode(signature.as_bytes(), &mut signature_hex)?;
@@ -128,7 +128,7 @@ impl Message {
         Ok(())
     }
 
-    async fn get_address_private_key(self: Arc<Self>, ctx: &Arc<TurkiumCli>, Turkium_address: Address) -> Result<[u8; 32]> {
+    async fn get_address_private_key(self: Arc<Self>, ctx: &Arc<TurkiumCli>, turkium_address: Address) -> Result<[u8; 32]> {
         let account = ctx.wallet().account()?;
 
         match account.account_kind().as_ref() {
@@ -137,10 +137,10 @@ impl Message {
                 let keydata = account.prv_key_data(wallet_secret).await?;
                 let account = account.clone().as_derivation_capable().expect("expecting derivation capable");
 
-                let (receive, change) = account.derivation().addresses_indexes(&[&Turkium_address])?;
+                let (receive, change) = account.derivation().addresses_indexes(&[&turkium_address])?;
                 let private_keys = account.create_private_keys(&keydata, &payment_secret, &receive, &change)?;
                 for (address, private_key) in private_keys {
-                    if Turkium_address == *address {
+                    if turkium_address == *address {
                         return Ok(private_key.secret_bytes());
                     }
                 }

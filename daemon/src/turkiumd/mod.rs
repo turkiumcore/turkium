@@ -69,7 +69,7 @@ impl TryFrom<TurkiumdConfig> for Vec<String> {
         let mut argv = Vec::new();
 
         if args.path.is_none() {
-            return Err(Error::Custom("no Turkiumd path is specified".to_string()));
+            return Err(Error::Custom("no turkiumd path is specified".to_string()));
         }
 
         if args.network.is_none() {
@@ -212,7 +212,7 @@ impl Turkiumd {
         if let Some(process) = process
             && process.is_running()
         {
-            return Err(Error::Custom("Turkium node is already running.".to_string()));
+            return Err(Error::Custom("turkium node is already running.".to_string()));
         }
 
         let argv = self.try_argv()?;
@@ -232,7 +232,7 @@ impl Turkiumd {
             self.mute.load(Ordering::SeqCst),
         );
 
-        // let options = TurkiumdOptions::new(path,network)?;
+        // let options = turkiumdOptions::new(path,network)?;
         let process = Arc::new(Process::new(options));
         self.inner().process.replace(process.clone());
         process.run()?;
@@ -304,7 +304,7 @@ impl Turkiumd {
         if let Some(path) = path {
             Ok(version(path.as_str()).await?.to_string())
         } else {
-            Ok("Turkiumd binary is not configured. Please use 'node select' command.".to_string())
+            Ok("turkiumd binary is not configured. Please use 'node select' command.".to_string())
         }
     }
 }

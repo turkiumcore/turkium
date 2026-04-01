@@ -10,19 +10,19 @@
 use crate::Resolver;
 use crate::imports::*;
 use crate::{RpcEventCallback, RpcEventType, RpcEventTypeOrCallback};
-use Turkium_addresses::{Address, AddressOrStringArrayT};
-use Turkium_consensus_client::UtxoEntryReference;
-use Turkium_consensus_core::network::{NetworkType, NetworkTypeT};
-use Turkium_notify::connection::ChannelType;
-use Turkium_notify::events::EventType;
-use Turkium_notify::listener;
-use Turkium_notify::notification::Notification as NotificationT;
-use Turkium_rpc_core::api::ctl;
-pub use Turkium_rpc_core::wasm::message::*;
-pub use Turkium_rpc_macros::{
+use turkium_addresses::{Address, AddressOrStringArrayT};
+use turkium_consensus_client::UtxoEntryReference;
+use turkium_consensus_core::network::{NetworkType, NetworkTypeT};
+use turkium_notify::connection::ChannelType;
+use turkium_notify::events::EventType;
+use turkium_notify::listener;
+use turkium_notify::notification::Notification as NotificationT;
+use turkium_rpc_core::api::ctl;
+pub use turkium_rpc_core::wasm::message::*;
+pub use turkium_rpc_macros::{
     build_wrpc_wasm_bindgen_interface, build_wrpc_wasm_bindgen_subscriptions, declare_typescript_wasm_interface as declare,
 };
-use Turkium_wasm_core::events::{Sink, get_event_targets};
+use turkium_wasm_core::events::{Sink, get_event_targets};
 use js_sys::{Function, Object};
 pub use serde_wasm_bindgen::from_value;
 use workflow_rpc::client::Ctl;
@@ -144,7 +144,7 @@ pub(crate) struct Inner {
     notification_ctl: DuplexChannel,
     callbacks: Arc<Mutex<AHashMap<NotificationEvent, Vec<Sink>>>>,
     listener_id: Arc<Mutex<Option<ListenerId>>>,
-    notification_channel: Channel<Turkium_rpc_core::Notification>,
+    notification_channel: Channel<turkium_rpc_core::Notification>,
 }
 
 impl Inner {
@@ -166,7 +166,7 @@ impl Inner {
 
 ///
 ///
-/// Turkium RPC client uses ([wRPC](https://github.com/workflow-rs/workflow-rs/tree/master/rpc))
+/// turkium RPC client uses ([wRPC](https://github.com/workflow-rs/workflow-rs/tree/master/rpc))
 /// interface to connect directly with Turkium Node. wRPC supports
 /// two types of encodings: `borsh` (binary, default) and `json`.
 ///
@@ -230,7 +230,7 @@ impl Inner {
 /// using {@link RpcClient.addEventListener} and {@link RpcClient.removeEventListener} functions.
 ///
 /// **IMPORTANT:** If RPC is disconnected, upon reconnection you do not need
-/// to re-register event listeners, but your have to re-subscribe for Turkium node
+/// to re-register event listeners, but your have to re-subscribe for turkium node
 /// notifications:
 ///
 /// ```typescript
@@ -376,7 +376,7 @@ impl RpcClient {
         self.inner.client.node_descriptor().map(|node| node.uid.clone())
     }
 
-    /// Connect to the Turkium RPC server. This function starts a background
+    /// Connect to the turkium RPC server. This function starts a background
     /// task that connects and reconnects to the server if the connection
     /// is terminated.  Use [`disconnect()`](Self::disconnect()) to
     /// terminate the connection.
@@ -390,7 +390,7 @@ impl RpcClient {
         Ok(())
     }
 
-    /// Disconnect from the Turkium RPC server.
+    /// Disconnect from the turkium RPC server.
     pub async fn disconnect(&self) -> Result<()> {
         // disconnect the client first to receive the 'close' event
         self.inner.client.disconnect().await?;
@@ -434,7 +434,7 @@ impl RpcClient {
     /// triggered when notifications are received.
     ///
     /// If node is disconnected, upon reconnection you do not need to re-register event listeners,
-    /// however, you have to re-subscribe for Turkium node notifications. As such, it is recommended
+    /// however, you have to re-subscribe for turkium node notifications. As such, it is recommended
     /// to register event listeners when the RPC `open` event is received.
     ///
     /// ```javascript
@@ -663,7 +663,7 @@ impl RpcClient {
                             match ctl {
                                 Ctl::Connect => {
                                     let listener_id = this.inner.client.register_new_listener(ChannelConnection::new(
-                                        "Turkium-wrpc-client-wasm",
+                                        "turkium-wrpc-client-wasm",
                                         this.inner.notification_channel.sender.clone(),
                                         ChannelType::Persistent,
                                     ));
@@ -694,7 +694,7 @@ impl RpcClient {
                     msg = notification_receiver.recv().fuse() => {
                         if let Ok(notification) = &msg {
                             match &notification {
-                                Turkium_rpc_core::Notification::UtxosChanged(utxos_changed_notification) => {
+                                turkium_rpc_core::Notification::UtxosChanged(utxos_changed_notification) => {
 
                                     let event_type = EventType::UtxosChanged;
                                     let notification_event = NotificationEvent::Notification(event_type);
@@ -935,12 +935,12 @@ build_wrpc_wasm_bindgen_interface!(
         /// Returns the total current coin supply of Turkium network.
         /// Returned information: Total coin supply.
         GetCoinSupply,
-        /// Retrieves information about the peers connected to the Turkium node.
+        /// Retrieves information about the peers connected to the turkium node.
         /// Returned information: Peer ID, IP address and port, connection
         /// status, protocol version.
         GetConnectedPeerInfo,
-        /// Retrieves general information about the Turkium node.
-        /// Returned information: Version of the Turkium node, protocol
+        /// Retrieves general information about the turkium node.
+        /// Returned information: Version of the turkium node, protocol
         /// version, network identifier.
         /// This call is primarily used by gRPC clients.
         /// For wRPC clients, use {@link RpcClient.getServerInfo}.
@@ -950,7 +950,7 @@ build_wrpc_wasm_bindgen_interface!(
         /// Returned information: List of peer addresses.
         GetPeerAddresses,
         /// Retrieves various metrics and statistics related to the
-        /// performance and status of the Turkium node.
+        /// performance and status of the turkium node.
         /// Returned information: Memory usage, CPU usage, network activity.
         GetMetrics,
         /// Retrieves current number of network connections
@@ -964,17 +964,17 @@ build_wrpc_wasm_bindgen_interface!(
         /// leading up to that block.
         /// Returned information: Blue score of the sink block.
         GetSinkBlueScore,
-        /// Tests the connection and responsiveness of a Turkium node.
+        /// Tests the connection and responsiveness of a turkium node.
         /// Returned information: None.
         Ping,
-        /// Gracefully shuts down the Turkium node.
+        /// Gracefully shuts down the turkium node.
         /// Returned information: None.
         Shutdown,
         /// Retrieves information about the Turkium server.
         /// Returned information: Version of the Turkium server, protocol
         /// version, network identifier.
         GetServerInfo,
-        /// Obtains basic information about the synchronization status of the Turkium node.
+        /// Obtains basic information about the synchronization status of the turkium node.
         /// Returned information: Syncing status.
         GetSyncStatus,
         /// Feerate estimates
@@ -985,10 +985,10 @@ build_wrpc_wasm_bindgen_interface!(
     ],
     [
         // functions with `request` argument
-        /// Adds a peer to the Turkium node's list of known peers.
+        /// Adds a peer to the turkium node's list of known peers.
         /// Returned information: None.
         AddPeer,
-        /// Bans a peer from connecting to the Turkium node for a specified duration.
+        /// Bans a peer from connecting to the turkium node for a specified duration.
         /// Returned information: None.
         Ban,
         /// Estimates the network's current hash rate in hashes per second.
@@ -1021,7 +1021,7 @@ build_wrpc_wasm_bindgen_interface!(
         /// Retrieves block headers from the Turkium BlockDAG.
         /// Returned information: List of block headers.
         GetHeaders,
-        /// Retrieves mempool entries from the Turkium node's mempool.
+        /// Retrieves mempool entries from the turkium node's mempool.
         /// Returned information: List of mempool entries.
         GetMempoolEntries,
         /// Retrieves mempool entries associated with specific addresses.
@@ -1053,7 +1053,7 @@ build_wrpc_wasm_bindgen_interface!(
         /// Returned information: Submitted Transaction Id, Transaction that was replaced.
         SubmitTransactionReplacement,
         /// Unbans a previously banned peer, allowing it to connect
-        /// to the Turkium node again.
+        /// to the turkium node again.
         /// Returned information: None.
         Unban,
         /// Get UTXO Return Addresses.

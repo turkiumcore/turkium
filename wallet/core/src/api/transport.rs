@@ -17,7 +17,7 @@ use crate::events::Events;
 use crate::imports::*;
 use crate::result::Result;
 use crate::wallet::Wallet;
-use Turkium_wallet_macros::{build_wallet_client_transport_interface, build_wallet_server_transport_interface};
+use turkium_wallet_macros::{build_wallet_client_transport_interface, build_wallet_server_transport_interface};
 use async_trait::async_trait;
 use borsh::BorshDeserialize;
 use workflow_core::task::spawn;

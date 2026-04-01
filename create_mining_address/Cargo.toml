@@ -1,0 +1,10 @@
+[package]
+name = "create-mining-address"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+secp256k1.workspace = true
+turkium-addresses = { path = "../crypto/addresses" }
+turkium-bip32 = { path = "../wallet/bip32" }
+rand.workspace = true

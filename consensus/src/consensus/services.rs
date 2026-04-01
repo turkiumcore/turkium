@@ -16,8 +16,8 @@ use crate::{
         transaction_validator::TransactionValidator, traversal_manager::DagTraversalManager, window::SampledWindowManager,
     },
 };
-use Turkium_consensus_core::mass::MassCalculator;
-use Turkium_txscript::caches::TxScriptCacheCounters;
+use turkium_consensus_core::mass::MassCalculator;
+use turkium_txscript::caches::TxScriptCacheCounters;
 use std::sync::{Arc, atomic::AtomicBool};
 
 pub type DbGhostdagManager =

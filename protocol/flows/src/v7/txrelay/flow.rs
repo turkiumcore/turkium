@@ -3,10 +3,10 @@ use crate::{
     flow_trait::Flow,
     flowcontext::transactions::MAX_INV_PER_TX_INV_MSG,
 };
-use Turkium_consensus_core::tx::{Transaction, TransactionId};
-use Turkium_consensusmanager::ConsensusProxy;
-use Turkium_core::{time::unix_now, warn};
-use Turkium_mining::{
+use turkium_consensus_core::tx::{Transaction, TransactionId};
+use turkium_consensusmanager::ConsensusProxy;
+use turkium_core::{time::unix_now, warn};
+use turkium_mining::{
     P2pTxCountSample,
     errors::MiningManagerError,
     mempool::{
@@ -15,7 +15,7 @@ use Turkium_mining::{
     },
     model::tx_query::TransactionQuery,
 };
-use Turkium_p2p_lib::{
+use turkium_p2p_lib::{
     IncomingRoute, Router,
     common::{DEFAULT_TIMEOUT, ProtocolError},
     dequeue, make_message,
@@ -79,7 +79,7 @@ impl RelayTransactionsFlow {
 
     pub fn invs_channel_size() -> usize {
         // TODO: reevaluate when the node is fully functional and later when the network tx rate increases
-        // Note: in go-Turkiumd we have 10,000 for this channel combined with tx channel.
+        // Note: in go-turkiumd we have 10,000 for this channel combined with tx channel.
         4096
     }
 
@@ -232,7 +232,7 @@ impl RelayTransactionsFlow {
                 Err(MiningManagerError::MempoolError(RuleError::RejectNonStandard(..))) => {
                     self.spam_counter += 1;
                     if self.spam_counter.is_multiple_of(100) {
-                        Turkium_core::warn!("Peer {} has shared {} spam/non-standard txs ({:?})", self.router, self.spam_counter, res);
+                        turkium_core::warn!("Peer {} has shared {} spam/non-standard txs ({:?})", self.router, self.spam_counter, res);
                     }
                 }
                 Err(_) => {}

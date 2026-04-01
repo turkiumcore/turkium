@@ -1,7 +1,7 @@
 //!
 //! Events emitted by the wallet framework. This includes various wallet,
 //! account and transaction events as well as state and sync events
-//! produced by the client RPC and the Turkium node monitoring subsystems.
+//! produced by the client RPC and the turkium node monitoring subsystems.
 //!
 
 use crate::api::message::FeeRateEstimateBucket;
@@ -10,7 +10,7 @@ use crate::storage::{Hint, PrvKeyDataInfo, StorageDescriptor, TransactionRecord,
 use crate::utxo::context::UtxoContextId;
 use transaction::TransactionRecordNotification;
 
-/// Sync state of the Turkiumd node
+/// Sync state of the turkiumd node
 #[derive(Clone, Debug, Serialize, BorshSerialize, BorshDeserialize)]
 #[serde(rename_all = "kebab-case")]
 #[serde(tag = "type", content = "data")]

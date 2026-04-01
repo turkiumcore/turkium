@@ -1,7 +1,7 @@
 use crate::imports::*;
-use Turkium_consensus_core::tx::TransactionId;
-use Turkium_wallet_core::error::Error as WalletError;
-use Turkium_wallet_core::storage::Binding;
+use turkium_consensus_core::tx::TransactionId;
+use turkium_wallet_core::error::Error as WalletError;
+use turkium_wallet_core::storage::Binding;
 #[derive(Default, Handler)]
 #[help("Display transaction history")]
 pub struct History;

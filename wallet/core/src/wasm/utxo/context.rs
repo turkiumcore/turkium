@@ -4,10 +4,10 @@ use crate::utxo as native;
 use crate::utxo::{UtxoContextBinding, UtxoContextId};
 use crate::wasm::utxo::UtxoProcessor;
 use crate::wasm::{Balance, BalanceStrings};
-use Turkium_addresses::AddressOrStringArrayT;
-use Turkium_consensus_client::UtxoEntryReferenceArrayT;
-use Turkium_hashes::Hash;
-use Turkium_wallet_macros::declare_typescript_wasm_interface as declare;
+use turkium_addresses::AddressOrStringArrayT;
+use turkium_consensus_client::UtxoEntryReferenceArrayT;
+use turkium_hashes::Hash;
+use turkium_wallet_macros::declare_typescript_wasm_interface as declare;
 
 declare! {
     IUtxoContextArgs,

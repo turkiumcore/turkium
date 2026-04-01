@@ -1,6 +1,6 @@
 use crate::{TurkiumdMessagePayloadType, convert::error::ConversionError, core::peer::PeerKey};
-use Turkium_consensus_core::errors::{block::RuleError, consensus::ConsensusError, pruning::PruningImportError};
-use Turkium_mining_errors::manager::MiningManagerError;
+use turkium_consensus_core::errors::{block::RuleError, consensus::ConsensusError, pruning::PruningImportError};
+use turkium_mining_errors::manager::MiningManagerError;
 use std::time::Duration;
 use thiserror::Error;
 

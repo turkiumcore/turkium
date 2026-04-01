@@ -8,7 +8,7 @@
 
 use crate::api::connection::DynRpcConnection;
 use crate::{RpcResult, model::*, notify::connection::ChannelConnection};
-use Turkium_notify::{listener::ListenerId, scope::Scope, subscription::Command};
+use turkium_notify::{listener::ListenerId, scope::Scope, subscription::Command};
 use async_trait::async_trait;
 use downcast::{AnySync, downcast_sync};
 use std::sync::Arc;
@@ -138,7 +138,7 @@ pub trait RpcApi: Sync + Send + AnySync {
         request: GetBlockTemplateRequest,
     ) -> RpcResult<GetBlockTemplateResponse>;
 
-    /// Requests the list of known Turkiumd addresses in the current network (mainnet, testnet, etc.)
+    /// Requests the list of known turkiumd addresses in the current network (mainnet, testnet, etc.)
     async fn get_peer_addresses(&self) -> RpcResult<GetPeerAddressesResponse> {
         self.get_peer_addresses_call(None, GetPeerAddressesRequest {}).await
     }

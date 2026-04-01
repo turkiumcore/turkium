@@ -2,7 +2,7 @@
 //! Extended public key ([`XPub`]).
 //!
 
-use Turkium_bip32::{ChainCode, KeyFingerprint, Prefix};
+use turkium_bip32::{ChainCode, KeyFingerprint, Prefix};
 use std::{fmt, str::FromStr};
 
 use crate::imports::*;

@@ -1,5 +1,5 @@
-use Turkium_mining::feerate::{FeeEstimateVerbose, FeerateBucket, FeerateEstimations};
-use Turkium_rpc_core::{
+use turkium_mining::feerate::{FeeEstimateVerbose, FeerateBucket, FeerateEstimations};
+use turkium_rpc_core::{
     RpcFeeEstimate, RpcFeeEstimateVerboseExperimentalData as RpcFeeEstimateVerbose, RpcFeerateBucket,
     message::GetFeeEstimateExperimentalResponse as RpcFeeEstimateVerboseResponse,
 };

@@ -1,6 +1,6 @@
 [package]
-name = "Turkium-cli"
-description = "Turkium CLI"
+name = "turkium-cli"
+description = "turkium CLI"
 keywords = ["Turkium", "wallet", "cli", "rpc"]
 rust-version.workspace = true
 version.workspace = true
@@ -20,7 +20,7 @@ include = [
 default = []
 
 [lib]
-name = "Turkium_cli_lib"
+name = "turkium_cli_lib"
 crate-type = ["cdylib", "lib"]
 
 [dependencies]
@@ -34,18 +34,18 @@ faster-hex.workspace = true
 futures.workspace = true
 js-sys.workspace = true
 hex.workspace = true
-Turkium-addresses.workspace = true
-Turkium-bip32.workspace = true
-Turkium-consensus-core.workspace = true
-Turkium-core.workspace = true
-Turkium-daemon.workspace = true
-Turkium-metrics-core.workspace = true
-Turkium-rpc-core.workspace = true
-Turkium-utils.workspace = true
-Turkium-wallet-core.workspace = true
-Turkium-wallet-keys.workspace = true
-Turkium-wallet-pskt.workspace = true
-Turkium-wrpc-client.workspace = true
+turkium-addresses.workspace = true
+turkium-bip32.workspace = true
+turkium-consensus-core.workspace = true
+turkium-core.workspace = true
+turkium-daemon.workspace = true
+turkium-metrics-core.workspace = true
+turkium-rpc-core.workspace = true
+turkium-utils.workspace = true
+turkium-wallet-core.workspace = true
+turkium-wallet-keys.workspace = true
+turkium-wallet-pskt.workspace = true
+turkium-wrpc-client.workspace = true
 nw-sys.workspace = true
 pad.workspace = true
 regex.workspace = true

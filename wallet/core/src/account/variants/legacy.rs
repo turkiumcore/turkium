@@ -1,11 +1,11 @@
 //!
-//! Legacy (KDX, Turkiumnet.io Web Wallet) account implementation
+//! Legacy (KDX, turkiumnet.io Web Wallet) account implementation
 //!
 
 use crate::account::{AsLegacyAccount, Inner};
 use crate::derivation::{AddressDerivationManager, AddressDerivationManagerTrait};
 use crate::imports::*;
-use Turkium_bip32::{ExtendedPrivateKey, Prefix, SecretKey};
+use turkium_bip32::{ExtendedPrivateKey, Prefix, SecretKey};
 
 const CACHE_ADDRESS_OFFSET: u32 = 2048;
 
@@ -20,7 +20,7 @@ impl Factory for Ctor {
     }
 
     fn description(&self) -> String {
-        "Turkium Legacy Account (KDX, Turkiumnet.io Web Wallet)".to_string()
+        "Turkium Legacy Account (KDX, turkiumnet.io Web Wallet)".to_string()
     }
 
     async fn try_load(

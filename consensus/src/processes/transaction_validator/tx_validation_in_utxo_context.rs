@@ -1,10 +1,10 @@
 use crate::constants::{MAX_SOMPI, SEQUENCE_LOCK_TIME_DISABLED, SEQUENCE_LOCK_TIME_MASK};
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     hashing::sighash::{SigHashReusedValuesSync, SigHashReusedValuesUnsync},
     tx::{TransactionInput, VerifiableTransaction},
 };
-use Turkium_txscript::{SigCacheKey, TxScriptEngine, caches::Cache};
-use Turkium_txscript_errors::TxScriptError;
+use turkium_txscript::{SigCacheKey, TxScriptEngine, caches::Cache};
+use turkium_txscript_errors::TxScriptError;
 use rayon::ThreadPool;
 use rayon::iter::{IntoParallelIterator, ParallelIterator};
 use std::marker::Sync;
@@ -142,7 +142,7 @@ impl TransactionValidator {
                 // lock-time. We subtract one from the relative lock in
                 // order to maintain the original lockTime semantics.
                 //
-                // Note: in the Turkiumd codebase there's a use in i64 in order to use the -1 value
+                // Note: in the turkiumd codebase there's a use in i64 in order to use the -1 value
                 // as None. Here it's not needed, but we still use it to avoid breaking consensus.
                 let lock_daa_score = entry.block_daa_score as i64 + relative_lock - 1;
 
@@ -203,11 +203,11 @@ fn map_script_err(script_err: TxScriptError, input: &TransactionInput) -> TxRule
 mod tests {
     use super::super::errors::TxRuleError;
     use super::CHECK_SCRIPTS_PARALLELISM_THRESHOLD;
-    use Turkium_consensus_core::sign::sign;
-    use Turkium_consensus_core::subnets::SubnetworkId;
-    use Turkium_consensus_core::tx::{MutableTransaction, PopulatedTransaction, ScriptVec, TransactionId, UtxoEntry};
-    use Turkium_consensus_core::tx::{ScriptPublicKey, Transaction, TransactionInput, TransactionOutpoint, TransactionOutput};
-    use Turkium_txscript_errors::TxScriptError;
+    use turkium_consensus_core::sign::sign;
+    use turkium_consensus_core::subnets::SubnetworkId;
+    use turkium_consensus_core::tx::{MutableTransaction, PopulatedTransaction, ScriptVec, TransactionId, UtxoEntry};
+    use turkium_consensus_core::tx::{ScriptPublicKey, Transaction, TransactionInput, TransactionOutpoint, TransactionOutput};
+    use turkium_txscript_errors::TxScriptError;
     use core::str::FromStr;
     use itertools::Itertools;
     use secp256k1::Secp256k1;

@@ -7,7 +7,7 @@ use super::{
     errors::{TxResult, TxRuleError},
 };
 use crate::constants::LOCK_TIME_THRESHOLD;
-use Turkium_consensus_core::tx::Transaction;
+use turkium_consensus_core::tx::Transaction;
 
 pub(crate) enum LockTimeType {
     Finalized,

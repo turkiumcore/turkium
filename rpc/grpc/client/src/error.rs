@@ -1,5 +1,5 @@
-use Turkium_notify::error::Error as NotifyError;
-use Turkium_rpc_core::RpcError;
+use turkium_notify::error::Error as NotifyError;
+use turkium_rpc_core::RpcError;
 use thiserror::Error;
 
 pub type BoxedStdError = Box<dyn std::error::Error + Sync + std::marker::Send + 'static>;
@@ -23,7 +23,7 @@ pub enum Error {
     EndpointConnectionError(#[from] tonic::transport::Error),
 
     #[error("Notify error: {0}")]
-    NotifyError(#[from] Turkium_notify::error::Error),
+    NotifyError(#[from] turkium_notify::error::Error),
 
     #[error("RPC: channel receive error")]
     ChannelRecvError,

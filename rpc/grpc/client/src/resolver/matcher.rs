@@ -1,4 +1,4 @@
-use Turkium_grpc_core::protowire::{TurkiumdRequest, TurkiumdResponse, turkiumd_request, turkiumd_response};
+use turkium_grpc_core::protowire::{TurkiumdRequest, TurkiumdResponse, turkiumd_request, turkiumd_response};
 
 pub(crate) trait Matcher<T> {
     fn is_matching(&self, response: T) -> bool;

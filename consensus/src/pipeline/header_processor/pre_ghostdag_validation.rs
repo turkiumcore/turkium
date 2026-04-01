@@ -3,13 +3,13 @@ use crate::constants;
 use crate::errors::{BlockProcessResult, RuleError};
 use crate::model::services::reachability::ReachabilityService;
 use crate::model::stores::statuses::StatusesStoreReader;
-use Turkium_consensus_core::BlockLevel;
-use Turkium_consensus_core::blockhash::BlockHashExtensions;
-use Turkium_consensus_core::blockstatus::BlockStatus::StatusInvalid;
-use Turkium_consensus_core::header::Header;
-use Turkium_core::time::unix_now;
-use Turkium_database::prelude::StoreResultExt;
-use Turkium_pow::calc_level_from_pow;
+use turkium_consensus_core::BlockLevel;
+use turkium_consensus_core::blockhash::BlockHashExtensions;
+use turkium_consensus_core::blockstatus::BlockStatus::StatusInvalid;
+use turkium_consensus_core::header::Header;
+use turkium_core::time::unix_now;
+use turkium_database::prelude::StoreResultExt;
+use turkium_pow::calc_level_from_pow;
 
 impl HeaderProcessor {
     /// Validates the header in isolation including pow check against header declared bits.
@@ -100,7 +100,7 @@ impl HeaderProcessor {
     }
 
     fn check_pow_and_calc_block_level(&self, header: &Header) -> BlockProcessResult<BlockLevel> {
-        let state = Turkium_pow::State::new(header);
+        let state = turkium_pow::State::new(header);
         let (passed, pow) = state.check_pow(header.nonce);
         if passed || self.skip_proof_of_work { Ok(calc_level_from_pow(pow, self.max_block_level)) } else { Err(RuleError::InvalidPoW) }
     }

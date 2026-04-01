@@ -6,14 +6,14 @@
 
 use crate::imports::*;
 use crate::result::Result;
-use Turkium_addresses::*;
-use Turkium_consensus_core::{
+use turkium_addresses::*;
+use turkium_consensus_core::{
     network::{NetworkType, NetworkTypeT},
     tx::ScriptPublicKeyT,
 };
-use Turkium_txscript::{script_class::ScriptClass, standard};
-use Turkium_utils::hex::ToHex;
-use Turkium_wasm_core::types::{BinaryT, HexString};
+use turkium_txscript::{script_class::ScriptClass, standard};
+use turkium_utils::hex::ToHex;
+use turkium_wasm_core::types::{BinaryT, HexString};
 
 /// Creates a new script to pay a transaction output to the specified address.
 /// @category Wallet SDK

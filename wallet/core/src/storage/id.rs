@@ -2,8 +2,8 @@
 //! General-purpose Id traits used by storage data collections.
 //!
 
-use Turkium_consensus_core::tx::TransactionId;
-use Turkium_utils::hex::ToHex;
+use turkium_consensus_core::tx::TransactionId;
+use turkium_utils::hex::ToHex;
 use std::cmp::Eq;
 use std::fmt::Debug;
 use std::hash::Hash;

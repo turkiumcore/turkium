@@ -1,6 +1,6 @@
 use crate::errors::BlockProcessResult;
-use Turkium_consensus_core::{block::Block, blockstatus::BlockStatus};
-use Turkium_hashes::Hash;
+use turkium_consensus_core::{block::Block, blockstatus::BlockStatus};
+use turkium_hashes::Hash;
 use parking_lot::{Condvar, Mutex};
 use std::collections::{
     HashMap, VecDeque,

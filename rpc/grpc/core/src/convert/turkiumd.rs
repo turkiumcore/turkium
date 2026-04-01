@@ -20,7 +20,7 @@ impl AsRef<TurkiumdResponse> for TurkiumdResponse {
 
 pub mod turkiumd_request_convert {
     use crate::protowire::*;
-    use Turkium_rpc_core::{RpcError, RpcResult};
+    use turkium_rpc_core::{RpcError, RpcResult};
 
     impl_into_turkiumd_request!(Shutdown);
     impl_into_turkiumd_request!(SubmitBlock);
@@ -78,7 +78,7 @@ pub mod turkiumd_request_convert {
     macro_rules! impl_into_turkiumd_request {
         ($name:tt) => {
             paste::paste! {
-                impl_into_turkiumd_request_ex!(Turkium_rpc_core::[<$name Request>],[<$name RequestMessage>],[<$name Request>]);
+                impl_into_turkiumd_request_ex!(turkium_rpc_core::[<$name Request>],[<$name RequestMessage>],[<$name Request>]);
             }
         };
     }
@@ -159,7 +159,7 @@ pub mod turkiumd_request_convert {
 
 pub mod turkiumd_response_convert {
     use crate::protowire::*;
-    use Turkium_rpc_core::{RpcError, RpcResult};
+    use turkium_rpc_core::{RpcError, RpcResult};
 
     impl_into_turkiumd_response!(Shutdown);
     impl_into_turkiumd_response!(SubmitBlock);
@@ -205,27 +205,27 @@ pub mod turkiumd_response_convert {
     impl_into_turkiumd_response!(GetUtxoReturnAddress);
     impl_into_turkiumd_response!(GetVirtualChainFromBlockV2);
 
-    impl_into_Turkiumd_notify_response!(NotifyBlockAdded);
-    impl_into_Turkiumd_notify_response!(NotifyNewBlockTemplate);
-    impl_into_Turkiumd_notify_response!(NotifyUtxosChanged);
-    impl_into_Turkiumd_notify_response!(NotifyPruningPointUtxoSetOverride);
-    impl_into_Turkiumd_notify_response!(NotifyFinalityConflict);
-    impl_into_Turkiumd_notify_response!(NotifyVirtualDaaScoreChanged);
-    impl_into_Turkiumd_notify_response!(NotifyVirtualChainChanged);
-    impl_into_Turkiumd_notify_response!(NotifySinkBlueScoreChanged);
+    impl_into_turkiumd_notify_response!(NotifyBlockAdded);
+    impl_into_turkiumd_notify_response!(NotifyNewBlockTemplate);
+    impl_into_turkiumd_notify_response!(NotifyUtxosChanged);
+    impl_into_turkiumd_notify_response!(NotifyPruningPointUtxoSetOverride);
+    impl_into_turkiumd_notify_response!(NotifyFinalityConflict);
+    impl_into_turkiumd_notify_response!(NotifyVirtualDaaScoreChanged);
+    impl_into_turkiumd_notify_response!(NotifyVirtualChainChanged);
+    impl_into_turkiumd_notify_response!(NotifySinkBlueScoreChanged);
 
-    impl_into_Turkiumd_notify_response!(NotifyUtxosChanged, StopNotifyingUtxosChanged);
-    impl_into_Turkiumd_notify_response!(NotifyPruningPointUtxoSetOverride, StopNotifyingPruningPointUtxoSetOverride);
+    impl_into_turkiumd_notify_response!(NotifyUtxosChanged, StopNotifyingUtxosChanged);
+    impl_into_turkiumd_notify_response!(NotifyPruningPointUtxoSetOverride, StopNotifyingPruningPointUtxoSetOverride);
 
     macro_rules! impl_into_turkiumd_response {
         ($name:tt) => {
             paste::paste! {
-                impl_into_turkiumd_response_ex!(Turkium_rpc_core::[<$name Response>],[<$name ResponseMessage>],[<$name Response>]);
+                impl_into_turkiumd_response_ex!(turkium_rpc_core::[<$name Response>],[<$name ResponseMessage>],[<$name Response>]);
             }
         };
         ($core_name:tt, $protowire_name:tt) => {
             paste::paste! {
-                impl_into_turkiumd_response_base!(Turkium_rpc_core::[<$core_name Response>],[<$protowire_name ResponseMessage>],[<$protowire_name Response>]);
+                impl_into_turkiumd_response_base!(turkium_rpc_core::[<$core_name Response>],[<$protowire_name ResponseMessage>],[<$protowire_name Response>]);
             }
         };
     }
@@ -325,25 +325,25 @@ pub mod turkiumd_response_convert {
     }
     use impl_into_turkiumd_response_ex;
 
-    macro_rules! impl_into_Turkiumd_notify_response {
+    macro_rules! impl_into_turkiumd_notify_response {
         ($name:tt) => {
             impl_into_turkiumd_response!($name);
 
             paste::paste! {
-                impl_into_Turkiumd_notify_response_ex!(Turkium_rpc_core::[<$name Response>],[<$name ResponseMessage>]);
+                impl_into_turkiumd_notify_response_ex!(turkium_rpc_core::[<$name Response>],[<$name ResponseMessage>]);
             }
         };
         ($core_name:tt, $protowire_name:tt) => {
             impl_into_turkiumd_response!($core_name, $protowire_name);
 
             paste::paste! {
-                impl_into_Turkiumd_notify_response_ex!(Turkium_rpc_core::[<$core_name Response>],[<$protowire_name ResponseMessage>]);
+                impl_into_turkiumd_notify_response_ex!(turkium_rpc_core::[<$core_name Response>],[<$protowire_name ResponseMessage>]);
             }
         };
     }
-    use impl_into_Turkiumd_notify_response;
+    use impl_into_turkiumd_notify_response;
 
-    macro_rules! impl_into_Turkiumd_notify_response_ex {
+    macro_rules! impl_into_turkiumd_notify_response_ex {
         ($($core_struct:ident)::+, $protowire_struct:ident) => {
             // ----------------------------------------------------------------------------
             // rpc_core to protowire
@@ -362,5 +362,5 @@ pub mod turkiumd_response_convert {
 
         };
     }
-    use impl_into_Turkiumd_notify_response_ex;
+    use impl_into_turkiumd_notify_response_ex;
 }

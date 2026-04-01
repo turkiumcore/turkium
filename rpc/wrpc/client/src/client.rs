@@ -3,16 +3,16 @@
 use crate::imports::*;
 use crate::parse::parse_host;
 use crate::{error::Error, node::NodeDescriptor};
-use Turkium_consensus_core::network::NetworkType;
-use Turkium_notify::{
+use turkium_consensus_core::network::NetworkType;
+use turkium_notify::{
     listener::ListenerLifespan,
     subscription::{MutationPolicies, UtxosChangedMutationPolicy, context::SubscriptionContext},
 };
-use Turkium_rpc_core::{
+use turkium_rpc_core::{
     api::ctl::RpcCtl,
     notify::collector::{RpcCoreCollector, RpcCoreConverter},
 };
-pub use Turkium_rpc_macros::build_wrpc_client_interface;
+pub use turkium_rpc_macros::build_wrpc_client_interface;
 use std::fmt::Debug;
 use workflow_core::{channel::Multiplexer, runtime as application_runtime};
 use workflow_dom::utils::window;
@@ -82,7 +82,7 @@ impl Inner {
             let notification_sender_ = notification_relay_channel.sender.clone();
             interface.notification(
                 notification_op,
-                workflow_rpc::client::Notification::new(move |notification: Serializable<Turkium_rpc_core::Notification>| {
+                workflow_rpc::client::Notification::new(move |notification: Serializable<turkium_rpc_core::Notification>| {
                     let notification_sender = notification_sender_.clone();
                     Box::pin(async move {
                         // log_info!("notification receivers: {}", notification_sender.receiver_count());
@@ -91,7 +91,7 @@ impl Inner {
                             // log_info!("notification: posting to channel: {notification:?}");
                             notification_sender.send(notification.into_inner()).await?;
                         } else {
-                            log_warn!("WARNING: Turkium RPC notification is not consumed by user: {:?}", notification.into_inner());
+                            log_warn!("WARNING: turkium RPC notification is not consumed by user: {:?}", notification.into_inner());
                         }
                         Ok(())
                     })
@@ -202,7 +202,7 @@ impl Inner {
 
 impl Debug for Inner {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        f.debug_struct("TurkiumRpcClient")
+        f.debug_struct("turkiumRpcClient")
             .field("rpc", &"rpc")
             // .field("notification_channel", &self.notification_channel)
             .field("encoding", &self.encoding)
@@ -248,7 +248,7 @@ impl RpcResolver for Inner {
 
 const WRPC_CLIENT: &str = "wrpc-client";
 
-/// # [`TurkiumRpcClient`] connects to Turkium wRPC endpoint via binary Borsh or JSON protocols.
+/// # [`turkiumRpcClient`] connects to Turkium wRPC endpoint via binary Borsh or JSON protocols.
 ///
 /// RpcClient has two ways to interface with the underlying RPC subsystem:
 /// [`Interface`] that has a [`notification()`](Interface::notification)
@@ -272,8 +272,8 @@ impl Debug for TurkiumRpcClient {
 }
 
 impl TurkiumRpcClient {
-    /// Create a new `TurkiumRpcClient` with the given Encoding, and an optional url or a Resolver.
-    /// Please note that if you pass the url to the constructor, it will force the TurkiumRpcClient
+    /// Create a new `turkiumRpcClient` with the given Encoding, and an optional url or a Resolver.
+    /// Please note that if you pass the url to the constructor, it will force the turkiumRpcClient
     /// to always use this url.  If you want to have the ability to switch between urls,
     /// you must pass [`Option::None`] as the `url` argument and then supply your own url to the `connect()`
     /// function each time you connect.
@@ -304,7 +304,7 @@ impl TurkiumRpcClient {
         //     notification_mode: NotificationMode,
         //     url: &str,
         //     subscription_context: Option<SubscriptionContext>,
-        // ) -> Result<TurkiumRpcClient> {
+        // ) -> Result<turkiumRpcClient> {
         //     let inner = Arc::new(Inner::new(encoding, url)?);
         //     let notifier = if matches!(notification_mode, NotificationMode::MultiListeners) {
         //         let enabled_events = EVENT_TYPE_ARRAY[..].into();
@@ -325,7 +325,7 @@ impl TurkiumRpcClient {
         //         None
         //     };
 
-        // let client = TurkiumRpcClient { inner, notifier, notification_mode };
+        // let client = turkiumRpcClient { inner, notifier, notification_mode };
 
         Ok(client)
     }
@@ -564,7 +564,7 @@ impl TurkiumRpcClient {
                     },
                     msg = notification_relay_channel.receiver.recv().fuse() => {
                         if let Ok(msg) = msg {
-                            // inner.rpc_ctl.notify(msg).await.expect("(TurkiumRpcClient) rpc_ctl.notify() error");
+                            // inner.rpc_ctl.notify(msg).await.expect("(turkiumRpcClient) rpc_ctl.notify() error");
                             if let Err(err) = inner.notification_intake_channel.lock().unwrap().sender.try_send(msg) {
                                 log_error!("notification_intake_channel.sender.try_send() error: {err}");
                             }
@@ -576,10 +576,10 @@ impl TurkiumRpcClient {
                         if let Ok(msg) = msg {
                             match msg {
                                 WrpcCtl::Connect => {
-                                    inner.rpc_ctl.signal_open().await.expect("(TurkiumRpcClient) rpc_ctl.signal_open() error");
+                                    inner.rpc_ctl.signal_open().await.expect("(turkiumRpcClient) rpc_ctl.signal_open() error");
                                 }
                                 WrpcCtl::Disconnect => {
-                                    inner.rpc_ctl.signal_close().await.expect("(TurkiumRpcClient) rpc_ctl.signal_close() error");
+                                    inner.rpc_ctl.signal_close().await.expect("(turkiumRpcClient) rpc_ctl.signal_close() error");
                                 }
                             }
                         } else {

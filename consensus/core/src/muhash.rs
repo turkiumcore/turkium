@@ -2,8 +2,8 @@ use crate::{
     hashing::HasherExtensions,
     tx::{TransactionOutpoint, UtxoEntry, VerifiableTransaction},
 };
-use Turkium_hashes::HasherBase;
-use Turkium_muhash::MuHash;
+use turkium_hashes::HasherBase;
+use turkium_muhash::MuHash;
 
 pub trait MuHashExtensions {
     fn add_transaction(&mut self, tx: &impl VerifiableTransaction, block_daa_score: u64);

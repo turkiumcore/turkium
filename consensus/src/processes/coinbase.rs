@@ -1,4 +1,4 @@
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     BlockHashMap, BlockHashSet,
     coinbase::*,
     config::params::ForkedParam,
@@ -272,7 +272,7 @@ impl CoinbaseManager {
 }
 
 /*
-    This table was pre-calculated by calling `calcDeflationaryPeriodBlockSubsidyFloatCalc` (in Turkiumd-go) for all months until reaching 0 subsidy.
+    This table was pre-calculated by calling `calcDeflationaryPeriodBlockSubsidyFloatCalc` (in turkiumd-go) for all months until reaching 0 subsidy.
     To regenerate this table, run `TestBuildSubsidyTable` in coinbasemanager_test.go (note the `deflationaryPhaseBaseSubsidy` therein).
     These values represent the reward per second for each month (= reward per block for 1 BPS).
 */
@@ -302,7 +302,7 @@ const SUBSIDY_BY_MONTH_TABLE: [u64; 426] = [
 mod tests {
     use super::*;
     use crate::params::MAINNET_PARAMS;
-    use Turkium_consensus_core::{
+    use turkium_consensus_core::{
         config::params::{ForkActivation, Params, SIMNET_PARAMS},
         constants::SOMPI_PER_TURKIUM,
         network::{NetworkId, NetworkType},

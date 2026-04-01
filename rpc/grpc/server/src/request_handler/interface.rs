@@ -4,7 +4,7 @@ use crate::{
     connection_handler::ServerContext,
     error::{GrpcServerError, GrpcServerResult},
 };
-use Turkium_grpc_core::{
+use turkium_grpc_core::{
     ops::TurkiumdPayloadOps,
     protowire::{TurkiumdRequest, TurkiumdResponse},
 };

@@ -5,7 +5,7 @@ use crate::{
     handshake::TurkiumdHandshake,
     pb::{self, VersionMessage},
 };
-use Turkium_core::{debug, time::unix_now, trace, warn};
+use turkium_core::{debug, time::unix_now, trace, warn};
 use std::sync::Arc;
 use tonic::async_trait;
 use uuid::Uuid;
@@ -114,7 +114,7 @@ impl EchoFlowInitializer {
 impl ConnectionInitializer for EchoFlowInitializer {
     async fn initialize_connection(&self, router: Arc<Router>) -> Result<(), ProtocolError> {
         //
-        // Example code to illustrate Turkium P2P handshaking
+        // Example code to illustrate turkium P2P handshaking
         //
 
         // Build the handshake object and subscribe to handshake messages
@@ -149,12 +149,12 @@ mod tests {
 
     use super::*;
     use crate::{Adaptor, Hub};
-    use Turkium_core::debug;
-    use Turkium_utils::networking::NetAddress;
+    use turkium_core::debug;
+    use turkium_utils::networking::NetAddress;
 
     #[tokio::test]
     async fn test_handshake() {
-        Turkium_core::log::try_init_logger("debug");
+        turkium_core::log::try_init_logger("debug");
 
         let address1 = NetAddress::from_str("[::1]:50053").unwrap();
         let adaptor1 = Adaptor::bidirectional(address1, Hub::new(), Arc::new(EchoFlowInitializer::new()), Default::default()).unwrap();
@@ -164,7 +164,7 @@ mod tests {
 
         // Initiate the connection from `adaptor1` (outbound) to `adaptor2` (inbound)
         let peer2_id = adaptor1
-            .connect_peer_with_retries(String::from("[::1]:50054"), 16, Duration::from_secs(1))
+            .connect_peer_with_retries(String::from("[::1]:5205"), 16, Duration::from_secs(1))
             .await
             .expect("peer connection failed");
 

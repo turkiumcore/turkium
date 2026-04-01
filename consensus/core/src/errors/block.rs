@@ -5,7 +5,7 @@ use crate::{
     errors::{coinbase::CoinbaseError, tx::TxRuleError},
     tx::{TransactionId, TransactionOutpoint},
 };
-use Turkium_hashes::Hash;
+use turkium_hashes::Hash;
 use itertools::Itertools;
 use thiserror::Error;
 

@@ -9,7 +9,7 @@ use crate::{
 use std::{ops::Deref, sync::Arc};
 
 #[cfg(test)]
-use Turkium_addresses::Address;
+use turkium_addresses::Address;
 
 #[derive(Debug)]
 pub struct SubscriptionContextInner {
@@ -82,17 +82,17 @@ mod tests {
         address::tracker::{CounterMap, Index, IndexSet, Indexer, RefCount},
         subscription::SubscriptionContext,
     };
-    use Turkium_addresses::{Address, Prefix};
-    use Turkium_alloc::init_allocator_with_default_settings;
-    use Turkium_core::trace;
-    use Turkium_math::Uint256;
+    use turkium_addresses::{Address, Prefix};
+    use turkium_alloc::init_allocator_with_default_settings;
+    use turkium_core::trace;
+    use turkium_math::Uint256;
     use itertools::Itertools;
     use std::collections::{HashMap, HashSet};
     use workflow_perf_monitor::mem::get_process_memory_info;
 
     fn create_addresses(count: usize) -> Vec<Address> {
         (0..count)
-            .map(|i| Address::new(Prefix::Mainnet, Turkium_addresses::Version::PubKey, &Uint256::from_u64(i as u64).to_le_bytes()))
+            .map(|i| Address::new(Prefix::Mainnet, turkium_addresses::Version::PubKey, &Uint256::from_u64(i as u64).to_le_bytes()))
             .collect()
     }
 
@@ -137,7 +137,7 @@ mod tests {
         length_and_capacity: F2,
     ) -> Vec<T> {
         init_allocator_with_default_settings();
-        Turkium_core::log::try_init_logger("INFO,Turkium_notify::subscription::context=trace");
+        turkium_core::log::try_init_logger("INFO,turkium_notify::subscription::context=trace");
         measure_consumed_memory(item_len, num_items, ctor, length_and_capacity)
     }
 
@@ -161,7 +161,7 @@ mod tests {
         const NUM_ITEMS: usize = 5;
 
         init_allocator_with_default_settings();
-        Turkium_core::log::try_init_logger("INFO,Turkium_notify::subscription::context=trace");
+        turkium_core::log::try_init_logger("INFO,turkium_notify::subscription::context=trace");
 
         trace!("Creating addresses...");
         let addresses = create_addresses(ITEM_LEN);
@@ -392,7 +392,7 @@ mod tests {
     //     const NUM_ITEMS: usize = 1_000_000;
 
     //     init_allocator_with_default_settings();
-    //     Turkium_core::log::try_init_logger("INFO,Turkium_notify::subscription::context=trace");
+    //     turkium_core::log::try_init_logger("INFO,turkium_notify::subscription::context=trace");
 
     //     let before = get_process_memory_info().unwrap();
     //     trace!("Creating sets...");

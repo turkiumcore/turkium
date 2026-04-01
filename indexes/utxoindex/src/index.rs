@@ -6,22 +6,22 @@ use crate::{
     stores::store_manager::Store,
     update_container::UtxoIndexChanges,
 };
-use Turkium_consensus_core::{BlockHashSet, tx::ScriptPublicKeys, utxo::utxo_diff::UtxoDiff};
-use Turkium_consensusmanager::{ConsensusManager, ConsensusResetHandler};
-use Turkium_core::{info, trace};
-use Turkium_database::prelude::{DB, StoreError, StoreResult};
-use Turkium_hashes::Hash;
-use Turkium_index_core::indexed_utxos::BalanceByScriptPublicKey;
-use Turkium_utils::arc::ArcExtensions;
+use turkium_consensus_core::{BlockHashSet, tx::ScriptPublicKeys, utxo::utxo_diff::UtxoDiff};
+use turkium_consensusmanager::{ConsensusManager, ConsensusResetHandler};
+use turkium_core::{info, trace};
+use turkium_database::prelude::{DB, StoreError, StoreResult};
+use turkium_hashes::Hash;
+use turkium_index_core::indexed_utxos::BalanceByScriptPublicKey;
+use turkium_utils::arc::ArcExtensions;
 use parking_lot::RwLock;
 use std::{
     fmt::Debug,
     sync::{Arc, Weak},
 };
 
-const RESYNC_CHUNK_SIZE: usize = 2048; // Increased from 1k (used in go-Turkiumd), for quicker resets, while still having a low memory footprint.
+const RESYNC_CHUNK_SIZE: usize = 2048; // Increased from 1k (used in go-turkiumd), for quicker resets, while still having a low memory footprint.
 
-/// UtxoIndex indexes `CompactUtxoEntryCollections` by [`ScriptPublicKey`](Turkium_consensus_core::tx::ScriptPublicKey),
+/// UtxoIndex indexes `CompactUtxoEntryCollections` by [`ScriptPublicKey`](turkium_consensus_core::tx::ScriptPublicKey),
 /// commits them to its owns store, and emits changes.
 /// Note: The UtxoIndex struct by itself is not thread safe, only correct usage of the supplied RwLock via `new` makes it so.
 /// please follow guidelines found in the comments under `utxoindex::core::api::UtxoIndexApi` for proper thread safety.
@@ -191,7 +191,7 @@ impl UtxoIndexApi for UtxoIndex {
     }
 
     // This can have a big memory footprint, so it should be used only for tests.
-    fn get_all_outpoints(&self) -> StoreResult<std::collections::HashSet<Turkium_consensus_core::tx::TransactionOutpoint>> {
+    fn get_all_outpoints(&self) -> StoreResult<std::collections::HashSet<turkium_consensus_core::tx::TransactionOutpoint>> {
         self.store.get_all_outpoints()
     }
 }
@@ -223,7 +223,7 @@ impl ConsensusResetHandler for UtxoIndexConsensusResetHandler {
 #[cfg(test)]
 mod tests {
     use crate::{UtxoIndex, api::UtxoIndexApi, model::CirculatingSupply, testutils::virtual_change_emulator::VirtualChangeEmulator};
-    use Turkium_consensus::{
+    use turkium_consensus::{
         config::Config,
         consensus::test_consensus::TestConsensus,
         model::stores::{
@@ -232,20 +232,20 @@ mod tests {
         },
         params::DEVNET_PARAMS,
     };
-    use Turkium_consensus_core::{
+    use turkium_consensus_core::{
         api::ConsensusApi,
         utxo::{utxo_collection::UtxoCollection, utxo_diff::UtxoDiff},
     };
-    use Turkium_consensusmanager::ConsensusManager;
-    use Turkium_core::info;
-    use Turkium_database::create_temp_db;
-    use Turkium_database::prelude::ConnBuilder;
+    use turkium_consensusmanager::ConsensusManager;
+    use turkium_core::info;
+    use turkium_database::create_temp_db;
+    use turkium_database::prelude::ConnBuilder;
     use std::{collections::HashSet, sync::Arc, time::Instant};
 
     /// TODO: use proper Simnet when implemented.
     #[test]
     fn test_utxoindex() {
-        Turkium_core::log::try_init_logger("INFO");
+        turkium_core::log::try_init_logger("INFO");
 
         let resync_utxo_collection_size = 10_000;
         let update_utxo_collection_size = 1_000;

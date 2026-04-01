@@ -43,7 +43,7 @@ use crate::{
         window::{WindowManager, WindowType},
     },
 };
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     BlockHashSet, BlueWorkType, ChainPath, HashMapCustomHasher,
     acceptance_data::{AcceptanceData, MergesetBlockAcceptanceData},
     api::{
@@ -76,20 +76,20 @@ use Turkium_consensus_core::{
         TransactionType, UtxoEntry,
     },
 };
-use Turkium_consensus_notify::root::ConsensusNotificationRoot;
+use turkium_consensus_notify::root::ConsensusNotificationRoot;
 
-use Turkium_consensusmanager::{SessionLock, SessionReadGuard};
+use turkium_consensusmanager::{SessionLock, SessionReadGuard};
 use crossbeam_channel::{
     Receiver as CrossbeamReceiver, Sender as CrossbeamSender, bounded as bounded_crossbeam, unbounded as unbounded_crossbeam,
 };
 use itertools::Itertools;
 
-use Turkium_core::info;
-use Turkium_database::prelude::StoreResultExt;
-use Turkium_hashes::Hash;
-use Turkium_muhash::MuHash;
-use Turkium_txscript::caches::TxScriptCacheCounters;
-use Turkium_utils::arc::ArcExtensions;
+use turkium_core::info;
+use turkium_database::prelude::StoreResultExt;
+use turkium_hashes::Hash;
+use turkium_muhash::MuHash;
+use turkium_txscript::caches::TxScriptCacheCounters;
+use turkium_utils::arc::ArcExtensions;
 use rayon::iter::{IntoParallelRefIterator, ParallelIterator};
 use rocksdb::WriteBatch;
 
@@ -738,7 +738,7 @@ impl ConsensusApi for Consensus {
                 // Note: because we are doing a topological BFS up (from `hash` towards virtual), the first chain block
                 // found must also be our merging block, so hash will be either in blues or in reds, rendering this line
                 // unreachable.
-                Turkium_core::warn!("DAG topology inconsistency: {decedent} is expected to be a merging block of {hash}");
+                turkium_core::warn!("DAG topology inconsistency: {decedent} is expected to be a merging block of {hash}");
                 // TODO: we should consider the option of returning Result<Option<bool>> from this method
                 return None;
             }
@@ -823,8 +823,8 @@ impl ConsensusApi for Consensus {
         // Part 1: Add samples from pruning point headers:
         if self.config.net.network_type == NetworkType::Mainnet {
             // For mainnet, we add extra data (16 pp headers) from before checkpoint genesis.
-            // Source: https://github.com/Turkiumgang/Turkiumd-py-explorer/blob/main/src/tx_timestamp_estimation.ipynb
-            // For context see also: https://github.com/Turkiumgang/Turkiumd-py-explorer/blob/main/src/genesis_proof.ipynb
+            // Source: https://github.com/turkiumgang/turkiumd-py-explorer/blob/main/src/tx_timestamp_estimation.ipynb
+            // For context see also: https://github.com/turkiumgang/turkiumd-py-explorer/blob/main/src/genesis_proof.ipynb
             const POINTS: &[DaaScoreTimestamp] = &[
                 DaaScoreTimestamp { daa_score: 0, timestamp: 1636298787842 },
                 DaaScoreTimestamp { daa_score: 87133, timestamp: 1636386662010 },

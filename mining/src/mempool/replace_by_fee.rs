@@ -4,7 +4,7 @@ use crate::mempool::{
     model::tx::{DoubleSpend, MempoolTransaction, TxRemovalReason},
     tx::RbfPolicy,
 };
-use Turkium_consensus_core::tx::{MutableTransaction, Transaction};
+use turkium_consensus_core::tx::{MutableTransaction, Transaction};
 use std::sync::Arc;
 
 impl Mempool {

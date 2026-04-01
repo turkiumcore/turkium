@@ -1,6 +1,6 @@
 [package]
-name = "Turkium-muhash"
-description = "Turkium Muhash library"
+name = "turkium-muhash"
+description = "turkium Muhash library"
 rust-version.workspace = true
 version.workspace = true
 edition.workspace = true
@@ -10,8 +10,8 @@ license.workspace = true
 repository.workspace = true
 
 [dependencies]
-Turkium-hashes.workspace = true
-Turkium-math.workspace = true
+turkium-hashes.workspace = true
+turkium-math.workspace = true
 rand_chacha.workspace = true
 serde.workspace = true
 

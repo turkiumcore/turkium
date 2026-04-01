@@ -1,7 +1,7 @@
 #![allow(non_snake_case)]
-extern crate self as Turkium_core;
+extern crate self as turkium_core;
 
-pub mod Turkiumd_env;
+pub mod turkiumd_env;
 pub mod assert;
 pub mod console;
 pub mod log;

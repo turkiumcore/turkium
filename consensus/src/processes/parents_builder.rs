@@ -1,9 +1,9 @@
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     BlockHashMap, BlockHasher, BlockLevel,
     blockhash::ORIGIN,
     header::{CompressedParents, Header},
 };
-use Turkium_hashes::Hash;
+use turkium_hashes::Hash;
 use indexmap::IndexSet;
 use itertools::Itertools;
 use smallvec::{SmallVec, smallvec};
@@ -211,13 +211,13 @@ mod tests {
     };
 
     use super::ParentsManager;
-    use Turkium_consensus_core::{
+    use turkium_consensus_core::{
         BlockHashSet, HashMapCustomHasher,
         blockhash::{BlockHashes, ORIGIN},
         header::Header,
     };
-    use Turkium_database::prelude::{ReadLock, StoreError, StoreResult};
-    use Turkium_hashes::Hash;
+    use turkium_database::prelude::{ReadLock, StoreError, StoreResult};
+    use turkium_hashes::Hash;
     use itertools::Itertools;
     use parking_lot::RwLock;
 
@@ -233,34 +233,34 @@ mod tests {
 
     #[allow(unused_variables)]
     impl HeaderStoreReader for HeaderStoreMock {
-        fn get_daa_score(&self, hash: Turkium_hashes::Hash) -> Result<u64, StoreError> {
+        fn get_daa_score(&self, hash: turkium_hashes::Hash) -> Result<u64, StoreError> {
             unimplemented!()
         }
 
-        fn get_timestamp(&self, hash: Turkium_hashes::Hash) -> Result<u64, StoreError> {
+        fn get_timestamp(&self, hash: turkium_hashes::Hash) -> Result<u64, StoreError> {
             unimplemented!()
         }
 
-        fn get_bits(&self, hash: Turkium_hashes::Hash) -> Result<u32, StoreError> {
+        fn get_bits(&self, hash: turkium_hashes::Hash) -> Result<u32, StoreError> {
             unimplemented!()
         }
 
-        fn get_header(&self, hash: Turkium_hashes::Hash) -> Result<Arc<Header>, StoreError> {
+        fn get_header(&self, hash: turkium_hashes::Hash) -> Result<Arc<Header>, StoreError> {
             Ok(self.map.read().get(&hash).unwrap().header.clone())
         }
 
         fn get_compact_header_data(
             &self,
-            hash: Turkium_hashes::Hash,
+            hash: turkium_hashes::Hash,
         ) -> Result<crate::model::stores::headers::CompactHeaderData, StoreError> {
             unimplemented!()
         }
 
-        fn get_blue_score(&self, hash: Turkium_hashes::Hash) -> Result<u64, StoreError> {
+        fn get_blue_score(&self, hash: turkium_hashes::Hash) -> Result<u64, StoreError> {
             unimplemented!()
         }
 
-        fn get_header_with_block_level(&self, hash: Turkium_hashes::Hash) -> Result<HeaderWithBlockLevel, StoreError> {
+        fn get_header_with_block_level(&self, hash: turkium_hashes::Hash) -> Result<HeaderWithBlockLevel, StoreError> {
             Ok(self.map.read().get(&hash).unwrap().clone())
         }
     }
@@ -271,7 +271,7 @@ mod tests {
 
     #[allow(unused_variables)]
     impl RelationsStoreReader for RelationsStoreMock {
-        fn get_parents(&self, hash: Hash) -> Result<Turkium_consensus_core::blockhash::BlockHashes, StoreError> {
+        fn get_parents(&self, hash: Hash) -> Result<turkium_consensus_core::blockhash::BlockHashes, StoreError> {
             unimplemented!()
         }
 

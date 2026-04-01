@@ -1,6 +1,6 @@
 [package]
-name = "Turkium-grpc-server"
-description = "Turkium gRPC server"
+name = "turkium-grpc-server"
+description = "turkium gRPC server"
 rust-version.workspace = true
 version.workspace = true
 edition.workspace = true
@@ -10,15 +10,15 @@ license.workspace = true
 repository.workspace = true
 
 [dependencies]
-Turkium-consensus-core.workspace = true
-Turkium-core.workspace = true
-Turkium-grpc-core.workspace = true
-Turkium-notify.workspace = true
-Turkium-rpc-core.workspace = true
-Turkium-rpc-macros.workspace = true
-Turkium-rpc-service.workspace = true
-Turkium-utils-tower.workspace = true
-Turkium-utils.workspace = true
+turkium-consensus-core.workspace = true
+turkium-core.workspace = true
+turkium-grpc-core.workspace = true
+turkium-notify.workspace = true
+turkium-rpc-core.workspace = true
+turkium-rpc-macros.workspace = true
+turkium-rpc-service.workspace = true
+turkium-utils-tower.workspace = true
+turkium-utils.workspace = true
 
 async-channel.workspace = true
 async-stream.workspace = true
@@ -42,7 +42,7 @@ uuid.workspace = true
 rustls.workspace = true
 
 [dev-dependencies]
-Turkium-grpc-client.workspace = true
+turkium-grpc-client.workspace = true
 
 [lints]
 workspace = true

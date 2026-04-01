@@ -1,5 +1,5 @@
 use crate::pb as protowire;
-use Turkium_consensus_core::subnets::SubnetworkId;
+use turkium_consensus_core::subnets::SubnetworkId;
 
 use super::error::ConversionError;
 

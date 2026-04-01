@@ -1,10 +1,10 @@
-use Turkium_consensus_core::config::params::TESTNET_PARAMS;
-use Turkium_consensus_core::{
+use turkium_consensus_core::config::params::TESTNET_PARAMS;
+use turkium_consensus_core::{
     hashing::sighash::{SigHashReusedValuesUnsync, calc_schnorr_signature_hash},
     tx::{TransactionId, TransactionOutpoint, UtxoEntry},
 };
-use Turkium_txscript::{multisig_redeem_script, opcodes::codes::OpData65, pay_to_script_hash_script, script_builder::ScriptBuilder};
-use Turkium_wallet_pskt::prelude::{
+use turkium_txscript::{multisig_redeem_script, opcodes::codes::OpData65, pay_to_script_hash_script, script_builder::ScriptBuilder};
+use turkium_wallet_pskt::prelude::{
     Combiner, Creator, Extractor, Finalizer, Inner, InputBuilder, PSKT, SignInputOk, Signature, Signer, Updater,
 };
 use secp256k1::{Keypair, rand::thread_rng};

@@ -48,18 +48,18 @@ macro_rules! full_featured {
             $($(#[$variant_meta])* $variant_name($field_name)),*
         }
 
-        impl std::convert::From<&$name> for Turkium_notify::events::EventType {
+        impl std::convert::From<&$name> for turkium_notify::events::EventType {
             fn from(value: &$name) -> Self {
                 match value {
-                    $($name::$variant_name(_) => Turkium_notify::events::EventType::$variant_name),*
+                    $($name::$variant_name(_) => turkium_notify::events::EventType::$variant_name),*
                 }
             }
         }
 
-        impl std::convert::From<&$name> for Turkium_notify::scope::Scope {
+        impl std::convert::From<&$name> for turkium_notify::scope::Scope {
             fn from(value: &$name) -> Self {
                 match value {
-                    $($name::$variant_name(_) => Turkium_notify::scope::Scope::$variant_name(Turkium_notify::scope::[<$variant_name Scope>]::default())),*
+                    $($name::$variant_name(_) => turkium_notify::scope::Scope::$variant_name(turkium_notify::scope::[<$variant_name Scope>]::default())),*
                 }
             }
         }
@@ -79,8 +79,8 @@ pub mod test_helpers {
     use crate::subscription::{Subscription, context::SubscriptionContext};
 
     use super::*;
-    use Turkium_addresses::Address;
-    use Turkium_core::trace;
+    use turkium_addresses::Address;
+    use turkium_core::trace;
     use derive_more::Display;
     use std::sync::Arc;
 

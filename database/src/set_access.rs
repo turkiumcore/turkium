@@ -200,7 +200,7 @@ mod tests {
         create_temp_db,
         prelude::{BatchDbWriter, ConnBuilder, DirectDbWriter},
     };
-    use Turkium_hashes::Hash;
+    use turkium_hashes::Hash;
     use rocksdb::WriteBatch;
 
     #[test]

@@ -1,14 +1,14 @@
 use crate::processes::ghostdag::ordering::SortableBlock;
-use Turkium_consensus_core::trusted::ExternalGhostdagData;
-use Turkium_consensus_core::{BlockHashMap, BlockHasher, BlockLevel, HashMapCustomHasher};
-use Turkium_consensus_core::{BlueWorkType, blockhash::BlockHashes};
-use Turkium_database::prelude::DB;
-use Turkium_database::prelude::{BatchDbWriter, CachedDbAccess, DbKey};
-use Turkium_database::prelude::{CachePolicy, StoreError};
-use Turkium_database::registry::{DatabaseStorePrefixes, SEPARATOR};
-use Turkium_hashes::Hash;
+use turkium_consensus_core::trusted::ExternalGhostdagData;
+use turkium_consensus_core::{BlockHashMap, BlockHasher, BlockLevel, HashMapCustomHasher};
+use turkium_consensus_core::{BlueWorkType, blockhash::BlockHashes};
+use turkium_database::prelude::DB;
+use turkium_database::prelude::{BatchDbWriter, CachedDbAccess, DbKey};
+use turkium_database::prelude::{CachePolicy, StoreError};
+use turkium_database::registry::{DatabaseStorePrefixes, SEPARATOR};
+use turkium_hashes::Hash;
 
-use Turkium_utils::mem_size::MemSizeEstimator;
+use turkium_utils::mem_size::MemSizeEstimator;
 use itertools::EitherOrBoth::{Both, Left, Right};
 use itertools::Itertools;
 use rocksdb::WriteBatch;
@@ -17,7 +17,7 @@ use std::iter::once;
 use std::{cell::RefCell, sync::Arc};
 
 /// Re-export for convenience
-pub use Turkium_consensus_core::{HashKTypeMap, KType};
+pub use turkium_consensus_core::{HashKTypeMap, KType};
 
 #[derive(Clone, Serialize, Deserialize, Default)]
 pub struct GhostdagData {
@@ -517,7 +517,7 @@ impl GhostdagStoreReader for MemoryGhostdagStore {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use Turkium_consensus_core::BlockHashSet;
+    use turkium_consensus_core::BlockHashSet;
 
     #[test]
     fn test_mergeset_iterators() {

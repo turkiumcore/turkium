@@ -13,8 +13,8 @@ use crate::{
     Transaction, TransactionInput, TransactionInputInner, TransactionOutpoint, TransactionOutpointInner, TransactionOutput, UtxoEntry,
     UtxoEntryId, UtxoEntryReference,
 };
-use Turkium_addresses::Address;
-use Turkium_consensus_core::subnets::SubnetworkId;
+use turkium_addresses::Address;
+use turkium_consensus_core::subnets::SubnetworkId;
 use ahash::AHashMap;
 use cctx::VerifiableTransaction;
 use workflow_wasm::serde::{from_value, to_value};

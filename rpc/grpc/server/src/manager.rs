@@ -1,6 +1,6 @@
 use crate::connection::{Connection, ConnectionId};
-use Turkium_core::{debug, info, warn};
-use Turkium_notify::connection::Connection as ConnectionT;
+use turkium_core::{debug, info, warn};
+use turkium_notify::connection::Connection as ConnectionT;
 use parking_lot::RwLock;
 use std::{
     collections::{HashMap, HashSet, hash_map::Entry::Occupied},

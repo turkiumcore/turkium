@@ -1,8 +1,8 @@
 #![allow(non_snake_case)]
 use std::{collections::HashMap, str::FromStr, sync::Arc, time::Duration};
 
-use Turkium_addresses::{Address, Prefix, Version};
-use Turkium_consensus_core::{
+use turkium_addresses::{Address, Prefix, Version};
+use turkium_consensus_core::{
     config::params::TESTNET_PARAMS,
     constants::{SOMPI_PER_TURKIUM, TX_VERSION},
     network::NetworkType,
@@ -10,11 +10,11 @@ use Turkium_consensus_core::{
     subnets::SUBNETWORK_ID_NATIVE,
     tx::{MutableTransaction, Transaction, TransactionInput, TransactionOutpoint, TransactionOutput, UtxoEntry},
 };
-use Turkium_core::{Turkiumd_env::version, info, time::unix_now, warn};
-use Turkium_grpc_client::{ClientPool, GrpcClient};
-use Turkium_notify::subscription::context::SubscriptionContext;
-use Turkium_rpc_core::{RpcUtxoEntry, api::rpc::RpcApi, notify::mode::NotificationMode};
-use Turkium_txscript::pay_to_address_script;
+use turkium_core::{turkiumd_env::version, info, time::unix_now, warn};
+use turkium_grpc_client::{ClientPool, GrpcClient};
+use turkium_notify::subscription::context::SubscriptionContext;
+use turkium_rpc_core::{RpcUtxoEntry, api::rpc::RpcApi, notify::mode::NotificationMode};
+use turkium_txscript::pay_to_address_script;
 use clap::{Arg, ArgAction, Command};
 use itertools::Itertools;
 use parking_lot::Mutex;
@@ -175,7 +175,7 @@ struct TxConfig {
 
 #[tokio::main]
 async fn main() {
-    Turkium_core::log::init_logger(None, "");
+    turkium_core::log::init_logger(None, "");
     let args = Args::parse();
 
     let address_prefix = Prefix::from(args.network);
@@ -205,20 +205,20 @@ async fn main() {
         Keypair::from_seckey_slice(secp256k1::SECP256K1, &private_key_bytes).unwrap()
     } else {
         let (sk, pk) = &secp256k1::generate_keypair(&mut thread_rng());
-        let Turkium_addr = Address::new(address_prefix, ADDRESS_VERSION, &pk.x_only_public_key().0.serialize());
+        let turkium_addr = Address::new(address_prefix, ADDRESS_VERSION, &pk.x_only_public_key().0.serialize());
         info!(
             "Generated private key {} and address {}. Send some funds to this address and rerun turk-txgen with `--private-key {}`",
             sk.display_secret(),
-            String::from(&Turkium_addr),
+            String::from(&turkium_addr),
             sk.display_secret()
         );
         return;
     };
 
-    let Turkium_addr = Address::new(address_prefix, ADDRESS_VERSION, &schnorr_key.x_only_public_key().0.serialize());
+    let turkium_addr = Address::new(address_prefix, ADDRESS_VERSION, &schnorr_key.x_only_public_key().0.serialize());
 
-    let Turkium_to_addr =
-        args.addr.as_ref().map_or_else(|| Turkium_addr.clone(), |addr_str| Address::try_from(addr_str.clone()).unwrap());
+    let turkium_to_addr =
+        args.addr.as_ref().map_or_else(|| turkium_addr.clone(), |addr_str| Address::try_from(addr_str.clone()).unwrap());
 
     (args.payload_size <= 20000).then_some(()).expect("payload-size can be max 20000");
 
@@ -233,10 +233,10 @@ async fn main() {
         \tfrom address: {}",
         args.network,
         schnorr_key.display_secret(),
-        String::from(&Turkium_addr)
+        String::from(&turkium_addr)
     );
     if args.addr.is_some() {
-        log_message.push_str(&format!("\n\tto address: {}", String::from(&Turkium_to_addr)));
+        log_message.push_str(&format!("\n\tto address: {}", String::from(&turkium_to_addr)));
     }
     if args.priority_fee != 0 {
         log_message.push_str(&format!(
@@ -319,7 +319,7 @@ async fn main() {
     let target_tps = args.tps.min(if args.unleashed { u64::MAX } else { 100 });
     let should_tick_per_second = target_tps * MILLIS_PER_TICK / 1000 == 0;
     let avg_txs_per_tick = if should_tick_per_second { target_tps } else { target_tps * MILLIS_PER_TICK / 1000 };
-    let mut utxos = refresh_utxos(&rpc_client, Turkium_addr.clone(), &mut pending, coinbase_maturity).await;
+    let mut utxos = refresh_utxos(&rpc_client, turkium_addr.clone(), &mut pending, coinbase_maturity).await;
     let mut ticker = interval(Duration::from_millis(if should_tick_per_second { 1000 } else { MILLIS_PER_TICK }));
     ticker.set_missed_tick_behavior(MissedTickBehavior::Delay);
 
@@ -347,7 +347,7 @@ async fn main() {
         let has_funds = maybe_send_tx(
             txs_to_send,
             &tx_sender,
-            Turkium_to_addr.clone(),
+            turkium_to_addr.clone(),
             &mut utxos,
             &mut pending,
             schnorr_key,
@@ -363,7 +363,7 @@ async fn main() {
         if !has_funds || now - last_refresh > 60_000 {
             info!("Refetching UTXO set");
             tokio::time::sleep(Duration::from_millis(100)).await; // We don't want this operation to be too frequent since its heavy on the node, so we wait some time before executing it.
-            utxos = refresh_utxos(&rpc_client, Turkium_addr.clone(), &mut pending, coinbase_maturity).await;
+            utxos = refresh_utxos(&rpc_client, turkium_addr.clone(), &mut pending, coinbase_maturity).await;
             last_refresh = unix_now();
             next_available_utxo_index = 0;
             pause_if_mempool_is_full(&rpc_client).await;
@@ -404,20 +404,20 @@ async fn pause_if_mempool_is_full(rpc_client: &GrpcClient) {
 
 async fn refresh_utxos(
     rpc_client: &GrpcClient,
-    Turkium_addr: Address,
+    turkium_addr: Address,
     pending: &mut HashMap<TransactionOutpoint, Instant>,
     coinbase_maturity: u64,
 ) -> Vec<(TransactionOutpoint, UtxoEntry)> {
-    populate_pending_outpoints_from_mempool(rpc_client, Turkium_addr.clone(), pending).await;
-    fetch_spendable_utxos(rpc_client, Turkium_addr, coinbase_maturity, pending).await
+    populate_pending_outpoints_from_mempool(rpc_client, turkium_addr.clone(), pending).await;
+    fetch_spendable_utxos(rpc_client, turkium_addr, coinbase_maturity, pending).await
 }
 
 async fn populate_pending_outpoints_from_mempool(
     rpc_client: &GrpcClient,
-    Turkium_addr: Address,
+    turkium_addr: Address,
     pending_outpoints: &mut HashMap<TransactionOutpoint, Instant>,
 ) {
-    let entries = rpc_client.get_mempool_entries_by_addresses(vec![Turkium_addr], true, false).await.unwrap();
+    let entries = rpc_client.get_mempool_entries_by_addresses(vec![turkium_addr], true, false).await.unwrap();
     let now = Instant::now();
 
     for entry in entries {
@@ -431,11 +431,11 @@ async fn populate_pending_outpoints_from_mempool(
 
 async fn fetch_spendable_utxos(
     rpc_client: &GrpcClient,
-    Turkium_addr: Address,
+    turkium_addr: Address,
     coinbase_maturity: u64,
     pending: &mut HashMap<TransactionOutpoint, Instant>,
 ) -> Vec<(TransactionOutpoint, UtxoEntry)> {
-    let resp = rpc_client.get_utxos_by_addresses(vec![Turkium_addr]).await.unwrap();
+    let resp = rpc_client.get_utxos_by_addresses(vec![turkium_addr]).await.unwrap();
     let dag_info = rpc_client.get_block_dag_info().await.unwrap();
 
     let mut utxos = resp.into_iter()
@@ -462,7 +462,7 @@ fn is_utxo_spendable(entry: &RpcUtxoEntry, virtual_daa_score: u64, coinbase_matu
 async fn maybe_send_tx(
     txs_to_send: u64,
     tx_sender: &async_channel::Sender<ClientPoolArg>,
-    Turkium_addr: Address,
+    turkium_addr: Address,
     utxos: &mut [(TransactionOutpoint, UtxoEntry)],
     pending: &mut HashMap<TransactionOutpoint, Instant>,
     schnorr_key: Keypair,
@@ -504,7 +504,7 @@ async fn maybe_send_tx(
         .into_par_iter()
         .map(|utxo_option| {
             if let Some((selected_utxos, selected_amount)) = utxo_option {
-                let tx = generate_tx(schnorr_key, &selected_utxos, selected_amount, num_outs, &Turkium_addr, tx_config.payload_size);
+                let tx = generate_tx(schnorr_key, &selected_utxos, selected_amount, num_outs, &turkium_addr, tx_config.payload_size);
 
                 return Some((tx, selected_utxos.len(), selected_utxos.into_iter().map(|(_, entry)| entry.amount).sum::<u64>()));
             }

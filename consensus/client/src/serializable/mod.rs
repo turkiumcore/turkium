@@ -13,7 +13,7 @@
 //! via JSON in JavaScript environments and later conversion to `bigint` types.
 //!
 //! These data structures can be used for manual transport of transactions using JSON.
-//! For more advanced use cases, please refer to `PSKT` in the [`Turkium_wallet_pskt`](https://docs.rs/Turkium_wallet_pskt)
+//! For more advanced use cases, please refer to `PSKT` in the [`turkium_wallet_pskt`](https://docs.rs/turkium_wallet_pskt)
 //! crate.
 //!
 

@@ -1,9 +1,9 @@
 use crate::model::stores::{block_window_cache::BlockWindowHeap, headers::HeaderStoreReader};
-use Turkium_consensus_core::errors::block::RuleError;
-use Turkium_hashes::Hash;
+use turkium_consensus_core::errors::block::RuleError;
+use turkium_hashes::Hash;
 use std::sync::Arc;
 
-/// A past median time manager based on sampled block windows, implementing [KIP-0004](https://github.com/Turkiumnet/kips/blob/master/kip-0004.md)
+/// A past median time manager based on sampled block windows, implementing [KIP-0004](https://github.com/turkiumnet/kips/blob/master/kip-0004.md)
 #[derive(Clone)]
 pub struct SampledPastMedianTimeManager<T: HeaderStoreReader> {
     headers_store: Arc<T>,

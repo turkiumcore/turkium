@@ -1,5 +1,5 @@
 #![allow(non_snake_case)]
-use Turkium_core::{
+use turkium_core::{
     error,
     task::{
         service::{AsyncService, AsyncServiceFuture},
@@ -124,7 +124,7 @@ mod tests {
 
     #[tokio::test]
     async fn monitor_works() {
-        Turkium_core::log::try_init_logger("info, Turkium_perf_monitor=trace");
+        turkium_core::log::try_init_logger("info, turkium_perf_monitor=trace");
 
         let ts = Arc::new(TickService::new());
         let call_count = Arc::new(AtomicUsize::new(0));

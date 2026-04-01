@@ -1,5 +1,5 @@
 [package]
-name = "Turkium-wasm"
+name = "turkium-wasm"
 description = "TURKPA WASM bindings"
 rust-version.workspace = true
 version.workspace = true
@@ -17,21 +17,21 @@ crate-type = ["cdylib"]
 [dependencies]
 cfg-if.workspace = true
 js-sys.workspace = true
-Turkium-addresses.workspace = true
-Turkium-bip32.workspace = true
-Turkium-consensus-core.workspace = true
-Turkium-consensus-wasm.workspace = true
-Turkium-core.workspace = true
-Turkium-math.workspace = true
-Turkium-pow.workspace = true
-Turkium-txscript.workspace = true
-Turkium-rpc-core.workspace = true
-Turkium-utils.workspace = true
-Turkium-wasm-core.workspace = true
-Turkium-wallet-core.workspace = true
-Turkium-wallet-keys.workspace = true
-Turkium-wrpc-client.workspace = true
-Turkium-wrpc-wasm.workspace = true
+turkium-addresses.workspace = true
+turkium-bip32.workspace = true
+turkium-consensus-core.workspace = true
+turkium-consensus-wasm.workspace = true
+turkium-core.workspace = true
+turkium-math.workspace = true
+turkium-pow.workspace = true
+turkium-txscript.workspace = true
+turkium-rpc-core.workspace = true
+turkium-utils.workspace = true
+turkium-wasm-core.workspace = true
+turkium-wallet-core.workspace = true
+turkium-wallet-keys.workspace = true
+turkium-wrpc-client.workspace = true
+turkium-wrpc-wasm.workspace = true
 num.workspace = true
 wasm-bindgen.workspace = true
 workflow-log.workspace = true
@@ -40,20 +40,20 @@ workflow-wasm.workspace = true
 
 [features]
 wasm32-sdk = [
-    "Turkium-wallet-core/wasm32-sdk",
-    "Turkium-pow/wasm32-sdk",
-    "Turkium-txscript/wasm32-sdk",
+    "turkium-wallet-core/wasm32-sdk",
+    "turkium-pow/wasm32-sdk",
+    "turkium-txscript/wasm32-sdk",
 ]
 wasm32-core = [
-    "Turkium-wallet-core/wasm32-core",
-    "Turkium-pow/wasm32-sdk",
-    "Turkium-txscript/wasm32-sdk",
+    "turkium-wallet-core/wasm32-core",
+    "turkium-pow/wasm32-sdk",
+    "turkium-txscript/wasm32-sdk",
 ]
 wasm32-rpc = [
-    "Turkium-consensus-core/wasm32-sdk",
-    "Turkium-consensus-wasm/wasm32-sdk",
-    "Turkium-wrpc-client/wasm32-sdk",
-    "Turkium-wrpc-wasm/wasm32-sdk",
+    "turkium-consensus-core/wasm32-sdk",
+    "turkium-consensus-wasm/wasm32-sdk",
+    "turkium-wrpc-client/wasm32-sdk",
+    "turkium-wrpc-wasm/wasm32-sdk",
 ]
 wasm32-keygen = []
 default = []

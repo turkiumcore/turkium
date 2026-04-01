@@ -1,6 +1,6 @@
 [package]
-name = "Turkium-consensus"
-description = "Turkium consensus library"
+name = "turkium-consensus"
+description = "turkium consensus library"
 rust-version.workspace = true
 version.workspace = true
 edition.workspace = true
@@ -18,21 +18,21 @@ faster-hex.workspace = true
 futures-util.workspace = true
 indexmap.workspace = true
 itertools.workspace = true
-Turkium-addresses.workspace = true
-Turkium-consensus-core.workspace = true
-Turkium-consensus-notify.workspace = true
-Turkium-consensusmanager.workspace = true
-Turkium-core.workspace = true
-Turkium-database.workspace = true
-Turkium-hashes.workspace = true
-Turkium-math.workspace = true
-Turkium-merkle.workspace = true
-Turkium-muhash.workspace = true
-Turkium-notify.workspace = true
-Turkium-pow.workspace = true
-Turkium-txscript.workspace = true
-Turkium-txscript-errors.workspace = true
-Turkium-utils.workspace = true
+turkium-addresses.workspace = true
+turkium-consensus-core.workspace = true
+turkium-consensus-notify.workspace = true
+turkium-consensusmanager.workspace = true
+turkium-core.workspace = true
+turkium-database.workspace = true
+turkium-hashes.workspace = true
+turkium-math.workspace = true
+turkium-merkle.workspace = true
+turkium-muhash.workspace = true
+turkium-notify.workspace = true
+turkium-pow.workspace = true
+turkium-txscript.workspace = true
+turkium-txscript-errors.workspace = true
+turkium-utils.workspace = true
 log.workspace = true
 once_cell.workspace = true
 parking_lot.workspace = true
@@ -54,8 +54,8 @@ criterion.workspace = true
 serde_json.workspace = true
 flate2.workspace = true
 rand_distr.workspace = true
-Turkium-txscript-errors.workspace = true
-Turkium-addresses.workspace = true
+turkium-txscript-errors.workspace = true
+turkium-addresses.workspace = true
 
 [[bench]]
 name = "parallel_muhash"
@@ -67,7 +67,7 @@ harness = false
 
 [features]
 html_reports = []
-devnet-prealloc = ["Turkium-consensus-core/devnet-prealloc"]
+devnet-prealloc = ["turkium-consensus-core/devnet-prealloc"]
 
 [lints]
 workspace = true

@@ -1,6 +1,6 @@
 [package]
-name = "Turkium-mining-errors"
-description = "Turkium mining error definitions"
+name = "turkium-mining-errors"
+description = "turkium mining error definitions"
 rust-version.workspace = true
 version.workspace = true
 edition.workspace = true
@@ -13,7 +13,7 @@ repository.workspace = true
 
 [dependencies]
 thiserror.workspace = true
-Turkium-consensus-core.workspace = true
+turkium-consensus-core.workspace = true
 
 [lints]
 workspace = true

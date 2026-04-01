@@ -11,12 +11,12 @@ use crate::model::{
         reachability::ReachabilityStoreReader,
     },
 };
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     blockhash::BlockHashExtensions,
     errors::pruning::{PruningImportError, PruningImportResult},
 };
-use Turkium_database::prelude::StoreResultUnitExt;
-use Turkium_hashes::Hash;
+use turkium_database::prelude::StoreResultUnitExt;
+use turkium_hashes::Hash;
 use parking_lot::RwLock;
 
 pub struct PruningPointReply {
@@ -333,7 +333,7 @@ impl<
 
 #[cfg(test)]
 mod tests {
-    use Turkium_consensus_core::{config::params::Params, network::NetworkType};
+    use turkium_consensus_core::{config::params::Params, network::NetworkType};
 
     #[test]
     fn assert_pruning_depth_consistency() {

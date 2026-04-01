@@ -64,7 +64,7 @@ async fn main() -> Result<()> {
 
     // Initialize blockchain client
     let blockchain_client = blockchain::BlockchainClient::new(&cfg.blockchain.grpc_address).await?;
-    let blockchain_client = Arc::new(blockchain_client);
+    let blockchain_client = Arc::new(tokio::sync::Mutex::new(blockchain_client));
 
     info!("Connected to blockchain");
 
@@ -81,15 +81,21 @@ async fn main() -> Result<()> {
     // Initialize reward distributor
     let reward_distributor = Arc::new(reward::RewardDistributor::new(
         db.clone(),
-        cfg.pool.clone(),
+        cfg.reward.clone(),
     ));
+
+    // Create broadcast channel for block template updates
+    // This allows template_updater to notify all connected miners of new work
+    let (template_tx, _rx) = tokio::sync::broadcast::channel::<String>(100);
+    let template_tx = Arc::new(template_tx);
 
     // Start block template updater
     let template_updater = {
         let blockchain = blockchain_client.clone();
         let db = db.clone();
+        let tx = template_tx.clone();
         tokio::spawn(async move {
-            blockchain::template_updater(blockchain, db).await;
+            blockchain::template_updater(blockchain, db, tx).await;
         })
     };
 

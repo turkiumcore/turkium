@@ -1,10 +1,9 @@
 use bytes::{BytesMut, BufMut};
-use serde_json::{from_slice, to_vec};
-use std::io::Cursor;
-use tokio::io::{AsyncReadExt, AsyncWriteExt};
+use serde_json::from_slice;
+use tokio::io::AsyncReadExt;
 use tokio::net::TcpStream;
 
-use super::message::{StratumRequest, StratumResponse};
+use super::message::StratumRequest;
 
 #[derive(Debug)]
 pub enum StratumError {
@@ -12,6 +11,18 @@ pub enum StratumError {
     JsonError(serde_json::Error),
     ParseError(String),
 }
+
+impl std::fmt::Display for StratumError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            StratumError::IoError(e) => write!(f, "IO error: {}", e),
+            StratumError::JsonError(e) => write!(f, "JSON error: {}", e),
+            StratumError::ParseError(s) => write!(f, "Parse error: {}", s),
+        }
+    }
+}
+
+impl std::error::Error for StratumError {}
 
 impl From<std::io::Error> for StratumError {
     fn from(e: std::io::Error) -> Self {
@@ -56,27 +67,5 @@ impl StratumCodec {
                 return Err(StratumError::ParseError("message too large".to_string()));
             }
         }
-    }
-
-    pub async fn write_message(
-        stream: &mut TcpStream,
-        response: &StratumResponse,
-    ) -> Result<(), StratumError> {
-        let mut json = to_vec(response)?;
-        json.push(b'\n');
-        stream.write_all(&json).await?;
-        stream.flush().await?;
-        Ok(())
-    }
-
-    pub async fn write_raw(
-        stream: &mut TcpStream,
-        message: &str,
-    ) -> Result<(), StratumError> {
-        let mut data = message.as_bytes().to_vec();
-        data.push(b'\n');
-        stream.write_all(&data).await?;
-        stream.flush().await?;
-        Ok(())
     }
 }

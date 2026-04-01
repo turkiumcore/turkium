@@ -1,2 +1,2 @@
 /// Re-export errors
-pub use Turkium_mining_errors::block_template::*;
+pub use turkium_mining_errors::block_template::*;

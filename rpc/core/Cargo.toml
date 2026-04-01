@@ -1,6 +1,6 @@
 [package]
-name = "Turkium-rpc-core"
-description = "Turkium RPC core"
+name = "turkium-rpc-core"
+description = "turkium RPC core"
 rust-version.workspace = true
 version.workspace = true
 edition.workspace = true
@@ -11,25 +11,25 @@ repository.workspace = true
 
 [features]
 wasm32-sdk = [
-    "Turkium-consensus-client/wasm32-sdk",
-    "Turkium-consensus-wasm/wasm32-sdk"
+    "turkium-consensus-client/wasm32-sdk",
+    "turkium-consensus-wasm/wasm32-sdk"
 ]
 
 [dependencies]
-Turkium-addresses.workspace = true
-Turkium-consensus-core.workspace = true
-Turkium-consensus-client.workspace = true
-Turkium-consensus-notify.workspace = true
-Turkium-consensus-wasm.workspace = true
-Turkium-core.workspace = true
-Turkium-hashes.workspace = true
-Turkium-index-core.workspace = true
-Turkium-math.workspace = true
-Turkium-mining-errors.workspace = true
-Turkium-notify.workspace = true
-Turkium-txscript.workspace = true
-Turkium-utils.workspace = true
-Turkium-rpc-macros.workspace = true
+turkium-addresses.workspace = true
+turkium-consensus-core.workspace = true
+turkium-consensus-client.workspace = true
+turkium-consensus-notify.workspace = true
+turkium-consensus-wasm.workspace = true
+turkium-core.workspace = true
+turkium-hashes.workspace = true
+turkium-index-core.workspace = true
+turkium-math.workspace = true
+turkium-mining-errors.workspace = true
+turkium-notify.workspace = true
+turkium-txscript.workspace = true
+turkium-utils.workspace = true
+turkium-rpc-macros.workspace = true
 
 async-channel.workspace = true
 async-trait.workspace = true

@@ -23,13 +23,13 @@ pub enum Error {
     RpcError(#[from] RpcError),
 
     #[error("Turkium RpcApi -> {0}")]
-    RpcApiError(#[from] Turkium_rpc_core::error::RpcError),
+    RpcApiError(#[from] turkium_rpc_core::error::RpcError),
 
     #[error("Turkium RpcApi -> {0}")]
     WebSocketError(#[from] WebSocketError),
 
     #[error("Notification subsystem -> {0}")]
-    NotificationError(#[from] Turkium_notify::error::Error),
+    NotificationError(#[from] turkium_notify::error::Error),
 
     #[error("Channel -> {0}")]
     ChannelError(String),
@@ -44,10 +44,10 @@ pub enum Error {
     ToValue(String),
 
     #[error("invalid network type: {0}")]
-    NetworkType(#[from] Turkium_consensus_core::network::NetworkTypeError),
+    NetworkType(#[from] turkium_consensus_core::network::NetworkTypeError),
 
     #[error(transparent)]
-    ConsensusWasm(#[from] Turkium_consensus_wasm::error::Error),
+    ConsensusWasm(#[from] turkium_consensus_wasm::error::Error),
 
     #[error(transparent)]
     HttpError(#[from] HttpError),
@@ -56,13 +56,13 @@ pub enum Error {
     WasmError(#[from] WasmError),
 
     #[error(transparent)]
-    AddressError(#[from] Turkium_addresses::AddressError),
+    AddressError(#[from] turkium_addresses::AddressError),
 
     #[error(transparent)]
     TomlError(#[from] toml::de::Error),
 
     #[error(transparent)]
-    NetworkId(#[from] Turkium_consensus_core::network::NetworkIdError),
+    NetworkId(#[from] turkium_consensus_core::network::NetworkIdError),
 }
 
 impl Error {

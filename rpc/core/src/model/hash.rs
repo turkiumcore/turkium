@@ -1,1 +1,1 @@
-pub type RpcHash = Turkium_hashes::Hash;
+pub type RpcHash = turkium_hashes::Hash;

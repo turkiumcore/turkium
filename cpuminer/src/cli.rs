@@ -25,7 +25,7 @@ pub struct Opt {
     pub devfund_percent: u16,
 
     #[clap(short, long, display_order = 2)]
-    /// Turkiumd port [default: Mainnet = 5200, Testnet = 5201, Pool = 3333]
+    /// turkiumd port [default: Mainnet = 5200, Testnet = 5201, Pool = 3333]
     port: Option<u16>,
 
     #[clap(long, display_order = 4)]

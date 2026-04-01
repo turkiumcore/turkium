@@ -1,7 +1,7 @@
 use std::cmp::Ordering;
 
-use Turkium_consensus_core::BlueWorkType;
-use Turkium_hashes::Hash;
+use turkium_consensus_core::BlueWorkType;
+use turkium_hashes::Hash;
 use serde::{Deserialize, Serialize};
 
 use crate::model::{

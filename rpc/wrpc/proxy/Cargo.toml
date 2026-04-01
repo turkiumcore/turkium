@@ -1,6 +1,6 @@
 [package]
-name = "Turkium-wrpc-proxy"
-description = "Turkium wRPC to gRPC proxy"
+name = "turkium-wrpc-proxy"
+description = "turkium wRPC to gRPC proxy"
 rust-version.workspace = true
 version.workspace = true
 edition.workspace = true
@@ -12,11 +12,11 @@ repository.workspace = true
 [dependencies]
 async-trait.workspace = true
 clap.workspace = true
-Turkium-consensus-core.workspace = true
-Turkium-grpc-client.workspace = true
-Turkium-rpc-core.workspace = true
-Turkium-rpc-macros.workspace = true
-Turkium-wrpc-server.workspace = true
+turkium-consensus-core.workspace = true
+turkium-grpc-client.workspace = true
+turkium-rpc-core.workspace = true
+turkium-rpc-macros.workspace = true
+turkium-wrpc-server.workspace = true
 num_cpus.workspace = true
 thiserror.workspace = true
 tokio.workspace = true

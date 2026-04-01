@@ -1,6 +1,6 @@
 use crate::service::WrpcEncoding;
-use Turkium_consensus_core::network::NetworkType;
-use Turkium_utils::networking::ContextualNetAddress;
+use turkium_consensus_core::network::NetworkType;
+use turkium_utils::networking::ContextualNetAddress;
 use serde::Deserialize;
 use std::{net::AddrParseError, str::FromStr};
 
@@ -76,7 +76,7 @@ impl TryFrom<String> for WrpcNetAddress {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use Turkium_utils::networking::IpAddress;
+    use turkium_utils::networking::IpAddress;
 
     #[test]
     fn test_wrpc_net_address_from_str() {

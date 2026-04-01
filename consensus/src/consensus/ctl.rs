@@ -1,6 +1,6 @@
 use super::{Consensus, factory::MultiConsensusManagementStore};
-use Turkium_consensusmanager::ConsensusCtl;
-use Turkium_database::prelude::DB;
+use turkium_consensusmanager::ConsensusCtl;
+use turkium_database::prelude::DB;
 use parking_lot::RwLock;
 use std::{
     path::PathBuf,

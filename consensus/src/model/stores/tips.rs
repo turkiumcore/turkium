@@ -1,16 +1,16 @@
 use std::sync::Arc;
 
-use Turkium_consensus_core::BlockHashSet;
-use Turkium_consensus_core::BlockHasher;
-use Turkium_database::prelude::CachedDbSetItem;
-use Turkium_database::prelude::DB;
-use Turkium_database::prelude::DbWriter;
-use Turkium_database::prelude::ReadLock;
-use Turkium_database::prelude::StoreResult;
-use Turkium_database::prelude::StoreResultExt;
-use Turkium_database::prelude::{BatchDbWriter, DirectDbWriter};
-use Turkium_database::registry::DatabaseStorePrefixes;
-use Turkium_hashes::Hash;
+use turkium_consensus_core::BlockHashSet;
+use turkium_consensus_core::BlockHasher;
+use turkium_database::prelude::CachedDbSetItem;
+use turkium_database::prelude::DB;
+use turkium_database::prelude::DbWriter;
+use turkium_database::prelude::ReadLock;
+use turkium_database::prelude::StoreResult;
+use turkium_database::prelude::StoreResultExt;
+use turkium_database::prelude::{BatchDbWriter, DirectDbWriter};
+use turkium_database::registry::DatabaseStorePrefixes;
+use turkium_hashes::Hash;
 use itertools::Itertools;
 use rocksdb::WriteBatch;
 
@@ -106,7 +106,7 @@ impl TipsStore for DbTipsStore {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use Turkium_database::{create_temp_db, prelude::ConnBuilder};
+    use turkium_database::{create_temp_db, prelude::ConnBuilder};
 
     #[test]
     fn test_update_tips() {

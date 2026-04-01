@@ -7,7 +7,7 @@ use crate::imports::*;
 use crate::storage::TransactionRecord;
 use crate::storage::interface::{StorageStream, TransactionRangeResult};
 use crate::storage::{Binding, TransactionKind, TransactionRecordStore};
-use Turkium_utils::hex::ToHex;
+use turkium_utils::hex::ToHex;
 use std::{
     collections::VecDeque,
     path::{Path, PathBuf},

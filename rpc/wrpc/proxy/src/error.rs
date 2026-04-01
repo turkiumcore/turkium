@@ -4,13 +4,13 @@ pub enum Error {
     Other(String),
 
     #[error(transparent)]
-    GrpcApi(#[from] Turkium_rpc_core::error::RpcError),
+    GrpcApi(#[from] turkium_rpc_core::error::RpcError),
 
     #[error(transparent)]
-    GrpcClient(#[from] Turkium_grpc_client::error::Error),
+    GrpcClient(#[from] turkium_grpc_client::error::Error),
 
     #[error(transparent)]
-    Wrpc(#[from] Turkium_wrpc_server::error::Error),
+    Wrpc(#[from] turkium_wrpc_server::error::Error),
 
     #[error(transparent)]
     WebSocket(#[from] workflow_rpc::server::WebSocketError),

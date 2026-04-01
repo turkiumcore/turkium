@@ -7,8 +7,8 @@ pub mod descriptor;
 pub mod kind;
 pub mod pskb;
 pub mod variants;
-use Turkium_hashes::Hash;
-use Turkium_wallet_pskt::bundle::Bundle;
+use turkium_hashes::Hash;
+use turkium_wallet_pskt::bundle::Bundle;
 pub use kind::*;
 use pskb::{
     PSKBSigner, PSKTGenerator, bundle_from_pskt_generator, bundle_to_finalizer_stream, commit_reveal_batch_bundle,
@@ -26,10 +26,10 @@ use crate::tx::PaymentOutput;
 use crate::tx::{Fees, Generator, GeneratorSettings, GeneratorSummary, PaymentDestination, PendingTransaction, Signer};
 use crate::utxo::UtxoContextBinding;
 use crate::utxo::balance::{AtomicBalance, BalanceStrings};
-use Turkium_bip32::{ChildNumber, ExtendedPrivateKey, PrivateKey};
-use Turkium_consensus_client::UtxoEntry;
-use Turkium_consensus_client::UtxoEntryReference;
-use Turkium_wallet_keys::derivation::gen0::WalletDerivationManagerV0;
+use turkium_bip32::{ChildNumber, ExtendedPrivateKey, PrivateKey};
+use turkium_consensus_client::UtxoEntry;
+use turkium_consensus_client::UtxoEntryReference;
+use turkium_wallet_keys::derivation::gen0::WalletDerivationManagerV0;
 use workflow_core::abortable::Abortable;
 
 /// Notification callback type used by [`Account::sweep`] and [`Account::send`].
@@ -307,7 +307,7 @@ pub trait Account: AnySync + Send + Sync + 'static {
         fee_rate: Option<f64>,
         abortable: &Abortable,
         notifier: Option<GenerationNotifier>,
-    ) -> Result<(GeneratorSummary, Vec<Turkium_hashes::Hash>)> {
+    ) -> Result<(GeneratorSummary, Vec<turkium_hashes::Hash>)> {
         let keydata = self.prv_key_data(wallet_secret).await?;
         let signer = Arc::new(Signer::new(self.clone().as_dyn_arc(), keydata, payment_secret));
         let settings = GeneratorSettings::try_new_with_account(
@@ -346,7 +346,7 @@ pub trait Account: AnySync + Send + Sync + 'static {
         payment_secret: Option<Secret>,
         abortable: &Abortable,
         notifier: Option<GenerationNotifier>,
-    ) -> Result<(GeneratorSummary, Vec<Turkium_hashes::Hash>)> {
+    ) -> Result<(GeneratorSummary, Vec<turkium_hashes::Hash>)> {
         let keydata = self.prv_key_data(wallet_secret).await?;
         let signer = Arc::new(Signer::new(self.clone().as_dyn_arc(), keydata, payment_secret));
 
@@ -511,7 +511,7 @@ pub trait Account: AnySync + Send + Sync + 'static {
         abortable: &Abortable,
         notifier: Option<GenerationNotifier>,
         guard: &WalletGuard,
-    ) -> Result<(GeneratorSummary, Vec<Turkium_hashes::Hash>)> {
+    ) -> Result<(GeneratorSummary, Vec<turkium_hashes::Hash>)> {
         let keydata = self.prv_key_data(wallet_secret).await?;
         let signer = Arc::new(Signer::new(self.clone().as_dyn_arc(), keydata, payment_secret));
 
@@ -881,12 +881,12 @@ mod tests {
     use super::ExtendedPrivateKey;
     use super::create_private_keys;
     use crate::imports::LEGACY_ACCOUNT_KIND;
-    use Turkium_addresses::Address;
-    use Turkium_addresses::Prefix;
-    use Turkium_bip32::PrivateKey;
-    use Turkium_bip32::SecretKeyExt;
-    use Turkium_bip32::secp256k1::SecretKey;
-    use Turkium_wallet_keys::derivation::gen0::PubkeyDerivationManagerV0;
+    use turkium_addresses::Address;
+    use turkium_addresses::Prefix;
+    use turkium_bip32::PrivateKey;
+    use turkium_bip32::SecretKeyExt;
+    use turkium_bip32::secp256k1::SecretKey;
+    use turkium_wallet_keys::derivation::gen0::PubkeyDerivationManagerV0;
     use std::str::FromStr;
 
     fn gen0_receive_addresses() -> Vec<&'static str> {

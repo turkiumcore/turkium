@@ -1,6 +1,6 @@
 [package]
-name = "Turkium-wrpc-example-subscriber"
-description = "Turkium wRPC subscription example"
+name = "turkium-wrpc-example-subscriber"
+description = "turkium wRPC subscription example"
 publish = false
 rust-version.workspace = true
 version.workspace = true
@@ -12,10 +12,10 @@ repository.workspace = true
 
 [dependencies]
 futures.workspace = true
-Turkium-consensus-core.workspace = true
-Turkium-rpc-core.workspace = true
-Turkium-wrpc-client.workspace = true
-Turkium-notify.workspace = true
+turkium-consensus-core.workspace = true
+turkium-rpc-core.workspace = true
+turkium-wrpc-client.workspace = true
+turkium-notify.workspace = true
 tokio.workspace = true
 workflow-core.workspace = true
 workflow-log.workspace = true

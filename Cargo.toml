@@ -6,7 +6,6 @@ members = [
     "core",
     "cpuminer",
     "create_mining_address",
-    "create_devnet_address",
     "calculate_genesis_hash",
     "wallet/macros",
     "wallet/core",
@@ -22,7 +21,6 @@ members = [
     "consensus/pow",
     "consensus/wasm",
     "turkiumd",
-    "turksim",
     "wasm",
     "wasm/core",
     "math",
@@ -48,6 +46,7 @@ members = [
     "rpc/wrpc/examples/subscriber",
     "rpc/wrpc/examples/simple_client",
     "rpc/wrpc/examples/vcc_v2",
+    "api-server",
     "mining",
     "mining/errors",
     "protocol/p2p",
@@ -59,7 +58,6 @@ members = [
     "database",
     "crypto/txscript",
     "crypto/txscript/errors",
-    "testing/integration",
     "utils",
     "utils/tower",
     "turk-txgen",
@@ -69,12 +67,16 @@ members = [
     "stratum-pool",
 ]
 
+exclude = [
+    "api-server",
+]
+
 [workspace.package]
 rust-version = "1.88.0"
 version = "1.0.1"
 authors = ["Turkium developers"]
 license = "ISC"
-repository = "https://github.com/Turkium/Turkium"
+repository = "https://github.com/turkium/Turkium"
 edition = "2024"
 include = [
     "src/**/*.rs",
@@ -88,62 +90,61 @@ include = [
 ]
 
 [workspace.dependencies]
-Turkium-testing-integration = { version = "1.0.1", path = "testing/integration" }
-Turkium-addresses = { version = "1.0.1", path = "crypto/addresses" }
-Turkium-addressmanager = { version = "1.0.1", path = "components/addressmanager" }
-Turkium-bip32 = { version = "1.0.1", path = "wallet/bip32" }
-Turkium-cli = { version = "1.0.1", path = "cli" }
-Turkium-connectionmanager = { version = "1.0.1", path = "components/connectionmanager" }
-Turkium-consensus = { version = "1.0.1", path = "consensus" }
-Turkium-consensus-core = { version = "1.0.1", path = "consensus/core" }
-Turkium-consensus-client = { version = "1.0.1", path = "consensus/client" }
-Turkium-consensus-notify = { version = "1.0.1", path = "consensus/notify" }
-Turkium-consensus-wasm = { version = "1.0.1", path = "consensus/wasm" }
-Turkium-consensusmanager = { version = "1.0.1", path = "components/consensusmanager" }
-Turkium-core = { version = "1.0.1", path = "core" }
-Turkium-daemon = { version = "1.0.1", path = "daemon" }
-Turkium-database = { version = "1.0.1", path = "database" }
-Turkium-grpc-client = { version = "1.0.1", path = "rpc/grpc/client" }
-Turkium-grpc-core = { version = "1.0.1", path = "rpc/grpc/core" }
-Turkium-grpc-server = { version = "1.0.1", path = "rpc/grpc/server" }
-Turkium-hashes = { version = "1.0.1", path = "crypto/hashes" }
-Turkium-index-core = { version = "1.0.1", path = "indexes/core" }
-Turkium-index-processor = { version = "1.0.1", path = "indexes/processor" }
-Turkium-math = { version = "1.0.1", path = "math" }
-Turkium-merkle = { version = "1.0.1", path = "crypto/merkle" }
-Turkium-metrics-core = { version = "1.0.1", path = "metrics/core" }
-Turkium-mining = { version = "1.0.1", path = "mining" }
-Turkium-mining-errors = { version = "1.0.1", path = "mining/errors" }
-Turkium-muhash = { version = "1.0.1", path = "crypto/muhash" }
-Turkium-notify = { version = "1.0.1", path = "notify" }
-Turkium-p2p-flows = { version = "1.0.1", path = "protocol/flows" }
-Turkium-p2p-lib = { version = "1.0.1", path = "protocol/p2p" }
-Turkium-p2p-mining = { version = "1.0.1", path = "protocol/mining" }
-Turkium-perf-monitor = { version = "1.0.1", path = "metrics/perf_monitor" }
-Turkium-pow = { version = "1.0.1", path = "consensus/pow" }
-Turkium-rpc-core = { version = "1.0.1", path = "rpc/core" }
-Turkium-rpc-macros = { version = "1.0.1", path = "rpc/macros" }
-Turkium-rpc-service = { version = "1.0.1", path = "rpc/service" }
-Turkium-txscript = { version = "1.0.1", path = "crypto/txscript" }
-Turkium-txscript-errors = { version = "1.0.1", path = "crypto/txscript/errors" }
-Turkium-utils = { version = "1.0.1", path = "utils" }
-Turkium-utils-tower = { version = "1.0.1", path = "utils/tower" }
-Turkium-utxoindex = { version = "1.0.1", path = "indexes/utxoindex" }
-Turkium-wallet = { version = "1.0.1", path = "wallet/native" }
-Turkium-wallet-cli-wasm = { version = "1.0.1", path = "wallet/wasm" }
-Turkium-wallet-keys = { version = "1.0.1", path = "wallet/keys" }
-Turkium-wallet-pskt = { version = "1.0.1", path = "wallet/pskt" }
-Turkium-wallet-core = { version = "1.0.1", path = "wallet/core" }
-Turkium-wallet-macros = { version = "1.0.1", path = "wallet/macros" }
-Turkium-wasm = { version = "1.0.1", path = "wasm" }
-Turkium-wasm-core = { version = "1.0.1", path = "wasm/core" }
-Turkium-wrpc-client = { version = "1.0.1", path = "rpc/wrpc/client" }
-Turkium-wrpc-proxy = { version = "1.0.1", path = "rpc/wrpc/proxy" }
-Turkium-wrpc-server = { version = "1.0.1", path = "rpc/wrpc/server" }
-Turkium-wrpc-wasm = { version = "1.0.1", path = "rpc/wrpc/wasm" }
-Turkium-wrpc-example-subscriber = { version = "1.0.1", path = "rpc/wrpc/examples/subscriber" }
-Turkiumd = { version = "1.0.1", path = "turkiumd" }
-Turkium-alloc = { version = "1.0.1", path = "utils/alloc" }
+turkium-addresses = { version = "1.0.1", path = "crypto/addresses" }
+turkium-addressmanager = { version = "1.0.1", path = "components/addressmanager" }
+turkium-bip32 = { version = "1.0.1", path = "wallet/bip32" }
+turkium-cli = { version = "1.0.1", path = "cli" }
+turkium-connectionmanager = { version = "1.0.1", path = "components/connectionmanager" }
+turkium-consensus = { version = "1.0.1", path = "consensus" }
+turkium-consensus-core = { version = "1.0.1", path = "consensus/core" }
+turkium-consensus-client = { version = "1.0.1", path = "consensus/client" }
+turkium-consensus-notify = { version = "1.0.1", path = "consensus/notify" }
+turkium-consensus-wasm = { version = "1.0.1", path = "consensus/wasm" }
+turkium-consensusmanager = { version = "1.0.1", path = "components/consensusmanager" }
+turkium-core = { version = "1.0.1", path = "core" }
+turkium-daemon = { version = "1.0.1", path = "daemon" }
+turkium-database = { version = "1.0.1", path = "database" }
+turkium-grpc-client = { version = "1.0.1", path = "rpc/grpc/client" }
+turkium-grpc-core = { version = "1.0.1", path = "rpc/grpc/core" }
+turkium-grpc-server = { version = "1.0.1", path = "rpc/grpc/server" }
+turkium-hashes = { version = "1.0.1", path = "crypto/hashes" }
+turkium-index-core = { version = "1.0.1", path = "indexes/core" }
+turkium-index-processor = { version = "1.0.1", path = "indexes/processor" }
+turkium-math = { version = "1.0.1", path = "math" }
+turkium-merkle = { version = "1.0.1", path = "crypto/merkle" }
+turkium-metrics-core = { version = "1.0.1", path = "metrics/core" }
+turkium-mining = { version = "1.0.1", path = "mining" }
+turkium-mining-errors = { version = "1.0.1", path = "mining/errors" }
+turkium-muhash = { version = "1.0.1", path = "crypto/muhash" }
+turkium-notify = { version = "1.0.1", path = "notify" }
+turkium-p2p-flows = { version = "1.0.1", path = "protocol/flows" }
+turkium-p2p-lib = { version = "1.0.1", path = "protocol/p2p" }
+turkium-p2p-mining = { version = "1.0.1", path = "protocol/mining" }
+turkium-perf-monitor = { version = "1.0.1", path = "metrics/perf_monitor" }
+turkium-pow = { version = "1.0.1", path = "consensus/pow" }
+turkium-rpc-core = { version = "1.0.1", path = "rpc/core" }
+turkium-rpc-macros = { version = "1.0.1", path = "rpc/macros" }
+turkium-rpc-service = { version = "1.0.1", path = "rpc/service" }
+turkium-txscript = { version = "1.0.1", path = "crypto/txscript" }
+turkium-txscript-errors = { version = "1.0.1", path = "crypto/txscript/errors" }
+turkium-utils = { version = "1.0.1", path = "utils" }
+turkium-utils-tower = { version = "1.0.1", path = "utils/tower" }
+turkium-utxoindex = { version = "1.0.1", path = "indexes/utxoindex" }
+turkium-wallet = { version = "1.0.1", path = "wallet/native" }
+turkium-wallet-cli-wasm = { version = "1.0.1", path = "wallet/wasm" }
+turkium-wallet-keys = { version = "1.0.1", path = "wallet/keys" }
+turkium-wallet-pskt = { version = "1.0.1", path = "wallet/pskt" }
+turkium-wallet-core = { version = "1.0.1", path = "wallet/core" }
+turkium-wallet-macros = { version = "1.0.1", path = "wallet/macros" }
+turkium-wasm = { version = "1.0.1", path = "wasm" }
+turkium-wasm-core = { version = "1.0.1", path = "wasm/core" }
+turkium-wrpc-client = { version = "1.0.1", path = "rpc/wrpc/client" }
+turkium-wrpc-proxy = { version = "1.0.1", path = "rpc/wrpc/proxy" }
+turkium-wrpc-server = { version = "1.0.1", path = "rpc/wrpc/server" }
+turkium-wrpc-wasm = { version = "1.0.1", path = "rpc/wrpc/wasm" }
+turkium-wrpc-example-subscriber = { version = "1.0.1", path = "rpc/wrpc/examples/subscriber" }
+turkiumd = { version = "1.0.1", path = "turkiumd" }
+turkium-alloc = { version = "1.0.1", path = "utils/alloc" }
 
 # external
 aes = "0.8.3"
@@ -349,25 +350,25 @@ strip = false
 # CI optimization: Keep debug fast to compile, but optimize hot-path crates
 # so tests run at reasonable speed without full release builds.
 
-[profile.dev.package.Turkium-consensus]
+[profile.dev.package.turkium-consensus]
 opt-level = 2
 
-[profile.dev.package.Turkium-consensus-core]
+[profile.dev.package.turkium-consensus-core]
 opt-level = 2
 
-[profile.dev.package.Turkium-hashes]
+[profile.dev.package.turkium-hashes]
 opt-level = 2
 
-[profile.dev.package.Turkium-math]
+[profile.dev.package.turkium-math]
 opt-level = 2
 
-[profile.dev.package.Turkium-muhash]
+[profile.dev.package.turkium-muhash]
 opt-level = 2
 
-[profile.dev.package.Turkium-pow]
+[profile.dev.package.turkium-pow]
 opt-level = 2
 
-[profile.dev.package.Turkium-txscript]
+[profile.dev.package.turkium-txscript]
 opt-level = 2
 
 # External crates used heavily by consensus/crypto

@@ -1,6 +1,6 @@
 use std::fmt::Debug;
 extern crate derive_more;
-use Turkium_core::debug;
+use turkium_core::debug;
 
 use crate::{
     error::Result,

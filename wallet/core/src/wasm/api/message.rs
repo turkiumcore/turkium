@@ -8,7 +8,7 @@ use crate::tx::{Fees, PaymentDestination, PaymentOutputs};
 use crate::wasm::api::keydata::PrvKeyDataVariantKind;
 use crate::wasm::tx::GeneratorSummary;
 use crate::wasm::tx::fees::IFees;
-use Turkium_wallet_macros::declare_typescript_wasm_interface as declare;
+use turkium_wallet_macros::declare_typescript_wasm_interface as declare;
 use js_sys::Array;
 use serde_wasm_bindgen::from_value;
 use workflow_wasm::serde::to_value;

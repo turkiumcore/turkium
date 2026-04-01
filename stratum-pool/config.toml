@@ -7,7 +7,7 @@ share_multiplier = 1.0
 pool_fee = 0.01
 
 [blockchain]
-grpc_address = "grpc://188.132.197.20:5200"
+grpc_address = "grpc://127.0.0.1:5200"
 template_update_interval = 10
 
 [database]

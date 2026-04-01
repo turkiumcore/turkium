@@ -5,7 +5,7 @@ use crate::{
     data_stack::OpcodeData,
     opcodes::{OP_1_NEGATE_VAL, OP_DATA_MAX_VAL, OP_DATA_MIN_VAL, OP_SMALL_INT_MAX_VAL, OP_SMALL_INT_MIN_VAL, codes::*},
 };
-use Turkium_txscript_errors::SerializationError;
+use turkium_txscript_errors::SerializationError;
 use hexplay::{HexView, HexViewBuilder};
 use thiserror::Error;
 
@@ -50,8 +50,8 @@ pub type ScriptBuilderResult<T> = std::result::Result<T, ScriptBuilderError>;
 /// better choice to generate the script):
 ///
 /// ```
-/// use Turkium_txscript::opcodes::codes::*;
-/// use Turkium_txscript::script_builder::{ScriptBuilderResult, ScriptBuilder};
+/// use turkium_txscript::opcodes::codes::*;
+/// use turkium_txscript::script_builder::{ScriptBuilderResult, ScriptBuilder};
 /// fn build_multisig_script(pub_key1: &[u8], pub_key2: &[u8], pub_key3: &[u8]) -> ScriptBuilderResult<Vec<u8>> {
 ///     Ok(ScriptBuilder::new()
 ///         .add_op(Op2)?

@@ -3,9 +3,9 @@ use crate::{
     script_builder::{ScriptBuilder, ScriptBuilderResult},
     script_class::ScriptClass,
 };
-use Turkium_addresses::{Address, Prefix, Version};
-use Turkium_consensus_core::tx::{ScriptPublicKey, ScriptVec};
-use Turkium_txscript_errors::TxScriptError;
+use turkium_addresses::{Address, Prefix, Version};
+use turkium_consensus_core::tx::{ScriptPublicKey, ScriptVec};
+use turkium_txscript_errors::TxScriptError;
 use blake2b_simd::Params;
 use smallvec::SmallVec;
 use std::iter::once;
@@ -86,7 +86,7 @@ pub fn extract_script_pub_key_address(script_public_key: &ScriptPublicKey, prefi
 pub mod test_helpers {
     use super::*;
     use crate::{MAX_TX_IN_SEQUENCE_NUM, opcodes::codes::OpTrue};
-    use Turkium_consensus_core::{
+    use turkium_consensus_core::{
         constants::TX_VERSION,
         subnets::SUBNETWORK_ID_NATIVE,
         tx::{Transaction, TransactionInput, TransactionOutpoint, TransactionOutput},
@@ -173,7 +173,7 @@ mod tests {
                     ),
                 ),
                 prefix: Prefix::Mainnet,
-                expected_address: Ok("Turkium:qpauqsvk7yf9unexwmxsnmg547mhyga37csh0kj53q6xxgl24ydxjsgzthw5j".try_into().unwrap()),
+                expected_address: Ok("turkium:qpauqsvk7yf9unexwmxsnmg547mhyga37csh0kj53q6xxgl24ydxjsgzthw5j".try_into().unwrap()),
             },
             Test {
                 name: "Testnet PubKeyECDSA script and address",

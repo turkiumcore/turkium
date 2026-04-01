@@ -1,6 +1,6 @@
 [package]
-name = "Turkium-consensusmanager"
-description = "Turkium consensus library"
+name = "turkium-consensusmanager"
+description = "turkium consensus library"
 rust-version.workspace = true
 version.workspace = true
 edition.workspace = true
@@ -14,11 +14,11 @@ duration-string.workspace = true
 futures-util.workspace = true
 futures.workspace = true
 itertools.workspace = true
-Turkium-addresses.workspace=true
-Turkium-consensus-core.workspace = true
-Turkium-consensus-notify.workspace = true
-Turkium-core.workspace = true
-Turkium-utils.workspace = true
+turkium-addresses.workspace=true
+turkium-consensus-core.workspace = true
+turkium-consensus-notify.workspace = true
+turkium-core.workspace = true
+turkium-utils.workspace = true
 log.workspace = true
 parking_lot.workspace = true
 rand.workspace = true

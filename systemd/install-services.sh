@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Turkium Systemd Services Installation Script
-# This script sets up Turkium blockchain and pool to auto-start on Ubuntu
+# This script sets up turkium blockchain and pool to auto-start on Ubuntu
 
 set -e
 
@@ -51,34 +51,75 @@ chmod 700 "$TURKIUM_DATA"
 echo -e "${GREEN}✓ Created directories${NC}"
 
 echo ""
-echo -e "${YELLOW}Step 2: Checking for binaries...${NC}"
+echo -e "${YELLOW}Step 2: Verifying binaries in $TURKIUM_HOME...${NC}"
+
+# List what we have
+echo "Files in $TURKIUM_HOME:"
+ls -lh "$TURKIUM_HOME" | grep -E "turkiumd|stratum-pool|turkium-miner" || echo "No binaries found yet"
 
 # Check if binaries exist
+BINARIES_OK=true
+
 if [ ! -f "$TURKIUM_HOME/turkiumd" ]; then
-    echo -e "${RED}Error: $TURKIUM_HOME/turkiumd not found${NC}"
-    echo "Please build Turkium first:"
-    echo "  cd /path/to/Turkium"
-    echo "  cargo build --release"
-    echo "  sudo cp target/release/turkiumd $TURKIUM_HOME/"
+    echo -e "${RED}✗ Missing: $TURKIUM_HOME/turkiumd${NC}"
+    BINARIES_OK=false
+else
+    echo -e "${GREEN}✓ Found: $TURKIUM_HOME/turkiumd${NC}"
+fi
+
+if [ ! -f "$TURKIUM_HOME/stratum-pool" ] && [ ! -f "$TURKIUM_HOME/turkium-stratum-pool" ]; then
+    echo -e "${RED}✗ Missing: $TURKIUM_HOME/stratum-pool or $TURKIUM_HOME/turkium-stratum-pool${NC}"
+    BINARIES_OK=false
+else
+    if [ -f "$TURKIUM_HOME/turkium-stratum-pool" ]; then
+        echo -e "${GREEN}✓ Found: $TURKIUM_HOME/turkium-stratum-pool${NC}"
+        # Rename to standard name
+        mv "$TURKIUM_HOME/turkium-stratum-pool" "$TURKIUM_HOME/stratum-pool"
+        echo -e "${GREEN}✓ Renamed to: $TURKIUM_HOME/stratum-pool${NC}"
+    else
+        echo -e "${GREEN}✓ Found: $TURKIUM_HOME/stratum-pool${NC}"
+    fi
+fi
+
+if [ ! -f "$TURKIUM_HOME/turkium-miner" ]; then
+    echo -e "${YELLOW}⚠ Optional: $TURKIUM_HOME/turkium-miner (not required for daemon/pool)${NC}"
+else
+    echo -e "${GREEN}✓ Found: $TURKIUM_HOME/turkium-miner${NC}"
+fi
+
+if [ "$BINARIES_OK" = false ]; then
+    echo ""
+    echo -e "${RED}Error: Required binaries not found!${NC}"
+    echo ""
+    echo "Copy binaries from source:"
+    echo "  sudo cp /home/Turkium/target/release/turkiumd /opt/turkium/turkiumd"
+    echo "  sudo cp /home/Turkium/target/release/turkium-stratum-pool /opt/turkium/stratum-pool"
+    echo "  sudo cp /home/Turkium/target/release/turkium-miner /opt/turkium/turkium-miner"
+    echo ""
+    echo "Then set permissions:"
+    echo "  sudo chown turkium:turkium /opt/turkium/turkiumd /opt/turkium/stratum-pool /opt/turkium/turkium-miner"
+    echo "  sudo chmod 755 /opt/turkium/turkiumd /opt/turkium/stratum-pool /opt/turkium/turkium-miner"
+    echo ""
+    echo "Then run this script again."
     exit 1
 fi
 
-if [ ! -f "$TURKIUM_HOME/stratum-pool" ]; then
-    echo -e "${RED}Error: $TURKIUM_HOME/stratum-pool not found${NC}"
-    echo "Please build Turkium first:"
-    echo "  cd /path/to/Turkium"
-    echo "  cargo build --release"
-    echo "  sudo cp target/release/stratum-pool $TURKIUM_HOME/"
-    exit 1
-fi
+echo ""
+echo -e "${YELLOW}Step 3: Setting permissions on binaries...${NC}"
 
 # Fix permissions on binaries
 chown "$TURKIUM_USER:$TURKIUM_USER" "$TURKIUM_HOME/turkiumd" "$TURKIUM_HOME/stratum-pool"
 chmod 755 "$TURKIUM_HOME/turkiumd" "$TURKIUM_HOME/stratum-pool"
-echo -e "${GREEN}✓ Binaries found and permissions set${NC}"
+
+if [ -f "$TURKIUM_HOME/turkium-miner" ]; then
+    chown "$TURKIUM_USER:$TURKIUM_USER" "$TURKIUM_HOME/turkium-miner"
+    chmod 755 "$TURKIUM_HOME/turkium-miner"
+fi
+
+echo -e "${GREEN}✓ Permissions set${NC}"
 
 echo ""
-echo -e "${YELLOW}Step 3: Installing systemd service files...${NC}"
+echo -e "${YELLOW}Step 4: Installing systemd service files...${NC}"
 
 # Copy service files
 if [ -f "$SCRIPT_DIR/turkiumd.service" ]; then
@@ -100,13 +141,13 @@ else
 fi
 
 echo ""
-echo -e "${YELLOW}Step 4: Reloading systemd daemon...${NC}"
+echo -e "${YELLOW}Step 5: Reloading systemd daemon...${NC}"
 
 systemctl daemon-reload
 echo -e "${GREEN}✓ Systemd daemon reloaded${NC}"
 
 echo ""
-echo -e "${YELLOW}Step 5: Enabling services...${NC}"
+echo -e "${YELLOW}Step 6: Enabling services...${NC}"
 
 systemctl enable turkiumd.service
 echo -e "${GREEN}✓ Enabled turkiumd.service${NC}"
@@ -115,7 +156,7 @@ systemctl enable stratum-pool.service
 echo -e "${GREEN}✓ Enabled stratum-pool.service${NC}"
 
 echo ""
-echo -e "${YELLOW}Step 6: Starting services...${NC}"
+echo -e "${YELLOW}Step 7: Starting services...${NC}"
 
 systemctl start turkiumd.service
 sleep 2
@@ -126,7 +167,7 @@ sleep 2
 echo -e "${GREEN}✓ Started stratum-pool.service${NC}"
 
 echo ""
-echo -e "${YELLOW}Step 7: Verifying services...${NC}"
+echo -e "${YELLOW}Step 8: Verifying services...${NC}"
 
 # Check status
 if systemctl is-active --quiet turkiumd.service; then

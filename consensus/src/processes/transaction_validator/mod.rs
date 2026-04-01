@@ -4,12 +4,12 @@ pub mod tx_validation_in_isolation;
 pub mod tx_validation_in_utxo_context;
 use std::sync::Arc;
 
-use Turkium_txscript::{
+use turkium_txscript::{
     SigCacheKey,
     caches::{Cache, TxScriptCacheCounters},
 };
 
-use Turkium_consensus_core::{KType, mass::MassCalculator};
+use turkium_consensus_core::{KType, mass::MassCalculator};
 
 #[derive(Clone)]
 pub struct TransactionValidator {

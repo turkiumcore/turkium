@@ -1,6 +1,6 @@
 [package]
-name = "Turkium-notify"
-description = "Turkium notification subsystem"
+name = "turkium-notify"
+description = "turkium notification subsystem"
 rust-version.workspace = true
 version.workspace = true
 edition.workspace = true
@@ -18,13 +18,13 @@ futures-util.workspace = true
 futures.workspace = true
 indexmap.workspace = true
 itertools.workspace = true
-Turkium-addresses.workspace = true
-Turkium-consensus-core.workspace = true
-Turkium-core.workspace = true
-Turkium-hashes.workspace = true
-Turkium-txscript-errors.workspace = true
-Turkium-txscript.workspace = true
-Turkium-utils.workspace = true
+turkium-addresses.workspace = true
+turkium-consensus-core.workspace = true
+turkium-core.workspace = true
+turkium-hashes.workspace = true
+turkium-txscript-errors.workspace = true
+turkium-txscript.workspace = true
+turkium-utils.workspace = true
 log.workspace = true
 parking_lot.workspace = true
 paste.workspace = true
@@ -38,8 +38,8 @@ workflow-serializer.workspace = true
 
 [dev-dependencies]
 criterion.workspace = true
-Turkium-alloc.workspace = true
-Turkium-math.workspace = true
+turkium-alloc.workspace = true
+turkium-math.workspace = true
 tokio = { workspace = true, features = ["rt", "macros"] }
 workflow-perf-monitor.workspace = true
 

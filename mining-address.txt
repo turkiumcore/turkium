@@ -1,0 +1,10 @@
+ Address #1 ─────────────────────────────────────────────────┐
+│
+│  Mining Address (BIP32 m/44'/111111'/0'/0/0):
+│  Turkium:qzq34kp6kxqrput2n60sf9qdaealtpwlrd4nhnets479kd3nwd3t6xgv9xd45
+│
+│  BIP39 Mnemonic (24 words):
+│  word walk region glare front shine spoil brain material machine theme snack skull improve craft faith reject advance output window rally team energy behave
+│
+│  Private Key (HEX - for reference only):
+│  1211e42afa4f3d8433cd01c457f01e02f69de2df280904f0cfe42046f328f69c

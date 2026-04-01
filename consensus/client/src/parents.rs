@@ -4,8 +4,8 @@
 //!
 
 use crate::imports::*;
-use Turkium_consensus_core::header as native;
-use Turkium_hashes::Hash;
+use turkium_consensus_core::header as native;
+use turkium_hashes::Hash;
 
 /// An efficient cumulative-sum run-length encoding for the parents-by-level vector in the block header.
 /// @category Consensus

@@ -1,11 +1,11 @@
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     config::Config,
     network::{NetworkId, NetworkType},
 };
-use Turkium_core::Turkiumd_env::version;
-use Turkium_notify::address::tracker::Tracker;
-use Turkium_utils::networking::ContextualNetAddress;
-use Turkium_wrpc_server::address::WrpcNetAddress;
+use turkium_core::turkiumd_env::version;
+use turkium_notify::address::tracker::Tracker;
+use turkium_utils::networking::ContextualNetAddress;
+use turkium_wrpc_server::address::WrpcNetAddress;
 use clap::{Arg, ArgAction, Command, arg};
 use serde::Deserialize;
 use serde_with::{DisplayFromStr, serde_as};
@@ -13,11 +13,11 @@ use std::{ffi::OsString, fs};
 use toml::from_str;
 
 #[cfg(feature = "devnet-prealloc")]
-use Turkium_addresses::Address;
+use turkium_addresses::Address;
 #[cfg(feature = "devnet-prealloc")]
-use Turkium_consensus_core::tx::{TransactionOutpoint, UtxoEntry};
+use turkium_consensus_core::tx::{TransactionOutpoint, UtxoEntry};
 #[cfg(feature = "devnet-prealloc")]
-use Turkium_txscript::pay_to_address_script;
+use turkium_txscript::pay_to_address_script;
 #[cfg(feature = "devnet-prealloc")]
 use std::sync::Arc;
 
@@ -180,7 +180,7 @@ impl Args {
     }
 
     #[cfg(feature = "devnet-prealloc")]
-    pub fn generate_prealloc_utxos(&self, num_prealloc_utxos: u64) -> Turkium_consensus_core::utxo::utxo_collection::UtxoCollection {
+    pub fn generate_prealloc_utxos(&self, num_prealloc_utxos: u64) -> turkium_consensus_core::utxo::utxo_collection::UtxoCollection {
         let addr = Address::try_from(&self.prealloc_address.as_ref().unwrap()[..]).unwrap();
         let spk = pay_to_address_script(&addr);
         (1..=num_prealloc_utxos)
@@ -208,7 +208,7 @@ pub fn cli() -> Command {
     let defaults: Args = Default::default();
 
     #[allow(clippy::let_and_return)]
-    let cmd = Command::new("Turkiumd")
+    let cmd = Command::new("turkiumd")
         .about(format!("{} (rusty-Turkium) v{}", env!("CARGO_PKG_DESCRIPTION"), version()))
         .version(env!("CARGO_PKG_VERSION"))
         .arg(arg!(-C --configfile <CONFIG_FILE> "Path of config file.").env("TURKPAD_CONFIGFILE"))
@@ -243,7 +243,7 @@ pub fn cli() -> Command {
                 .num_args(0..=1)
                 .require_equals(true)
                 .value_parser(clap::value_parser!(ContextualNetAddress))
-                .help("Interface:port to listen for gRPC connections (default port: 16110, testnet: 16210)."),
+                .help("Interface:port to listen for gRPC connections (default port: 5200, testnet: 5201)."),
         )
         .arg(
             Arg::new("rpclisten-borsh")
@@ -254,7 +254,7 @@ pub fn cli() -> Command {
                 .require_equals(true)
                 .default_missing_value("default") // TODO: Find a way to use defaults.rpclisten_borsh
                 .value_parser(clap::value_parser!(WrpcNetAddress))
-                .help("Interface:port to listen for wRPC Borsh connections (default port: 17110, testnet: 17210)."),
+                .help("Interface:port to listen for wRPC Borsh connections (default port: 5202, testnet: 5203)."),
 
         )
         .arg(
@@ -266,7 +266,7 @@ pub fn cli() -> Command {
                 .require_equals(true)
                 .default_missing_value("default") // TODO: Find a way to use defaults.rpclisten_json
                 .value_parser(clap::value_parser!(WrpcNetAddress))
-                .help("Interface:port to listen for wRPC JSON connections (default port: 18110, testnet: 18210)."),
+                .help("Interface:port to listen for wRPC JSON connections (default port: 5204, testnet: 5205)."),
         )
         .arg(arg!(--unsaferpc "Enable RPC commands which affect the state of the node").env("TURKPAD_UNSAFERPC"))
         .arg(
@@ -296,7 +296,7 @@ pub fn cli() -> Command {
                 .value_name("IP[:PORT]")
                 .require_equals(true)
                 .value_parser(clap::value_parser!(ContextualNetAddress))
-                .help("Add an interface:port to listen for connections (default all interfaces port: 16111, testnet: 16211)."),
+                .help("Add an interface:port to listen for connections (default all interfaces port: 5206, testnet: 5207)."),
         )
         .arg(
             Arg::new("outpeers")
@@ -430,7 +430,7 @@ a large RAM (~64GB) can set this value to ~3.0-4.0 and gain superior performance
                 .require_equals(true)
                 .value_parser(clap::value_parser!(String))
                 .help("Custom WAL (Write-Ahead Log) directory for RocksDB. Useful for hybrid setups: database on HDD, WAL on fast NVMe SSD. \
-                       Example: --rocksdb-wal-dir=/mnt/nvme/Turkium-wal")
+                       Example: --rocksdb-wal-dir=/mnt/nvme/turkium-wal")
         )
         .arg(
             Arg::new("rocksdb-cache-size")
@@ -559,9 +559,9 @@ fn arg_match_many_unwrap_or<T: Clone + Send + Sync + 'static>(m: &clap::ArgMatch
 
   -V, --version                             Display version information and exit
   -C, --configfile=                         Path to configuration file (default: /Users/aspect/Library/Application
-                                            Support/Turkiumd/Turkiumd.conf)
+                                            Support/turkiumd/turkiumd.conf)
   -b, --appdir=                             Directory to store data (default: /Users/aspect/Library/Application
-                                            Support/Turkiumd)
+                                            Support/turkiumd)
       --logdir=                             Directory to log output.
   -a, --addpeer=                            Add a peer to connect with at startup
       --connect=                            Connect only to the specified peers at startup
@@ -579,12 +579,12 @@ fn arg_match_many_unwrap_or<T: Clone + Send + Sync + 'static>(m: &clap::ArgMatch
                                             peers. (default: 100)
       --whitelist=                          Add an IP network or IP that will not be banned. (eg. 192.168.1.0/24 or
                                             ::1)
-      --rpclisten=                          Add an interface/port to listen for RPC connections (default port: 16110,
-                                            testnet: 16210)
+      --rpclisten=                          Add an interface/port to listen for RPC connections (default port: 5200,
+                                            testnet: 5201)
       --rpccert=                            File containing the certificate file (default:
-                                            /Users/aspect/Library/Application Support/Turkiumd/rpc.cert)
+                                            /Users/aspect/Library/Application Support/turkiumd/rpc.cert)
       --rpckey=                             File containing the certificate key (default:
-                                            /Users/aspect/Library/Application Support/Turkiumd/rpc.key)
+                                            /Users/aspect/Library/Application Support/turkiumd/rpc.key)
       --rpcmaxclients=                      Max number of RPC clients for standard connections (default: 128)
       --rpcmaxwebsockets=                   Max number of RPC websocket connections (default: 25)
       --rpcmaxconcurrentreqs=               Max number of concurrent RPC requests that may be processed concurrently

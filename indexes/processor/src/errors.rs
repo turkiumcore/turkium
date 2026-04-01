@@ -1,5 +1,5 @@
-use Turkium_notify::events::EventType;
-use Turkium_utxoindex::errors::UtxoIndexError;
+use turkium_notify::events::EventType;
+use turkium_utxoindex::errors::UtxoIndexError;
 use thiserror::Error;
 
 #[derive(Error, Debug)]

@@ -1,0 +1,49 @@
+[Unit]
+Description=Turkium API Server
+Documentation=https://github.com/Turkium/Turkium
+After=network.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=turkium
+Group=turkium
+WorkingDirectory=/opt/turkium-api-server
+
+# Load environment variables from config file
+EnvironmentFile=/etc/turkium-api-server/.env
+
+# Set default environment variables if not specified in .env
+Environment="RUST_LOG=info,turkium_api_server=debug"
+Environment="SERVER_HOST=0.0.0.0"
+Environment="SERVER_PORT=3001"
+Environment="TURKIUM_NODE_HOST=localhost"
+Environment="TURKIUM_NODE_PORT=5200"
+
+# Run the server
+ExecStart=/opt/turkium-api-server/turkium-api-server
+
+# Restart policy
+Restart=on-failure
+RestartSec=10
+StartLimitInterval=60
+StartLimitBurst=5
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/var/log/turkium-api-server
+
+# Resource limits
+LimitNOFILE=65536
+LimitNPROC=65536
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=turkium-api
+
+[Install]
+WantedBy=multi-user.target

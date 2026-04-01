@@ -1,7 +1,7 @@
 use super::process_queue::ProcessQueue;
-use Turkium_consensus_core::tx::TransactionId;
-use Turkium_core::debug;
-use Turkium_p2p_lib::{
+use turkium_consensus_core::tx::TransactionId;
+use turkium_core::debug;
+use turkium_p2p_lib::{
     Hub, make_message,
     pb::{InvTransactionsMessage, TurkiumdMessage, turkiumd_message::Payload},
 };

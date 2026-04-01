@@ -3,10 +3,10 @@
 //!
 
 use crate::imports::{AccountId, AccountKind, AssocPrvKeyDataIds, PrvKeyDataId};
-use Turkium_bip32::Error as BIP32Error;
-use Turkium_consensus_core::sign::Error as CoreSignError;
-use Turkium_rpc_core::RpcError as TurkiumRpcError;
-use Turkium_wrpc_client::error::Error as TurkiumWorkflowRpcError;
+use turkium_bip32::Error as BIP32Error;
+use turkium_consensus_core::sign::Error as CoreSignError;
+use turkium_rpc_core::RpcError as TurkiumRpcError;
+use turkium_wrpc_client::error::Error as TurkiumWorkflowRpcError;
 use base64::DecodeError;
 use downcast::DowncastError;
 use std::sync::PoisonError;
@@ -26,7 +26,7 @@ pub enum Error {
     Custom(String),
 
     #[error(transparent)]
-    WalletKeys(#[from] Turkium_wallet_keys::error::Error),
+    WalletKeys(#[from] turkium_wallet_keys::error::Error),
 
     #[error("please select an account")]
     AccountSelection,
@@ -101,10 +101,10 @@ pub enum Error {
     NetworkTypeConnected,
 
     #[error("{0}")]
-    NetworkType(#[from] Turkium_consensus_core::network::NetworkTypeError),
+    NetworkType(#[from] turkium_consensus_core::network::NetworkTypeError),
 
     #[error("{0}")]
-    NetworkId(#[from] Turkium_consensus_core::network::NetworkIdError),
+    NetworkId(#[from] turkium_consensus_core::network::NetworkIdError),
 
     #[error("The server UTXO index is not enabled")]
     MissingUtxoIndex,
@@ -128,7 +128,7 @@ pub enum Error {
     WorkflowStore(#[from] workflow_store::error::Error),
 
     #[error(transparent)]
-    Address(#[from] Turkium_addresses::AddressError),
+    Address(#[from] turkium_addresses::AddressError),
 
     #[error("Serde WASM bindgen -> {0}")]
     SerdeWasmBindgen(Sendable<Printable>),
@@ -149,7 +149,7 @@ pub enum Error {
     FromUtf8Error(#[from] std::string::FromUtf8Error),
 
     #[error(transparent)]
-    ScriptBuilderError(#[from] Turkium_txscript::script_builder::ScriptBuilderError),
+    ScriptBuilderError(#[from] turkium_txscript::script_builder::ScriptBuilderError),
 
     #[error("argon2 -> {0}")]
     Argon2(argon2::Error),
@@ -248,10 +248,10 @@ pub enum Error {
     DowncastError(String),
 
     #[error(transparent)]
-    ConsensusClient(#[from] Turkium_consensus_client::error::Error),
+    ConsensusClient(#[from] turkium_consensus_client::error::Error),
 
     #[error(transparent)]
-    ConsensusWasm(#[from] Turkium_consensus_wasm::error::Error),
+    ConsensusWasm(#[from] turkium_consensus_wasm::error::Error),
 
     #[error("Fees::SenderPays or Fees::ReceiverPays are not allowed in sweep transactions")]
     GeneratorFeesInSweepTransaction,
@@ -284,10 +284,10 @@ pub enum Error {
     InvalidRange(u64, u64),
 
     #[error(transparent)]
-    MultisigCreateError(#[from] Turkium_txscript::MultisigCreateError),
+    MultisigCreateError(#[from] turkium_txscript::MultisigCreateError),
 
     #[error(transparent)]
-    TxScriptError(#[from] Turkium_txscript_errors::TxScriptError),
+    TxScriptError(#[from] turkium_txscript_errors::TxScriptError),
 
     #[error("Legacy account is not initialized")]
     LegacyAccountNotInitialized,
@@ -335,12 +335,12 @@ pub enum Error {
     InvalidPublicKeyLength,
 
     #[error(transparent)]
-    Metrics(#[from] Turkium_metrics_core::error::Error),
+    Metrics(#[from] turkium_metrics_core::error::Error),
 
     #[error("Connected node is not synced")]
     NotSynced,
     #[error(transparent)]
-    Pskt(#[from] Turkium_wallet_pskt::error::Error),
+    Pskt(#[from] turkium_wallet_pskt::error::Error),
 
     #[error("Error generating pending transaction from PSKT: {0}")]
     PendingTransactionFromPSKTError(String),

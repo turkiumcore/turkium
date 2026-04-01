@@ -1,5 +1,5 @@
 [package]
-name = "Turkium-daemon"
+name = "turkium-daemon"
 description = "Utilities for running Turkium node and tools as a child processes"
 rust-version.workspace = true
 version.workspace = true
@@ -15,9 +15,9 @@ borsh.workspace = true
 cfg-if.workspace = true
 downcast-rs.workspace = true
 futures.workspace = true
-Turkium-addresses.workspace = true
-Turkium-consensus-core.workspace = true
-Turkium-wallet-core.workspace = true
+turkium-addresses.workspace = true
+turkium-consensus-core.workspace = true
+turkium-wallet-core.workspace = true
 nw-sys.workspace = true
 serde.workspace = true
 thiserror.workspace = true

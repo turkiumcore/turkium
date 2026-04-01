@@ -1,5 +1,5 @@
 #![allow(non_snake_case)]
-use Turkium_wallet_macros::declare_typescript_wasm_interface as declare;
+use turkium_wallet_macros::declare_typescript_wasm_interface as declare;
 use cfg_if::cfg_if;
 use wasm_bindgen::prelude::*;
 
@@ -478,8 +478,8 @@ declare! {
     r#"
     /**
      * Emitted by {@link UtxoProcessor} after successfully opening an RPC
-     * connection to the Turkium node. This event contains general information
-     * about the Turkium node.
+     * connection to the turkium node. This event contains general information
+     * about the turkium node.
      * 
      * @category Wallet Events
      */

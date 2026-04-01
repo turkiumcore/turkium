@@ -1,6 +1,6 @@
 [package]
-name = "Turkium-wrpc-vcc-v2"
-description = "Turkium VCCV2 example"
+name = "turkium-wrpc-vcc-v2"
+description = "turkium VCCV2 example"
 publish = false
 rust-version.workspace = true
 version.workspace = true
@@ -12,9 +12,9 @@ repository.workspace = true
 
 [dependencies]
 futures.workspace = true
-Turkium-rpc-core.workspace = true
-Turkium-wrpc-client.workspace = true
-Turkium-addresses.workspace = true
+turkium-rpc-core.workspace = true
+turkium-wrpc-client.workspace = true
+turkium-addresses.workspace = true
 tokio.workspace = true
 
 

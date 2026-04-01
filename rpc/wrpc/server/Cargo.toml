@@ -1,6 +1,6 @@
 [package]
-name = "Turkium-wrpc-server"
-description = "Turkium wRPC server"
+name = "turkium-wrpc-server"
+description = "turkium wRPC server"
 rust-version.workspace = true
 version.workspace = true
 edition.workspace = true
@@ -16,14 +16,14 @@ crate-type = ["cdylib", "lib"]
 async-trait.workspace = true
 borsh = { workspace = true, features = ["rc"] }
 futures.workspace = true
-Turkium-consensus-core.workspace = true
-Turkium-core.workspace = true
-Turkium-grpc-client.workspace = true
-Turkium-notify.workspace = true
-Turkium-rpc-core.workspace = true
-Turkium-rpc-macros.workspace = true
-Turkium-rpc-service.workspace = true
-Turkium-utils.workspace = true
+turkium-consensus-core.workspace = true
+turkium-core.workspace = true
+turkium-grpc-client.workspace = true
+turkium-notify.workspace = true
+turkium-rpc-core.workspace = true
+turkium-rpc-macros.workspace = true
+turkium-rpc-service.workspace = true
+turkium-utils.workspace = true
 log.workspace = true
 num_cpus.workspace = true
 paste.workspace = true

@@ -1,7 +1,7 @@
 use std::sync::Arc;
 
-use Turkium_consensus_core::errors::{consensus::ConsensusError, sync::SyncManagerError};
-use Turkium_p2p_lib::{
+use turkium_consensus_core::errors::{consensus::ConsensusError, sync::SyncManagerError};
+use turkium_p2p_lib::{
     IncomingRoute, Router,
     common::ProtocolError,
     dequeue_with_request_id, make_response,

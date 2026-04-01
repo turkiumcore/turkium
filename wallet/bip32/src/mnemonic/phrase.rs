@@ -6,7 +6,7 @@ use super::{
 };
 use crate::Result;
 use crate::{Error, KEY_SIZE};
-use Turkium_utils::hex::*;
+use turkium_utils::hex::*;
 use borsh::{BorshDeserialize, BorshSerialize};
 use rand_core::{CryptoRng, RngCore};
 use serde::{Deserialize, Serialize};

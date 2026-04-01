@@ -3,7 +3,7 @@ use std::net::{IpAddr, Ipv4Addr, Ipv6Addr};
 use super::error::ConversionError;
 use crate::pb as protowire;
 
-use Turkium_utils::networking::{IpAddress, NetAddress};
+use turkium_utils::networking::{IpAddress, NetAddress};
 use itertools::Itertools;
 
 // ----------------------------------------------------------------------------
@@ -67,7 +67,7 @@ impl TryFrom<protowire::NetAddress> for NetAddress {
 
 #[cfg(test)]
 mod tests {
-    use Turkium_utils::networking::IpAddress;
+    use turkium_utils::networking::IpAddress;
 
     use crate::pb;
     use std::{

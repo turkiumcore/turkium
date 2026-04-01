@@ -31,13 +31,13 @@ impl PrivateKeyGenerator {
             is_multisig,
             account_index,
             cosigner_index,
-            Some(Turkium_bip32::AddressType::Receive),
+            Some(turkium_bip32::AddressType::Receive),
         )?)?;
         let change = xprv.clone().derive_path(&WalletDerivationManager::build_derivate_path(
             is_multisig,
             account_index,
             cosigner_index,
-            Some(Turkium_bip32::AddressType::Change),
+            Some(turkium_bip32::AddressType::Change),
         )?)?;
 
         Ok(Self { receive, change })

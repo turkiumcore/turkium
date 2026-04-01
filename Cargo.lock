@@ -3,1520 +3,6 @@
 version = 4
 
 [[package]]
-name = "Turkium-addresses"
-version = "1.0.1"
-dependencies = [
- "borsh",
- "criterion",
- "js-sys",
- "serde",
- "smallvec",
- "thiserror 2.0.18",
- "wasm-bindgen",
- "wasm-bindgen-test",
- "web-sys",
- "workflow-log",
- "workflow-wasm",
-]
-
-[[package]]
-name = "Turkium-addressmanager"
-version = "1.0.1"
-dependencies = [
- "Turkium-consensus-core",
- "Turkium-core",
- "Turkium-database",
- "Turkium-utils",
- "borsh",
- "igd-next",
- "itertools 0.13.0",
- "local-ip-address",
- "log",
- "parking_lot",
- "rand 0.8.5",
- "rocksdb",
- "rv",
- "serde",
- "thiserror 1.0.64",
- "tokio",
-]
-
-[[package]]
-name = "Turkium-alloc"
-version = "1.0.1"
-dependencies = [
- "mimalloc",
-]
-
-[[package]]
-name = "Turkium-bip32"
-version = "1.0.1"
-dependencies = [
- "Turkium-consensus-core",
- "Turkium-utils",
- "borsh",
- "bs58",
- "faster-hex 0.9.0",
- "getrandom 0.2.15",
- "hmac",
- "js-sys",
- "once_cell",
- "pbkdf2",
- "rand 0.8.5",
- "rand_core 0.6.4",
- "ripemd",
- "secp256k1 0.29.1",
- "serde",
- "sha2",
- "subtle",
- "thiserror 1.0.64",
- "wasm-bindgen",
- "workflow-wasm",
- "zeroize",
-]
-
-[[package]]
-name = "Turkium-cli"
-version = "1.0.1"
-dependencies = [
- "Turkium-addresses",
- "Turkium-bip32",
- "Turkium-consensus-core",
- "Turkium-core",
- "Turkium-daemon",
- "Turkium-metrics-core",
- "Turkium-rpc-core",
- "Turkium-utils",
- "Turkium-wallet-core",
- "Turkium-wallet-keys",
- "Turkium-wallet-pskt",
- "Turkium-wrpc-client",
- "async-trait",
- "borsh",
- "cfg-if 1.0.0",
- "convert_case 0.6.0",
- "dashmap",
- "downcast",
- "faster-hex 0.9.0",
- "futures",
- "hex",
- "js-sys",
- "nw-sys",
- "pad",
- "regex",
- "separator",
- "serde",
- "serde_json",
- "textwrap 0.16.1",
- "thiserror 1.0.64",
- "tokio",
- "wasm-bindgen",
- "web-sys",
- "workflow-core",
- "workflow-dom",
- "workflow-log",
- "workflow-node",
- "workflow-nw",
- "workflow-store",
- "workflow-terminal",
- "workflow-wasm",
-]
-
-[[package]]
-name = "Turkium-connectionmanager"
-version = "1.0.1"
-dependencies = [
- "Turkium-addressmanager",
- "Turkium-core",
- "Turkium-p2p-lib",
- "Turkium-utils",
- "duration-string",
- "futures-util",
- "itertools 0.13.0",
- "log",
- "parking_lot",
- "rand 0.8.5",
- "tokio",
-]
-
-[[package]]
-name = "Turkium-consensus"
-version = "1.0.1"
-dependencies = [
- "Turkium-addresses",
- "Turkium-consensus-core",
- "Turkium-consensus-notify",
- "Turkium-consensusmanager",
- "Turkium-core",
- "Turkium-database",
- "Turkium-hashes",
- "Turkium-math",
- "Turkium-merkle",
- "Turkium-muhash",
- "Turkium-notify",
- "Turkium-pow",
- "Turkium-txscript",
- "Turkium-txscript-errors",
- "Turkium-utils",
- "arc-swap",
- "async-channel 2.3.1",
- "bincode",
- "criterion",
- "crossbeam-channel",
- "faster-hex 0.9.0",
- "flate2",
- "futures-util",
- "indexmap 2.6.0",
- "itertools 0.13.0",
- "log",
- "once_cell",
- "parking_lot",
- "rand 0.8.5",
- "rand_distr",
- "rayon",
- "rocksdb",
- "secp256k1 0.29.1",
- "serde",
- "serde_json",
- "smallvec",
- "thiserror 1.0.64",
- "tokio",
-]
-
-[[package]]
-name = "Turkium-consensus-client"
-version = "1.0.1"
-dependencies = [
- "Turkium-addresses",
- "Turkium-consensus-core",
- "Turkium-hashes",
- "Turkium-math",
- "Turkium-txscript",
- "Turkium-utils",
- "Turkium-wasm-core",
- "ahash",
- "cfg-if 1.0.0",
- "faster-hex 0.9.0",
- "hex",
- "itertools 0.13.0",
- "js-sys",
- "rand 0.8.5",
- "secp256k1 0.29.1",
- "serde",
- "serde-wasm-bindgen",
- "serde_json",
- "thiserror 1.0.64",
- "wasm-bindgen",
- "workflow-log",
- "workflow-wasm",
-]
-
-[[package]]
-name = "Turkium-consensus-core"
-version = "1.0.1"
-dependencies = [
- "Turkium-addresses",
- "Turkium-core",
- "Turkium-hashes",
- "Turkium-math",
- "Turkium-merkle",
- "Turkium-muhash",
- "Turkium-txscript-errors",
- "Turkium-utils",
- "arc-swap",
- "async-trait",
- "bincode",
- "bitflags 2.9.4",
- "borsh",
- "cfg-if 1.0.0",
- "criterion",
- "faster-hex 0.9.0",
- "futures-util",
- "getrandom 0.2.15",
- "itertools 0.13.0",
- "js-sys",
- "rand 0.8.5",
- "secp256k1 0.29.1",
- "serde",
- "serde-wasm-bindgen",
- "serde_json",
- "smallvec",
- "thiserror 1.0.64",
- "wasm-bindgen",
- "wasm-bindgen-test",
- "web-sys",
- "workflow-core",
- "workflow-log",
- "workflow-serializer",
- "workflow-wasm",
-]
-
-[[package]]
-name = "Turkium-consensus-notify"
-version = "1.0.1"
-dependencies = [
- "Turkium-consensus-core",
- "Turkium-core",
- "Turkium-hashes",
- "Turkium-notify",
- "Turkium-utils",
- "async-channel 2.3.1",
- "cfg-if 1.0.0",
- "derive_more",
- "futures",
- "log",
- "paste",
- "thiserror 1.0.64",
- "triggered",
-]
-
-[[package]]
-name = "Turkium-consensus-wasm"
-version = "1.0.1"
-dependencies = [
- "Turkium-addresses",
- "Turkium-consensus-client",
- "Turkium-consensus-core",
- "Turkium-hashes",
- "Turkium-txscript",
- "Turkium-utils",
- "cfg-if 1.0.0",
- "faster-hex 0.9.0",
- "js-sys",
- "rand 0.8.5",
- "secp256k1 0.29.1",
- "serde",
- "serde-wasm-bindgen",
- "serde_json",
- "thiserror 1.0.64",
- "wasm-bindgen",
- "workflow-log",
- "workflow-wasm",
-]
-
-[[package]]
-name = "Turkium-consensusmanager"
-version = "1.0.1"
-dependencies = [
- "Turkium-addresses",
- "Turkium-consensus-core",
- "Turkium-consensus-notify",
- "Turkium-core",
- "Turkium-utils",
- "duration-string",
- "futures",
- "futures-util",
- "itertools 0.13.0",
- "log",
- "parking_lot",
- "rand 0.8.5",
- "tokio",
-]
-
-[[package]]
-name = "Turkium-core"
-version = "1.0.1"
-dependencies = [
- "anyhow",
- "cfg-if 1.0.0",
- "ctrlc",
- "futures-util",
- "intertrait",
- "log",
- "log4rs",
- "num_cpus",
- "thiserror 1.0.64",
- "tokio",
- "triggered",
- "wasm-bindgen",
- "workflow-log",
-]
-
-[[package]]
-name = "Turkium-daemon"
-version = "1.0.1"
-dependencies = [
- "Turkium-addresses",
- "Turkium-consensus-core",
- "Turkium-wallet-core",
- "async-trait",
- "borsh",
- "cfg-if 1.0.0",
- "downcast-rs",
- "futures",
- "nw-sys",
- "serde",
- "thiserror 1.0.64",
- "workflow-core",
- "workflow-log",
- "workflow-node",
- "workflow-nw",
- "workflow-store",
-]
-
-[[package]]
-name = "Turkium-database"
-version = "1.0.1"
-dependencies = [
- "Turkium-hashes",
- "Turkium-utils",
- "bincode",
- "enum-primitive-derive",
- "faster-hex 0.9.0",
- "indexmap 2.6.0",
- "itertools 0.13.0",
- "num-traits",
- "num_cpus",
- "parking_lot",
- "rand 0.8.5",
- "rocksdb",
- "serde",
- "smallvec",
- "tempfile",
- "thiserror 1.0.64",
-]
-
-[[package]]
-name = "Turkium-grpc-client"
-version = "1.0.1"
-dependencies = [
- "Turkium-core",
- "Turkium-grpc-core",
- "Turkium-notify",
- "Turkium-rpc-core",
- "Turkium-utils",
- "Turkium-utils-tower",
- "async-channel 2.3.1",
- "async-stream",
- "async-trait",
- "faster-hex 0.9.0",
- "futures",
- "futures-util",
- "h2 0.4.6",
- "itertools 0.13.0",
- "log",
- "parking_lot",
- "paste",
- "prost",
- "rand 0.8.5",
- "regex",
- "rustls",
- "thiserror 1.0.64",
- "tokio",
- "tokio-stream",
- "tonic",
- "triggered",
-]
-
-[[package]]
-name = "Turkium-grpc-core"
-version = "1.0.1"
-dependencies = [
- "Turkium-addresses",
- "Turkium-consensus-core",
- "Turkium-core",
- "Turkium-notify",
- "Turkium-rpc-core",
- "Turkium-utils",
- "async-channel 2.3.1",
- "async-stream",
- "async-trait",
- "faster-hex 0.9.0",
- "futures",
- "h2 0.4.6",
- "itertools 0.13.0",
- "log",
- "paste",
- "prost",
- "rand 0.8.5",
- "regex",
- "thiserror 1.0.64",
- "tokio",
- "tokio-stream",
- "tonic",
- "tonic-build",
- "triggered",
- "workflow-core",
-]
-
-[[package]]
-name = "Turkium-grpc-server"
-version = "1.0.1"
-dependencies = [
- "Turkium-consensus-core",
- "Turkium-core",
- "Turkium-grpc-client",
- "Turkium-grpc-core",
- "Turkium-notify",
- "Turkium-rpc-core",
- "Turkium-rpc-macros",
- "Turkium-rpc-service",
- "Turkium-utils",
- "Turkium-utils-tower",
- "async-channel 2.3.1",
- "async-stream",
- "async-trait",
- "faster-hex 0.9.0",
- "futures",
- "h2 0.4.6",
- "itertools 0.13.0",
- "log",
- "once_cell",
- "parking_lot",
- "paste",
- "prost",
- "rand 0.8.5",
- "rustls",
- "thiserror 1.0.64",
- "tokio",
- "tokio-stream",
- "tonic",
- "triggered",
- "uuid 1.18.1",
-]
-
-[[package]]
-name = "Turkium-grpc-simple-client-example"
-version = "1.0.1"
-dependencies = [
- "Turkium-grpc-client",
- "Turkium-rpc-core",
- "futures",
- "tokio",
-]
-
-[[package]]
-name = "Turkium-hashes"
-version = "1.0.1"
-dependencies = [
- "Turkium-utils",
- "blake2b_simd",
- "borsh",
- "cc",
- "criterion",
- "faster-hex 0.9.0",
- "js-sys",
- "keccak",
- "once_cell",
- "rand 0.8.5",
- "serde",
- "sha2",
- "sha3",
- "wasm-bindgen",
- "workflow-wasm",
-]
-
-[[package]]
-name = "Turkium-index-core"
-version = "1.0.1"
-dependencies = [
- "Turkium-consensus-core",
- "Turkium-hashes",
- "Turkium-notify",
- "Turkium-utils",
- "async-channel 2.3.1",
- "async-trait",
- "derive_more",
- "futures",
- "log",
- "paste",
- "serde",
- "thiserror 1.0.64",
- "triggered",
-]
-
-[[package]]
-name = "Turkium-index-processor"
-version = "1.0.1"
-dependencies = [
- "Turkium-consensus",
- "Turkium-consensus-core",
- "Turkium-consensus-notify",
- "Turkium-consensusmanager",
- "Turkium-core",
- "Turkium-database",
- "Turkium-hashes",
- "Turkium-index-core",
- "Turkium-notify",
- "Turkium-utils",
- "Turkium-utxoindex",
- "async-channel 2.3.1",
- "async-trait",
- "derive_more",
- "futures",
- "log",
- "parking_lot",
- "paste",
- "rand 0.8.5",
- "thiserror 1.0.64",
- "tokio",
- "triggered",
-]
-
-[[package]]
-name = "Turkium-math"
-version = "1.0.1"
-dependencies = [
- "Turkium-utils",
- "borsh",
- "criterion",
- "faster-hex 0.9.0",
- "js-sys",
- "malachite-base",
- "malachite-nz",
- "rand_chacha 0.3.1",
- "serde",
- "serde-wasm-bindgen",
- "thiserror 1.0.64",
- "wasm-bindgen",
- "workflow-core",
- "workflow-log",
- "workflow-wasm",
-]
-
-[[package]]
-name = "Turkium-merkle"
-version = "1.0.1"
-dependencies = [
- "Turkium-hashes",
-]
-
-[[package]]
-name = "Turkium-metrics-core"
-version = "1.0.1"
-dependencies = [
- "Turkium-core",
- "Turkium-rpc-core",
- "async-trait",
- "borsh",
- "futures",
- "separator",
- "serde",
- "thiserror 1.0.64",
- "workflow-core",
- "workflow-log",
-]
-
-[[package]]
-name = "Turkium-mining"
-version = "1.0.1"
-dependencies = [
- "Turkium-addresses",
- "Turkium-consensus-core",
- "Turkium-consensusmanager",
- "Turkium-core",
- "Turkium-hashes",
- "Turkium-mining-errors",
- "Turkium-muhash",
- "Turkium-txscript",
- "Turkium-utils",
- "criterion",
- "futures-util",
- "itertools 0.13.0",
- "log",
- "parking_lot",
- "rand 0.8.5",
- "secp256k1 0.29.1",
- "serde",
- "smallvec",
- "sweep-bptree",
- "thiserror 1.0.64",
- "tokio",
-]
-
-[[package]]
-name = "Turkium-mining-errors"
-version = "1.0.1"
-dependencies = [
- "Turkium-consensus-core",
- "thiserror 1.0.64",
-]
-
-[[package]]
-name = "Turkium-muhash"
-version = "1.0.1"
-dependencies = [
- "Turkium-hashes",
- "Turkium-math",
- "criterion",
- "rand 0.8.5",
- "rand_chacha 0.3.1",
- "rayon",
- "serde",
-]
-
-[[package]]
-name = "Turkium-notify"
-version = "1.0.1"
-dependencies = [
- "Turkium-addresses",
- "Turkium-alloc",
- "Turkium-consensus-core",
- "Turkium-core",
- "Turkium-hashes",
- "Turkium-math",
- "Turkium-txscript",
- "Turkium-txscript-errors",
- "Turkium-utils",
- "async-channel 2.3.1",
- "async-trait",
- "borsh",
- "criterion",
- "derive_more",
- "futures",
- "futures-util",
- "indexmap 2.6.0",
- "itertools 0.13.0",
- "log",
- "parking_lot",
- "paste",
- "rand 0.8.5",
- "serde",
- "thiserror 1.0.64",
- "tokio",
- "triggered",
- "workflow-core",
- "workflow-log",
- "workflow-perf-monitor",
- "workflow-serializer",
-]
-
-[[package]]
-name = "Turkium-p2p-flows"
-version = "1.0.1"
-dependencies = [
- "Turkium-addressmanager",
- "Turkium-connectionmanager",
- "Turkium-consensus-core",
- "Turkium-consensus-notify",
- "Turkium-consensusmanager",
- "Turkium-core",
- "Turkium-hashes",
- "Turkium-mining",
- "Turkium-muhash",
- "Turkium-notify",
- "Turkium-p2p-lib",
- "Turkium-p2p-mining",
- "Turkium-utils",
- "Turkium-utils-tower",
- "async-trait",
- "chrono",
- "futures",
- "indexmap 2.6.0",
- "itertools 0.13.0",
- "log",
- "parking_lot",
- "rand 0.8.5",
- "thiserror 1.0.64",
- "tokio",
- "tokio-stream",
- "uuid 1.18.1",
-]
-
-[[package]]
-name = "Turkium-p2p-lib"
-version = "1.0.1"
-dependencies = [
- "Turkium-consensus-core",
- "Turkium-core",
- "Turkium-hashes",
- "Turkium-math",
- "Turkium-mining-errors",
- "Turkium-utils",
- "Turkium-utils-tower",
- "borsh",
- "ctrlc",
- "futures",
- "h2 0.4.6",
- "hex",
- "itertools 0.13.0",
- "log",
- "parking_lot",
- "prost",
- "rand 0.8.5",
- "seqlock",
- "serde",
- "thiserror 1.0.64",
- "tokio",
- "tokio-stream",
- "tonic",
- "tonic-build",
- "uuid 1.18.1",
-]
-
-[[package]]
-name = "Turkium-p2p-mining"
-version = "1.0.1"
-dependencies = [
- "Turkium-consensus-core",
- "Turkium-consensusmanager",
- "Turkium-core",
- "Turkium-hashes",
- "Turkium-math",
- "Turkium-mining-errors",
- "Turkium-p2p-lib",
- "Turkium-utils",
- "Turkium-utils-tower",
- "log",
- "tokio",
-]
-
-[[package]]
-name = "Turkium-perf-monitor"
-version = "1.0.1"
-dependencies = [
- "Turkium-core",
- "log",
- "portable-atomic",
- "thiserror 1.0.64",
- "tokio",
- "workflow-perf-monitor",
-]
-
-[[package]]
-name = "Turkium-pow"
-version = "1.0.1"
-dependencies = [
- "Turkium-consensus-client",
- "Turkium-consensus-core",
- "Turkium-hashes",
- "Turkium-math",
- "Turkium-utils",
- "criterion",
- "js-sys",
- "num",
- "wasm-bindgen",
- "workflow-wasm",
-]
-
-[[package]]
-name = "Turkium-rpc-core"
-version = "1.0.1"
-dependencies = [
- "Turkium-addresses",
- "Turkium-consensus-client",
- "Turkium-consensus-core",
- "Turkium-consensus-notify",
- "Turkium-consensus-wasm",
- "Turkium-core",
- "Turkium-hashes",
- "Turkium-index-core",
- "Turkium-math",
- "Turkium-mining-errors",
- "Turkium-notify",
- "Turkium-rpc-macros",
- "Turkium-txscript",
- "Turkium-utils",
- "async-channel 2.3.1",
- "async-trait",
- "borsh",
- "cfg-if 1.0.0",
- "derive_more",
- "downcast",
- "faster-hex 0.9.0",
- "hex",
- "js-sys",
- "log",
- "paste",
- "rand 0.8.5",
- "serde",
- "serde-wasm-bindgen",
- "serde_json",
- "serde_nested_with",
- "smallvec",
- "thiserror 1.0.64",
- "uuid 1.18.1",
- "wasm-bindgen",
- "workflow-core",
- "workflow-serializer",
- "workflow-wasm",
-]
-
-[[package]]
-name = "Turkium-rpc-macros"
-version = "1.0.1"
-dependencies = [
- "convert_case 0.6.0",
- "proc-macro-error",
- "proc-macro2",
- "quote",
- "regex",
- "syn 1.0.109",
-]
-
-[[package]]
-name = "Turkium-rpc-service"
-version = "1.0.1"
-dependencies = [
- "Turkium-addresses",
- "Turkium-consensus-core",
- "Turkium-consensus-notify",
- "Turkium-consensusmanager",
- "Turkium-core",
- "Turkium-hashes",
- "Turkium-index-core",
- "Turkium-math",
- "Turkium-mining",
- "Turkium-notify",
- "Turkium-p2p-flows",
- "Turkium-p2p-lib",
- "Turkium-p2p-mining",
- "Turkium-perf-monitor",
- "Turkium-rpc-core",
- "Turkium-txscript",
- "Turkium-utils",
- "Turkium-utils-tower",
- "Turkium-utxoindex",
- "async-trait",
- "log",
- "tokio",
- "triggered",
- "workflow-rpc",
-]
-
-[[package]]
-name = "Turkium-stratum-bridge"
-version = "1.0.1"
-dependencies = [
- "Turkium-addresses",
- "Turkium-alloc",
- "Turkium-consensus-core",
- "Turkium-core",
- "Turkium-grpc-client",
- "Turkium-hashes",
- "Turkium-notify",
- "Turkium-pow",
- "Turkium-rpc-core",
- "Turkium-rpc-service",
- "Turkium-utils",
- "Turkiumd",
- "anyhow",
- "async-trait",
- "blake2",
- "chrono",
- "clap 4.5.51",
- "dirs",
- "faster-hex 0.1.1",
- "futures-util",
- "hex",
- "include_dir",
- "mimalloc",
- "num-bigint",
- "num-traits",
- "once_cell",
- "parking_lot",
- "prometheus",
- "regex",
- "serde",
- "serde_json",
- "serde_yaml",
- "thiserror 1.0.64",
- "tokio",
- "tokio-test",
- "tracing",
- "tracing-appender",
- "tracing-log",
- "tracing-subscriber",
- "uuid 1.18.1",
- "windows-sys 0.52.0",
-]
-
-[[package]]
-name = "Turkium-testing-integration"
-version = "1.0.1"
-dependencies = [
- "Turkium-addresses",
- "Turkium-alloc",
- "Turkium-bip32",
- "Turkium-consensus",
- "Turkium-consensus-core",
- "Turkium-consensus-notify",
- "Turkium-consensusmanager",
- "Turkium-core",
- "Turkium-database",
- "Turkium-grpc-client",
- "Turkium-grpc-core",
- "Turkium-grpc-server",
- "Turkium-hashes",
- "Turkium-index-processor",
- "Turkium-math",
- "Turkium-merkle",
- "Turkium-muhash",
- "Turkium-notify",
- "Turkium-pow",
- "Turkium-rpc-core",
- "Turkium-rpc-service",
- "Turkium-txscript",
- "Turkium-txscript-errors",
- "Turkium-utils",
- "Turkium-utxoindex",
- "Turkium-wrpc-server",
- "Turkiumd",
- "async-channel 2.3.1",
- "async-trait",
- "bincode",
- "chrono",
- "clap 4.5.51",
- "criterion",
- "crossbeam-channel",
- "dhat",
- "faster-hex 0.9.0",
- "flate2",
- "futures-util",
- "indexmap 2.6.0",
- "itertools 0.13.0",
- "log",
- "parking_lot",
- "rand 0.8.5",
- "rand_distr",
- "rayon",
- "rocksdb",
- "secp256k1 0.29.1",
- "serde",
- "serde_json",
- "smallvec",
- "tempfile",
- "thiserror 1.0.64",
- "tokio",
- "workflow-perf-monitor",
-]
-
-[[package]]
-name = "Turkium-txscript"
-version = "1.0.1"
-dependencies = [
- "Turkium-addresses",
- "Turkium-consensus-core",
- "Turkium-hashes",
- "Turkium-txscript-errors",
- "Turkium-utils",
- "Turkium-wasm-core",
- "blake2b_simd",
- "borsh",
- "cfg-if 1.0.0",
- "criterion",
- "hex",
- "hexplay",
- "indexmap 2.6.0",
- "itertools 0.13.0",
- "log",
- "parking_lot",
- "rand 0.8.5",
- "secp256k1 0.29.1",
- "serde",
- "serde-wasm-bindgen",
- "serde_json",
- "sha2",
- "smallvec",
- "thiserror 1.0.64",
- "wasm-bindgen",
- "workflow-wasm",
-]
-
-[[package]]
-name = "Turkium-txscript-errors"
-version = "1.0.1"
-dependencies = [
- "secp256k1 0.29.1",
- "thiserror 1.0.64",
-]
-
-[[package]]
-name = "Turkium-utils"
-version = "1.0.1"
-dependencies = [
- "arc-swap",
- "async-channel 2.3.1",
- "async-trait",
- "bincode",
- "borsh",
- "cfg-if 1.0.0",
- "criterion",
- "duct",
- "event-listener 2.5.3",
- "faster-hex 0.9.0",
- "futures-util",
- "ipnet",
- "itertools 0.13.0",
- "log",
- "mac_address",
- "num_cpus",
- "once_cell",
- "parking_lot",
- "rand 0.8.5",
- "rlimit",
- "serde",
- "serde_json",
- "sha2",
- "smallvec",
- "sysinfo",
- "thiserror 1.0.64",
- "tokio",
- "triggered",
- "uuid 1.18.1",
- "wasm-bindgen",
-]
-
-[[package]]
-name = "Turkium-utils-tower"
-version = "1.0.1"
-dependencies = [
- "bytes",
- "cfg-if 1.0.0",
- "futures",
- "http-body 1.0.1",
- "http-body-util",
- "log",
- "pin-project-lite",
- "tokio",
- "tower 0.5.1",
- "tower-http",
-]
-
-[[package]]
-name = "Turkium-utxoindex"
-version = "1.0.1"
-dependencies = [
- "Turkium-consensus",
- "Turkium-consensus-core",
- "Turkium-consensusmanager",
- "Turkium-core",
- "Turkium-database",
- "Turkium-hashes",
- "Turkium-index-core",
- "Turkium-utils",
- "futures",
- "log",
- "parking_lot",
- "rand 0.8.5",
- "rocksdb",
- "serde",
- "thiserror 1.0.64",
-]
-
-[[package]]
-name = "Turkium-wallet"
-version = "1.0.1"
-dependencies = [
- "Turkium-cli",
- "async-std",
- "async-trait",
- "tokio",
- "workflow-log",
- "workflow-terminal",
-]
-
-[[package]]
-name = "Turkium-wallet-cli-wasm"
-version = "1.0.1"
-dependencies = [
- "Turkium-cli",
- "async-trait",
- "js-sys",
- "wasm-bindgen",
- "wasm-bindgen-futures",
- "workflow-log",
- "workflow-terminal",
- "workflow-wasm",
-]
-
-[[package]]
-name = "Turkium-wallet-core"
-version = "1.0.1"
-dependencies = [
- "Turkium-addresses",
- "Turkium-bip32",
- "Turkium-consensus-client",
- "Turkium-consensus-core",
- "Turkium-consensus-wasm",
- "Turkium-core",
- "Turkium-hashes",
- "Turkium-metrics-core",
- "Turkium-notify",
- "Turkium-rpc-core",
- "Turkium-txscript",
- "Turkium-txscript-errors",
- "Turkium-utils",
- "Turkium-wallet-keys",
- "Turkium-wallet-macros",
- "Turkium-wallet-pskt",
- "Turkium-wasm-core",
- "Turkium-wrpc-client",
- "Turkium-wrpc-wasm",
- "aes",
- "ahash",
- "argon2",
- "async-channel 2.3.1",
- "async-std",
- "async-trait",
- "base64",
- "borsh",
- "cfb-mode",
- "cfg-if 1.0.0",
- "chacha20poly1305",
- "convert_case 0.6.0",
- "crypto_box",
- "dashmap",
- "derivative",
- "downcast",
- "evpkdf",
- "faster-hex 0.9.0",
- "fixedstr",
- "futures",
- "heapless",
- "hex-literal",
- "hmac",
- "home",
- "indexed_db_futures",
- "itertools 0.13.0",
- "js-sys",
- "md-5",
- "pad",
- "pbkdf2",
- "rand 0.8.5",
- "regex",
- "ripemd",
- "secp256k1 0.29.1",
- "separator",
- "serde",
- "serde-wasm-bindgen",
- "serde_json",
- "serde_repr",
- "sha1",
- "sha2",
- "slugify-rs",
- "sorted-insert",
- "thiserror 1.0.64",
- "tokio",
- "wasm-bindgen",
- "wasm-bindgen-futures",
- "web-sys",
- "workflow-core",
- "workflow-log",
- "workflow-node",
- "workflow-rpc",
- "workflow-store",
- "workflow-wasm",
- "xxhash-rust",
- "zeroize",
-]
-
-[[package]]
-name = "Turkium-wallet-keys"
-version = "1.0.1"
-dependencies = [
- "Turkium-addresses",
- "Turkium-bip32",
- "Turkium-consensus-core",
- "Turkium-txscript",
- "Turkium-txscript-errors",
- "Turkium-utils",
- "Turkium-wasm-core",
- "async-trait",
- "borsh",
- "downcast",
- "faster-hex 0.9.0",
- "hmac",
- "js-sys",
- "rand 0.8.5",
- "ripemd",
- "secp256k1 0.29.1",
- "serde",
- "serde-wasm-bindgen",
- "serde_json",
- "sha2",
- "thiserror 1.0.64",
- "tokio",
- "wasm-bindgen",
- "wasm-bindgen-futures",
- "workflow-core",
- "workflow-wasm",
- "zeroize",
-]
-
-[[package]]
-name = "Turkium-wallet-macros"
-version = "1.0.1"
-dependencies = [
- "convert_case 0.5.0",
- "proc-macro-error",
- "proc-macro2",
- "quote",
- "regex",
- "syn 1.0.109",
- "xxhash-rust",
-]
-
-[[package]]
-name = "Turkium-wallet-pskt"
-version = "1.0.1"
-dependencies = [
- "Turkium-addresses",
- "Turkium-bip32",
- "Turkium-consensus-client",
- "Turkium-consensus-core",
- "Turkium-txscript",
- "Turkium-txscript-errors",
- "Turkium-utils",
- "bincode",
- "derive_builder",
- "futures",
- "hex",
- "js-sys",
- "secp256k1 0.29.1",
- "separator",
- "serde",
- "serde-value",
- "serde-wasm-bindgen",
- "serde_json",
- "serde_repr",
- "thiserror 1.0.64",
- "wasm-bindgen",
- "wasm-bindgen-test",
- "web-sys",
- "workflow-wasm",
-]
-
-[[package]]
-name = "Turkium-wasm"
-version = "1.0.1"
-dependencies = [
- "Turkium-addresses",
- "Turkium-bip32",
- "Turkium-consensus-core",
- "Turkium-consensus-wasm",
- "Turkium-core",
- "Turkium-math",
- "Turkium-pow",
- "Turkium-rpc-core",
- "Turkium-txscript",
- "Turkium-utils",
- "Turkium-wallet-core",
- "Turkium-wallet-keys",
- "Turkium-wasm-core",
- "Turkium-wrpc-client",
- "Turkium-wrpc-wasm",
- "cfg-if 1.0.0",
- "js-sys",
- "num",
- "wasm-bindgen",
- "workflow-core",
- "workflow-log",
- "workflow-wasm",
-]
-
-[[package]]
-name = "Turkium-wasm-core"
-version = "1.0.1"
-dependencies = [
- "faster-hex 0.9.0",
- "hexplay",
- "js-sys",
- "wasm-bindgen",
- "workflow-wasm",
-]
-
-[[package]]
-name = "Turkium-wrpc-client"
-version = "1.0.1"
-dependencies = [
- "Turkium-addresses",
- "Turkium-consensus-core",
- "Turkium-consensus-wasm",
- "Turkium-notify",
- "Turkium-rpc-core",
- "Turkium-rpc-macros",
- "async-std",
- "async-trait",
- "borsh",
- "cfg-if 1.0.0",
- "futures",
- "js-sys",
- "paste",
- "rand 0.8.5",
- "regex",
- "rustls",
- "serde",
- "serde-wasm-bindgen",
- "serde_json",
- "thiserror 1.0.64",
- "toml",
- "wasm-bindgen",
- "wasm-bindgen-futures",
- "workflow-core",
- "workflow-dom",
- "workflow-http",
- "workflow-log",
- "workflow-rpc",
- "workflow-serializer",
- "workflow-wasm",
-]
-
-[[package]]
-name = "Turkium-wrpc-example-subscriber"
-version = "1.0.1"
-dependencies = [
- "Turkium-consensus-core",
- "Turkium-notify",
- "Turkium-rpc-core",
- "Turkium-wrpc-client",
- "ctrlc",
- "futures",
- "tokio",
- "workflow-core",
- "workflow-log",
-]
-
-[[package]]
-name = "Turkium-wrpc-proxy"
-version = "1.0.1"
-dependencies = [
- "Turkium-consensus-core",
- "Turkium-grpc-client",
- "Turkium-rpc-core",
- "Turkium-rpc-macros",
- "Turkium-wrpc-server",
- "async-trait",
- "clap 4.5.51",
- "num_cpus",
- "thiserror 1.0.64",
- "tokio",
- "workflow-core",
- "workflow-log",
- "workflow-rpc",
-]
-
-[[package]]
-name = "Turkium-wrpc-server"
-version = "1.0.1"
-dependencies = [
- "Turkium-consensus-core",
- "Turkium-core",
- "Turkium-grpc-client",
- "Turkium-notify",
- "Turkium-rpc-core",
- "Turkium-rpc-macros",
- "Turkium-rpc-service",
- "Turkium-utils",
- "async-trait",
- "borsh",
- "futures",
- "log",
- "num_cpus",
- "paste",
- "rustls",
- "serde",
- "thiserror 1.0.64",
- "tokio",
- "workflow-core",
- "workflow-log",
- "workflow-rpc",
- "workflow-serializer",
-]
-
-[[package]]
-name = "Turkium-wrpc-simple-client-example"
-version = "1.0.1"
-dependencies = [
- "Turkium-rpc-core",
- "Turkium-wrpc-client",
- "futures",
- "tokio",
-]
-
-[[package]]
-name = "Turkium-wrpc-vcc-v2"
-version = "1.0.1"
-dependencies = [
- "Turkium-addresses",
- "Turkium-rpc-core",
- "Turkium-wrpc-client",
- "futures",
- "tokio",
-]
-
-[[package]]
-name = "Turkium-wrpc-wasm"
-version = "1.0.1"
-dependencies = [
- "Turkium-addresses",
- "Turkium-consensus-client",
- "Turkium-consensus-core",
- "Turkium-consensus-wasm",
- "Turkium-notify",
- "Turkium-rpc-core",
- "Turkium-rpc-macros",
- "Turkium-wasm-core",
- "Turkium-wrpc-client",
- "ahash",
- "async-std",
- "cfg-if 1.0.0",
- "futures",
- "js-sys",
- "ring",
- "serde",
- "serde-wasm-bindgen",
- "serde_json",
- "wasm-bindgen",
- "wasm-bindgen-futures",
- "workflow-core",
- "workflow-log",
- "workflow-rpc",
- "workflow-wasm",
-]
-
-[[package]]
-name = "Turkiumd"
-version = "1.0.1"
-dependencies = [
- "Turkium-addresses",
- "Turkium-addressmanager",
- "Turkium-alloc",
- "Turkium-consensus",
- "Turkium-consensus-core",
- "Turkium-consensus-notify",
- "Turkium-consensusmanager",
- "Turkium-core",
- "Turkium-database",
- "Turkium-grpc-server",
- "Turkium-hashes",
- "Turkium-index-processor",
- "Turkium-mining",
- "Turkium-notify",
- "Turkium-p2p-flows",
- "Turkium-p2p-lib",
- "Turkium-p2p-mining",
- "Turkium-perf-monitor",
- "Turkium-rpc-core",
- "Turkium-rpc-service",
- "Turkium-txscript",
- "Turkium-utils",
- "Turkium-utils-tower",
- "Turkium-utxoindex",
- "Turkium-wrpc-server",
- "async-channel 2.3.1",
- "cfg-if 1.0.0",
- "clap 4.5.51",
- "dhat",
- "dirs",
- "futures-util",
- "itertools 0.13.0",
- "log",
- "num_cpus",
- "rand 0.8.5",
- "rayon",
- "rocksdb",
- "serde",
- "serde_json",
- "serde_with",
- "tempfile",
- "thiserror 1.0.64",
- "tokio",
- "toml",
- "workflow-log",
-]
-
-[[package]]
 name = "accessory"
 version = "1.3.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1585,6 +71,12 @@ checksum = "8e60d3430d3a69478ad0993f19238d2df97c507009a52b3c10addcd7f6bcb916"
 dependencies = [
  "memchr",
 ]
+
+[[package]]
+name = "allocator-api2"
+version = "0.2.21"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "683d7910e743518b0e34f1186f92494becacb047c7b6bf616c96772180fef923"
 
 [[package]]
 name = "android-tzdata"
@@ -1865,6 +357,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "atoi"
+version = "2.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f28d99ec8bfea296261ca1af174f24225171fea9664ba9003cbebee704810528"
+dependencies = [
+ "num-traits",
+]
+
+[[package]]
 name = "atomic-waker"
 version = "1.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1900,17 +401,18 @@ checksum = "ace50bade8e6234aa140d9a2f552bbee1db4d353f69b8217bc503490fc1a9f26"
 
 [[package]]
 name = "axum"
-version = "0.7.7"
+version = "0.6.20"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "504e3947307ac8326a5437504c517c4b56716c9d98fac0028c2acc7ca47d70ae"
+checksum = "3b829e4e32b91e643de6eafe82b1d90675f5874230191a4ffbc1b336dec4d6bf"
 dependencies = [
  "async-trait",
- "axum-core",
+ "axum-core 0.3.4",
+ "bitflags 1.3.2",
  "bytes",
  "futures-util",
- "http 1.1.0",
- "http-body 1.0.1",
- "http-body-util",
+ "http 0.2.12",
+ "http-body 0.4.6",
+ "hyper 0.14.30",
  "itoa",
  "matchit",
  "memchr",
@@ -1919,8 +421,59 @@ dependencies = [
  "pin-project-lite",
  "rustversion",
  "serde",
+ "sync_wrapper 0.1.2",
+ "tower 0.4.13",
+ "tower-layer",
+ "tower-service",
+]
+
+[[package]]
+name = "axum"
+version = "0.7.7"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "504e3947307ac8326a5437504c517c4b56716c9d98fac0028c2acc7ca47d70ae"
+dependencies = [
+ "async-trait",
+ "axum-core 0.4.5",
+ "bytes",
+ "futures-util",
+ "http 1.1.0",
+ "http-body 1.0.1",
+ "http-body-util",
+ "hyper 1.4.1",
+ "hyper-util",
+ "itoa",
+ "matchit",
+ "memchr",
+ "mime",
+ "percent-encoding",
+ "pin-project-lite",
+ "rustversion",
+ "serde",
+ "serde_json",
+ "serde_path_to_error",
+ "serde_urlencoded",
  "sync_wrapper 1.0.1",
+ "tokio",
  "tower 0.5.1",
+ "tower-layer",
+ "tower-service",
+ "tracing",
+]
+
+[[package]]
+name = "axum-core"
+version = "0.3.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "759fa577a247914fd3f7f76d62972792636412fbfd634cd452f6a385a74d2d2c"
+dependencies = [
+ "async-trait",
+ "bytes",
+ "futures-util",
+ "http 0.2.12",
+ "http-body 0.4.6",
+ "mime",
+ "rustversion",
  "tower-layer",
  "tower-service",
 ]
@@ -1943,6 +496,7 @@ dependencies = [
  "sync_wrapper 1.0.1",
  "tower-layer",
  "tower-service",
+ "tracing",
 ]
 
 [[package]]
@@ -1959,6 +513,12 @@ dependencies = [
  "rustc-demangle",
  "windows-targets 0.52.6",
 ]
+
+[[package]]
+name = "base64"
+version = "0.21.7"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9d297deb1925b89f2ccc13d7635fa0714f12c87adce1c75356b39ca9b7178567"
 
 [[package]]
 name = "base64"
@@ -2033,6 +593,9 @@ name = "bitflags"
 version = "2.9.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2261d10cca569e4643e526d8dc2e62e433cc8aba21ab764233731f8d369bf394"
+dependencies = [
+ "serde",
+]
 
 [[package]]
 name = "bitvec"
@@ -2155,7 +718,7 @@ dependencies = [
 name = "calculate-genesis-hash"
 version = "0.1.0"
 dependencies = [
- "Turkium-consensus-core",
+ "turkium-consensus-core",
 ]
 
 [[package]]
@@ -2392,7 +955,7 @@ version = "4.5.49"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2a0b5487afeab2deb2ff4e03a807ad1a03ac532ff5a2cee5d86884440c7f7671"
 dependencies = [
- "heck",
+ "heck 0.5.0",
  "proc-macro2",
  "quote",
  "syn 2.0.110",
@@ -2431,6 +994,12 @@ dependencies = [
  "unicode-width",
  "windows-sys 0.52.0",
 ]
+
+[[package]]
+name = "const-oid"
+version = "0.9.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c2459377285ad874054d797f3ccebf984978aa39129f6eafde5cdc8315b612f8"
 
 [[package]]
 name = "constant_time_eq"
@@ -2485,6 +1054,21 @@ dependencies = [
 ]
 
 [[package]]
+name = "crc"
+version = "3.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5eb8a2a1cd12ab0d987a5d5e825195d372001a4094a0376319d5a0ad71c1ba0d"
+dependencies = [
+ "crc-catalog",
+]
+
+[[package]]
+name = "crc-catalog"
+version = "2.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "19d374276b40fb8bbdee95aef7c7fa6b5316ec764510eb64b8dd0e2ed0d7e7f5"
+
+[[package]]
 name = "crc32fast"
 version = "1.4.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2497,18 +1081,10 @@ dependencies = [
 name = "create-mining-address"
 version = "0.1.0"
 dependencies = [
- "Turkium-addresses",
  "rand 0.8.5",
- "secp256k1 0.29.1",
-]
-
-[[package]]
-name = "create_devnet_address"
-version = "0.1.0"
-dependencies = [
- "Turkium-addresses",
- "rand 0.8.5",
- "secp256k1 0.28.2",
+ "secp256k1",
+ "turkium-addresses",
+ "turkium-bip32",
 ]
 
 [[package]]
@@ -2569,6 +1145,15 @@ name = "crossbeam-epoch"
 version = "0.9.18"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5b82ac4a3c2ca9c3460964f020e1402edd5753411d7737aa39c3714ad1b5420e"
+dependencies = [
+ "crossbeam-utils",
+]
+
+[[package]]
+name = "crossbeam-queue"
+version = "0.3.12"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0f58bbc28f91df819d0aa2a2c00cd19754769c2fad90579b3592b1c9ba7a3115"
 dependencies = [
  "crossbeam-utils",
 ]
@@ -2760,6 +1345,19 @@ dependencies = [
 
 [[package]]
 name = "dashmap"
+version = "5.5.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "978747c1d849a7d2ee5e8adc0159961c48fb7e5db2f06af6723b80123bb53856"
+dependencies = [
+ "cfg-if 1.0.0",
+ "hashbrown 0.14.5",
+ "lock_api",
+ "once_cell",
+ "parking_lot_core",
+]
+
+[[package]]
+name = "dashmap"
 version = "6.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5041cc499144891f3790297212f32a74fb938e5136a14943f338ef9e0ae276cf"
@@ -2788,6 +1386,17 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn 2.0.110",
+]
+
+[[package]]
+name = "der"
+version = "0.7.10"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e7c1832837b905bbfb5101e07cc24c8deddf52f93225eee6ead5f4d63d53ddcb"
+dependencies = [
+ "const-oid",
+ "pem-rfc7468",
+ "zeroize",
 ]
 
 [[package]]
@@ -2890,6 +1499,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9ed9a281f7bc9b7576e61468ba615a66a5c8cfdff42420a70aa82701a3b1e292"
 dependencies = [
  "block-buffer",
+ "const-oid",
  "crypto-common",
  "subtle",
 ]
@@ -2920,6 +1530,18 @@ name = "doc-comment"
 version = "0.3.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "fea41bba32d969b513997752735605054bc0dfa92b4c56bf1189f2e174be7a10"
+
+[[package]]
+name = "dotenv"
+version = "0.15.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "77c90badedccf4105eca100756a0b1289e191f6fcbdadd3cee1d2f614f97da8f"
+
+[[package]]
+name = "dotenvy"
+version = "0.15.7"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1aaf95b3e5c8f23aa320147307562d361db0ae0d51242340f558153b4eb2439b"
 
 [[package]]
 name = "downcast"
@@ -2956,6 +1578,9 @@ name = "either"
 version = "1.13.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "60b1af1c220855b6ceac025d3f6ecdd2b7c4894bfe9cd9bda4fbb4bc7c0d4cf0"
+dependencies = [
+ "serde",
+]
 
 [[package]]
 name = "encode_unicode"
@@ -2981,6 +1606,16 @@ dependencies = [
  "num-traits",
  "quote",
  "syn 2.0.110",
+]
+
+[[package]]
+name = "env_filter"
+version = "0.1.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1bf3c259d255ca70051b30e2e95b5446cdb8949ac4cd22c0d7fd634d89f568e2"
+dependencies = [
+ "log",
+ "regex",
 ]
 
 [[package]]
@@ -3010,6 +1645,28 @@ dependencies = [
 ]
 
 [[package]]
+name = "env_logger"
+version = "0.11.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "dcaee3d8e3cfc3fd92428d477bc97fc29ec8716d180c0d74c643bb26166660e0"
+dependencies = [
+ "anstream",
+ "anstyle",
+ "env_filter",
+ "humantime",
+ "log",
+]
+
+[[package]]
+name = "envy"
+version = "0.4.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3f47e0157f2cb54f5ae1bd371b30a2ae4311e1c028f575cd4e81de7353215965"
+dependencies = [
+ "serde",
+]
+
+[[package]]
 name = "equivalent"
 version = "1.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3023,6 +1680,17 @@ checksum = "534c5cf6194dfab3db3242765c03bbe257cf92f22b38f6bc0c58d59108a820ba"
 dependencies = [
  "libc",
  "windows-sys 0.52.0",
+]
+
+[[package]]
+name = "etcetera"
+version = "0.8.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "136d1b5283a1ab77bd9257427ffd09d8667ced0570b6f938942bc7568ed5b943"
+dependencies = [
+ "cfg-if 1.0.0",
+ "home",
+ "windows-sys 0.48.0",
 ]
 
 [[package]]
@@ -3138,10 +1806,36 @@ dependencies = [
 ]
 
 [[package]]
+name = "flume"
+version = "0.11.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "da0e4dd2a88388a1f4ccc7c9ce104604dab68d9f408dc34cd45823d5a9069095"
+dependencies = [
+ "futures-core",
+ "futures-sink",
+ "spin",
+]
+
+[[package]]
 name = "fnv"
 version = "1.0.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3f9eec918d3f24069decb9af1554cad7c880e2da24a9afd88aca000531ab82c1"
+
+[[package]]
+name = "foreign-types"
+version = "0.3.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f6f339eb8adc052cd2ca78910fda869aefa38d22d5cb648e6485e4d3fc06f3b1"
+dependencies = [
+ "foreign-types-shared",
+]
+
+[[package]]
+name = "foreign-types-shared"
+version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "00b0228411908ca8685dba7fc2cdd70ec9990a6e753e89b6ac91a84c40fbaf4b"
 
 [[package]]
 name = "form_urlencoded"
@@ -3198,6 +1892,17 @@ dependencies = [
  "futures-core",
  "futures-task",
  "futures-util",
+]
+
+[[package]]
+name = "futures-intrusive"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1d930c203dd0b6ff06e0201a4a2fe9149b43c684fd4420555b26d21b1a02956f"
+dependencies = [
+ "futures-core",
+ "lock_api",
+ "parking_lot",
 ]
 
 [[package]]
@@ -3271,6 +1976,21 @@ dependencies = [
  "log",
  "rustversion",
  "windows 0.48.0",
+]
+
+[[package]]
+name = "generator"
+version = "0.8.8"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "52f04ae4152da20c76fe800fa48659201d5cf627c5149ca0b707b69d7eef6cf9"
+dependencies = [
+ "cc",
+ "cfg-if 1.0.0",
+ "libc",
+ "log",
+ "rustversion",
+ "windows-link",
+ "windows-result 0.4.1",
 ]
 
 [[package]]
@@ -3412,6 +2132,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e5274423e17b7c9fc20b6e7e208532f9b19825d82dfd615708b70edd83df41f1"
 dependencies = [
  "ahash",
+ "allocator-api2",
 ]
 
 [[package]]
@@ -3421,6 +2142,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1e087f84d4f86bf4b218b927129862374b72199ae7d8657835f1e89000eea4fb"
 
 [[package]]
+name = "hashlink"
+version = "0.8.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e8094feaf31ff591f651a2664fb9cfd92bba7a60ce3197265e9482ebe753c8f7"
+dependencies = [
+ "hashbrown 0.14.5",
+]
+
+[[package]]
 name = "heapless"
 version = "0.8.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3428,6 +2158,15 @@ checksum = "0bfb9eb618601c89945a70e254898da93b13be0388091d42117462b265bb3fad"
 dependencies = [
  "hash32",
  "stable_deref_trait",
+]
+
+[[package]]
+name = "heck"
+version = "0.4.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "95505c38b4572b2d910cecb0281560f54b440a19336cbbcb27bf6ce6adc6f5a8"
+dependencies = [
+ "unicode-segmentation",
 ]
 
 [[package]]
@@ -3480,6 +2219,15 @@ checksum = "2da1f4f846e8dcc1b5225caf702924816cabd855e4b46115c334ba09d5254a21"
 dependencies = [
  "atty",
  "termcolor",
+]
+
+[[package]]
+name = "hkdf"
+version = "0.12.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7b5f8eb2ad728638ea2c7d47a21db23b7b58a72ed6a38256b8a1849f15fbbdf7"
+dependencies = [
+ "hmac",
 ]
 
 [[package]]
@@ -3635,6 +2383,18 @@ dependencies = [
  "tokio-rustls",
  "tower-service",
  "webpki-roots",
+]
+
+[[package]]
+name = "hyper-timeout"
+version = "0.4.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bbb958482e8c7be4bc3cf272a766a2b0bf1a6755e7a6ae777f017a31d11b13b1"
+dependencies = [
+ "hyper 0.14.30",
+ "pin-project-lite",
+ "tokio",
+ "tokio-io-timeout",
 ]
 
 [[package]]
@@ -3927,6 +2687,9 @@ name = "lazy_static"
 version = "1.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "bbd2bcb4c963f2ddae06a2efc7e9f3591312473c50c6685e1f298068316e66fe"
+dependencies = [
+ "spin",
+]
 
 [[package]]
 name = "lazycell"
@@ -3990,6 +2753,17 @@ dependencies = [
  "libz-sys",
  "lz4-sys",
  "zstd-sys",
+]
+
+[[package]]
+name = "libsqlite3-sys"
+version = "0.27.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "cf4e226dcd58b4be396f7bd3c20da8fdee2911400705297ba7d2d7cc2c30f716"
+dependencies = [
+ "cc",
+ "pkg-config",
+ "vcpkg",
 ]
 
 [[package]]
@@ -4094,6 +2868,19 @@ dependencies = [
  "thread-id",
  "typemap-ors",
  "winapi",
+]
+
+[[package]]
+name = "loom"
+version = "0.7.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "419e0dc8046cb947daa77eb95ae174acfbddb7673b4151f56d1eed8e93fbfaca"
+dependencies = [
+ "cfg-if 1.0.0",
+ "generator 0.8.8",
+ "scoped-tls",
+ "tracing",
+ "tracing-subscriber",
 ]
 
 [[package]]
@@ -4337,6 +3124,28 @@ dependencies = [
 ]
 
 [[package]]
+name = "moka"
+version = "0.12.10"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a9321642ca94a4282428e6ea4af8cc2ca4eac48ac7a6a4ea8f33f76d0ce70926"
+dependencies = [
+ "async-lock",
+ "crossbeam-channel",
+ "crossbeam-epoch",
+ "crossbeam-utils",
+ "event-listener 5.3.1",
+ "futures-util",
+ "loom",
+ "parking_lot",
+ "portable-atomic",
+ "rustc_version",
+ "smallvec",
+ "tagptr",
+ "thiserror 1.0.64",
+ "uuid 1.18.1",
+]
+
+[[package]]
 name = "multimap"
 version = "0.10.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4349,6 +3158,23 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3ffa00dec017b5b1a8b7cf5e2c008bfda1aa7e0697ac1508b491fdf2622fb4d8"
 dependencies = [
  "rand 0.8.5",
+]
+
+[[package]]
+name = "native-tls"
+version = "0.2.14"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "87de3442987e9dbec73158d5c715e7ad9072fda936bb03d19d7fa10e00520f0e"
+dependencies = [
+ "libc",
+ "log",
+ "openssl",
+ "openssl-probe",
+ "openssl-sys",
+ "schannel",
+ "security-framework",
+ "security-framework-sys",
+ "tempfile",
 ]
 
 [[package]]
@@ -4439,7 +3265,7 @@ version = "0.50.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7957b9740744892f114936ab4a57b3f487491bbeafaf8083688b16841a4240e5"
 dependencies = [
- "windows-sys 0.59.0",
+ "windows-sys 0.61.2",
 ]
 
 [[package]]
@@ -4464,6 +3290,22 @@ checksum = "a5e44f723f1133c9deac646763579fdb3ac745e418f2a7af9cd0c431da1f20b9"
 dependencies = [
  "num-integer",
  "num-traits",
+]
+
+[[package]]
+name = "num-bigint-dig"
+version = "0.8.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e661dda6640fad38e827a6d4a310ff4763082116fe217f279885c97f511bb0b7"
+dependencies = [
+ "lazy_static",
+ "libm",
+ "num-integer",
+ "num-iter",
+ "num-traits",
+ "rand 0.8.5",
+ "smallvec",
+ "zeroize",
 ]
 
 [[package]]
@@ -4586,6 +3428,50 @@ name = "opaque-debug"
 version = "0.3.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c08d65885ee38876c4f86fa503fb49d7b507c2b62552df7c70b2fce627e06381"
+
+[[package]]
+name = "openssl"
+version = "0.10.76"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "951c002c75e16ea2c65b8c7e4d3d51d5530d8dfa7d060b4776828c88cfb18ecf"
+dependencies = [
+ "bitflags 2.9.4",
+ "cfg-if 1.0.0",
+ "foreign-types",
+ "libc",
+ "once_cell",
+ "openssl-macros",
+ "openssl-sys",
+]
+
+[[package]]
+name = "openssl-macros"
+version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a948666b637a0f465e8564c73e89d4dde00d72d4d473cc972f390fc3dcee7d9c"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn 2.0.110",
+]
+
+[[package]]
+name = "openssl-probe"
+version = "0.1.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d05e27ee213611ffe7d6348b942e8f942b37114c00cc03cec254295a4a17852e"
+
+[[package]]
+name = "openssl-sys"
+version = "0.9.112"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "57d55af3b3e226502be1526dfdba67ab0e9c96fc293004e79576b2b9edb0dbdb"
+dependencies = [
+ "cc",
+ "libc",
+ "pkg-config",
+ "vcpkg",
+]
 
 [[package]]
 name = "option-ext"
@@ -4716,6 +3602,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "19b17cddbe7ec3f8bc800887bab5e717348c95ea2ca0b1bf0837fb964dc67099"
 
 [[package]]
+name = "pem-rfc7468"
+version = "0.7.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "88b39c9bfcfc231068454382784bb460aae594343fb030d46e9f50a645418412"
+dependencies = [
+ "base64ct",
+]
+
+[[package]]
 name = "percent-encoding"
 version = "2.3.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4796,6 +3691,27 @@ dependencies = [
  "atomic-waker",
  "fastrand",
  "futures-io",
+]
+
+[[package]]
+name = "pkcs1"
+version = "0.7.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c8ffb9f10fa047879315e6625af03c164b16962a5368d724ed16323b68ace47f"
+dependencies = [
+ "der",
+ "pkcs8",
+ "spki",
+]
+
+[[package]]
+name = "pkcs8"
+version = "0.10.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f950b2377845cebe5cf8b5165cb3cc1a5e0fa5cfa3e1f7f55707d8fd82e0a7b7"
+dependencies = [
+ "der",
+ "spki",
 ]
 
 [[package]]
@@ -4941,12 +3857,43 @@ dependencies = [
 
 [[package]]
 name = "prost"
+version = "0.12.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "deb1435c188b76130da55f17a466d252ff7b1418b2ad3e037d127b94e3411f29"
+dependencies = [
+ "bytes",
+ "prost-derive 0.12.6",
+]
+
+[[package]]
+name = "prost"
 version = "0.13.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2796faa41db3ec313a31f7624d9286acf277b52de526150b7e69f3debf891ee5"
 dependencies = [
  "bytes",
- "prost-derive",
+ "prost-derive 0.13.5",
+]
+
+[[package]]
+name = "prost-build"
+version = "0.12.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "22505a5c94da8e3b7c2996394d1c933236c4d743e81a410bcca4e6989fc066a4"
+dependencies = [
+ "bytes",
+ "heck 0.5.0",
+ "itertools 0.11.0",
+ "log",
+ "multimap",
+ "once_cell",
+ "petgraph",
+ "prettyplease",
+ "prost 0.12.6",
+ "prost-types 0.12.6",
+ "regex",
+ "syn 2.0.110",
+ "tempfile",
 ]
 
 [[package]]
@@ -4955,18 +3902,31 @@ version = "0.13.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "be769465445e8c1474e9c5dac2018218498557af32d9ed057325ec9a41ae81bf"
 dependencies = [
- "heck",
+ "heck 0.5.0",
  "itertools 0.13.0",
  "log",
  "multimap",
  "once_cell",
  "petgraph",
  "prettyplease",
- "prost",
- "prost-types",
+ "prost 0.13.5",
+ "prost-types 0.13.5",
  "regex",
  "syn 2.0.110",
  "tempfile",
+]
+
+[[package]]
+name = "prost-derive"
+version = "0.12.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "81bddcdb20abf9501610992b6759a4c888aef7d1a7247ef75e2404275ac24af1"
+dependencies = [
+ "anyhow",
+ "itertools 0.11.0",
+ "proc-macro2",
+ "quote",
+ "syn 2.0.110",
 ]
 
 [[package]]
@@ -4984,11 +3944,20 @@ dependencies = [
 
 [[package]]
 name = "prost-types"
+version = "0.12.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9091c90b0a32608e984ff2fa4091273cbdd755d54935c51d520887f4a1dbd5b0"
+dependencies = [
+ "prost 0.12.6",
+]
+
+[[package]]
+name = "prost-types"
 version = "0.13.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "52c2c1bf36ddb1a1c396b3601a3cec27c2462e45f07c386894ec3ccf5332bd16"
 dependencies = [
- "prost",
+ "prost 0.13.5",
 ]
 
 [[package]]
@@ -5231,7 +4200,7 @@ version = "0.12.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f713147fbe92361e52392c73b8c9e48c04c6625bce969ef54dc901e58e042a7b"
 dependencies = [
- "base64",
+ "base64 0.22.1",
  "bytes",
  "encoding_rs",
  "futures-core",
@@ -5311,6 +4280,26 @@ checksum = "ddb7af00d2b17dbd07d82c0063e25411959748ff03e8d4f96134c2ff41fce34f"
 dependencies = [
  "libc",
  "librocksdb-sys",
+]
+
+[[package]]
+name = "rsa"
+version = "0.9.10"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b8573f03f5883dcaebdfcf4725caa1ecb9c15b2ef50c43a07b816e06799bb12d"
+dependencies = [
+ "const-oid",
+ "digest",
+ "num-bigint-dig",
+ "num-integer",
+ "num-traits",
+ "pkcs1",
+ "pkcs8",
+ "rand_core 0.6.4",
+ "signature",
+ "spki",
+ "subtle",
+ "zeroize",
 ]
 
 [[package]]
@@ -5441,6 +4430,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "schannel"
+version = "0.1.29"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "91c1b7e4904c873ef0710c1f407dde2e6287de2bebc1bbbf7d430bb7cbffd939"
+dependencies = [
+ "windows-sys 0.61.2",
+]
+
+[[package]]
 name = "scoped-tls"
 version = "1.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -5454,32 +4452,13 @@ checksum = "94143f37725109f92c262ed2cf5e59bce7498c01bcc1502d7b9afe439a4e9f49"
 
 [[package]]
 name = "secp256k1"
-version = "0.28.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d24b59d129cdadea20aea4fb2352fa053712e5d713eee47d700cd4b2bc002f10"
-dependencies = [
- "rand 0.8.5",
- "secp256k1-sys 0.9.2",
-]
-
-[[package]]
-name = "secp256k1"
 version = "0.29.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9465315bc9d4566e1724f0fffcbcc446268cb522e60f9a27bcded6b19c108113"
 dependencies = [
  "rand 0.8.5",
- "secp256k1-sys 0.10.1",
+ "secp256k1-sys",
  "serde",
-]
-
-[[package]]
-name = "secp256k1-sys"
-version = "0.9.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e5d1746aae42c19d583c3c1a8c646bfad910498e2051c551a7f2e3c0c9fbb7eb"
-dependencies = [
- "cc",
 ]
 
 [[package]]
@@ -5489,6 +4468,29 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d4387882333d3aa8cb20530a17c69a3752e97837832f34f6dccc760e715001d9"
 dependencies = [
  "cc",
+]
+
+[[package]]
+name = "security-framework"
+version = "2.11.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "897b2245f0b511c87893af39b033e5ca9cce68824c4d7e7630b5a1d339658d02"
+dependencies = [
+ "bitflags 2.9.4",
+ "core-foundation",
+ "core-foundation-sys",
+ "libc",
+ "security-framework-sys",
+]
+
+[[package]]
+name = "security-framework-sys"
+version = "2.17.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6ce2691df843ecc5d231c0b14ece2acc3efb62c0a398c7e1d875f3983ce020e3"
+dependencies = [
+ "core-foundation-sys",
+ "libc",
 ]
 
 [[package]]
@@ -5517,10 +4519,11 @@ dependencies = [
 
 [[package]]
 name = "serde"
-version = "1.0.210"
+version = "1.0.228"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c8e3592472072e6e22e0a54d5904d9febf8508f65fb8552499a1abc7d1078c3a"
+checksum = "9a8e94ea7f378bd32cbbd37198a4a91436180c5bb472411e48b5ec2e2124ae9e"
 dependencies = [
+ "serde_core",
  "serde_derive",
 ]
 
@@ -5546,10 +4549,19 @@ dependencies = [
 ]
 
 [[package]]
-name = "serde_derive"
-version = "1.0.210"
+name = "serde_core"
+version = "1.0.228"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "243902eda00fad750862fc144cea25caca5e20d615af0a81bee94ca738f1df1f"
+checksum = "41d385c7d4ca58e59fc732af25c3983b67ac852c1a25000afe1175de458b67ad"
+dependencies = [
+ "serde_derive",
+]
+
+[[package]]
+name = "serde_derive"
+version = "1.0.228"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d540f220d3187173da220f885ab66608367b6574e925011a9353e4badda91d79"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -5578,6 +4590,17 @@ dependencies = [
  "proc-macro-error2",
  "quote",
  "syn 2.0.110",
+]
+
+[[package]]
+name = "serde_path_to_error"
+version = "0.1.20"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "10a9ff822e371bb5403e391ecd83e182e0e77ba7f6fe0160b795797109d1b457"
+dependencies = [
+ "itoa",
+ "serde",
+ "serde_core",
 ]
 
 [[package]]
@@ -5618,7 +4641,7 @@ version = "3.11.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8e28bdad6db2b8340e449f7108f020b3b092e8583a9e3fb82713e1d4e71fe817"
 dependencies = [
- "base64",
+ "base64 0.22.1",
  "chrono",
  "hex",
  "indexmap 1.9.3",
@@ -5720,7 +4743,7 @@ checksum = "2c0bfcaa99240f0a404da9c2f0809f8bb502951a4a26f5288acf43462a4805db"
 dependencies = [
  "assoc",
  "bitvec",
- "generator",
+ "generator 0.7.5",
  "hex",
  "owo-colors",
  "rand 0.8.5",
@@ -5759,6 +4782,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a9e9e0b4211b72e7b8b6e85c807d36c212bdb33ea8587f7569562a84df5465b1"
 dependencies = [
  "libc",
+]
+
+[[package]]
+name = "signature"
+version = "2.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "77549399552de45a898a580c1b41d445bf730df867cc44e6c0233bbc4b8329de"
+dependencies = [
+ "digest",
+ "rand_core 0.6.4",
 ]
 
 [[package]]
@@ -5825,12 +4858,240 @@ name = "spin"
 version = "0.9.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6980e8d7511241f8acf4aebddbb1ff938df5eebe98691418c4468d0b72a96a67"
+dependencies = [
+ "lock_api",
+]
+
+[[package]]
+name = "spki"
+version = "0.7.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d91ed6c858b01f942cd56b37a94b3e0a1798290327d1236e4d9cf4eaca44d29d"
+dependencies = [
+ "base64ct",
+ "der",
+]
+
+[[package]]
+name = "sqlformat"
+version = "0.2.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7bba3a93db0cc4f7bdece8bb09e77e2e785c20bfebf79eb8340ed80708048790"
+dependencies = [
+ "nom",
+ "unicode_categories",
+]
+
+[[package]]
+name = "sqlx"
+version = "0.7.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c9a2ccff1a000a5a59cd33da541d9f2fdcd9e6e8229cc200565942bff36d0aaa"
+dependencies = [
+ "sqlx-core",
+ "sqlx-macros",
+ "sqlx-mysql",
+ "sqlx-postgres",
+ "sqlx-sqlite",
+]
+
+[[package]]
+name = "sqlx-core"
+version = "0.7.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "24ba59a9342a3d9bab6c56c118be528b27c9b60e490080e9711a04dccac83ef6"
+dependencies = [
+ "ahash",
+ "atoi",
+ "byteorder",
+ "bytes",
+ "crc",
+ "crossbeam-queue",
+ "either",
+ "event-listener 2.5.3",
+ "futures-channel",
+ "futures-core",
+ "futures-intrusive",
+ "futures-io",
+ "futures-util",
+ "hashlink",
+ "hex",
+ "indexmap 2.6.0",
+ "log",
+ "memchr",
+ "native-tls",
+ "once_cell",
+ "paste",
+ "percent-encoding",
+ "serde",
+ "serde_json",
+ "sha2",
+ "smallvec",
+ "sqlformat",
+ "thiserror 1.0.64",
+ "tokio",
+ "tokio-stream",
+ "tracing",
+ "url",
+]
+
+[[package]]
+name = "sqlx-macros"
+version = "0.7.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4ea40e2345eb2faa9e1e5e326db8c34711317d2b5e08d0d5741619048a803127"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "sqlx-core",
+ "sqlx-macros-core",
+ "syn 1.0.109",
+]
+
+[[package]]
+name = "sqlx-macros-core"
+version = "0.7.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5833ef53aaa16d860e92123292f1f6a3d53c34ba8b1969f152ef1a7bb803f3c8"
+dependencies = [
+ "dotenvy",
+ "either",
+ "heck 0.4.1",
+ "hex",
+ "once_cell",
+ "proc-macro2",
+ "quote",
+ "serde",
+ "serde_json",
+ "sha2",
+ "sqlx-core",
+ "sqlx-mysql",
+ "sqlx-sqlite",
+ "syn 1.0.109",
+ "tempfile",
+ "tokio",
+ "url",
+]
+
+[[package]]
+name = "sqlx-mysql"
+version = "0.7.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1ed31390216d20e538e447a7a9b959e06ed9fc51c37b514b46eb758016ecd418"
+dependencies = [
+ "atoi",
+ "base64 0.21.7",
+ "bitflags 2.9.4",
+ "byteorder",
+ "bytes",
+ "crc",
+ "digest",
+ "dotenvy",
+ "either",
+ "futures-channel",
+ "futures-core",
+ "futures-io",
+ "futures-util",
+ "generic-array",
+ "hex",
+ "hkdf",
+ "hmac",
+ "itoa",
+ "log",
+ "md-5",
+ "memchr",
+ "once_cell",
+ "percent-encoding",
+ "rand 0.8.5",
+ "rsa",
+ "serde",
+ "sha1",
+ "sha2",
+ "smallvec",
+ "sqlx-core",
+ "stringprep",
+ "thiserror 1.0.64",
+ "tracing",
+ "whoami",
+]
+
+[[package]]
+name = "sqlx-postgres"
+version = "0.7.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7c824eb80b894f926f89a0b9da0c7f435d27cdd35b8c655b114e58223918577e"
+dependencies = [
+ "atoi",
+ "base64 0.21.7",
+ "bitflags 2.9.4",
+ "byteorder",
+ "crc",
+ "dotenvy",
+ "etcetera",
+ "futures-channel",
+ "futures-core",
+ "futures-io",
+ "futures-util",
+ "hex",
+ "hkdf",
+ "hmac",
+ "home",
+ "itoa",
+ "log",
+ "md-5",
+ "memchr",
+ "once_cell",
+ "rand 0.8.5",
+ "serde",
+ "serde_json",
+ "sha2",
+ "smallvec",
+ "sqlx-core",
+ "stringprep",
+ "thiserror 1.0.64",
+ "tracing",
+ "whoami",
+]
+
+[[package]]
+name = "sqlx-sqlite"
+version = "0.7.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b244ef0a8414da0bed4bb1910426e890b19e5e9bccc27ada6b797d05c55ae0aa"
+dependencies = [
+ "atoi",
+ "flume",
+ "futures-channel",
+ "futures-core",
+ "futures-executor",
+ "futures-intrusive",
+ "futures-util",
+ "libsqlite3-sys",
+ "log",
+ "percent-encoding",
+ "serde",
+ "sqlx-core",
+ "tracing",
+ "url",
+ "urlencoding",
+]
 
 [[package]]
 name = "stable_deref_trait"
 version = "1.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a8f112729512f8e442d81f95a8a7ddf2b7c6b8a1a6f509a95864142b30cab2d3"
+
+[[package]]
+name = "stringprep"
+version = "0.1.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7b4df3d392d81bd458a8a621b8bffbd2302a12ffe288a9d931670948749463b1"
+dependencies = [
+ "unicode-bidi",
+ "unicode-normalization",
+ "unicode-properties",
+]
 
 [[package]]
 name = "strsim"
@@ -5939,6 +5200,12 @@ dependencies = [
  "core-foundation-sys",
  "libc",
 ]
+
+[[package]]
+name = "tagptr"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7b2093cf4c8eb1e67749a6762251bc9cd836b6fc171623bd0a9d324d37af2417"
 
 [[package]]
 name = "tap"
@@ -6139,6 +5406,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "tokio-io-timeout"
+version = "1.2.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0bd86198d9ee903fedd2f9a2e72014287c0d9167e4ae43b5853007205dda1b76"
+dependencies = [
+ "pin-project-lite",
+ "tokio",
+]
+
+[[package]]
 name = "tokio-macros"
 version = "2.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -6184,6 +5461,18 @@ dependencies = [
 
 [[package]]
 name = "tokio-tungstenite"
+version = "0.21.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c83b561d025642014097b66e6c1bb422783339e0909e4429cde4749d1990bc38"
+dependencies = [
+ "futures-util",
+ "log",
+ "tokio",
+ "tungstenite 0.21.0",
+]
+
+[[package]]
+name = "tokio-tungstenite"
 version = "0.23.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c6989540ced10490aaf14e6bad2e3d33728a2813310a0c71d1574304c49631cd"
@@ -6194,7 +5483,7 @@ dependencies = [
  "rustls-pki-types",
  "tokio",
  "tokio-rustls",
- "tungstenite",
+ "tungstenite 0.23.0",
  "webpki-roots",
 ]
 
@@ -6247,14 +5536,41 @@ dependencies = [
 
 [[package]]
 name = "tonic"
+version = "0.11.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "76c4eb7a4e9ef9d4763600161f12f5070b92a578e1b634db88a6887844c91a13"
+dependencies = [
+ "async-stream",
+ "async-trait",
+ "axum 0.6.20",
+ "base64 0.21.7",
+ "bytes",
+ "h2 0.3.26",
+ "http 0.2.12",
+ "http-body 0.4.6",
+ "hyper 0.14.30",
+ "hyper-timeout 0.4.1",
+ "percent-encoding",
+ "pin-project",
+ "prost 0.12.6",
+ "tokio",
+ "tokio-stream",
+ "tower 0.4.13",
+ "tower-layer",
+ "tower-service",
+ "tracing",
+]
+
+[[package]]
+name = "tonic"
 version = "0.12.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "877c5b330756d856ffcc4553ab34a5684481ade925ecc54bcd1bf02b1d0d4d52"
 dependencies = [
  "async-stream",
  "async-trait",
- "axum",
- "base64",
+ "axum 0.7.7",
+ "base64 0.22.1",
  "bytes",
  "flate2",
  "h2 0.4.6",
@@ -6262,11 +5578,11 @@ dependencies = [
  "http-body 1.0.1",
  "http-body-util",
  "hyper 1.4.1",
- "hyper-timeout",
+ "hyper-timeout 0.5.1",
  "hyper-util",
  "percent-encoding",
  "pin-project",
- "prost",
+ "prost 0.13.5",
  "rustls-pemfile",
  "socket2",
  "tokio",
@@ -6281,14 +5597,27 @@ dependencies = [
 
 [[package]]
 name = "tonic-build"
+version = "0.11.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "be4ef6dd70a610078cb4e338a0f79d06bc759ff1b22d2120c2ff02ae264ba9c2"
+dependencies = [
+ "prettyplease",
+ "proc-macro2",
+ "prost-build 0.12.6",
+ "quote",
+ "syn 2.0.110",
+]
+
+[[package]]
+name = "tonic-build"
 version = "0.12.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9557ce109ea773b399c9b9e5dca39294110b74f1f342cb347a80d1fce8c26a11"
 dependencies = [
  "prettyplease",
  "proc-macro2",
- "prost-build",
- "prost-types",
+ "prost-build 0.13.5",
+ "prost-types 0.13.5",
  "quote",
  "syn 2.0.110",
 ]
@@ -6323,8 +5652,10 @@ dependencies = [
  "futures-util",
  "pin-project-lite",
  "sync_wrapper 0.1.2",
+ "tokio",
  "tower-layer",
  "tower-service",
+ "tracing",
 ]
 
 [[package]]
@@ -6341,6 +5672,7 @@ dependencies = [
  "pin-project-lite",
  "tower-layer",
  "tower-service",
+ "tracing",
 ]
 
 [[package]]
@@ -6361,6 +5693,7 @@ version = "0.1.44"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "63e71662fa4b2a2c3a26f570f037eb95bb1f85397f3cd8076caed2f026a6d100"
 dependencies = [
+ "log",
  "pin-project-lite",
  "tracing-attributes",
  "tracing-core",
@@ -6411,6 +5744,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "tracing-serde"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "704b1aeb7be0d0a84fc9828cae51dab5970fee5088f83d1dd7ee6f6246fc6ff1"
+dependencies = [
+ "serde",
+ "tracing-core",
+]
+
+[[package]]
 name = "tracing-subscriber"
 version = "0.3.22"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -6420,12 +5763,15 @@ dependencies = [
  "nu-ansi-term",
  "once_cell",
  "regex-automata",
+ "serde",
+ "serde_json",
  "sharded-slab",
  "smallvec",
  "thread_local",
  "tracing",
  "tracing-core",
  "tracing-log",
+ "tracing-serde",
 ]
 
 [[package]]
@@ -6439,6 +5785,25 @@ name = "try-lock"
 version = "0.2.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e421abadd41a4225275504ea4d6566923418b7f05506fbc9c0fe86ba7396114b"
+
+[[package]]
+name = "tungstenite"
+version = "0.21.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9ef1a641ea34f399a848dea702823bbecfb4c486f911735368f1f137cb8257e1"
+dependencies = [
+ "byteorder",
+ "bytes",
+ "data-encoding",
+ "http 1.1.0",
+ "httparse",
+ "log",
+ "rand 0.8.5",
+ "sha1",
+ "thiserror 1.0.64",
+ "url",
+ "utf-8",
+]
 
 [[package]]
 name = "tungstenite"
@@ -6464,14 +5829,6 @@ dependencies = [
 name = "turk-txgen"
 version = "1.0.1"
 dependencies = [
- "Turkium-addresses",
- "Turkium-consensus-core",
- "Turkium-core",
- "Turkium-grpc-client",
- "Turkium-notify",
- "Turkium-rpc-core",
- "Turkium-txscript",
- "Turkium-utils",
  "async-channel 2.3.1",
  "clap 4.5.51",
  "criterion",
@@ -6481,8 +5838,643 @@ dependencies = [
  "parking_lot",
  "rand 0.8.5",
  "rayon",
- "secp256k1 0.29.1",
+ "secp256k1",
  "tokio",
+ "turkium-addresses",
+ "turkium-consensus-core",
+ "turkium-core",
+ "turkium-grpc-client",
+ "turkium-notify",
+ "turkium-rpc-core",
+ "turkium-txscript",
+ "turkium-utils",
+]
+
+[[package]]
+name = "turkium-addresses"
+version = "1.0.1"
+dependencies = [
+ "borsh",
+ "criterion",
+ "js-sys",
+ "serde",
+ "smallvec",
+ "thiserror 2.0.18",
+ "wasm-bindgen",
+ "wasm-bindgen-test",
+ "web-sys",
+ "workflow-log",
+ "workflow-wasm",
+]
+
+[[package]]
+name = "turkium-addressmanager"
+version = "1.0.1"
+dependencies = [
+ "borsh",
+ "igd-next",
+ "itertools 0.13.0",
+ "local-ip-address",
+ "log",
+ "parking_lot",
+ "rand 0.8.5",
+ "rocksdb",
+ "rv",
+ "serde",
+ "thiserror 1.0.64",
+ "tokio",
+ "turkium-consensus-core",
+ "turkium-core",
+ "turkium-database",
+ "turkium-utils",
+]
+
+[[package]]
+name = "turkium-alloc"
+version = "1.0.1"
+dependencies = [
+ "mimalloc",
+]
+
+[[package]]
+name = "turkium-api-server"
+version = "1.0.0"
+dependencies = [
+ "anyhow",
+ "axum 0.7.7",
+ "chrono",
+ "dotenv",
+ "envy",
+ "futures",
+ "futures-util",
+ "hex",
+ "moka",
+ "prometheus",
+ "prost 0.12.6",
+ "serde",
+ "serde_json",
+ "thiserror 1.0.64",
+ "tokio",
+ "tokio-test",
+ "tokio-tungstenite 0.21.0",
+ "tonic 0.11.0",
+ "tonic-build 0.11.0",
+ "tower 0.4.13",
+ "tower-http",
+ "tracing",
+ "tracing-subscriber",
+ "turkium-grpc-client",
+ "turkium-rpc-core",
+ "uuid 1.18.1",
+]
+
+[[package]]
+name = "turkium-bip32"
+version = "1.0.1"
+dependencies = [
+ "borsh",
+ "bs58",
+ "faster-hex 0.9.0",
+ "getrandom 0.2.15",
+ "hmac",
+ "js-sys",
+ "once_cell",
+ "pbkdf2",
+ "rand 0.8.5",
+ "rand_core 0.6.4",
+ "ripemd",
+ "secp256k1",
+ "serde",
+ "sha2",
+ "subtle",
+ "thiserror 1.0.64",
+ "turkium-consensus-core",
+ "turkium-utils",
+ "wasm-bindgen",
+ "workflow-wasm",
+ "zeroize",
+]
+
+[[package]]
+name = "turkium-cli"
+version = "1.0.1"
+dependencies = [
+ "async-trait",
+ "borsh",
+ "cfg-if 1.0.0",
+ "convert_case 0.6.0",
+ "dashmap 6.1.0",
+ "downcast",
+ "faster-hex 0.9.0",
+ "futures",
+ "hex",
+ "js-sys",
+ "nw-sys",
+ "pad",
+ "regex",
+ "separator",
+ "serde",
+ "serde_json",
+ "textwrap 0.16.1",
+ "thiserror 1.0.64",
+ "tokio",
+ "turkium-addresses",
+ "turkium-bip32",
+ "turkium-consensus-core",
+ "turkium-core",
+ "turkium-daemon",
+ "turkium-metrics-core",
+ "turkium-rpc-core",
+ "turkium-utils",
+ "turkium-wallet-core",
+ "turkium-wallet-keys",
+ "turkium-wallet-pskt",
+ "turkium-wrpc-client",
+ "wasm-bindgen",
+ "web-sys",
+ "workflow-core",
+ "workflow-dom",
+ "workflow-log",
+ "workflow-node",
+ "workflow-nw",
+ "workflow-store",
+ "workflow-terminal",
+ "workflow-wasm",
+]
+
+[[package]]
+name = "turkium-connectionmanager"
+version = "1.0.1"
+dependencies = [
+ "duration-string",
+ "futures-util",
+ "itertools 0.13.0",
+ "log",
+ "parking_lot",
+ "rand 0.8.5",
+ "tokio",
+ "turkium-addressmanager",
+ "turkium-core",
+ "turkium-p2p-lib",
+ "turkium-utils",
+]
+
+[[package]]
+name = "turkium-consensus"
+version = "1.0.1"
+dependencies = [
+ "arc-swap",
+ "async-channel 2.3.1",
+ "bincode",
+ "criterion",
+ "crossbeam-channel",
+ "faster-hex 0.9.0",
+ "flate2",
+ "futures-util",
+ "indexmap 2.6.0",
+ "itertools 0.13.0",
+ "log",
+ "once_cell",
+ "parking_lot",
+ "rand 0.8.5",
+ "rand_distr",
+ "rayon",
+ "rocksdb",
+ "secp256k1",
+ "serde",
+ "serde_json",
+ "smallvec",
+ "thiserror 1.0.64",
+ "tokio",
+ "turkium-addresses",
+ "turkium-consensus-core",
+ "turkium-consensus-notify",
+ "turkium-consensusmanager",
+ "turkium-core",
+ "turkium-database",
+ "turkium-hashes",
+ "turkium-math",
+ "turkium-merkle",
+ "turkium-muhash",
+ "turkium-notify",
+ "turkium-pow",
+ "turkium-txscript",
+ "turkium-txscript-errors",
+ "turkium-utils",
+]
+
+[[package]]
+name = "turkium-consensus-client"
+version = "1.0.1"
+dependencies = [
+ "ahash",
+ "cfg-if 1.0.0",
+ "faster-hex 0.9.0",
+ "hex",
+ "itertools 0.13.0",
+ "js-sys",
+ "rand 0.8.5",
+ "secp256k1",
+ "serde",
+ "serde-wasm-bindgen",
+ "serde_json",
+ "thiserror 1.0.64",
+ "turkium-addresses",
+ "turkium-consensus-core",
+ "turkium-hashes",
+ "turkium-math",
+ "turkium-txscript",
+ "turkium-utils",
+ "turkium-wasm-core",
+ "wasm-bindgen",
+ "workflow-log",
+ "workflow-wasm",
+]
+
+[[package]]
+name = "turkium-consensus-core"
+version = "1.0.1"
+dependencies = [
+ "arc-swap",
+ "async-trait",
+ "bincode",
+ "bitflags 2.9.4",
+ "borsh",
+ "cfg-if 1.0.0",
+ "criterion",
+ "faster-hex 0.9.0",
+ "futures-util",
+ "getrandom 0.2.15",
+ "itertools 0.13.0",
+ "js-sys",
+ "rand 0.8.5",
+ "secp256k1",
+ "serde",
+ "serde-wasm-bindgen",
+ "serde_json",
+ "smallvec",
+ "thiserror 1.0.64",
+ "turkium-addresses",
+ "turkium-core",
+ "turkium-hashes",
+ "turkium-math",
+ "turkium-merkle",
+ "turkium-muhash",
+ "turkium-txscript-errors",
+ "turkium-utils",
+ "wasm-bindgen",
+ "wasm-bindgen-test",
+ "web-sys",
+ "workflow-core",
+ "workflow-log",
+ "workflow-serializer",
+ "workflow-wasm",
+]
+
+[[package]]
+name = "turkium-consensus-notify"
+version = "1.0.1"
+dependencies = [
+ "async-channel 2.3.1",
+ "cfg-if 1.0.0",
+ "derive_more",
+ "futures",
+ "log",
+ "paste",
+ "thiserror 1.0.64",
+ "triggered",
+ "turkium-consensus-core",
+ "turkium-core",
+ "turkium-hashes",
+ "turkium-notify",
+ "turkium-utils",
+]
+
+[[package]]
+name = "turkium-consensus-wasm"
+version = "1.0.1"
+dependencies = [
+ "cfg-if 1.0.0",
+ "faster-hex 0.9.0",
+ "js-sys",
+ "rand 0.8.5",
+ "secp256k1",
+ "serde",
+ "serde-wasm-bindgen",
+ "serde_json",
+ "thiserror 1.0.64",
+ "turkium-addresses",
+ "turkium-consensus-client",
+ "turkium-consensus-core",
+ "turkium-hashes",
+ "turkium-txscript",
+ "turkium-utils",
+ "wasm-bindgen",
+ "workflow-log",
+ "workflow-wasm",
+]
+
+[[package]]
+name = "turkium-consensusmanager"
+version = "1.0.1"
+dependencies = [
+ "duration-string",
+ "futures",
+ "futures-util",
+ "itertools 0.13.0",
+ "log",
+ "parking_lot",
+ "rand 0.8.5",
+ "tokio",
+ "turkium-addresses",
+ "turkium-consensus-core",
+ "turkium-consensus-notify",
+ "turkium-core",
+ "turkium-utils",
+]
+
+[[package]]
+name = "turkium-core"
+version = "1.0.1"
+dependencies = [
+ "anyhow",
+ "cfg-if 1.0.0",
+ "ctrlc",
+ "futures-util",
+ "intertrait",
+ "log",
+ "log4rs",
+ "num_cpus",
+ "thiserror 1.0.64",
+ "tokio",
+ "triggered",
+ "wasm-bindgen",
+ "workflow-log",
+]
+
+[[package]]
+name = "turkium-daemon"
+version = "1.0.1"
+dependencies = [
+ "async-trait",
+ "borsh",
+ "cfg-if 1.0.0",
+ "downcast-rs",
+ "futures",
+ "nw-sys",
+ "serde",
+ "thiserror 1.0.64",
+ "turkium-addresses",
+ "turkium-consensus-core",
+ "turkium-wallet-core",
+ "workflow-core",
+ "workflow-log",
+ "workflow-node",
+ "workflow-nw",
+ "workflow-store",
+]
+
+[[package]]
+name = "turkium-database"
+version = "1.0.1"
+dependencies = [
+ "bincode",
+ "enum-primitive-derive",
+ "faster-hex 0.9.0",
+ "indexmap 2.6.0",
+ "itertools 0.13.0",
+ "num-traits",
+ "num_cpus",
+ "parking_lot",
+ "rand 0.8.5",
+ "rocksdb",
+ "serde",
+ "smallvec",
+ "tempfile",
+ "thiserror 1.0.64",
+ "turkium-hashes",
+ "turkium-utils",
+]
+
+[[package]]
+name = "turkium-grpc-client"
+version = "1.0.1"
+dependencies = [
+ "async-channel 2.3.1",
+ "async-stream",
+ "async-trait",
+ "faster-hex 0.9.0",
+ "futures",
+ "futures-util",
+ "h2 0.4.6",
+ "itertools 0.13.0",
+ "log",
+ "parking_lot",
+ "paste",
+ "prost 0.13.5",
+ "rand 0.8.5",
+ "regex",
+ "rustls",
+ "thiserror 1.0.64",
+ "tokio",
+ "tokio-stream",
+ "tonic 0.12.3",
+ "triggered",
+ "turkium-core",
+ "turkium-grpc-core",
+ "turkium-notify",
+ "turkium-rpc-core",
+ "turkium-utils",
+ "turkium-utils-tower",
+]
+
+[[package]]
+name = "turkium-grpc-core"
+version = "1.0.1"
+dependencies = [
+ "async-channel 2.3.1",
+ "async-stream",
+ "async-trait",
+ "faster-hex 0.9.0",
+ "futures",
+ "h2 0.4.6",
+ "itertools 0.13.0",
+ "log",
+ "paste",
+ "prost 0.13.5",
+ "rand 0.8.5",
+ "regex",
+ "thiserror 1.0.64",
+ "tokio",
+ "tokio-stream",
+ "tonic 0.12.3",
+ "tonic-build 0.12.3",
+ "triggered",
+ "turkium-addresses",
+ "turkium-consensus-core",
+ "turkium-core",
+ "turkium-notify",
+ "turkium-rpc-core",
+ "turkium-utils",
+ "workflow-core",
+]
+
+[[package]]
+name = "turkium-grpc-server"
+version = "1.0.1"
+dependencies = [
+ "async-channel 2.3.1",
+ "async-stream",
+ "async-trait",
+ "faster-hex 0.9.0",
+ "futures",
+ "h2 0.4.6",
+ "itertools 0.13.0",
+ "log",
+ "once_cell",
+ "parking_lot",
+ "paste",
+ "prost 0.13.5",
+ "rand 0.8.5",
+ "rustls",
+ "thiserror 1.0.64",
+ "tokio",
+ "tokio-stream",
+ "tonic 0.12.3",
+ "triggered",
+ "turkium-consensus-core",
+ "turkium-core",
+ "turkium-grpc-client",
+ "turkium-grpc-core",
+ "turkium-notify",
+ "turkium-rpc-core",
+ "turkium-rpc-macros",
+ "turkium-rpc-service",
+ "turkium-utils",
+ "turkium-utils-tower",
+ "uuid 1.18.1",
+]
+
+[[package]]
+name = "turkium-grpc-simple-client-example"
+version = "1.0.1"
+dependencies = [
+ "futures",
+ "tokio",
+ "turkium-grpc-client",
+ "turkium-rpc-core",
+]
+
+[[package]]
+name = "turkium-hashes"
+version = "1.0.1"
+dependencies = [
+ "blake2b_simd",
+ "borsh",
+ "cc",
+ "criterion",
+ "faster-hex 0.9.0",
+ "js-sys",
+ "keccak",
+ "once_cell",
+ "rand 0.8.5",
+ "serde",
+ "sha2",
+ "sha3",
+ "turkium-utils",
+ "wasm-bindgen",
+ "workflow-wasm",
+]
+
+[[package]]
+name = "turkium-index-core"
+version = "1.0.1"
+dependencies = [
+ "async-channel 2.3.1",
+ "async-trait",
+ "derive_more",
+ "futures",
+ "log",
+ "paste",
+ "serde",
+ "thiserror 1.0.64",
+ "triggered",
+ "turkium-consensus-core",
+ "turkium-hashes",
+ "turkium-notify",
+ "turkium-utils",
+]
+
+[[package]]
+name = "turkium-index-processor"
+version = "1.0.1"
+dependencies = [
+ "async-channel 2.3.1",
+ "async-trait",
+ "derive_more",
+ "futures",
+ "log",
+ "parking_lot",
+ "paste",
+ "rand 0.8.5",
+ "thiserror 1.0.64",
+ "tokio",
+ "triggered",
+ "turkium-consensus",
+ "turkium-consensus-core",
+ "turkium-consensus-notify",
+ "turkium-consensusmanager",
+ "turkium-core",
+ "turkium-database",
+ "turkium-hashes",
+ "turkium-index-core",
+ "turkium-notify",
+ "turkium-utils",
+ "turkium-utxoindex",
+]
+
+[[package]]
+name = "turkium-math"
+version = "1.0.1"
+dependencies = [
+ "borsh",
+ "criterion",
+ "faster-hex 0.9.0",
+ "js-sys",
+ "malachite-base",
+ "malachite-nz",
+ "rand_chacha 0.3.1",
+ "serde",
+ "serde-wasm-bindgen",
+ "thiserror 1.0.64",
+ "turkium-utils",
+ "wasm-bindgen",
+ "workflow-core",
+ "workflow-log",
+ "workflow-wasm",
+]
+
+[[package]]
+name = "turkium-merkle"
+version = "1.0.1"
+dependencies = [
+ "turkium-hashes",
+]
+
+[[package]]
+name = "turkium-metrics-core"
+version = "1.0.1"
+dependencies = [
+ "async-trait",
+ "borsh",
+ "futures",
+ "separator",
+ "serde",
+ "thiserror 1.0.64",
+ "turkium-core",
+ "turkium-rpc-core",
+ "workflow-core",
+ "workflow-log",
 ]
 
 [[package]]
@@ -6499,51 +6491,901 @@ dependencies = [
  "log",
  "num_cpus",
  "parking_lot",
- "prost",
- "prost-build",
- "prost-types",
+ "prost 0.13.5",
+ "prost-build 0.13.5",
+ "prost-types 0.13.5",
  "rand 0.8.5",
+ "serde_json",
  "sha3",
  "shuttle",
  "tokio",
  "tokio-stream",
- "tonic",
- "tonic-build",
+ "tonic 0.12.3",
+ "tonic-build 0.12.3",
 ]
 
 [[package]]
-name = "turksim"
+name = "turkium-mining"
 version = "1.0.1"
 dependencies = [
- "Turkium-alloc",
- "Turkium-consensus",
- "Turkium-consensus-core",
- "Turkium-consensus-notify",
- "Turkium-core",
- "Turkium-database",
- "Turkium-hashes",
- "Turkium-perf-monitor",
- "Turkium-testing-integration",
- "Turkium-utils",
+ "criterion",
+ "futures-util",
+ "itertools 0.13.0",
+ "log",
+ "parking_lot",
+ "rand 0.8.5",
+ "secp256k1",
+ "serde",
+ "smallvec",
+ "sweep-bptree",
+ "thiserror 1.0.64",
+ "tokio",
+ "turkium-addresses",
+ "turkium-consensus-core",
+ "turkium-consensusmanager",
+ "turkium-core",
+ "turkium-hashes",
+ "turkium-mining-errors",
+ "turkium-muhash",
+ "turkium-txscript",
+ "turkium-utils",
+]
+
+[[package]]
+name = "turkium-mining-errors"
+version = "1.0.1"
+dependencies = [
+ "thiserror 1.0.64",
+ "turkium-consensus-core",
+]
+
+[[package]]
+name = "turkium-muhash"
+version = "1.0.1"
+dependencies = [
+ "criterion",
+ "rand 0.8.5",
+ "rand_chacha 0.3.1",
+ "rayon",
+ "serde",
+ "turkium-hashes",
+ "turkium-math",
+]
+
+[[package]]
+name = "turkium-notify"
+version = "1.0.1"
+dependencies = [
  "async-channel 2.3.1",
- "cfg-if 1.0.0",
- "clap 4.5.51",
- "dhat",
- "faster-hex 0.9.0",
- "flate2",
+ "async-trait",
+ "borsh",
+ "criterion",
+ "derive_more",
  "futures",
  "futures-util",
  "indexmap 2.6.0",
  "itertools 0.13.0",
  "log",
- "num_cpus",
+ "parking_lot",
+ "paste",
  "rand 0.8.5",
- "rand_distr",
- "rayon",
- "secp256k1 0.29.1",
+ "serde",
+ "thiserror 1.0.64",
+ "tokio",
+ "triggered",
+ "turkium-addresses",
+ "turkium-alloc",
+ "turkium-consensus-core",
+ "turkium-core",
+ "turkium-hashes",
+ "turkium-math",
+ "turkium-txscript",
+ "turkium-txscript-errors",
+ "turkium-utils",
+ "workflow-core",
+ "workflow-log",
+ "workflow-perf-monitor",
+ "workflow-serializer",
+]
+
+[[package]]
+name = "turkium-p2p-flows"
+version = "1.0.1"
+dependencies = [
+ "async-trait",
+ "chrono",
+ "futures",
+ "indexmap 2.6.0",
+ "itertools 0.13.0",
+ "log",
+ "parking_lot",
+ "rand 0.8.5",
+ "thiserror 1.0.64",
+ "tokio",
+ "tokio-stream",
+ "turkium-addressmanager",
+ "turkium-connectionmanager",
+ "turkium-consensus-core",
+ "turkium-consensus-notify",
+ "turkium-consensusmanager",
+ "turkium-core",
+ "turkium-hashes",
+ "turkium-mining",
+ "turkium-muhash",
+ "turkium-notify",
+ "turkium-p2p-lib",
+ "turkium-p2p-mining",
+ "turkium-utils",
+ "turkium-utils-tower",
+ "uuid 1.18.1",
+]
+
+[[package]]
+name = "turkium-p2p-lib"
+version = "1.0.1"
+dependencies = [
+ "borsh",
+ "ctrlc",
+ "futures",
+ "h2 0.4.6",
+ "hex",
+ "itertools 0.13.0",
+ "log",
+ "parking_lot",
+ "prost 0.13.5",
+ "rand 0.8.5",
+ "seqlock",
+ "serde",
+ "thiserror 1.0.64",
+ "tokio",
+ "tokio-stream",
+ "tonic 0.12.3",
+ "tonic-build 0.12.3",
+ "turkium-consensus-core",
+ "turkium-core",
+ "turkium-hashes",
+ "turkium-math",
+ "turkium-mining-errors",
+ "turkium-utils",
+ "turkium-utils-tower",
+ "uuid 1.18.1",
+]
+
+[[package]]
+name = "turkium-p2p-mining"
+version = "1.0.1"
+dependencies = [
+ "log",
+ "tokio",
+ "turkium-consensus-core",
+ "turkium-consensusmanager",
+ "turkium-core",
+ "turkium-hashes",
+ "turkium-math",
+ "turkium-mining-errors",
+ "turkium-p2p-lib",
+ "turkium-utils",
+ "turkium-utils-tower",
+]
+
+[[package]]
+name = "turkium-perf-monitor"
+version = "1.0.1"
+dependencies = [
+ "log",
+ "portable-atomic",
+ "thiserror 1.0.64",
+ "tokio",
+ "turkium-core",
+ "workflow-perf-monitor",
+]
+
+[[package]]
+name = "turkium-pow"
+version = "1.0.1"
+dependencies = [
+ "criterion",
+ "js-sys",
+ "num",
+ "turkium-consensus-client",
+ "turkium-consensus-core",
+ "turkium-hashes",
+ "turkium-math",
+ "turkium-utils",
+ "wasm-bindgen",
+ "workflow-wasm",
+]
+
+[[package]]
+name = "turkium-rpc-core"
+version = "1.0.1"
+dependencies = [
+ "async-channel 2.3.1",
+ "async-trait",
+ "borsh",
+ "cfg-if 1.0.0",
+ "derive_more",
+ "downcast",
+ "faster-hex 0.9.0",
+ "hex",
+ "js-sys",
+ "log",
+ "paste",
+ "rand 0.8.5",
+ "serde",
+ "serde-wasm-bindgen",
+ "serde_json",
+ "serde_nested_with",
+ "smallvec",
+ "thiserror 1.0.64",
+ "turkium-addresses",
+ "turkium-consensus-client",
+ "turkium-consensus-core",
+ "turkium-consensus-notify",
+ "turkium-consensus-wasm",
+ "turkium-core",
+ "turkium-hashes",
+ "turkium-index-core",
+ "turkium-math",
+ "turkium-mining-errors",
+ "turkium-notify",
+ "turkium-rpc-macros",
+ "turkium-txscript",
+ "turkium-utils",
+ "uuid 1.18.1",
+ "wasm-bindgen",
+ "workflow-core",
+ "workflow-serializer",
+ "workflow-wasm",
+]
+
+[[package]]
+name = "turkium-rpc-macros"
+version = "1.0.1"
+dependencies = [
+ "convert_case 0.6.0",
+ "proc-macro-error",
+ "proc-macro2",
+ "quote",
+ "regex",
+ "syn 1.0.109",
+]
+
+[[package]]
+name = "turkium-rpc-service"
+version = "1.0.1"
+dependencies = [
+ "async-trait",
+ "log",
+ "tokio",
+ "triggered",
+ "turkium-addresses",
+ "turkium-consensus-core",
+ "turkium-consensus-notify",
+ "turkium-consensusmanager",
+ "turkium-core",
+ "turkium-hashes",
+ "turkium-index-core",
+ "turkium-math",
+ "turkium-mining",
+ "turkium-notify",
+ "turkium-p2p-flows",
+ "turkium-p2p-lib",
+ "turkium-p2p-mining",
+ "turkium-perf-monitor",
+ "turkium-rpc-core",
+ "turkium-txscript",
+ "turkium-utils",
+ "turkium-utils-tower",
+ "turkium-utxoindex",
+ "workflow-rpc",
+]
+
+[[package]]
+name = "turkium-stratum-bridge"
+version = "1.0.1"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "blake2",
+ "chrono",
+ "clap 4.5.51",
+ "dirs",
+ "faster-hex 0.1.1",
+ "futures-util",
+ "hex",
+ "include_dir",
+ "mimalloc",
+ "num-bigint",
+ "num-traits",
+ "once_cell",
+ "parking_lot",
+ "prometheus",
+ "regex",
  "serde",
  "serde_json",
+ "serde_yaml",
+ "thiserror 1.0.64",
  "tokio",
+ "tokio-test",
+ "tracing",
+ "tracing-appender",
+ "tracing-log",
+ "tracing-subscriber",
+ "turkium-addresses",
+ "turkium-alloc",
+ "turkium-consensus-core",
+ "turkium-core",
+ "turkium-grpc-client",
+ "turkium-hashes",
+ "turkium-notify",
+ "turkium-pow",
+ "turkium-rpc-core",
+ "turkium-rpc-service",
+ "turkium-utils",
+ "turkiumd",
+ "uuid 1.18.1",
+ "windows-sys 0.52.0",
+]
+
+[[package]]
+name = "turkium-stratum-pool"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bytes",
+ "chrono",
+ "clap 4.5.51",
+ "dashmap 5.5.3",
+ "env_logger 0.11.6",
+ "hex",
+ "log",
+ "parking_lot",
+ "rand 0.8.5",
+ "serde",
+ "serde_json",
+ "sha2",
+ "sqlx",
+ "thiserror 1.0.64",
+ "tokio",
+ "toml",
+ "turkium-grpc-client",
+ "turkium-rpc-core",
+]
+
+[[package]]
+name = "turkium-txscript"
+version = "1.0.1"
+dependencies = [
+ "blake2b_simd",
+ "borsh",
+ "cfg-if 1.0.0",
+ "criterion",
+ "hex",
+ "hexplay",
+ "indexmap 2.6.0",
+ "itertools 0.13.0",
+ "log",
+ "parking_lot",
+ "rand 0.8.5",
+ "secp256k1",
+ "serde",
+ "serde-wasm-bindgen",
+ "serde_json",
+ "sha2",
+ "smallvec",
+ "thiserror 1.0.64",
+ "turkium-addresses",
+ "turkium-consensus-core",
+ "turkium-hashes",
+ "turkium-txscript-errors",
+ "turkium-utils",
+ "turkium-wasm-core",
+ "wasm-bindgen",
+ "workflow-wasm",
+]
+
+[[package]]
+name = "turkium-txscript-errors"
+version = "1.0.1"
+dependencies = [
+ "secp256k1",
+ "thiserror 1.0.64",
+]
+
+[[package]]
+name = "turkium-utils"
+version = "1.0.1"
+dependencies = [
+ "arc-swap",
+ "async-channel 2.3.1",
+ "async-trait",
+ "bincode",
+ "borsh",
+ "cfg-if 1.0.0",
+ "criterion",
+ "duct",
+ "event-listener 2.5.3",
+ "faster-hex 0.9.0",
+ "futures-util",
+ "ipnet",
+ "itertools 0.13.0",
+ "log",
+ "mac_address",
+ "num_cpus",
+ "once_cell",
+ "parking_lot",
+ "rand 0.8.5",
+ "rlimit",
+ "serde",
+ "serde_json",
+ "sha2",
+ "smallvec",
+ "sysinfo",
+ "thiserror 1.0.64",
+ "tokio",
+ "triggered",
+ "uuid 1.18.1",
+ "wasm-bindgen",
+]
+
+[[package]]
+name = "turkium-utils-tower"
+version = "1.0.1"
+dependencies = [
+ "bytes",
+ "cfg-if 1.0.0",
+ "futures",
+ "http-body 1.0.1",
+ "http-body-util",
+ "log",
+ "pin-project-lite",
+ "tokio",
+ "tower 0.5.1",
+ "tower-http",
+]
+
+[[package]]
+name = "turkium-utxoindex"
+version = "1.0.1"
+dependencies = [
+ "futures",
+ "log",
+ "parking_lot",
+ "rand 0.8.5",
+ "rocksdb",
+ "serde",
+ "thiserror 1.0.64",
+ "turkium-consensus",
+ "turkium-consensus-core",
+ "turkium-consensusmanager",
+ "turkium-core",
+ "turkium-database",
+ "turkium-hashes",
+ "turkium-index-core",
+ "turkium-utils",
+]
+
+[[package]]
+name = "turkium-wallet"
+version = "1.0.1"
+dependencies = [
+ "async-std",
+ "async-trait",
+ "tokio",
+ "turkium-cli",
+ "workflow-log",
+ "workflow-terminal",
+]
+
+[[package]]
+name = "turkium-wallet-cli-wasm"
+version = "1.0.1"
+dependencies = [
+ "async-trait",
+ "js-sys",
+ "turkium-cli",
+ "wasm-bindgen",
+ "wasm-bindgen-futures",
+ "workflow-log",
+ "workflow-terminal",
+ "workflow-wasm",
+]
+
+[[package]]
+name = "turkium-wallet-core"
+version = "1.0.1"
+dependencies = [
+ "aes",
+ "ahash",
+ "argon2",
+ "async-channel 2.3.1",
+ "async-std",
+ "async-trait",
+ "base64 0.22.1",
+ "borsh",
+ "cfb-mode",
+ "cfg-if 1.0.0",
+ "chacha20poly1305",
+ "convert_case 0.6.0",
+ "crypto_box",
+ "dashmap 6.1.0",
+ "derivative",
+ "downcast",
+ "evpkdf",
+ "faster-hex 0.9.0",
+ "fixedstr",
+ "futures",
+ "heapless",
+ "hex-literal",
+ "hmac",
+ "home",
+ "indexed_db_futures",
+ "itertools 0.13.0",
+ "js-sys",
+ "md-5",
+ "pad",
+ "pbkdf2",
+ "rand 0.8.5",
+ "regex",
+ "ripemd",
+ "secp256k1",
+ "separator",
+ "serde",
+ "serde-wasm-bindgen",
+ "serde_json",
+ "serde_repr",
+ "sha1",
+ "sha2",
+ "slugify-rs",
+ "sorted-insert",
+ "thiserror 1.0.64",
+ "tokio",
+ "turkium-addresses",
+ "turkium-bip32",
+ "turkium-consensus-client",
+ "turkium-consensus-core",
+ "turkium-consensus-wasm",
+ "turkium-core",
+ "turkium-hashes",
+ "turkium-metrics-core",
+ "turkium-notify",
+ "turkium-rpc-core",
+ "turkium-txscript",
+ "turkium-txscript-errors",
+ "turkium-utils",
+ "turkium-wallet-keys",
+ "turkium-wallet-macros",
+ "turkium-wallet-pskt",
+ "turkium-wasm-core",
+ "turkium-wrpc-client",
+ "turkium-wrpc-wasm",
+ "wasm-bindgen",
+ "wasm-bindgen-futures",
+ "web-sys",
+ "workflow-core",
+ "workflow-log",
+ "workflow-node",
+ "workflow-rpc",
+ "workflow-store",
+ "workflow-wasm",
+ "xxhash-rust",
+ "zeroize",
+]
+
+[[package]]
+name = "turkium-wallet-keys"
+version = "1.0.1"
+dependencies = [
+ "async-trait",
+ "borsh",
+ "downcast",
+ "faster-hex 0.9.0",
+ "hmac",
+ "js-sys",
+ "rand 0.8.5",
+ "ripemd",
+ "secp256k1",
+ "serde",
+ "serde-wasm-bindgen",
+ "serde_json",
+ "sha2",
+ "thiserror 1.0.64",
+ "tokio",
+ "turkium-addresses",
+ "turkium-bip32",
+ "turkium-consensus-core",
+ "turkium-txscript",
+ "turkium-txscript-errors",
+ "turkium-utils",
+ "turkium-wasm-core",
+ "wasm-bindgen",
+ "wasm-bindgen-futures",
+ "workflow-core",
+ "workflow-wasm",
+ "zeroize",
+]
+
+[[package]]
+name = "turkium-wallet-macros"
+version = "1.0.1"
+dependencies = [
+ "convert_case 0.5.0",
+ "proc-macro-error",
+ "proc-macro2",
+ "quote",
+ "regex",
+ "syn 1.0.109",
+ "xxhash-rust",
+]
+
+[[package]]
+name = "turkium-wallet-pskt"
+version = "1.0.1"
+dependencies = [
+ "bincode",
+ "derive_builder",
+ "futures",
+ "hex",
+ "js-sys",
+ "secp256k1",
+ "separator",
+ "serde",
+ "serde-value",
+ "serde-wasm-bindgen",
+ "serde_json",
+ "serde_repr",
+ "thiserror 1.0.64",
+ "turkium-addresses",
+ "turkium-bip32",
+ "turkium-consensus-client",
+ "turkium-consensus-core",
+ "turkium-txscript",
+ "turkium-txscript-errors",
+ "turkium-utils",
+ "wasm-bindgen",
+ "wasm-bindgen-test",
+ "web-sys",
+ "workflow-wasm",
+]
+
+[[package]]
+name = "turkium-wasm"
+version = "1.0.1"
+dependencies = [
+ "cfg-if 1.0.0",
+ "js-sys",
+ "num",
+ "turkium-addresses",
+ "turkium-bip32",
+ "turkium-consensus-core",
+ "turkium-consensus-wasm",
+ "turkium-core",
+ "turkium-math",
+ "turkium-pow",
+ "turkium-rpc-core",
+ "turkium-txscript",
+ "turkium-utils",
+ "turkium-wallet-core",
+ "turkium-wallet-keys",
+ "turkium-wasm-core",
+ "turkium-wrpc-client",
+ "turkium-wrpc-wasm",
+ "wasm-bindgen",
+ "workflow-core",
+ "workflow-log",
+ "workflow-wasm",
+]
+
+[[package]]
+name = "turkium-wasm-core"
+version = "1.0.1"
+dependencies = [
+ "faster-hex 0.9.0",
+ "hexplay",
+ "js-sys",
+ "wasm-bindgen",
+ "workflow-wasm",
+]
+
+[[package]]
+name = "turkium-wrpc-client"
+version = "1.0.1"
+dependencies = [
+ "async-std",
+ "async-trait",
+ "borsh",
+ "cfg-if 1.0.0",
+ "futures",
+ "js-sys",
+ "paste",
+ "rand 0.8.5",
+ "regex",
+ "rustls",
+ "serde",
+ "serde-wasm-bindgen",
+ "serde_json",
+ "thiserror 1.0.64",
+ "toml",
+ "turkium-addresses",
+ "turkium-consensus-core",
+ "turkium-consensus-wasm",
+ "turkium-notify",
+ "turkium-rpc-core",
+ "turkium-rpc-macros",
+ "wasm-bindgen",
+ "wasm-bindgen-futures",
+ "workflow-core",
+ "workflow-dom",
+ "workflow-http",
+ "workflow-log",
+ "workflow-rpc",
+ "workflow-serializer",
+ "workflow-wasm",
+]
+
+[[package]]
+name = "turkium-wrpc-example-subscriber"
+version = "1.0.1"
+dependencies = [
+ "ctrlc",
+ "futures",
+ "tokio",
+ "turkium-consensus-core",
+ "turkium-notify",
+ "turkium-rpc-core",
+ "turkium-wrpc-client",
+ "workflow-core",
+ "workflow-log",
+]
+
+[[package]]
+name = "turkium-wrpc-proxy"
+version = "1.0.1"
+dependencies = [
+ "async-trait",
+ "clap 4.5.51",
+ "num_cpus",
+ "thiserror 1.0.64",
+ "tokio",
+ "turkium-consensus-core",
+ "turkium-grpc-client",
+ "turkium-rpc-core",
+ "turkium-rpc-macros",
+ "turkium-wrpc-server",
+ "workflow-core",
+ "workflow-log",
+ "workflow-rpc",
+]
+
+[[package]]
+name = "turkium-wrpc-server"
+version = "1.0.1"
+dependencies = [
+ "async-trait",
+ "borsh",
+ "futures",
+ "log",
+ "num_cpus",
+ "paste",
+ "rustls",
+ "serde",
+ "thiserror 1.0.64",
+ "tokio",
+ "turkium-consensus-core",
+ "turkium-core",
+ "turkium-grpc-client",
+ "turkium-notify",
+ "turkium-rpc-core",
+ "turkium-rpc-macros",
+ "turkium-rpc-service",
+ "turkium-utils",
+ "workflow-core",
+ "workflow-log",
+ "workflow-rpc",
+ "workflow-serializer",
+]
+
+[[package]]
+name = "turkium-wrpc-simple-client-example"
+version = "1.0.1"
+dependencies = [
+ "futures",
+ "tokio",
+ "turkium-rpc-core",
+ "turkium-wrpc-client",
+]
+
+[[package]]
+name = "turkium-wrpc-vcc-v2"
+version = "1.0.1"
+dependencies = [
+ "futures",
+ "tokio",
+ "turkium-addresses",
+ "turkium-rpc-core",
+ "turkium-wrpc-client",
+]
+
+[[package]]
+name = "turkium-wrpc-wasm"
+version = "1.0.1"
+dependencies = [
+ "ahash",
+ "async-std",
+ "cfg-if 1.0.0",
+ "futures",
+ "js-sys",
+ "ring",
+ "serde",
+ "serde-wasm-bindgen",
+ "serde_json",
+ "turkium-addresses",
+ "turkium-consensus-client",
+ "turkium-consensus-core",
+ "turkium-consensus-wasm",
+ "turkium-notify",
+ "turkium-rpc-core",
+ "turkium-rpc-macros",
+ "turkium-wasm-core",
+ "turkium-wrpc-client",
+ "wasm-bindgen",
+ "wasm-bindgen-futures",
+ "workflow-core",
+ "workflow-log",
+ "workflow-rpc",
+ "workflow-wasm",
+]
+
+[[package]]
+name = "turkiumd"
+version = "1.0.1"
+dependencies = [
+ "async-channel 2.3.1",
+ "cfg-if 1.0.0",
+ "clap 4.5.51",
+ "dhat",
+ "dirs",
+ "futures-util",
+ "itertools 0.13.0",
+ "log",
+ "num_cpus",
+ "rand 0.8.5",
+ "rayon",
+ "rocksdb",
+ "serde",
+ "serde_json",
+ "serde_with",
+ "tempfile",
+ "thiserror 1.0.64",
+ "tokio",
+ "toml",
+ "turkium-addresses",
+ "turkium-addressmanager",
+ "turkium-alloc",
+ "turkium-consensus",
+ "turkium-consensus-core",
+ "turkium-consensus-notify",
+ "turkium-consensusmanager",
+ "turkium-core",
+ "turkium-database",
+ "turkium-grpc-server",
+ "turkium-hashes",
+ "turkium-index-processor",
+ "turkium-mining",
+ "turkium-notify",
+ "turkium-p2p-flows",
+ "turkium-p2p-lib",
+ "turkium-p2p-mining",
+ "turkium-perf-monitor",
+ "turkium-rpc-core",
+ "turkium-rpc-service",
+ "turkium-txscript",
+ "turkium-utils",
+ "turkium-utils-tower",
+ "turkium-utxoindex",
+ "turkium-wrpc-server",
+ "workflow-log",
 ]
 
 [[package]]
@@ -6589,6 +7431,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "unicode-properties"
+version = "0.1.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7df058c713841ad818f1dc5d3fd88063241cc61f49f5fbea4b951e8cf5a8d71d"
+
+[[package]]
 name = "unicode-segmentation"
 version = "1.12.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -6599,6 +7447,12 @@ name = "unicode-width"
 version = "0.1.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7dd6e30e90baa6f72411720665d41d89b9a3d039dc45b8faea1ddd07f617f6af"
+
+[[package]]
+name = "unicode_categories"
+version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "39ec24b3121d976906ece63c9daad25b85969647682eee313cb5779fdd69e14e"
 
 [[package]]
 name = "universal-hash"
@@ -6641,6 +7495,12 @@ dependencies = [
  "idna",
  "percent-encoding",
 ]
+
+[[package]]
+name = "urlencoding"
+version = "2.1.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "daf8dba3b7eb870caf1ddeed7bc9d2a049f3cfdfae7cb521b087cc33ae4c49da"
 
 [[package]]
 name = "utf-8"
@@ -6754,6 +7614,12 @@ checksum = "0562428422c63773dad2c345a1882263bbf4d65cf3f42e90921f787ef5ad58e7"
 dependencies = [
  "wit-bindgen",
 ]
+
+[[package]]
+name = "wasite"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b8dad83b4f25e74f184f64c43b150b91efe7647395b42289f38e50566d82855b"
 
 [[package]]
 name = "wasm-bindgen"
@@ -6884,6 +7750,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "whoami"
+version = "1.6.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5d4a4db5077702ca3015d3d02d74974948aba2ad9e12ab7df718ee64ccd7e97d"
+dependencies = [
+ "libredox",
+ "wasite",
+]
+
+[[package]]
 name = "winapi"
 version = "0.3.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -6977,6 +7853,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "windows-link"
+version = "0.2.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f0805222e57f7521d6a62e36fa9163bc891acd422f971defe97d64e70d0a4fe5"
+
+[[package]]
 name = "windows-registry"
 version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -7003,6 +7885,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1d1043d8214f791817bab27572aaa8af63732e11bf84aa21a45a78d6c317ae0e"
 dependencies = [
  "windows-targets 0.52.6",
+]
+
+[[package]]
+name = "windows-result"
+version = "0.4.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7781fa89eaf60850ac3d2da7af8e5242a5ea78d1a11c49bf2910bb5a73853eb5"
+dependencies = [
+ "windows-link",
 ]
 
 [[package]]
@@ -7040,6 +7931,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1e38bc4d79ed67fd075bcc251a1c39b32a1776bbe92e5bef1f0bf1f8c531853b"
 dependencies = [
  "windows-targets 0.52.6",
+]
+
+[[package]]
+name = "windows-sys"
+version = "0.61.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ae137229bcbd6cdf0f7b80a31df61766145077ddf49416a728b02cb3921ff3fc"
+dependencies = [
+ "windows-link",
 ]
 
 [[package]]
@@ -7396,7 +8296,7 @@ dependencies = [
  "serde_json",
  "thiserror 1.0.64",
  "tokio",
- "tungstenite",
+ "tungstenite 0.23.0",
  "wasm-bindgen",
  "workflow-core",
  "workflow-log",
@@ -7437,7 +8337,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d161c4b844eee479f81306f2526266f9608a663e0a679d9fc0572ee15c144e06"
 dependencies = [
  "async-std",
- "base64",
+ "base64 0.22.1",
  "cfg-if 1.0.0",
  "chrome-sys",
  "faster-hex 0.9.0",
@@ -7583,9 +8483,9 @@ dependencies = [
  "js-sys",
  "thiserror 1.0.64",
  "tokio",
- "tokio-tungstenite",
+ "tokio-tungstenite 0.23.1",
  "triggered",
- "tungstenite",
+ "tungstenite 0.23.0",
  "wasm-bindgen",
  "wasm-bindgen-futures",
  "web-sys",

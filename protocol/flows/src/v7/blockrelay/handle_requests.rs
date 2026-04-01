@@ -1,6 +1,6 @@
 use crate::{flow_context::FlowContext, flow_trait::Flow};
-use Turkium_core::debug;
-use Turkium_p2p_lib::{
+use turkium_core::debug;
+use turkium_p2p_lib::{
     IncomingRoute, Router,
     common::ProtocolError,
     convert::header::HeaderFormat,
@@ -35,7 +35,7 @@ impl HandleRelayBlockRequests {
     async fn start_impl(&mut self) -> Result<(), ProtocolError> {
         // We begin by sending the current sink to the new peer. This is to help nodes to exchange
         // state even if no new blocks arrive for some reason.
-        // Note: in go-Turkiumd this was done via a dedicated one-time flow.
+        // Note: in go-turkiumd this was done via a dedicated one-time flow.
         self.send_sink().await?;
 
         loop {

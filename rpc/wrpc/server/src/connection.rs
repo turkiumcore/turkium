@@ -1,12 +1,12 @@
-use Turkium_grpc_client::{GrpcClient, GrpcClientNotify};
-use Turkium_notify::{
+use turkium_grpc_client::{GrpcClient, GrpcClientNotify};
+use turkium_notify::{
     connection::Connection as ConnectionT,
     error::{Error as NotifyError, Result as NotifyResult},
     listener::ListenerId,
     notification::Notification as NotificationT,
     notifier::Notify,
 };
-use Turkium_rpc_core::{Notification, api::ops::RpcApiOps, notify::mode::NotificationMode};
+use turkium_rpc_core::{Notification, api::ops::RpcApiOps, notify::mode::NotificationMode};
 use std::{
     fmt::{Debug, Display},
     sync::{Arc, Mutex},
@@ -150,7 +150,7 @@ impl ConnectionT for Connection {
     type Notification = Notification;
     type Message = Message;
     type Encoding = NotifyEncoding;
-    type Error = Turkium_notify::error::Error;
+    type Error = turkium_notify::error::Error;
 
     fn encoding(&self) -> Self::Encoding {
         self.messenger().encoding().into()

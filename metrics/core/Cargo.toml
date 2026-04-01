@@ -1,5 +1,5 @@
 [package]
-name = "Turkium-metrics-core"
+name = "turkium-metrics-core"
 description = "Tools for collecting and reporting Turkium p2p node metrics"
 rust-version.workspace = true
 version.workspace = true
@@ -13,8 +13,8 @@ repository.workspace = true
 async-trait.workspace = true
 borsh.workspace = true
 futures.workspace = true
-Turkium-core.workspace = true
-Turkium-rpc-core.workspace = true
+turkium-core.workspace = true
+turkium-rpc-core.workspace = true
 separator.workspace = true
 serde.workspace = true
 thiserror.workspace = true

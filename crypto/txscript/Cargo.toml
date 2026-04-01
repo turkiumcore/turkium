@@ -1,6 +1,6 @@
 [package]
-name = "Turkium-txscript"
-description = "Turkium txscript engine library"
+name = "turkium-txscript"
+description = "turkium txscript engine library"
 rust-version.workspace = true
 version.workspace = true
 edition.workspace = true
@@ -23,12 +23,12 @@ cfg-if.workspace = true
 hexplay.workspace = true
 indexmap.workspace = true
 itertools.workspace = true
-Turkium-addresses.workspace = true
-Turkium-consensus-core.workspace = true
-Turkium-hashes.workspace = true
-Turkium-txscript-errors.workspace = true
-Turkium-utils.workspace = true
-Turkium-wasm-core.workspace = true
+turkium-addresses.workspace = true
+turkium-consensus-core.workspace = true
+turkium-hashes.workspace = true
+turkium-txscript-errors.workspace = true
+turkium-utils.workspace = true
+turkium-wasm-core.workspace = true
 log.workspace = true
 parking_lot.workspace = true
 rand.workspace = true

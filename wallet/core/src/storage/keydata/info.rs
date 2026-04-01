@@ -3,7 +3,7 @@
 //!
 
 use crate::imports::*;
-use Turkium_wallet_macros::declare_typescript_wasm_interface as declare;
+use turkium_wallet_macros::declare_typescript_wasm_interface as declare;
 use std::fmt::{Display, Formatter};
 
 declare! {

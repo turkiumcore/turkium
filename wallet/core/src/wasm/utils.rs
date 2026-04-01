@@ -1,7 +1,7 @@
 use crate::imports::NetworkParams;
 use crate::result::Result;
 use crate::wasm::api::message::INetworkParams;
-use Turkium_consensus_core::network::{NetworkIdT, NetworkType, NetworkTypeT};
+use turkium_consensus_core::network::{NetworkIdT, NetworkType, NetworkTypeT};
 use js_sys::BigInt;
 use wasm_bindgen::prelude::*;
 use workflow_wasm::prelude::*;
@@ -18,8 +18,8 @@ extern "C" {
 /// can be used to parse user input.
 /// @category Wallet SDK
 #[wasm_bindgen(js_name = "TurkiumToSompi")]
-pub fn Turkium_to_sompi(Turkium: String) -> Option<BigInt> {
-    crate::utils::try_Turkium_str_to_sompi(Turkium).ok().flatten().map(Into::into)
+pub fn turkium_to_sompi(turkium: String) -> Option<BigInt> {
+    crate::utils::try_turkium_str_to_sompi(turkium).ok().flatten().map(Into::into)
 }
 
 ///
@@ -28,9 +28,9 @@ pub fn Turkium_to_sompi(Turkium: String) -> Option<BigInt> {
 /// @category Wallet SDK
 ///
 #[wasm_bindgen(js_name = "sompiToTurkiumString")]
-pub fn sompi_to_Turkium_string(sompi: ISompiToTurkium) -> Result<String> {
+pub fn sompi_to_turkium_string(sompi: ISompiToTurkium) -> Result<String> {
     let sompi = sompi.try_as_u64()?;
-    Ok(crate::utils::sompi_to_Turkium_string(sompi))
+    Ok(crate::utils::sompi_to_turkium_string(sompi))
 }
 
 ///
@@ -41,10 +41,10 @@ pub fn sompi_to_Turkium_string(sompi: ISompiToTurkium) -> Result<String> {
 /// @category Wallet SDK
 ///
 #[wasm_bindgen(js_name = "sompiToTurkiumStringWithSuffix")]
-pub fn sompi_to_Turkium_string_with_suffix(sompi: ISompiToTurkium, network: &NetworkTypeT) -> Result<String> {
+pub fn sompi_to_turkium_string_with_suffix(sompi: ISompiToTurkium, network: &NetworkTypeT) -> Result<String> {
     let sompi = sompi.try_as_u64()?;
     let network_type = NetworkType::try_from(network)?;
-    Ok(crate::utils::sompi_to_Turkium_string_with_suffix(sompi, &network_type))
+    Ok(crate::utils::sompi_to_turkium_string_with_suffix(sompi, &network_type))
 }
 
 #[wasm_bindgen(js_name = "getNetworkParams")]

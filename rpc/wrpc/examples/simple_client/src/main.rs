@@ -1,8 +1,8 @@
 #![allow(non_snake_case)]
-// Example of simple client to connect with Turkium node using wRPC connection and collect some node and network basic data
+// Example of simple client to connect with turkium node using wRPC connection and collect some node and network basic data
 
-use Turkium_rpc_core::{GetBlockDagInfoResponse, GetServerInfoResponse, api::rpc::RpcApi};
-use Turkium_wrpc_client::{
+use turkium_rpc_core::{GetBlockDagInfoResponse, GetServerInfoResponse, api::rpc::RpcApi};
+use turkium_wrpc_client::{
     Resolver, TurkiumRpcClient, WrpcEncoding,
     client::{ConnectOptions, ConnectStrategy},
     prelude::{NetworkId, NetworkType},
@@ -15,7 +15,7 @@ use std::time::Duration;
 async fn main() -> ExitCode {
     match check_node_status().await {
         Ok(_) => {
-            println!("Well done! You successfully completed your first client connection to Turkium node!");
+            println!("Well done! You successfully completed your first client connection to turkium node!");
             ExitCode::SUCCESS
         }
         Err(error) => {
@@ -30,12 +30,12 @@ async fn check_node_status() -> Result<()> {
     let encoding = WrpcEncoding::Borsh;
 
     // If you want to connect to your own node, define your node address and wRPC port using let url = Some("ws://0.0.0.0:5202")
-    // Verify your Turkium node is runnning with --rpclisten-borsh=0.0.0.0:5202 parameter
+    // Verify your turkium node is runnning with --rpclisten-borsh=0.0.0.0:5202 parameter
     // In this example we don't use a specific node but we connect through the resolver, which use a pool of public nodes
     let url = None;
     let resolver = Some(Resolver::default());
 
-    // Define the network your Turkium node is connected to
+    // Define the network your turkium node is connected to
     // You can select NetworkType::Mainnet, NetworkType::Testnet, NetworkType::Devnet, NetworkType::Simnet
     let network_type = NetworkType::Mainnet;
     let selected_network = Some(NetworkId::new(network_type));
@@ -55,10 +55,10 @@ async fn check_node_status() -> Result<()> {
         ..Default::default()
     };
 
-    // Connect to selected Turkium node
+    // Connect to selected turkium node
     client.connect(Some(options)).await?;
 
-    // Retrieve and show Turkium node information
+    // Retrieve and show turkium node information
     let GetServerInfoResponse { is_synced, server_version, network_id, has_utxo_index, .. } = client.get_server_info().await?;
 
     println!("Node version: {server_version}");
@@ -96,7 +96,7 @@ async fn check_node_status() -> Result<()> {
     println!("Virtual DAA score: {virtual_daa_score}");
     println!("Sink: {sink}");
 
-    // Disconnect client from Turkium node
+    // Disconnect client from turkium node
     client.disconnect().await?;
 
     // Return function result

@@ -2,9 +2,9 @@
 
 use crate::RpcUtxoEntry;
 use crate::RpcUtxosByAddressesEntry;
-use Turkium_addresses::Prefix;
-use Turkium_index_core::indexed_utxos::UtxoSetByScriptPublicKey;
-use Turkium_txscript::extract_script_pub_key_address;
+use turkium_addresses::Prefix;
+use turkium_index_core::indexed_utxos::UtxoSetByScriptPublicKey;
+use turkium_txscript::extract_script_pub_key_address;
 
 // ----------------------------------------------------------------------------
 // index to rpc_core

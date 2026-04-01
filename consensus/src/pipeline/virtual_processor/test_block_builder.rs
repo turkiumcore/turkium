@@ -3,11 +3,11 @@ use std::{ops::Deref, sync::Arc};
 use crate::model::stores::{
     pruning::PruningStoreReader, utxo_multisets::UtxoMultisetsStoreReader, virtual_state::VirtualStateStoreReader,
 };
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     block::BlockTemplate, blockhash::ORIGIN, coinbase::MinerData, errors::block::RuleError, tx::Transaction,
     utxo::utxo_view::UtxoViewComposition,
 };
-use Turkium_hashes::Hash;
+use turkium_hashes::Hash;
 
 use super::VirtualStateProcessor;
 

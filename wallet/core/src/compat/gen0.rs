@@ -4,7 +4,7 @@
 
 use crate::error::Error;
 use crate::imports::*;
-use Turkium_bip32::{ExtendedPrivateKey, Language, Mnemonic, Prefix, SecretKey};
+use turkium_bip32::{ExtendedPrivateKey, Language, Mnemonic, Prefix, SecretKey};
 use cfb_mode::cipher::AsyncStreamCipher;
 use cfb_mode::cipher::KeyIvInit;
 use evpkdf::evpkdf;
@@ -134,7 +134,7 @@ fn aes_decrypt_v0(key: &[u8], iv: &[u8], content: &mut [u8]) -> Result<String> {
 }
 
 // ---
-// {"type":"Turkium-wallet","encryption":"default","version":1,"generator":"pwa","wallet":{"mnemonic":"hex"}}
+// {"type":"turkium-wallet","encryption":"default","version":1,"generator":"pwa","wallet":{"mnemonic":"hex"}}
 
 #[derive(Deserialize)]
 struct Wallet {
@@ -155,14 +155,14 @@ struct Envelope {
 fn legacy_v0_keydata_location() -> Result<(PathBuf, Options)> {
     let filename = if runtime::is_windows() {
         let appdata = env::var("APPDATA")?;
-        fs::resolve_path(&format!("{appdata}/Turkium/Turkium.kpk"))?
+        fs::resolve_path(&format!("{appdata}/turkium/turkium.kpk"))?
     } else if runtime::is_macos() {
-        fs::resolve_path("~/Library/Application Support/Turkium/Turkium.kpk")?
+        fs::resolve_path("~/Library/Application Support/turkium/turkium.kpk")?
     } else {
-        fs::resolve_path("~/.Turkium/Turkium.kpk")?
+        fs::resolve_path("~/.turkium/turkium.kpk")?
     };
 
-    let options = workflow_store::fs::Options::with_local_storage_key("Turkium-wallet");
+    let options = workflow_store::fs::Options::with_local_storage_key("turkium-wallet");
 
     Ok((filename, options))
 }

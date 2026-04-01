@@ -1,6 +1,6 @@
 use std::time::{Duration, Instant};
 
-use Turkium_core::info;
+use turkium_core::info;
 use chrono::{Local, LocalResult, TimeZone};
 
 /// Minimum number of items to report

@@ -14,7 +14,7 @@ impl List {
             tprintln!(ctx, "{}", style("Wallet is not connected to the network").magenta());
             tprintln!(ctx);
         } else if !ctx.wallet().is_synced() {
-            tprintln!(ctx, "{}", style("Turkium node is currently syncing").magenta());
+            tprintln!(ctx, "{}", style("turkium node is currently syncing").magenta());
             tprintln!(ctx);
         }
 

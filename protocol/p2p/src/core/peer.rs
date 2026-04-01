@@ -1,5 +1,5 @@
-use Turkium_consensus_core::subnets::SubnetworkId;
-use Turkium_utils::networking::{IpAddress, PeerId};
+use turkium_consensus_core::subnets::SubnetworkId;
+use turkium_utils::networking::{IpAddress, PeerId};
 use std::{fmt::Display, net::SocketAddr, sync::Arc, time::Instant};
 
 #[derive(Debug, Clone, Default)]

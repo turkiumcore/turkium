@@ -22,7 +22,7 @@ pub fn decrypt_mnemonic<T: AsRef<[u8]>>(
 #[cfg(test)]
 mod test {
     use super::*;
-    use Turkium_addresses::Address;
+    use turkium_addresses::Address;
     use hex_literal::hex;
 
     #[test]
@@ -78,7 +78,7 @@ mod test {
         let acc = wallet.import_Turkiumwallet_golang_single_v1(&import_secret, &wallet_secret, file).await.unwrap();
         assert_eq!(
             acc.receive_address().unwrap(),
-            Address::try_from("Turkium:qpuvlauc6a5syze9g70dnxzzvykhkuatsjrx87mxqccqh7kf9kcssdkp9ec7w").unwrap(), // taken from golang impl
+            Address::try_from("turkium:qpuvlauc6a5syze9g70dnxzzvykhkuatsjrx87mxqccqh7kf9kcssdkp9ec7w").unwrap(), // taken from golang impl
         );
     }
 
@@ -129,7 +129,7 @@ mod test {
         let acc = wallet.import_Turkiumwallet_golang_multisig_v1(&import_secret, &wallet_secret, file).await.unwrap();
         assert_eq!(
             acc.receive_address().unwrap(),
-            Address::try_from("Turkium:pqvgkyjeuxmd8k70egrrzpdz5rqj0acmr6y94mwsltxfp6nc50742295c3998").unwrap(), // taken from golang impl
+            Address::try_from("turkium:pqvgkyjeuxmd8k70egrrzpdz5rqj0acmr6y94mwsltxfp6nc50742295c3998").unwrap(), // taken from golang impl
         );
     }
 
@@ -146,9 +146,9 @@ mod test {
 
         #[derive(Debug, Default, Deserialize)]
         struct EncryptedMnemonicIntermediate {
-            #[serde(with = "Turkium_utils::serde_bytes")]
+            #[serde(with = "turkium_utils::serde_bytes")]
             cipher: Vec<u8>,
-            #[serde(with = "Turkium_utils::serde_bytes")]
+            #[serde(with = "turkium_utils::serde_bytes")]
             salt: Vec<u8>,
         }
         impl From<EncryptedMnemonicIntermediate> for EncryptedMnemonic<Vec<u8>> {

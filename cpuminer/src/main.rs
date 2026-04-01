@@ -21,6 +21,7 @@ use crate::{
 
 mod cli;
 mod miner;
+mod pow;
 mod stratum_client;
 mod swap_rust;
 mod target;
@@ -100,7 +101,7 @@ async fn run_pool_mode(
     info!("Connected to Stratum pool");
 
     // Spawn listener task
-    let listener_shutdown = shutdown.clone();
+    let _listener_shutdown = shutdown.clone();
     let listener_task = tokio::spawn(async move {
         if let Err(e) = stratum_client.listen_for_notifications().await {
             warn!("Pool listener error: {}", e);
@@ -108,7 +109,7 @@ async fn run_pool_mode(
     });
 
     // Mine with templates from pool
-    let mut miner_manager = MinerManager::new(
+    let _miner_manager = MinerManager::new(
         // For pool mode, we don't use the gRPC channel
         // Instead we'll handle submissions differently
         tokio::sync::mpsc::channel(1).0,

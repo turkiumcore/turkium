@@ -3,13 +3,13 @@ use crate::prelude::*;
 use crate::pskt::{Inner as PSKTInner, PSKT};
 // use crate::wasm::result;
 
-use Turkium_addresses::{Address, Prefix};
-// use Turkium_bip32::Prefix;
-use Turkium_consensus_core::network::{NetworkId, NetworkType};
-use Turkium_consensus_core::tx::{ScriptPublicKey, TransactionOutpoint, UtxoEntry};
+use turkium_addresses::{Address, Prefix};
+// use turkium_bip32::Prefix;
+use turkium_consensus_core::network::{NetworkId, NetworkType};
+use turkium_consensus_core::tx::{ScriptPublicKey, TransactionOutpoint, UtxoEntry};
 
-use Turkium_consensus_core::constants::UNACCEPTED_DAA_SCORE;
-use Turkium_txscript::{extract_script_pub_key_address, pay_to_address_script, pay_to_script_hash_script};
+use turkium_consensus_core::constants::UNACCEPTED_DAA_SCORE;
+use turkium_txscript::{extract_script_pub_key_address, pay_to_address_script, pay_to_script_hash_script};
 use hex;
 use serde::{Deserialize, Serialize};
 use std::ops::Deref;
@@ -169,7 +169,7 @@ pub fn lock_script_sig_templating_bytes(payload: Vec<u8>, pubkey_bytes: Option<&
     Ok(payload_bytes)
 }
 
-pub fn script_sig_to_address(script_sig: &[u8], prefix: Turkium_addresses::Prefix) -> Result<Address, Error> {
+pub fn script_sig_to_address(script_sig: &[u8], prefix: turkium_addresses::Prefix) -> Result<Address, Error> {
     extract_script_pub_key_address(&pay_to_script_hash_script(script_sig), prefix).map_err(Error::P2SHExtractError)
 }
 
@@ -276,8 +276,8 @@ mod tests {
     use crate::prelude::*;
     use crate::role::Creator;
     use crate::role::*;
-    use Turkium_consensus_core::tx::{TransactionId, TransactionOutpoint, UtxoEntry};
-    use Turkium_txscript::{multisig_redeem_script, pay_to_script_hash_script};
+    use turkium_consensus_core::tx::{TransactionId, TransactionOutpoint, UtxoEntry};
+    use turkium_txscript::{multisig_redeem_script, pay_to_script_hash_script};
     use secp256k1::Secp256k1;
     use secp256k1::{Keypair, rand::thread_rng};
     use std::str::FromStr;

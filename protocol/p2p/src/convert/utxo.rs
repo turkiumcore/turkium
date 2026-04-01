@@ -1,5 +1,5 @@
 use crate::pb as protowire;
-use Turkium_consensus_core::tx::{TransactionOutpoint, UtxoEntry};
+use turkium_consensus_core::tx::{TransactionOutpoint, UtxoEntry};
 
 // ----------------------------------------------------------------------------
 // consensus_core to protowire

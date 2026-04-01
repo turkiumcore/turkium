@@ -1,7 +1,7 @@
 use crate::model::stores::relations::RelationsStoreReader;
-use Turkium_consensus_core::BlockHashSet;
-use Turkium_database::prelude::{ReadLock, StoreError, StoreResult};
-use Turkium_hashes::Hash;
+use turkium_consensus_core::BlockHashSet;
+use turkium_database::prelude::{ReadLock, StoreError, StoreResult};
+use turkium_hashes::Hash;
 use parking_lot::RwLock;
 use std::sync::Arc;
 
@@ -18,7 +18,7 @@ impl<T: RelationsStoreReader> MTRelationsService<T> {
 }
 
 impl<T: RelationsStoreReader> RelationsStoreReader for MTRelationsService<T> {
-    fn get_parents(&self, hash: Hash) -> Result<Turkium_consensus_core::blockhash::BlockHashes, StoreError> {
+    fn get_parents(&self, hash: Hash) -> Result<turkium_consensus_core::blockhash::BlockHashes, StoreError> {
         self.store.read().get_parents(hash)
     }
 

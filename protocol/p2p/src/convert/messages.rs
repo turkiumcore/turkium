@@ -8,14 +8,14 @@ use super::{
     option::TryIntoOptionEx,
 };
 use crate::pb as protowire;
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     block::Block,
     header::Header,
     pruning::{PruningPointProof, PruningPointsList},
     tx::{TransactionId, TransactionOutpoint, UtxoEntry},
 };
-use Turkium_hashes::Hash;
-use Turkium_utils::networking::{IpAddress, PeerId};
+use turkium_hashes::Hash;
+use turkium_utils::networking::{IpAddress, PeerId};
 
 use std::{collections::HashMap, sync::Arc};
 

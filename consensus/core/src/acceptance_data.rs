@@ -1,4 +1,4 @@
-use Turkium_hashes::Hash;
+use turkium_hashes::Hash;
 use serde::{Deserialize, Serialize};
 
 use crate::tx::TransactionId;

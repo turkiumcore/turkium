@@ -1,10 +1,10 @@
-use Turkium_database::{
+use turkium_database::{
     prelude::DB,
     prelude::{CachePolicy, StoreError, StoreResult},
     prelude::{CachedDbAccess, DirectDbWriter},
     registry::DatabaseStorePrefixes,
 };
-use Turkium_utils::mem_size::MemSizeEstimator;
+use turkium_utils::mem_size::MemSizeEstimator;
 use serde::{Deserialize, Serialize};
 use std::net::Ipv6Addr;
 use std::{error::Error, fmt::Display, sync::Arc};

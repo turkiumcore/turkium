@@ -7,9 +7,9 @@
 
 use crate::imports::*;
 use crate::tx::{Fees, GeneratorSummary, PaymentDestination};
-use Turkium_addresses::Address;
-use Turkium_consensus_client::{TransactionOutpoint, UtxoEntry};
-use Turkium_rpc_core::RpcFeerateBucket;
+use turkium_addresses::Address;
+use turkium_consensus_client::{TransactionOutpoint, UtxoEntry};
+use turkium_rpc_core::RpcFeerateBucket;
 
 #[derive(Clone, Debug, Serialize, Deserialize, BorshSerialize, BorshDeserialize)]
 #[serde(rename_all = "camelCase")]

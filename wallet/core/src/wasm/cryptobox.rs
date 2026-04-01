@@ -1,6 +1,6 @@
 use crate::cryptobox::CryptoBox as NativeCryptoBox;
 use crate::imports::*;
-use Turkium_wasm_core::types::BinaryT;
+use turkium_wasm_core::types::BinaryT;
 use base64::{Engine as _, engine::general_purpose};
 use crypto_box::{KEY_SIZE, PublicKey, SecretKey};
 

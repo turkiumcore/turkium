@@ -1,4 +1,4 @@
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     errors::tx::TxRuleError,
     tx::{TransactionId, TransactionOutpoint},
 };

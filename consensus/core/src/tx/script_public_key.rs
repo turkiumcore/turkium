@@ -1,4 +1,4 @@
-use Turkium_utils::{
+use turkium_utils::{
     hex::{FromHex, ToHex},
     serde_bytes::FromHexVisitor,
 };
@@ -47,7 +47,7 @@ export interface IScriptPublicKey {
 }
 "#;
 
-/// Represents a Turkiumd ScriptPublicKey
+/// Represents a turkiumd ScriptPublicKey
 /// @category Consensus
 #[derive(Default, PartialEq, Eq, Clone, Hash, CastFromJs)]
 #[wasm_bindgen(inspectable)]

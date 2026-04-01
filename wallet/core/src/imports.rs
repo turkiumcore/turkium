@@ -23,14 +23,14 @@ pub use crate::utxo::{Maturity, NetworkParams, OutgoingTransaction, UtxoContext,
 pub use crate::wallet::*;
 pub use crate::{storage, utils};
 
-pub use Turkium_addresses::{Address, Prefix};
-pub use Turkium_consensus_core::network::{NetworkId, NetworkType};
-pub use Turkium_consensus_core::tx::{ScriptPublicKey, TransactionId, TransactionIndexType};
-pub use Turkium_metrics_core::{Metric, Metrics, MetricsSnapshot};
-pub use Turkium_utils::hashmap::*;
-pub use Turkium_utils::hex::{FromHex, ToHex};
-pub use Turkium_wallet_keys::secret::Secret;
-pub use Turkium_wallet_keys::types::*;
+pub use turkium_addresses::{Address, Prefix};
+pub use turkium_consensus_core::network::{NetworkId, NetworkType};
+pub use turkium_consensus_core::tx::{ScriptPublicKey, TransactionId, TransactionIndexType};
+pub use turkium_metrics_core::{Metric, Metrics, MetricsSnapshot};
+pub use turkium_utils::hashmap::*;
+pub use turkium_utils::hex::{FromHex, ToHex};
+pub use turkium_wallet_keys::secret::Secret;
+pub use turkium_wallet_keys::types::*;
 pub use ahash::{AHashMap, AHashSet};
 pub use async_std::sync::{
     Mutex as AsyncMutex, MutexGuard as AsyncMutexGuard, RwLock as AsyncRwLock, RwLockReadGuard as AsyncRwLockReadGuard,

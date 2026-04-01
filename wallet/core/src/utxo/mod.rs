@@ -15,7 +15,7 @@ pub mod settings;
 pub mod stream;
 pub mod sync;
 
-pub use Turkium_consensus_client::UtxoEntryId;
+pub use turkium_consensus_client::UtxoEntryId;
 pub use balance::Balance;
 pub use binding::UtxoContextBinding;
 pub use context::{UtxoContext, UtxoContextId};

@@ -40,7 +40,7 @@ impl TryFrom<CpuMinerConfig> for Vec<String> {
         let mut argv = Vec::new();
 
         if args.path.is_none() {
-            return Err(Error::Custom("no Turkiumd path is specified".to_string()));
+            return Err(Error::Custom("no turkiumd path is specified".to_string()));
         }
 
         if args.network.is_none() {
@@ -68,7 +68,7 @@ impl TryFrom<CpuMinerConfig> for Vec<String> {
         }
 
         let server = args.server.unwrap_or("127.0.0.1".to_string());
-        let server = format!("--Turkiumd-address={server}");
+        let server = format!("--turkiumd-address={server}");
         argv.push(server.as_str());
 
         if args.address.is_none() {
@@ -174,7 +174,7 @@ impl CpuMiner {
             self.mute.load(Ordering::SeqCst),
         );
 
-        // let options = TurkiumdOptions::new(path,network)?;
+        // let options = turkiumdOptions::new(path,network)?;
         let process = Arc::new(Process::new(options));
         self.inner().process.replace(process.clone());
         process.run()?;

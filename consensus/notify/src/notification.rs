@@ -1,6 +1,6 @@
-use Turkium_consensus_core::{acceptance_data::AcceptanceData, block::Block, utxo::utxo_diff::UtxoDiff};
-use Turkium_hashes::Hash;
-use Turkium_notify::{
+use turkium_consensus_core::{acceptance_data::AcceptanceData, block::Block, utxo::utxo_diff::UtxoDiff};
+use turkium_hashes::Hash;
+use turkium_notify::{
     events::EventType,
     full_featured,
     notification::Notification as NotificationTrait,

@@ -8,18 +8,18 @@ use crate::{
         method::RoutingPolicy,
     },
 };
-use Turkium_core::{debug, info, trace, warn};
-use Turkium_grpc_core::{
+use turkium_core::{debug, info, trace, warn};
+use turkium_grpc_core::{
     ops::TurkiumdPayloadOps,
     protowire::{TurkiumdRequest, TurkiumdResponse},
 };
-use Turkium_notify::{
+use turkium_notify::{
     connection::Connection as ConnectionT,
     error::Error as NotificationError,
     listener::{ListenerId, ListenerLifespan},
     notifier::Notifier,
 };
-use Turkium_rpc_core::Notification;
+use turkium_rpc_core::Notification;
 use async_channel::{Receiver as MpmcReceiver, Sender as MpmcSender, TrySendError as MpmcTrySendError, bounded};
 use itertools::Itertools;
 use parking_lot::Mutex;
@@ -344,7 +344,7 @@ impl Connection {
 
     /// Enqueues a response to be sent to the client
     pub async fn enqueue(&self, response: TurkiumdResponse) -> GrpcServerResult<()> {
-        assert!(response.payload.is_some(), "Turkiumd gRPC message should always have a value");
+        assert!(response.payload.is_some(), "turkiumd gRPC message should always have a value");
         match self.inner.outgoing_route.try_send(response) {
             Ok(_) => Ok(()),
             Err(TrySendError::Closed(_)) => Err(GrpcServerError::ConnectionClosed),
@@ -409,7 +409,7 @@ impl ConnectionT for Connection {
         GrpcEncoding::ProtowireResponse
     }
 
-    fn into_message(notification: &Turkium_rpc_core::Notification, _: &Self::Encoding) -> Self::Message {
+    fn into_message(notification: &turkium_rpc_core::Notification, _: &Self::Encoding) -> Self::Message {
         Arc::new((notification).into())
     }
 

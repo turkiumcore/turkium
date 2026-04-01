@@ -14,10 +14,10 @@ use workflow_core::channel::{Channel, DuplexChannel, oneshot};
 use workflow_core::task::spawn;
 use workflow_log::prelude::*;
 
-// Turkium RPC primitives
-use Turkium_wrpc_client::prelude::*;
+// turkium RPC primitives
+use turkium_wrpc_client::prelude::*;
 // reuse wRPC Result type for convenience
-use Turkium_wrpc_client::result::Result;
+use turkium_wrpc_client::result::Result;
 
 struct Inner {
     // task control duplex channel - a pair of channels where sender
@@ -51,7 +51,7 @@ impl Listener {
         // obtain the public node rpc endpoint
         let (resolver, url) = if let Some(url) = url { (None, Some(url)) } else { (Some(Resolver::default()), None) };
 
-        // Create a basic Turkium RPC client instance using Borsh encoding.
+        // Create a basic turkium RPC client instance using Borsh encoding.
         let client = Arc::new(TurkiumRpcClient::new_with_args(WrpcEncoding::Borsh, url.as_deref(), resolver, Some(network_id), None)?);
 
         let inner = Inner {

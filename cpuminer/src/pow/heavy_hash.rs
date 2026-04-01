@@ -8,71 +8,35 @@ use std::mem::MaybeUninit;
 pub struct Matrix([[u16; 64]; 64]);
 
 impl Matrix {
-    // pub fn generate(hash: Hash) -> Self {
-    //     let mut generator = XoShiRo256PlusPlus::new(hash);
-    //     let mut mat = Matrix([[0u16; 64]; 64]);
-    //     loop {
-    //         for i in 0..64 {
-    //             for j in (0..64).step_by(16) {
-    //                 let val = generator.u64();
-    //                 for shift in 0..16 {
-    //                     mat.0[i][j + shift] = (val >> (4 * shift) & 0x0F) as u16;
-    //                 }
-    //             }
-    //         }
-    //         if mat.compute_rank() == 64 {
-    //             return mat;
-    //         }
-    //     }
-    // }
-
     #[inline(always)]
+    #[allow(dead_code)]
     pub fn generate(hash: Hash) -> Self {
         let mut generator = XoShiRo256PlusPlus::new(hash);
         loop {
-            let mat = Self::rand_matrix_no_rank_check(&mut generator);
+            let mat = Self(array_from_fn(|_| {
+                let mut val = 0;
+                array_from_fn(|j| {
+                    let shift = j % 16;
+                    if shift == 0 {
+                        val = generator.u64();
+                    }
+                    (val >> (4 * shift) & 0x0F) as u16
+                })
+            }));
             if mat.compute_rank() == 64 {
                 return mat;
             }
         }
     }
 
-    #[inline(always)]
-    fn rand_matrix_no_rank_check(generator: &mut XoShiRo256PlusPlus) -> Self {
-        Self(array_from_fn(|_| {
-            let mut val = 0;
-            array_from_fn(|j| {
-                let shift = j % 16;
-                if shift == 0 {
-                    val = generator.u64();
-                }
-                (val >> (4 * shift) & 0x0F) as u16
-            })
-        }))
-    }
-
-    #[inline(always)]
-    fn convert_to_float(&self) -> [[f64; 64]; 64] {
-        // SAFETY: An uninitialized MaybrUninit is always safe.
-        let mut out: [[MaybeUninit<f64>; 64]; 64] = unsafe { MaybeUninit::uninit().assume_init() };
-
-        out.iter_mut().zip(self.0.iter()).for_each(|(out_row, mat_row)| {
-            out_row.iter_mut().zip(mat_row).for_each(|(out_element, &element)| {
-                out_element.write(f64::from(element));
-            });
-        });
-        // SAFETY: The loop above wrote into all indexes.
-        unsafe { std::mem::transmute(out) }
-    }
-
-    pub fn compute_rank(&self) -> usize {
+    #[allow(dead_code)]
+    fn compute_rank(&self) -> usize {
         const EPS: f64 = 1e-9;
         let mut mat_float = self.convert_to_float();
         let mut rank = 0;
         let mut row_selected = [false; 64];
         for i in 0..64 {
             if i >= 64 {
-                // Required for optimization, See https://github.com/rust-lang/rust/issues/90794
                 unreachable!()
             }
             let mut j = 0;
@@ -98,6 +62,18 @@ impl Matrix {
             }
         }
         rank
+    }
+
+    #[allow(dead_code)]
+    fn convert_to_float(&self) -> [[f64; 64]; 64] {
+        let mut out: [[MaybeUninit<f64>; 64]; 64] = unsafe { MaybeUninit::uninit().assume_init() };
+
+        out.iter_mut().zip(self.0.iter()).for_each(|(out_row, mat_row)| {
+            out_row.iter_mut().zip(mat_row).for_each(|(out_element, &element)| {
+                out_element.write(f64::from(element));
+            });
+        });
+        unsafe { std::mem::transmute(out) }
     }
 
     pub fn heavy_hash(&self, hash: Hash) -> Hash {

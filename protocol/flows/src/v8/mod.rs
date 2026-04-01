@@ -16,8 +16,8 @@ pub(crate) mod request_block_bodies;
 use crate::{flow_context::FlowContext, flow_trait::Flow};
 
 use crate::ibd::IbdFlow;
-use Turkium_p2p_lib::{Router, SharedIncomingRoute, TurkiumdMessagePayloadType, convert::header::HeaderFormat};
-use Turkium_utils::channel;
+use turkium_p2p_lib::{Router, SharedIncomingRoute, TurkiumdMessagePayloadType, convert::header::HeaderFormat};
+use turkium_utils::channel;
 use request_block_bodies::HandleBlockBodyRequests;
 use std::sync::Arc;
 
@@ -161,11 +161,11 @@ pub fn register(ctx: FlowContext, router: Arc<Router>, protocol_version: u32) ->
     }));
 
     // The reject message is handled as a special case by the router
-    // TurkiumdMessagePayloadType::Reject,
+    // turkiumdMessagePayloadType::Reject,
 
     // We do not register the below two messages since they are deprecated also in go-Turkium
-    // TurkiumdMessagePayloadType::BlockWithTrustedData,
-    // TurkiumdMessagePayloadType::IbdBlockLocator,
+    // turkiumdMessagePayloadType::BlockWithTrustedData,
+    // turkiumdMessagePayloadType::IbdBlockLocator,
 
     flows
 }

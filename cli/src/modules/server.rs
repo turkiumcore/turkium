@@ -1,5 +1,5 @@
 use crate::imports::*;
-use Turkium_wrpc_client::parse::parse_host;
+use turkium_wrpc_client::parse::parse_host;
 
 #[derive(Default, Handler)]
 #[help("Set RPC server address")]

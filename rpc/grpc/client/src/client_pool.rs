@@ -1,6 +1,6 @@
 use super::GrpcClient;
-use Turkium_core::trace;
-use Turkium_utils::{any::type_name_short, channel::Channel, triggers::SingleTrigger};
+use turkium_core::trace;
+use turkium_utils::{any::type_name_short, channel::Channel, triggers::SingleTrigger};
 use async_channel::{SendError, Sender};
 use futures_util::Future;
 use itertools::Itertools;

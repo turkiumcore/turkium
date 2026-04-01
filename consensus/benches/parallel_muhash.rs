@@ -1,11 +1,11 @@
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     muhash::MuHashExtensions,
     subnets::SUBNETWORK_ID_NATIVE,
     tx::{ScriptPublicKey, SignableTransaction, Transaction, TransactionInput, TransactionOutpoint, TransactionOutput, UtxoEntry},
 };
-use Turkium_hashes::TransactionID;
-use Turkium_muhash::MuHash;
-use Turkium_utils::iter::parallelism_in_power_steps;
+use turkium_hashes::TransactionID;
+use turkium_muhash::MuHash;
+use turkium_utils::iter::parallelism_in_power_steps;
 use criterion::{Criterion, black_box, criterion_group, criterion_main};
 use itertools::Itertools;
 use rayon::prelude::*;

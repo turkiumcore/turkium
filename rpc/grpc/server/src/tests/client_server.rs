@@ -1,15 +1,15 @@
 use super::rpc_core_mock::RpcCoreMock;
 use crate::{adaptor::Adaptor, manager::Manager};
-use Turkium_core::info;
-use Turkium_grpc_client::GrpcClient;
-use Turkium_notify::scope::{NewBlockTemplateScope, Scope};
-use Turkium_rpc_core::api::rpc::RpcApi;
-use Turkium_utils::networking::{ContextualNetAddress, NetAddress};
+use turkium_core::info;
+use turkium_grpc_client::GrpcClient;
+use turkium_notify::scope::{NewBlockTemplateScope, Scope};
+use turkium_rpc_core::api::rpc::RpcApi;
+use turkium_utils::networking::{ContextualNetAddress, NetAddress};
 use std::sync::Arc;
 
 #[tokio::test]
 async fn test_client_server_sanity_check() {
-    Turkium_core::log::try_init_logger("info, Turkium_grpc_core=trace, Turkium_grpc_server=trace, Turkium_grpc_client=trace");
+    turkium_core::log::try_init_logger("info, turkium_grpc_core=trace, turkium_grpc_server=trace, turkium_grpc_client=trace");
 
     // Create and start a fake core service
     let rpc_core_service = Arc::new(RpcCoreMock::new());
@@ -139,7 +139,7 @@ async fn test_client_server_connections() {
         },
     ];
 
-    Turkium_core::log::try_init_logger("info, Turkium_grpc_core=trace, Turkium_grpc_server=trace, Turkium_grpc_client=trace");
+    turkium_core::log::try_init_logger("info, turkium_grpc_core=trace, turkium_grpc_server=trace, turkium_grpc_client=trace");
     for test in tests {
         test.execute().await;
     }
@@ -150,7 +150,7 @@ async fn test_client_server_connections() {
 
 #[tokio::test]
 async fn test_client_server_notifications() {
-    Turkium_core::log::try_init_logger("info, Turkium_grpc_core=trace, Turkium_grpc_server=trace, Turkium_grpc_client=trace");
+    turkium_core::log::try_init_logger("info, turkium_grpc_core=trace, turkium_grpc_server=trace, turkium_grpc_client=trace");
 
     // Create and start a fake core service
     let rpc_core_service = Arc::new(RpcCoreMock::new());

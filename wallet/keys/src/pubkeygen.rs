@@ -5,8 +5,8 @@
 use crate::derivation::gen1::WalletDerivationManager;
 use crate::derivation::traits::WalletDerivationManagerTrait;
 use crate::imports::*;
-use Turkium_addresses::AddressArrayT;
-use Turkium_consensus_core::network::NetworkType;
+use turkium_addresses::AddressArrayT;
+use turkium_consensus_core::network::NetworkType;
 // use crate::xprv::XPrv;
 
 ///

@@ -1,6 +1,6 @@
 [package]
-name = "Turkium-mining"
-description = "Turkium mining"
+name = "turkium-mining"
+description = "turkium mining"
 rust-version.workspace = true
 version.workspace = true
 edition.workspace = true
@@ -10,15 +10,15 @@ license.workspace = true
 repository.workspace = true
 
 [dependencies]
-Turkium-addresses.workspace = true
-Turkium-consensus-core.workspace = true
-Turkium-consensusmanager.workspace = true
-Turkium-core.workspace = true
-Turkium-hashes.workspace = true
-Turkium-mining-errors.workspace = true
-Turkium-muhash.workspace = true
-Turkium-txscript.workspace = true
-Turkium-utils.workspace = true
+turkium-addresses.workspace = true
+turkium-consensus-core.workspace = true
+turkium-consensusmanager.workspace = true
+turkium-core.workspace = true
+turkium-hashes.workspace = true
+turkium-mining-errors.workspace = true
+turkium-muhash.workspace = true
+turkium-txscript.workspace = true
+turkium-utils.workspace = true
 
 futures-util.workspace = true
 itertools.workspace = true
@@ -32,7 +32,7 @@ thiserror.workspace = true
 tokio = { workspace = true, features = ["rt-multi-thread", "macros", "signal"] }
 
 [dev-dependencies]
-Turkium-txscript.workspace = true
+turkium-txscript.workspace = true
 criterion.workspace = true
 secp256k1.workspace = true
 

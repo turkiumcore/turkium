@@ -1,4 +1,4 @@
-use Turkium_utils::sync::rwlock::{RfRwLock, RfRwLockOwnedReadGuard, RfRwLockOwnedWriteGuard};
+use turkium_utils::sync::rwlock::{RfRwLock, RfRwLockOwnedReadGuard, RfRwLockOwnedWriteGuard};
 use criterion::{Criterion, black_box, criterion_group, criterion_main};
 use futures_util::future::join_all;
 use std::sync::Arc;

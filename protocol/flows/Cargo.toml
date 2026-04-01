@@ -1,6 +1,6 @@
 [package]
-name = "Turkium-p2p-flows"
-description = "Turkium p2p flows"
+name = "turkium-p2p-flows"
+description = "turkium p2p flows"
 rust-version.workspace = true
 version.workspace = true
 edition.workspace = true
@@ -10,20 +10,20 @@ license.workspace = true
 repository.workspace = true
 
 [dependencies]
-Turkium-core.workspace = true
-Turkium-consensus-core.workspace = true
-Turkium-consensus-notify.workspace = true
-Turkium-p2p-lib.workspace = true
-Turkium-p2p-mining.workspace = true
-Turkium-utils.workspace = true
-Turkium-utils-tower.workspace = true
-Turkium-hashes.workspace = true
-Turkium-muhash.workspace = true
-Turkium-connectionmanager.workspace = true
-Turkium-addressmanager.workspace = true
-Turkium-consensusmanager.workspace = true
-Turkium-mining.workspace = true
-Turkium-notify.workspace = true
+turkium-core.workspace = true
+turkium-consensus-core.workspace = true
+turkium-consensus-notify.workspace = true
+turkium-p2p-lib.workspace = true
+turkium-p2p-mining.workspace = true
+turkium-utils.workspace = true
+turkium-utils-tower.workspace = true
+turkium-hashes.workspace = true
+turkium-muhash.workspace = true
+turkium-connectionmanager.workspace = true
+turkium-addressmanager.workspace = true
+turkium-consensusmanager.workspace = true
+turkium-mining.workspace = true
+turkium-notify.workspace = true
 
 async-trait.workspace = true
 futures = { workspace = true, features = ["alloc"] }

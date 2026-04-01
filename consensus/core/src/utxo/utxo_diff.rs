@@ -3,7 +3,7 @@ use super::{
     utxo_error::{UtxoAlgebraError, UtxoResult},
 };
 use crate::tx::{TransactionOutpoint, UtxoEntry, VerifiableTransaction};
-use Turkium_utils::mem_size::MemSizeEstimator;
+use turkium_utils::mem_size::MemSizeEstimator;
 use serde::{Deserialize, Serialize};
 use std::collections::hash_map::Entry::Vacant;
 

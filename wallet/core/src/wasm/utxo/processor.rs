@@ -4,10 +4,10 @@ use crate::imports::*;
 use crate::result::Result;
 use crate::utxo as native;
 use crate::wasm::notify::{UtxoProcessorEventTarget, UtxoProcessorNotificationCallback, UtxoProcessorNotificationTypeOrCallback};
-use Turkium_consensus_core::network::NetworkIdT;
-use Turkium_wallet_macros::declare_typescript_wasm_interface as declare;
-use Turkium_wasm_core::events::{Sink, get_event_targets};
-use Turkium_wrpc_wasm::RpcClient;
+use turkium_consensus_core::network::NetworkIdT;
+use turkium_wallet_macros::declare_typescript_wasm_interface as declare;
+use turkium_wasm_core::events::{Sink, get_event_targets};
+use turkium_wrpc_wasm::RpcClient;
 use workflow_log::log_error;
 
 declare! {
@@ -79,7 +79,7 @@ cfg_if! {
 ///
 /// UtxoProcessor class is the main coordinator that manages UTXO processing
 /// between multiple UtxoContext instances. It acts as a bridge between the
-/// Turkium node RPC connection, address subscriptions and UtxoContext instances.
+/// turkium node RPC connection, address subscriptions and UtxoContext instances.
 ///
 /// @see {@link IUtxoProcessorArgs},
 /// {@link UtxoContext},

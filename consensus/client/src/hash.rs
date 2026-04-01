@@ -7,9 +7,9 @@
 
 use crate::imports::*;
 use crate::result::Result;
-use Turkium_hashes as native;
-use Turkium_hashes::HasherBase;
-use Turkium_wasm_core::types::BinaryT;
+use turkium_hashes as native;
+use turkium_hashes::HasherBase;
+use turkium_wasm_core::types::BinaryT;
 
 /// @category Wallet SDK
 #[derive(Default, Clone)]

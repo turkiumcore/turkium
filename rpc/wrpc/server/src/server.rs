@@ -4,8 +4,8 @@ use crate::{
     result::Result,
     service::Options,
 };
-use Turkium_grpc_client::GrpcClient;
-use Turkium_notify::{
+use turkium_grpc_client::GrpcClient;
+use turkium_notify::{
     connection::ChannelType,
     events::EVENT_TYPE_ARRAY,
     listener::ListenerLifespan,
@@ -14,12 +14,12 @@ use Turkium_notify::{
     subscriber::Subscriber,
     subscription::{MutationPolicies, UtxosChangedMutationPolicy},
 };
-use Turkium_rpc_core::{
+use turkium_rpc_core::{
     Notification, RpcResult,
     api::rpc::{DynRpcService, RpcApi},
     notify::{channel::NotificationChannel, connection::ChannelConnection, mode::NotificationMode},
 };
-use Turkium_rpc_service::service::RpcCoreService;
+use turkium_rpc_service::service::RpcCoreService;
 use std::{
     collections::HashMap,
     sync::{

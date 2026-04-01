@@ -6,9 +6,9 @@
 use crate::error::Error;
 use crate::imports::*;
 use crate::parents::CompressedParents as WasmCompressedParents;
-use Turkium_consensus_core::BlueWorkType;
-use Turkium_hashes::Hash;
-use Turkium_utils::hex::ToHex;
+use turkium_consensus_core::BlueWorkType;
+use turkium_hashes::Hash;
+use turkium_utils::hex::ToHex;
 use js_sys::Object;
 use workflow_wasm::extensions::{JsValueExtension, ObjectExtension};
 

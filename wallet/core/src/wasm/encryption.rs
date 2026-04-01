@@ -2,8 +2,8 @@
 
 use crate::encryption::*;
 use crate::imports::*;
-use Turkium_wasm_core::types::BinaryT;
-use Turkium_wasm_core::types::HexString;
+use turkium_wasm_core::types::BinaryT;
+use turkium_wasm_core::types::HexString;
 use base64::{Engine as _, engine::general_purpose};
 
 /// WASM32 binding for `encryptXChaCha20Poly1305` function.

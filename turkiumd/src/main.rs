@@ -1,14 +1,14 @@
 #![allow(non_snake_case)]
-extern crate Turkium_consensus;
-extern crate Turkium_core;
-extern crate Turkium_hashes;
+extern crate turkium_consensus;
+extern crate turkium_core;
+extern crate turkium_hashes;
 
 use std::sync::Arc;
 
-use Turkium_alloc::init_allocator_with_default_settings;
-use Turkium_core::{info, signals::Signals};
-use Turkium_utils::fd_budget;
-use Turkiumd_lib::{
+use turkium_alloc::init_allocator_with_default_settings;
+use turkium_core::{info, signals::Signals};
+use turkium_utils::fd_budget;
+use turkiumd_lib::{
     args::parse_args,
     daemon::{DESIRED_DAEMON_SOFT_FD_LIMIT, MINIMUM_DAEMON_SOFT_FD_LIMIT, create_core},
 };
@@ -19,7 +19,7 @@ static ALLOC: dhat::Alloc = dhat::Alloc;
 
 pub fn main() {
     #[cfg(feature = "heap")]
-    let _profiler = dhat::Profiler::builder().file_name("Turkiumd-heap.json").build();
+    let _profiler = dhat::Profiler::builder().file_name("turkiumd-heap.json").build();
 
     init_allocator_with_default_settings();
 
@@ -29,14 +29,14 @@ pub fn main() {
         Ok(limit) => {
             if limit < MINIMUM_DAEMON_SOFT_FD_LIMIT {
                 println!("Current OS file descriptor limit (soft FD limit) is set to {limit}");
-                println!("The Turkiumd node requires a setting of at least {DESIRED_DAEMON_SOFT_FD_LIMIT} to operate properly.");
+                println!("The turkiumd node requires a setting of at least {DESIRED_DAEMON_SOFT_FD_LIMIT} to operate properly.");
                 println!("Please increase the limits using the following command:");
                 println!("ulimit -n {DESIRED_DAEMON_SOFT_FD_LIMIT}");
             }
         }
         Err(err) => {
             println!("Unable to initialize the necessary OS file descriptor limit (soft FD limit) to: {}", err);
-            println!("The Turkiumd node requires a setting of at least {DESIRED_DAEMON_SOFT_FD_LIMIT} to operate properly.");
+            println!("The turkiumd node requires a setting of at least {DESIRED_DAEMON_SOFT_FD_LIMIT} to operate properly.");
         }
     }
 
@@ -47,5 +47,5 @@ pub fn main() {
     Arc::new(Signals::new(&core)).init();
 
     core.run();
-    info!("Turkiumd has stopped...");
+    info!("turkiumd has stopped...");
 }

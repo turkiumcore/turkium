@@ -14,7 +14,7 @@ use itertools::Itertools;
 use parking_lot::{Mutex, RwLock};
 use rocksdb::WriteBatch;
 
-use Turkium_consensus_core::{
+use turkium_consensus_core::{
     BlockHashMap, BlockHashSet, BlockLevel, HashMapCustomHasher, KType,
     blockhash::{self, BlockHashExtensions},
     errors::{
@@ -25,10 +25,10 @@ use Turkium_consensus_core::{
     pruning::{PruningPointProof, PruningPointTrustedData},
     trusted::{TrustedGhostdagData, TrustedHeader},
 };
-use Turkium_core::info;
-use Turkium_database::prelude::StoreResultExt;
-use Turkium_hashes::Hash;
-use Turkium_pow::calc_block_level;
+use turkium_core::info;
+use turkium_database::prelude::StoreResultExt;
+use turkium_hashes::Hash;
+use turkium_pow::calc_block_level;
 use thiserror::Error;
 
 use crate::{
@@ -285,9 +285,9 @@ impl PruningProofManager {
                     let ghostdag = self.ghostdag_store.get_data(hash).unwrap();
                     e.insert((&*ghostdag).into());
 
-                    // We fill `ghostdag_blocks` only for Turkiumd-go legacy reasons, but the real set we
+                    // We fill `ghostdag_blocks` only for turkiumd-go legacy reasons, but the real set we
                     // send is `daa_window_blocks` which represents the full trusted sub-DAG in the antifuture
-                    // of the pruning point which Turkiumd-rust nodes expect to get when synced with headers proof
+                    // of the pruning point which turkiumd-rust nodes expect to get when synced with headers proof
                     if let Entry::Vacant(e) = daa_window_blocks.entry(hash) {
                         e.insert(TrustedHeader {
                             header: self.headers_store.get_header(hash).unwrap(),

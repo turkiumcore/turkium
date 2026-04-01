@@ -1,6 +1,6 @@
 [package]
-name = "Turkium-utils-tower"
-description = "Turkium utilities and middleware for Tower HTTP"
+name = "turkium-utils-tower"
+description = "turkium utilities and middleware for Tower HTTP"
 rust-version.workspace = true
 version.workspace = true
 edition.workspace = true

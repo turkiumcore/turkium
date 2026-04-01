@@ -43,12 +43,6 @@ impl<T> WatchSwap<T> {
         }
     }
 
-    fn wake_up_threads(&self) {
-        // Make sure no receiver is "almost" waiting (holding the lock but hasn't entered the Condvar yet)
-        let _lock = self.shared.wait_mutex.lock();
-        self.shared.wait_cv.notify_all();
-    }
-
     #[inline]
     fn get_changed_inner<'a>(cached: &'a mut Option<Arc<T>>, inner: &'a ArcSwapOption<T>) -> bool {
         // TODO: Optimize using `arc_swap::Cache` when https://github.com/vorner/arc-swap/pull/91 is merged.
@@ -68,13 +62,11 @@ impl<T> WatchSwap<T> {
     }
 
     #[allow(dead_code)]
-    pub fn peek_cached(&self) -> impl Deref<Target = Option<Arc<T>>> + '_ {
-        &self.cached
-    }
-
     pub fn swap(&self, val: impl Into<Option<T>>) -> Option<Arc<T>> {
         let old = self.shared.inner.swap(val.into().map(Arc::new));
-        self.wake_up_threads();
+        // Notify all waiting threads
+        let _lock = self.shared.wait_mutex.lock();
+        self.shared.wait_cv.notify_all();
         old
     }
 
@@ -151,8 +143,8 @@ mod sync {
             }
         }
 
-        #[inline(always)]
-        pub fn notify_all(&self) {
+        #[allow(dead_code)]
+    pub fn notify_all(&self) {
             self.0.notify_all();
         }
     }

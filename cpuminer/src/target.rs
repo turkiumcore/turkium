@@ -1,28 +1,6 @@
 use core::cmp::Ordering;
 use std::fmt;
 
-pub fn u256_from_compact_target(bits: u32) -> Uint256 {
-    // This is a floating-point "compact" encoding originally used by
-    // OpenSSL, which satoshi put into consensus code, so we're stuck
-    // with it. The exponent needs to have 3 subtracted from it, hence
-    // this goofy decoding code:
-    let (mant, expt) = {
-        let unshifted_expt = bits >> 24;
-        if unshifted_expt <= 3 {
-            ((bits & 0xFFFFFF) >> (8 * (3 - unshifted_expt as usize)), 0)
-        } else {
-            (bits & 0xFFFFFF, 8 * ((bits >> 24) - 3))
-        }
-    };
-
-    // The mantissa is signed but may not be negative
-    if mant > 0x7FFFFF {
-        Default::default()
-    } else {
-        Uint256::from_u64(mant as u64) << (expt as usize)
-    }
-}
-
 /// Little-endian large integer type
 #[derive(Copy, Clone, PartialEq, Eq, Hash, Default, Debug)]
 pub struct Uint256(pub [u64; 4]);
@@ -58,6 +36,34 @@ impl Uint256 {
         // This should optimize to basically a transmute.
         out.chunks_exact_mut(8).zip(self.0).for_each(|(bytes, word)| bytes.copy_from_slice(&word.to_le_bytes()));
         out
+    }
+
+    /// Converts compact target bits (as used in Bitcoin/Turkium headers) to a Uint256 target
+    /// Compact format: 3 bytes of mantissa + 1 byte of exponent
+    #[inline]
+    pub fn from_compact_target_bits(bits: u32) -> Self {
+        let exponent = (bits >> 24) as u8;
+        let mantissa = bits & 0x00ffffff;
+
+        if exponent <= 3 {
+            // Shift right
+            Uint256::from_u64((mantissa >> (8 * (3 - exponent))) as u64)
+        } else {
+            // Shift left
+            let mut result = [0u64; 4];
+            let shift_bytes = exponent as usize - 3;
+            let shift_bits = shift_bytes * 8;
+            let word_shift = shift_bits / 64;
+            let bit_shift = shift_bits % 64;
+
+            if word_shift < 4 {
+                result[word_shift] = (mantissa as u64) << bit_shift;
+                if bit_shift > 0 && word_shift + 1 < 4 {
+                    result[word_shift + 1] = (mantissa as u64) >> (64 - bit_shift);
+                }
+            }
+            Uint256(result)
+        }
     }
 }
 

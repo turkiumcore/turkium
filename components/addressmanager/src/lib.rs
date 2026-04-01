@@ -5,10 +5,10 @@ extern crate self as address_manager;
 
 use std::{collections::HashSet, iter, net::SocketAddr, sync::Arc, time::Duration};
 
-use Turkium_consensus_core::config::Config;
-use Turkium_core::{debug, info, task::tick::TickService, time::unix_now, warn};
-use Turkium_database::prelude::{CachePolicy, DB, StoreResultExt};
-use Turkium_utils::networking::IpAddress;
+use turkium_consensus_core::config::Config;
+use turkium_core::{debug, info, task::tick::TickService, time::unix_now, warn};
+use turkium_database::prelude::{CachePolicy, DB, StoreResultExt};
+use turkium_utils::networking::IpAddress;
 use address_manager::port_mapping_extender::Extender;
 use igd_next::{
     self as igd, AddAnyPortError, AddPortError, Gateway, GetExternalIpError, GetGenericPortMappingEntryError, SearchError,
@@ -347,8 +347,8 @@ mod address_store_with_cache {
         sync::Arc,
     };
 
-    use Turkium_database::prelude::{CachePolicy, DB};
-    use Turkium_utils::networking::PrefixBucket;
+    use turkium_database::prelude::{CachePolicy, DB};
+    use turkium_utils::networking::PrefixBucket;
     use itertools::Itertools;
     use rand::{
         distributions::{WeightedError, WeightedIndex},
@@ -525,11 +525,11 @@ mod address_store_with_cache {
         use std::str::FromStr;
 
         use super::*;
-        use Turkium_consensus_core::config::{Config, params::SIMNET_PARAMS};
-        use Turkium_core::task::tick::TickService;
-        use Turkium_database::create_temp_db;
-        use Turkium_database::prelude::ConnBuilder;
-        use Turkium_utils::networking::IpAddress;
+        use turkium_consensus_core::config::{Config, params::SIMNET_PARAMS};
+        use turkium_core::task::tick::TickService;
+        use turkium_database::create_temp_db;
+        use turkium_database::prelude::ConnBuilder;
+        use turkium_utils::networking::IpAddress;
         use address_manager::AddressManager;
         use rv::{dist::Uniform, misc::ks_test as one_way_ks_test, traits::Cdf};
         use std::net::{IpAddr, Ipv6Addr};
@@ -552,7 +552,7 @@ mod address_store_with_cache {
         #[test]
         #[ignore]
         fn test_network_distribution_weighting() {
-            Turkium_core::log::try_init_logger("info");
+            turkium_core::log::try_init_logger("info");
 
             // Variables to initialize ip generation with.
             let largest_bucket: u16 = 2048;
@@ -628,7 +628,7 @@ mod address_store_with_cache {
             let significance = 0.10;
 
             // Display and assert the result
-            Turkium_core::info!(
+            turkium_core::info!(
                 "Kolmogorov–Smirnov test result for weighted network distribution uniformity: p = {0:.4} (p < {1})",
                 adjusted_p,
                 significance

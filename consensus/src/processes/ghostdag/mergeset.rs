@@ -2,8 +2,8 @@ use super::protocol::GhostdagManager;
 use crate::model::stores::ghostdag::GhostdagStoreReader;
 use crate::model::stores::relations::RelationsStoreReader;
 use crate::model::{services::reachability::ReachabilityService, stores::headers::HeaderStoreReader};
-use Turkium_consensus_core::{BlockHashSet, HashMapCustomHasher};
-use Turkium_hashes::Hash;
+use turkium_consensus_core::{BlockHashSet, HashMapCustomHasher};
+use turkium_hashes::Hash;
 use std::collections::VecDeque;
 
 pub fn unordered_mergeset_without_selected_parent<S: RelationsStoreReader + ?Sized, U: ReachabilityService + ?Sized>(

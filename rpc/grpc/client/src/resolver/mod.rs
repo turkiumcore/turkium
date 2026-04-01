@@ -1,5 +1,5 @@
 use super::error::Result;
-use Turkium_grpc_core::{
+use turkium_grpc_core::{
     ops::TurkiumdPayloadOps,
     protowire::{TurkiumdRequest, TurkiumdResponse},
 };

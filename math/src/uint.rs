@@ -443,26 +443,26 @@ macro_rules! construct_uint {
 
         }
 
-        impl Turkium_utils::mem_size::MemSizeEstimator for $name {
+        impl turkium_utils::mem_size::MemSizeEstimator for $name {
             fn estimate_mem_units(&self) -> usize {
                 1
 
             }
         }
 
-        impl Turkium_utils::hex::ToHex for $name {
+        impl turkium_utils::hex::ToHex for $name {
             fn to_hex(&self) -> String {
                 self.to_be_bytes().as_slice().to_hex()
             }
         }
 
-        impl Turkium_utils::hex::ToHex for &$name {
+        impl turkium_utils::hex::ToHex for &$name {
             fn to_hex(&self) -> String {
                 self.to_be_bytes().as_slice().to_hex()
             }
         }
 
-        impl Turkium_utils::hex::FromHex for $name {
+        impl turkium_utils::hex::FromHex for $name {
             type Error = $crate::Error;
             fn from_hex(hex: &str) -> Result<$name, Self::Error> {
                 Ok($name::from_hex(hex)?)

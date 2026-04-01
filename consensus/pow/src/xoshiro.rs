@@ -1,4 +1,4 @@
-use Turkium_hashes::Hash;
+use turkium_hashes::Hash;
 use std::num::Wrapping;
 
 pub struct XoShiRo256PlusPlus {

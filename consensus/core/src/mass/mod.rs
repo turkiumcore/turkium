@@ -4,7 +4,7 @@ use crate::{
     subnets::SUBNETWORK_ID_SIZE,
     tx::{ScriptPublicKey, Transaction, TransactionInput, TransactionOutput, UtxoEntry, VerifiableTransaction},
 };
-use Turkium_hashes::HASH_SIZE;
+use turkium_hashes::HASH_SIZE;
 
 // transaction_estimated_serialized_size is the estimated size of a transaction in some
 // serialization. This has to be deterministic, but not necessarily accurate, since
@@ -219,7 +219,7 @@ impl MassOps for Mass {
 
 // Note: consensus mass calculator operates on signed transactions.
 // To calculate mass for unsigned transactions, please use
-// `Turkium_wallet_core::tx::mass::MassCalculator`
+// `turkium_wallet_core::tx::mass::MassCalculator`
 #[derive(Clone)]
 pub struct MassCalculator {
     mass_per_tx_byte: u64,
